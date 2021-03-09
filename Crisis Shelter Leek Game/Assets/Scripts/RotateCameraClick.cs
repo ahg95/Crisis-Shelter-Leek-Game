@@ -15,13 +15,14 @@ public class RotateCameraClick : MonoBehaviour
             //transform.Rotate(Vector3.up * (direction * rotationStrength));
             //print(transform.localRotation.eulerAngles);
             float yRot = transform.localRotation.eulerAngles.y;
-            
-            if (yRot == 360)
+            print(direction);
+            print(yRot);
+            float roundedYRot = Mathf.RoundToInt(yRot);
+            if ((roundedYRot >= 360 - rotationStrength && direction == 1) || (roundedYRot <= rotationStrength && direction == -1) || (roundedYRot == 0 || roundedYRot == 360)) // limits the amount of rotation the player can do
             {
-                yRot = 0;
+                targetRotation = new Vector3(transform.localRotation.eulerAngles.x, Mathf.RoundToInt(yRot + direction * rotationStrength), transform.localRotation.eulerAngles.z);
+                isTurning = true;
             }
-            targetRotation = new Vector3(transform.localRotation.eulerAngles.x, Mathf.RoundToInt(yRot + direction * rotationStrength), transform.localRotation.eulerAngles.z);
-            isTurning = true;
         }
     }
     private void Update()
