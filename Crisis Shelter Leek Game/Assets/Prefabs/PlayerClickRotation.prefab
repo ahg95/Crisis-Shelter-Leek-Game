@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3053436520942160076}
   - component: {fileID: 3053436520942160079}
   - component: {fileID: 3053436520942160078}
+  - component: {fileID: 923855947}
   m_Layer: 0
   m_Name: left
   m_TagString: Untagged
@@ -129,6 +130,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &923855947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053436520942160074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee384e6c2db674e4f8a130c076f304c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverCursor: {fileID: 2800000, guid: 69c4cfce1a006054f8fa72fad6a1510a, type: 3}
 --- !u!1 &3053436521247312982
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +155,7 @@ GameObject:
   - component: {fileID: 3053436521247312984}
   - component: {fileID: 3053436521247312987}
   - component: {fileID: 3053436521247312986}
+  - component: {fileID: 1059663793}
   m_Layer: 0
   m_Name: right
   m_TagString: Untagged
@@ -258,6 +273,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1059663793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053436521247312982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee384e6c2db674e4f8a130c076f304c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverCursor: {fileID: 2800000, guid: 76b5cd6eddcf04347a3f3f14d292daba, type: 3}
 --- !u!1 &3053436521551913315
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationStrength: 45
-  turningRate: 3
+  turningRate: 4
 --- !u!1 &3053436521643096349
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +574,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5395634359496000521}
   m_Enabled: 1
-  m_Alpha: 0.1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
