@@ -10,7 +10,6 @@ public class RotateCamera : MonoBehaviour
     }
     public void MoveCamera(float rotationSpeed)
     {
-        // don't rotate if currentrotation <= 360-45 and negative rotation
         float currentRotation = cameraTransform.transform.localEulerAngles.y;
         float rotation = GetRotation(currentRotation);
         // print(rotation);

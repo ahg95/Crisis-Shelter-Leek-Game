@@ -22,7 +22,6 @@ public class RotateCameraClick : MonoBehaviour
             }
             targetRotation = new Vector3(transform.localRotation.eulerAngles.x, Mathf.RoundToInt(yRot + direction * rotationStrength), transform.localRotation.eulerAngles.z);
             isTurning = true;
-            //transform.Rotate(newRotation);
         }
     }
     private void Update()
