@@ -6,12 +6,14 @@ public class Interactable : MonoBehaviour
     private Outline outline;
     [SerializeField]
     private float outlineThickness = 8f;
+    [SerializeField]
+    private Color outlineColor = Color.white;
 
     private void Start()
     {
         outline = GetComponent<Outline>();
         // Initiation
-        outline.OutlineColor = Color.yellow;
+        outline.OutlineColor = outlineColor;
         outline.OutlineWidth = outlineThickness;
         outline.enabled = false;
     }
@@ -22,5 +24,9 @@ public class Interactable : MonoBehaviour
     private void OnMouseExit()
     {
         outline.enabled = false;
+    }
+    public virtual void InteractWith()
+    {
+        print("Interacting with interactable object!");
     }
 }
