@@ -5,30 +5,35 @@ public class MovementNode : Interactable
     [Space(10)]
     [SerializeField]
     private MovementNode[] connectedNodes;
-    Camera cam;
+    private MoveToNode Movement;
+    private Camera cam;
     private void Start()
     {
         cam = Camera.main;
+        Movement = cam.transform.parent.GetComponent<MoveToNode>();
         gameObject.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f, 0.5f, 0.5f);
     }
     public override void InteractWith()
     {
-        NodesManager nodesManager = transform.parent.GetComponent<NodesManager>();
-        base.InteractWith();
-        // You click on a node
-        // All the other nodes that you could see turn invisible
-        NodeVisibility(false, nodesManager.visibleNodes);
-        nodesManager.visibleNodes.Clear();
-
-        // You move towards the node you clicked
-        cam.transform.parent.GetComponent<MoveToNode>().MoveTowardsNode(transform);
-
-        // When you arrive at the node you clicked, you see the nodes where you can go from there.
-        foreach (MovementNode node in connectedNodes)
+        if (!Movement.isMoving)
         {
-            nodesManager.visibleNodes.Add(node);
+            NodesManager nodesManager = transform.parent.GetComponent<NodesManager>();
+            base.InteractWith();
+            // You click on a node
+            // All the other nodes that you could see turn invisible
+            NodeVisibility(false, nodesManager.visibleNodes);
+            nodesManager.visibleNodes.Clear();
+
+            // You move towards the node you clicked
+            Movement.MoveTowardsNode(transform);
+
+            // When you arrive at the node you clicked, you see the nodes where you can go from there.
+            foreach (MovementNode node in connectedNodes)
+            {
+                nodesManager.visibleNodes.Add(node);
+            }
+            NodeVisibility(true, nodesManager.visibleNodes);
         }
-        NodeVisibility(true, nodesManager.visibleNodes);
     }
 
     private void NodeVisibility(bool visibility, List<MovementNode> nodesToSet)

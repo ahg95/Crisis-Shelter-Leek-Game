@@ -6,7 +6,7 @@ public class MoveToNode : MonoBehaviour
 {
     [SerializeField]
     private float speed = 6f;
-    private bool isMoving = false;
+    public bool isMoving = false;
     private Transform targetNode;
     public void MoveTowardsNode(Transform node)
     {
