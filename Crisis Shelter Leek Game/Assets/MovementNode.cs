@@ -9,7 +9,7 @@ public class MovementNode : Interactable
     private void Start()
     {
         cam = Camera.main;
-        gameObject.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        gameObject.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f, 0.5f, 0.5f);
     }
     public override void InteractWith()
     {
