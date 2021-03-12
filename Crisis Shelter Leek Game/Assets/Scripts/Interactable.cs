@@ -4,12 +4,13 @@
 public class Interactable : MonoBehaviour
 {
     private Outline outline;
+    [Header("Outline")]
     [SerializeField]
     private float outlineThickness = 8f;
     [SerializeField]
     private Color outlineColor = Color.white;
 
-    private void Start()
+    private void Awake()
     {
         outline = GetComponent<Outline>();
         // Initiation
