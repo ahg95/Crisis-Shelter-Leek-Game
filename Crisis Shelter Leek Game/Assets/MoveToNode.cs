@@ -21,7 +21,7 @@ public class MoveToNode : MonoBehaviour
     {
         if (isMoving)
         {
-            StartCoroutine(IMoveTransform(targetNode.position, targetNode.rotation, 5));
+            StartCoroutine(IMoveTransform(targetNode.position, targetNode.rotation, speed));
 
             // transform.position = Vector3.MoveTowards(transform.position, targetNode.position, Time.deltaTime * speed);
             // transform.rotation = Quaternion.RotateTowards(transform.rotation, targetNode.rotation, Time.deltaTime * speed * 5)
