@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-
 public class MoveObjectController : MonoBehaviour 
 {
 	public float reachRange = 1.8f;			
