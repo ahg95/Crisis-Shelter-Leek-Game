@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class FadeToBlack : MonoBehaviour
 {
     [SerializeField] private float fadeInterval = 2f;
-    [SerializeField] private bool screenIsBlack = false;
+    public bool screenIsBlack = false;
     [Header("Components")]
     [Space(20)]
     [SerializeField] private Image blackScreen;
@@ -29,9 +29,9 @@ public class FadeToBlack : MonoBehaviour
     /// </summary>
     /// <param name="fadeToBlack"></param> To tell whether you want the screen to fade to black or the opposite.
     /// <param name="showStats"></param> Tell whether you want the stats (days & cost) to be displayed.
-    /// <param name="addedFade"></param> Tell with what ainterval
+    /// <param name="addedFade"></param> Tell with what interval the screen turns black
     /// <returns></returns>
-    IEnumerator Fade(bool fadeToBlack, bool showStats, float addedFade)
+    public IEnumerator Fade(bool fadeToBlack, bool showStats, float addedFade)
     {
         Color blackImage = blackScreen.color;
         float fadeAmount;
