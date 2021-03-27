@@ -2,9 +2,9 @@
 using UnityEngine;
 public class MovementNode : Interactable
 {
+    [SerializeField] private bool debug = false;
     [Space(10)]
-    [SerializeField]
-    private MovementNode[] connectedNodes;
+    [SerializeField] private MovementNode[] connectedNodes;
     private MoveToNode Movement;
     private Camera cam;
     private void Start()
@@ -17,7 +17,7 @@ public class MovementNode : Interactable
     {
         if (!Movement.isMoving)
         {
-            NodesManager nodesManager = transform.parent.parent.GetComponent<NodesManager>();
+            NodesManager nodesManager = transform.parent.GetComponent<NodesManager>();
             base.InteractWith();
             // You click on a node
             // All the other nodes that you could see turn invisible
@@ -46,7 +46,7 @@ public class MovementNode : Interactable
 
     private void OnDrawGizmos()
     {
-        if (Application.isPlaying)
+        if (Application.isPlaying && debug)
         {
             Gizmos.color = Color.yellow;
 
@@ -54,10 +54,10 @@ public class MovementNode : Interactable
             {
                 Gizmos.DrawLine(transform.position, node.transform.position);
             }
-        }
 
-        // Show forward direction
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, transform.forward * 5);
+            // Show forward direction
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, transform.forward * 5);
+        }
     }
 }
