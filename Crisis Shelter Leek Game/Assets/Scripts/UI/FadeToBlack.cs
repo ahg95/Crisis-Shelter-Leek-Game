@@ -24,6 +24,13 @@ public class FadeToBlack : MonoBehaviour
         StartCoroutine(Fade(!screenIsBlack, showStats, fadeInterval));
     }
 
+    /// <summary>
+    /// Make the screen fade to black
+    /// </summary>
+    /// <param name="fadeToBlack"></param> To tell whether you want the screen to fade to black or the opposite.
+    /// <param name="showStats"></param> Tell whether you want the stats (days & cost) to be displayed.
+    /// <param name="addedFade"></param> Tell with what ainterval
+    /// <returns></returns>
     IEnumerator Fade(bool fadeToBlack, bool showStats, float addedFade)
     {
         Color blackImage = blackScreen.color;
@@ -42,6 +49,9 @@ public class FadeToBlack : MonoBehaviour
             }
 
             screenIsBlack = true;
+
+
+
         }
         else
         {
