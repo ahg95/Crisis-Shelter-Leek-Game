@@ -1,27 +1,22 @@
 ﻿using UnityEngine;
-
 public class OpenPauseMenu : MonoBehaviour
 {
     private bool isPaused = false;
+
+    /// <summary>
+    /// Invokes an animation which enabled the PauseMenu Canvas and show sit through a fade.
+    /// </summary>
+    public void OpenMenu()
+    {
+        isPaused = !isPaused;
+        GetComponent<Animator>().SetBool("Open", isPaused);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OpenMenu();
         }
-    }
-    public void OpenMenu()
-    {
-        Transform pauseMenu = transform.GetChild(0).transform;
-        isPaused = !isPaused;
-        Time.timeScale = isPaused ? 0 : 1;
-        pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-
-        foreach (Transform child in pauseMenu)
-        {
-            child.gameObject.SetActive(false);
-        }
-        pauseMenu.GetChild(0).gameObject.SetActive(true);
-        pauseMenu.GetChild(1).gameObject.SetActive(true);
     }
 }
