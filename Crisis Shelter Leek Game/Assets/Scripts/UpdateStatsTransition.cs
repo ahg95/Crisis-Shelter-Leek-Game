@@ -2,12 +2,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AfterChapterStats : MonoBehaviour
+public class UpdateStatsTransition : MonoBehaviour
 {
     private int displayedAmountOfDays = GlobalStats.startAmountOfDays;
     private float displayedAmountOfMoney = GlobalStats.costAtStart;
     [SerializeField] private float daySpeedMultiplier = 1.5f;
     [SerializeField] private float costsSpeedMultiplier = 1f;
+    [SerializeField] private GameObject transition;
 
     [Header("Components")]
     [Space(20)]
@@ -20,16 +21,15 @@ public class AfterChapterStats : MonoBehaviour
 
     public void ChapterFinished()
     {
-        Camera.main.GetComponent<FadeToBlack>().Fade(true);
+        transition.GetComponent<Transitions>().SimpleTransitionStats(true, "MapWithImage");
         StartCoroutine(StatsUpdater());
     }
 
-
-    /* SUMMARY
-     * An int and a float keep up what the costs and amount of days on screen are.
-     * It is checked whether the currently shown amount of days and costs are still below the new values.
-     * If true, the displayed amounts are increased, and the process repeats itself until it's up-to-date.
-     */
+    /// <summary>
+    /// An int and a float keep up what the costs and amount of days on screen are.
+    /// It is checked whether the currently shown amount of days and costs are still below the new values.
+    /// If true, the displayed amounts are increased, and the process repeats itself until it's up-to-date.
+    /// </summary>
     private IEnumerator StatsUpdater()
     {
         yield return new WaitForSeconds(1.5f);
