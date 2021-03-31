@@ -1,4 +1,4 @@
-﻿public class InteractPersonTest : Interactable
+﻿public class InteractionTaskGiver : Interactable
 {
     public override void InteractWith()
     {
