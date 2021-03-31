@@ -7,7 +7,6 @@ public class SlideOpen : Interactable
     private bool isMoving = false;
     public override void InteractWith()
     {
-        base.InteractWith();
         if (!isMoving)
         {
             StartCoroutine(SmoothMove(transform.position + (Vector3.right * isOpen * 0.7f * GetComponent<Renderer>().bounds.size.x), 0.05f));
@@ -29,7 +28,7 @@ public class SlideOpen : Interactable
         while (distance >= closeEnough)
         {
             // Confirm that it's moving
-            Debug.Log("Executing Movement");
+            // Debug.Log("Executing Movement");
 
             // Move a bit then  wait until next  frame
             transform.position = Vector3.Slerp(transform.position, target, delta);
@@ -43,7 +42,7 @@ public class SlideOpen : Interactable
         transform.position = target;
 
         // Confirm  it's ended
-        Debug.Log("Movement Complete");
+        // Debug.Log("Movement Complete");
         isMoving = false;
     }
 }
