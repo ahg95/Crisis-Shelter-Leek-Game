@@ -2,12 +2,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AfterChapterStats : MonoBehaviour
+public class UpdateStatsTransition : MonoBehaviour
 {
     private int displayedAmountOfDays = GlobalStats.startAmountOfDays;
     private float displayedAmountOfMoney = GlobalStats.costAtStart;
     [SerializeField] private float daySpeedMultiplier = 1.5f;
     [SerializeField] private float costsSpeedMultiplier = 1f;
+    [SerializeField] private GameObject transition;
 
     [Header("Components")]
     [Space(20)]
@@ -20,7 +21,7 @@ public class AfterChapterStats : MonoBehaviour
 
     public void ChapterFinished()
     {
-        Camera.main.GetComponent<FadeToBlack>().Fade(true);
+        transition.GetComponent<Transitions>().SimpleTransitionStats(true, "MapWithImage");
         StartCoroutine(StatsUpdater());
     }
 
