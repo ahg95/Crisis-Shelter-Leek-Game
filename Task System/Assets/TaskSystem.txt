@@ -1,0 +1,25 @@
+How to set up a new task:
+
+Creation
+1. Create a new Task > right click in Project > Create > Tasks > New Task.
+
+Details
+2. Set up the details of the task in the newly made constructor. 
+ > You can simply drag in any task that is a 'conditional' task to be performed in the constructor.
+* MAKE SURE you assign it an ID that isn't already used with another task.
+
+Keep it tidy!
+3. Put the new task in the correct folder. Keep it tidy!
+
+Set up Task Giver
+4. Give the object that gives the tasks the Task Giver Component and drag in this new task (and others if multiple).
+
+Assign task to player
+5. You need a component in the task giver that calls the 'AssignTasks' void of the Task Giver component. A simple example being a button's 'OnClick' void => drag in the Task Giver component and make it call AssignTasks.
+
+Perform Task
+To set up the trigger for the task to be performed, get a class(script) on the object that will trigger the action. Set up a parameter of the task that needs to be performed. (make a serialize field of the task that needs to be performed and drag it in). 
+Then, call the static void 'PerformTask.TryPerForm(taskToPerform);'
+The 'TaskToPerform' is the task parameter that you dragged in yourself in the inspector as a parameter of the void you call.
+
+Done! This should call the task.

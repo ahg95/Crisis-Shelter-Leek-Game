@@ -4,18 +4,14 @@ using UnityEngine;
 public class RotateOpen : Interactable
 {
     [SerializeField]
-    private float targetAngle = 90f;
-    private bool isRunning = false;
+    private float targetAngle = -90f;
+    public bool isOpen = false;
+
     public override void InteractWith()
     {
-        base.InteractWith();
-
-        if (!isRunning)
-        {
-            StartCoroutine(Rotate(targetAngle));
-        }
+        StartCoroutine(Rotate(targetAngle));
+        isOpen = !isOpen;
         targetAngle *= -1;
-
     }
 
     IEnumerator Rotate(float targetAngle)
