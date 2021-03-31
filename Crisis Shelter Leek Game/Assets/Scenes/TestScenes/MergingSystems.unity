@@ -648,6 +648,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6294461111140223205, guid: 4fbcfed720f8de6428375ef16986ad6c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 6294461111140223774, guid: 4fbcfed720f8de6428375ef16986ad6c,
         type: 3}
       propertyPath: connectedNodes.Array.size
@@ -662,6 +667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698210746468888249, guid: 4fbcfed720f8de6428375ef16986ad6c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 8698210747128726517, guid: 4fbcfed720f8de6428375ef16986ad6c,
         type: 3}
@@ -5277,6 +5287,7 @@ GameObject:
   - component: {fileID: 1141990965}
   - component: {fileID: 1141990964}
   - component: {fileID: 1141990963}
+  - component: {fileID: 1141990969}
   m_Layer: 8
   m_Name: TaskGiver
   m_TagString: Untagged
@@ -5325,7 +5336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c847b0b7c6d25247bb063565ae0ee4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineThickness: 8
+  outlineThickness: 2.5
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1141990966
 MonoBehaviour:
@@ -5334,7 +5345,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141990962}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -5342,7 +5353,7 @@ MonoBehaviour:
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 8
-  precomputeOutline: 0
+  precomputeOutline: 1
   bakeKeys: []
   bakeValues: []
 --- !u!95 &1141990967
@@ -5390,6 +5401,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1141990969
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141990962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.87972593, y: 1.9717677, z: 0.43388844}
+  m_Center: {x: 0.03692758, y: 0.9763422, z: 0.007812977}
 --- !u!1 &1144279667
 GameObject:
   m_ObjectHideFlags: 0
@@ -8736,6 +8760,7 @@ GameObject:
   - component: {fileID: 1806673779}
   - component: {fileID: 1806673778}
   - component: {fileID: 1806673777}
+  - component: {fileID: 1806673782}
   m_Layer: 8
   m_Name: TaskPerformer
   m_TagString: Untagged
@@ -8768,7 +8793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c847b0b7c6d25247bb063565ae0ee4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineThickness: 8
+  outlineThickness: 2.5
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1806673779
 MonoBehaviour:
@@ -8833,6 +8858,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 137.21701, z: 0}
+--- !u!65 &1806673782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806673776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7501783, y: 1.9717677, z: 0.43388844}
+  m_Center: {x: -0.027846245, y: 0.9763422, z: 0.007812976}
 --- !u!1 &1832824216
 GameObject:
   m_ObjectHideFlags: 0
@@ -9165,7 +9203,7 @@ PrefabInstance:
     - target: {fileID: 6294461110920625782, guid: 3b78af03082cc434b87489e23dead134,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.656
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 6294461110920625782, guid: 3b78af03082cc434b87489e23dead134,
         type: 3}
