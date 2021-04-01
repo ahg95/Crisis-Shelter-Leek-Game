@@ -11,7 +11,9 @@ public class DialogueUI : MonoBehaviour
 
     [Header("Options")]
     [SerializeField]
-    TextMeshProUGUI[] optionTextBoxes;
+    GameObject[] choiceUIObjects;
+    [SerializeField]
+    TextMeshProUGUI[] choiceTextBoxes;
 
     [Header("Buttons")]
     [SerializeField]
@@ -27,14 +29,25 @@ public class DialogueUI : MonoBehaviour
         dialogueTextBox.text = dialogueText;
     }
 
-    public void SetOptionText(int optionIndex, string text)
+    public void SetChoiceText(int optionIndex, string text)
     {
-        if (optionIndex < 0 || optionTextBoxes.Length <= optionIndex)
+        if (optionIndex < 0 || choiceTextBoxes.Length <= optionIndex)
         {
             Debug.LogError("optionIndex is out of bounds.");
         } else
         {
-            optionTextBoxes[optionIndex].text = text;
+            choiceTextBoxes[optionIndex].text = text;
+        }
+    }
+
+    public void OnlyShowSpecifiedNumberOfChoices(int numberOfChoices)
+    {
+        for (int i = 0; i < choiceUIObjects.Length; i++)
+        {
+            if (i < numberOfChoices)
+                choiceUIObjects[i].SetActive(true);
+            else
+                choiceUIObjects[i].SetActive(false);
         }
     }
 

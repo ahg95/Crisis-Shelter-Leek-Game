@@ -16,6 +16,8 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
         int nrOfChoices = dialogueBox.choices.Length;
 
+        dialogueUI.OnlyShowSpecifiedNumberOfChoices(nrOfChoices);
+
         if (0 < nrOfChoices)
             dialogueUI.HideContinueButton();
         else
@@ -23,7 +25,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
         for (int i = 0; i < nrOfChoices; i++)
         {
-            dialogueUI.SetOptionText(i, dialogueBox.choices[i].text);
+            dialogueUI.SetChoiceText(i, dialogueBox.choices[i].text);
         }
 
         animator.SetBool("show", true);
