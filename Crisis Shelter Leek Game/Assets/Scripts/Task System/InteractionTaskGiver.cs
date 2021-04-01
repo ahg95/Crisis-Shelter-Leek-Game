@@ -3,6 +3,7 @@
     public override void InteractWith()
     {
         // base.InteractWith();
-        GetComponent<TaskGiver>().AssignTasks();
+        //GetComponent<TaskGiver>().AssignTasks();
+
     }
 }
