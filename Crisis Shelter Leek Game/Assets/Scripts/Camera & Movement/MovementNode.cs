@@ -6,11 +6,9 @@ public class MovementNode : Interactable
     [Space(10)]
     [SerializeField] private MovementNode[] connectedNodes;
     private MoveToNode Movement;
-    private Camera cam;
     private void Start()
     {
-        cam = Camera.main;
-        Movement = cam.transform.parent.GetComponent<MoveToNode>();
+        Movement = Camera.main.transform.parent.GetComponent<MoveToNode>();
         //gameObject.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f, 0.5f, 0.5f);
     }
     public override void InteractWith()
