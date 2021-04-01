@@ -12,6 +12,8 @@
 --- How to switch out the UI of the dialogue box ---
 1. Create your UI.
 2. Search for the DialogueUI gameObject with the DialogueUI script, and put your UI elements into the respective variables.
+3. Set your continue button to call the function "ShowNextDialogueBoxOrHideIfNoneLeft" of the DialogueManager script.
+4. Set your choice buttons to call the function "OnDialogueChoiceHasBeenSelectedWithIndex" with the respective index of the choice (first choice has index 0, second one has index 1, ...)
 
 --- How to add custom animations ---
 1. Make a subclass of DialogueBoxVisualizer with your custom behaviour.
