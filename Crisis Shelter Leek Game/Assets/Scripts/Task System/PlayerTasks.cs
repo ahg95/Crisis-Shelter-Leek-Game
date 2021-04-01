@@ -19,5 +19,8 @@ public class PlayerTasks : MonoBehaviour
     {
         print("task " + task.taskID + " assigned!");
         assignedTasks.Add(task);
+
+        // Update GUI
+
     }
 }
