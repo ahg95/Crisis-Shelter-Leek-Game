@@ -12,7 +12,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
     public Animator animator;
 
 
-    public void ShowDialogueBox(DialogueBox dialogueBox)
+    public virtual void ShowDialogueBox(DialogueBox dialogueBox)
     {
         dialogueUI.SetSpeaker(dialogueBox.speaker);
 
@@ -52,7 +52,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
         }
     }
 
-    public void HideDialogueBox()
+    public virtual void HideDialogueBox()
     {
         animator.SetBool("show", false);
     }
