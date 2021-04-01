@@ -27,7 +27,7 @@ public class TaskGiver : MonoBehaviour
             tasksAssigned = true;
 
             // Update GUI
-            GameObject currentAction = GameObject.Find("CurrentTask");
+            GameObject currentAction = GameObject.Find("CurrentActionText");
             GameObject currentActionLocation = GameObject.Find("TaskLocation");
 
             currentAction.GetComponent<TMPro.TextMeshProUGUI>().text = tasksToAssign[0].description;

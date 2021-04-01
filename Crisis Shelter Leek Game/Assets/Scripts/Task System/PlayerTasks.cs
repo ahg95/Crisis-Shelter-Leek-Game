@@ -29,7 +29,7 @@ public class PlayerTasks : MonoBehaviour
                 if (CheckIfConditionsMet(playerTask))
                 {
                     playerTask.taskCompleted = true;
-                    GameObject.Find("completionMark").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
+                    GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
                     Debug.Log("Task " + playerTask.taskID + " Completed = " + playerTask.taskCompleted);
                 }
                 else
