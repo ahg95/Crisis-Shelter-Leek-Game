@@ -15,6 +15,6 @@ public class OnClickScript: MonoBehaviour
 
     private void OnClickButton()
     {
-        PerformTask.TryPerformTask(taskToPerform);
+        //PerformTask.TryPerformTask(taskToPerform);
     }
 }

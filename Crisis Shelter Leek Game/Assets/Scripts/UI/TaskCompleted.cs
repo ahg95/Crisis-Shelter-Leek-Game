@@ -8,6 +8,7 @@ public class TaskCompleted : MonoBehaviour
 
     public void CheckTaskCompleted(bool completed)
     {
-        backgroundColor.color = completed ? new Color(44, 255, 38) : Color.white;
+        backgroundColor.color = completed ? Color.green : Color.white;
+        checkmark.enabled = completed;
     }
 }

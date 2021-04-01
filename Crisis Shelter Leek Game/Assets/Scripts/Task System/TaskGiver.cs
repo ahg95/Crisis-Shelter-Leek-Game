@@ -20,9 +20,18 @@ public class TaskGiver : MonoBehaviour
             {
                 Task taskToAssign = tasksToAssign[i];
 
-                playerTasks.AssignTask(Instantiate(taskToAssign));
+                playerTasks.assignedTasks.Add(Instantiate(taskToAssign));
+                print("task " + taskToAssign.taskID + " assigned!");
+
             }
             tasksAssigned = true;
+
+            // Update GUI
+            GameObject currentAction = GameObject.Find("CurrentActionText");
+            GameObject currentActionLocation = GameObject.Find("TaskLocation");
+
+            currentAction.GetComponent<TMPro.TextMeshProUGUI>().text = tasksToAssign[0].description;
+            currentActionLocation.GetComponent<TMPro.TextMeshProUGUI>().text = tasksToAssign[0].location.ToString();
         }
     }
 }
