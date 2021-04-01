@@ -10,11 +10,11 @@ public class DialogueManager : MonoBehaviour
     Queue<DialogueBox> dialogueBoxesToShow;
     DialogueBox currentlyShownDialogueBox;
 
-    GameObject[] disabledGameObjects;
+    GameObject[] gameObjectsToDisable;
 
     private void Start()
     {
-        disabledGameObjects = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
+        gameObjectsToDisable = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
     }
 
     public void ShowDialogueSection(DialogueSection dialogueSection)
@@ -49,18 +49,6 @@ public class DialogueManager : MonoBehaviour
         ShowNextDialogueBoxOrHideIfNoneLeft();
     }
 
-    public void SetSystemActivationState(bool activated)
-    {
-        InteractWith interactionScript = FindObjectOfType<InteractWith>();
-
-        foreach (GameObject objectToDisable in disabledGameObjects)
-        {
-            objectToDisable.SetActive(activated);
-        }
-
-        interactionScript.enabled = activated;
-    }
-
     public void DisableOtherSystems()
     {
         SetSystemActivationState(false);
@@ -69,5 +57,20 @@ public class DialogueManager : MonoBehaviour
     public void EnableOtherSystems()
     {
         SetSystemActivationState(true);
+    }
+
+    public void SetSystemActivationState(bool activated)
+    {
+        InteractWith interactionScript = FindObjectOfType<InteractWith>();
+
+        foreach (GameObject objectToDisable in gameObjectsToDisable)
+        {
+            objectToDisable.SetActive(activated);
+        }
+
+        if (interactionScript != null)
+            interactionScript.enabled = activated;
+        else
+            Debug.LogWarning("DialogueManager couldn't find interactionScript to disable. Did you forget to put it into the scene?");
     }
 }

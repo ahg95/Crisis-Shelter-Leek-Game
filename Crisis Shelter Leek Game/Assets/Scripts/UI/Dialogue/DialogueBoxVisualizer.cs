@@ -7,12 +7,11 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
     public Animator animator;
 
-    string dialogueTextToShow;
-
     public void ShowDialogueBox(DialogueBox dialogueBox)
     {
         dialogueUI.SetSpeaker(dialogueBox.speaker);
 
+        StopAllCoroutines();
         StartCoroutine(SlowlyRevealDialogueText(dialogueBox.dialogueText));
 
         int nrOfChoices = dialogueBox.choices.Length;
@@ -34,6 +33,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
     IEnumerator SlowlyRevealDialogueText(string text)
     {
         string currentlyShownText = "";
+
         dialogueUI.SetDialogueText(currentlyShownText);
 
         foreach (char letter in text.ToCharArray())
