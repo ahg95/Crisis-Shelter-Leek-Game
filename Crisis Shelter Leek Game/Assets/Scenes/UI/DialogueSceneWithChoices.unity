@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbc7e1b006bcab479c9c17b43e1c84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  taskAssigned: 
+  assignedTasks: 
   tasksObject: {fileID: 1370242677}
   taskType:
   - Click1
@@ -453,7 +453,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb545e64d5b9f374a96d79320985254c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  daysSpentOnTasks: 0
+--- !u!1 &932944129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515970130677207835, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7515970131002899371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &977002043
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +775,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209167914}
   m_CullTransparentMesh: 0
+--- !u!1 &1358568937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515970131474523728, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7515970131002899371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1369786509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515970130846598278, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7515970131002899371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1370242677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1051,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &2003756286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7515970131469404616, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7515970131002899371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2070817961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7515970130077169917, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7515970131002899371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2106355263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2669553157318432119, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 7515970131002899371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1022911830135503074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1106,6 +1159,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1022911830705246863, guid: d37fc3554b5991e4889adf914d39d82d,
+        type: 3}
+      propertyPath: choices.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1022911830915233805, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: animator
@@ -1145,6 +1203,46 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1721514463}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2106355263}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2070817961}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.data[2]
+      value: 
+      objectReference: {fileID: 2003756286}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1358568937}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 932944129}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 1369786509}
     - target: {fileID: 7515970131757301736, guid: 2228766bf34957f43b06961f5a64f9be,
         type: 3}
       propertyPath: m_Name
