@@ -7,6 +7,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void InteractWith()
     {
+        onInteraction.Invoke();
         print("Interacting with interactable object!");
     }
 }

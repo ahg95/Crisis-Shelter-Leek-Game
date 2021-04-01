@@ -23,4 +23,13 @@ public class PlayerTasks : MonoBehaviour
         // Update GUI
 
     }
+
+    public void SetTaskAsCompleted(Task taskToSetAsCompleted)
+    {
+        foreach (Task task in assignedTasks)
+        {
+            if (task.taskID == taskToSetAsCompleted.taskID)
+                task.SetAsCompleted();
+        }
+    }
 }

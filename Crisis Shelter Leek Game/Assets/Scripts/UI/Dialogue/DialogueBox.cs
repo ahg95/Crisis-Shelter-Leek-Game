@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class DialogueBox : MonoBehaviour
@@ -8,6 +9,8 @@ public class DialogueBox : MonoBehaviour
     public string speaker;
     public string dialogueText;
     public DialogueChoice[] choices;
+
+    public UnityEvent OnDialogueContinued;
 
     /*
     public DialogueBox(string speaker, string dialogueText)
