@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8032975027644828741
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6575149061710642165}
-  m_Layer: 0
-  m_Name: Tasks
-  m_TagString: Tasks
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6575149061710642165
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8032975027644828741}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8913595032250636315}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8913595031707162562
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +801,6 @@ Transform:
   - {fileID: 5192755194521987716}
   - {fileID: 8840494980279994638}
   - {fileID: 8913595031842292245}
-  - {fileID: 6575149061710642165}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1377,7 +1346,7 @@ GameObject:
   - component: {fileID: 1604811386}
   m_Layer: 0
   m_Name: SmoothRotateCanvas
-  m_TagString: Untagged
+  m_TagString: disabledOnDialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1667,21 +1636,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8913595032250636315}
     m_Modifications:
-    - target: {fileID: 8374096871294910834, guid: 8532441254ccb8e4e8cc6f68fd767ad6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374096871294910834, guid: 8532441254ccb8e4e8cc6f68fd767ad6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -38.299988
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374096871395277489, guid: 8532441254ccb8e4e8cc6f68fd767ad6,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8374096871395277493, guid: 8532441254ccb8e4e8cc6f68fd767ad6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1797,21 +1751,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5192755194521987723}
-    - target: {fileID: 8374096872048737539, guid: 8532441254ccb8e4e8cc6f68fd767ad6,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374096872927111877, guid: 8532441254ccb8e4e8cc6f68fd767ad6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374096872927111877, guid: 8532441254ccb8e4e8cc6f68fd767ad6,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -16.299988
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8532441254ccb8e4e8cc6f68fd767ad6, type: 3}
 --- !u!224 &8840494980279994638 stripped
@@ -1827,11 +1766,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8913595032250636315}
     m_Modifications:
-    - target: {fileID: 5800174713623352849, guid: a8c265830b6e18d4081d72c0b9c7cabe,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5800174713623352860, guid: a8c265830b6e18d4081d72c0b9c7cabe,
         type: 3}
       propertyPath: m_Name
@@ -1942,19 +1876,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5800174713850132096, guid: a8c265830b6e18d4081d72c0b9c7cabe,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8c265830b6e18d4081d72c0b9c7cabe, type: 3}
---- !u!224 &5192755194521987716 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5800174713623352861, guid: a8c265830b6e18d4081d72c0b9c7cabe,
-    type: 3}
-  m_PrefabInstance: {fileID: 1760348342567910553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5192755194521987723 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5800174713623352850, guid: a8c265830b6e18d4081d72c0b9c7cabe,
@@ -1967,3 +1890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb76a0e8c5644c40b2d2e13b96694d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5192755194521987716 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5800174713623352861, guid: a8c265830b6e18d4081d72c0b9c7cabe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1760348342567910553}
+  m_PrefabAsset: {fileID: 0}
