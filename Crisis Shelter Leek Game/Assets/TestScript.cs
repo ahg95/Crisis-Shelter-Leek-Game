@@ -1,17 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestScript : MonoBehaviour
 {
-    [SerializeField]
-    private TaskGiver taskgiver;
-
-void Update()
+    private void Start()
+    {
+        print("press space to go to the next scene");
+    }
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            taskgiver.AssignTasks();
+            SceneManager.LoadScene("MergingSystemsNextScene");
         }
     }
 }
