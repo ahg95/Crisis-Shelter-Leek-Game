@@ -1,21 +1,27 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+// <summary> This class is responsible for managing the logic behind showing a certain <c>DialogueBox</c>
+// and connects the <c>DialogueManager</c> with the <c>DialogueUI</c> </summary>
 public class DialogueBoxVisualizer : MonoBehaviour
 {
+    [Tooltip("The dialogueUI that should be used to visualize the dialogue boxes.")]
     public DialogueUI dialogueUI;
 
+    [Tooltip("The animator responsible for moving the UI of the dialogue box up and down.")]
     public Animator animator;
 
-    string dialogueTextToShow;
 
-    public void ShowDialogueBox(DialogueBox dialogueBox)
+    public virtual void ShowDialogueBox(DialogueBox dialogueBox)
     {
         dialogueUI.SetSpeaker(dialogueBox.speaker);
 
+        StopAllCoroutines();
         StartCoroutine(SlowlyRevealDialogueText(dialogueBox.dialogueText));
 
         int nrOfChoices = dialogueBox.choices.Length;
+
+        dialogueUI.OnlyShowSpecifiedNumberOfChoices(nrOfChoices);
 
         if (0 < nrOfChoices)
             dialogueUI.HideContinueButton();
@@ -24,7 +30,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
         for (int i = 0; i < nrOfChoices; i++)
         {
-            dialogueUI.SetOptionText(i, dialogueBox.choices[i].text);
+            dialogueUI.SetChoiceText(i, dialogueBox.choices[i].text);
         }
 
         animator.SetBool("show", true);
@@ -34,6 +40,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
     IEnumerator SlowlyRevealDialogueText(string text)
     {
         string currentlyShownText = "";
+
         dialogueUI.SetDialogueText(currentlyShownText);
 
         foreach (char letter in text.ToCharArray())
@@ -45,7 +52,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
         }
     }
 
-    public void HideDialogueBox()
+    public virtual void HideDialogueBox()
     {
         animator.SetBool("show", false);
     }

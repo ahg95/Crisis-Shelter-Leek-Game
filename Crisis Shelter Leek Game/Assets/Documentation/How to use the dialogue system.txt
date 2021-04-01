@@ -1,0 +1,20 @@
+--- How to add it to a scene ---
+1. Drag and drop the DialogueSystem prefab into your scene's canvas.
+
+--- How to define custom dialogue ---
+1. Create a new gameobject with a DialogueSection script attached to it.
+2. Create as many child gameobjects with a DialogueBox script as you want. These resemble the amount, order, and content of the dialogue boxes for this dialogue section.
+3. Set the properties of these scripts to your liking. Increase the Choices array to a maximum of 3 to set the number of choices for that dialogue box. Add listeners to the Consequence event to specify what should happen when the choice is picked. Add a listener to the OnDialogueContinued event if you want specific things to happen when the player clicks on the dialogue box'es continue button.
+
+--- How to start a dialogue ---
+1. Call the "ShowDialogueSection" function of the DialogueManager script, and pass it the DialogueSection gameObject (see "How to define custom dialogue", step 1) that you want to show.
+
+--- How to switch out the UI of the dialogue box ---
+1. Create your UI.
+2. Search for the DialogueUI gameObject with the DialogueUI script, and put your UI elements into the respective variables.
+3. Set your continue button to call the function "ShowNextDialogueBoxOrHideIfNoneLeft" of the DialogueManager script.
+4. Set your choice buttons to call the function "OnDialogueChoiceHasBeenSelectedWithIndex" with the respective index of the choice (first choice has index 0, second one has index 1, ...)
+
+--- How to add custom animations ---
+1. Make a subclass of DialogueBoxVisualizer with your custom behaviour.
+2. Look for the DialogueBoxVisualizer gameobject with the DialogueBoxVisualizer script, remove the script, and add your own custom script. Make sure to set your gameObject as the new DialogueBoxVisualizer in the DialogueManager.
