@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Tooltip("The DialogueBoxVisualizer that should handle how to display the dialogue boxes.")]
     public DialogueBoxVisualizer dialogueBoxVisualizer;
-
-    public MonoBehaviour[] systemsToDisableWhenDialogueIsShown;
 
     Queue<DialogueBox> dialogueBoxesToShow;
     DialogueBox currentlyShownDialogueBox;
 
+    // Contains all gameObjects that should be disabled when there is dialogue.
     GameObject[] gameObjectsToDisable;
 
     private void Start()
@@ -19,9 +19,8 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowDialogueSection(DialogueSection dialogueSection)
     {
-        DisableOtherSystems();
+        DisableSystemsToDisableOnDialogue();
 
-        Debug.Log("Start dialogue");
         dialogueBoxesToShow = new Queue<DialogueBox>(dialogueSection.dialogueBoxes);
         ShowNextDialogueBoxOrHideIfNoneLeft();
     }
@@ -37,29 +36,28 @@ public class DialogueManager : MonoBehaviour
         {
             currentlyShownDialogueBox = null;
             dialogueBoxVisualizer.HideDialogueBox();
-            EnableOtherSystems();
+            EnableSystemsToDisableOnDialogue();
         }
     }
 
     public void OnDialogueChoiceHasBeenSelectedWithIndex(int indexOfChoice)
     {
-        Debug.Log("option has been selected");
         currentlyShownDialogueBox.choices[indexOfChoice].Consequence.Invoke();
 
         ShowNextDialogueBoxOrHideIfNoneLeft();
     }
 
-    public void DisableOtherSystems()
+    public void DisableSystemsToDisableOnDialogue()
     {
-        SetSystemActivationState(false);
+        SetActivationOfSystemsToDisableOnDialogue(false);
     }
 
-    public void EnableOtherSystems()
+    public void EnableSystemsToDisableOnDialogue()
     {
-        SetSystemActivationState(true);
+        SetActivationOfSystemsToDisableOnDialogue(true);
     }
 
-    public void SetSystemActivationState(bool activated)
+    public void SetActivationOfSystemsToDisableOnDialogue(bool activated)
     {
         InteractWith interactionScript = FindObjectOfType<InteractWith>();
 

@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+// <summary> This class is responsible for managing the logic behind showing a certain <c>DialogueBox</c>
+// and connects the <c>DialogueManager</c> with the <c>DialogueUI</c> </summary>
 public class DialogueBoxVisualizer : MonoBehaviour
 {
+    [Tooltip("The dialogueUI that should be used to visualize the dialogue boxes.")]
     public DialogueUI dialogueUI;
 
+    [Tooltip("The animator responsible for moving the UI of the dialogue box up and down.")]
     public Animator animator;
+
 
     public void ShowDialogueBox(DialogueBox dialogueBox)
     {
