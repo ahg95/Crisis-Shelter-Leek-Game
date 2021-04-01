@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBoxVisualizer: {fileID: 1022911830915233805}
-  systemsToDisableWhenDialogueIsShown: []
 --- !u!1 &1022911829634773278
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +442,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1022911829490876733}
     - target: {fileID: 7515970130677207834, guid: 2228766bf34957f43b06961f5a64f9be,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -453,7 +452,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1022911829490876733}
     - target: {fileID: 7515970130846598277, guid: 2228766bf34957f43b06961f5a64f9be,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -463,7 +462,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1022911829490876733}
     - target: {fileID: 7515970131362201033, guid: 2228766bf34957f43b06961f5a64f9be,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -473,12 +472,52 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1022911829490876733}
     - target: {fileID: 7515970131474523735, guid: 2228766bf34957f43b06961f5a64f9be,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnDialogueChoiceHasBeenSelectedWithIndex
       objectReference: {fileID: 0}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 155261138637631343}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.data[1]
+      value: 
+      objectReference: {fileID: 5721161824916062949}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceTextBoxes.Array.data[2]
+      value: 
+      objectReference: {fileID: 5721161825672360912}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5721161825675631688}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 5721161824307636483}
+    - target: {fileID: 7515970131757301731, guid: 2228766bf34957f43b06961f5a64f9be,
+        type: 3}
+      propertyPath: choiceUIObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 5721161824479035038}
     - target: {fileID: 7515970131757301736, guid: 2228766bf34957f43b06961f5a64f9be,
         type: 3}
       propertyPath: m_Name
@@ -633,5 +672,59 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e7d751b0bf59a84cb0fea859ef8b218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5721161825675631688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515970131474523728, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 2822544605358586392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &155261138637631343 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2669553157318432119, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 2822544605358586392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5721161824307636483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515970130677207835, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 2822544605358586392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5721161824916062949 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7515970130077169917, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 2822544605358586392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5721161824479035038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7515970130846598278, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 2822544605358586392}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5721161825672360912 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7515970131469404616, guid: 2228766bf34957f43b06961f5a64f9be,
+    type: 3}
+  m_PrefabInstance: {fileID: 2822544605358586392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -3,25 +3,24 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Tooltip("The DialogueBoxVisualizer that should handle how to display the dialogue boxes.")]
     public DialogueBoxVisualizer dialogueBoxVisualizer;
-
-    public MonoBehaviour[] systemsToDisableWhenDialogueIsShown;
 
     Queue<DialogueBox> dialogueBoxesToShow;
     DialogueBox currentlyShownDialogueBox;
 
-    GameObject[] disabledGameObjects;
+    // Contains all gameObjects that should be disabled when there is dialogue.
+    GameObject[] gameObjectsToDisable;
 
     private void Start()
     {
-        disabledGameObjects = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
+        gameObjectsToDisable = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
     }
 
     public void ShowDialogueSection(DialogueSection dialogueSection)
     {
-        DisableOtherSystems();
+        DisableSystemsToDisableOnDialogue();
 
-        Debug.Log("Start dialogue");
         dialogueBoxesToShow = new Queue<DialogueBox>(dialogueSection.dialogueBoxes);
         ShowNextDialogueBoxOrHideIfNoneLeft();
     }
@@ -37,37 +36,39 @@ public class DialogueManager : MonoBehaviour
         {
             currentlyShownDialogueBox = null;
             dialogueBoxVisualizer.HideDialogueBox();
-            EnableOtherSystems();
+            EnableSystemsToDisableOnDialogue();
         }
     }
 
     public void OnDialogueChoiceHasBeenSelectedWithIndex(int indexOfChoice)
     {
-        Debug.Log("option has been selected");
         currentlyShownDialogueBox.choices[indexOfChoice].Consequence.Invoke();
 
         ShowNextDialogueBoxOrHideIfNoneLeft();
     }
 
-    public void SetSystemActivationState(bool activated)
+    public void DisableSystemsToDisableOnDialogue()
+    {
+        SetActivationOfSystemsToDisableOnDialogue(false);
+    }
+
+    public void EnableSystemsToDisableOnDialogue()
+    {
+        SetActivationOfSystemsToDisableOnDialogue(true);
+    }
+
+    public void SetActivationOfSystemsToDisableOnDialogue(bool activated)
     {
         InteractWith interactionScript = FindObjectOfType<InteractWith>();
 
-        foreach (GameObject objectToDisable in disabledGameObjects)
+        foreach (GameObject objectToDisable in gameObjectsToDisable)
         {
             objectToDisable.SetActive(activated);
         }
 
-        interactionScript.enabled = activated;
-    }
-
-    public void DisableOtherSystems()
-    {
-        SetSystemActivationState(false);
-    }
-
-    public void EnableOtherSystems()
-    {
-        SetSystemActivationState(true);
+        if (interactionScript != null)
+            interactionScript.enabled = activated;
+        else
+            Debug.LogWarning("DialogueManager couldn't find interactionScript to disable. Did you forget to put it into the scene?");
     }
 }
