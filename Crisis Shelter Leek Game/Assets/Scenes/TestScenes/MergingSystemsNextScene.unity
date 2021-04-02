@@ -2593,7 +2593,6 @@ GameObject:
   - component: {fileID: 1267774784}
   - component: {fileID: 1267774783}
   - component: {fileID: 1267774782}
-  - component: {fileID: 1267774781}
   - component: {fileID: 1267774780}
   - component: {fileID: 1267774779}
   m_Layer: 8
@@ -2631,6 +2630,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  outlineThickness: 3
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  minimumDistance: 5
 --- !u!65 &1267774780
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2644,20 +2646,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7501783, y: 1.9717677, z: 0.43388844}
   m_Center: {x: -0.027846245, y: 0.9763422, z: 0.007812976}
---- !u!114 &1267774781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267774778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c847b0b7c6d25247bb063565ae0ee4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineThickness: 2.5
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1267774782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,51 +2872,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5192611768976183381, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 5192611768976183381, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698210746468887875, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_TagString
-      value: Respawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698210746468888249, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698210746468888249, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.687
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698210746468888249, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698210746468888249, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698210746468888249, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698210746468888249, guid: 4fbcfed720f8de6428375ef16986ad6c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8698210747128726517, guid: 4fbcfed720f8de6428375ef16986ad6c,
         type: 3}
       propertyPath: m_Name

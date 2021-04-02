@@ -15,10 +15,11 @@ public class SpawnOnFirstNode : MonoBehaviour
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        Transform firstNode = GameObject.FindGameObjectWithTag("Respawn").transform;
+        GameObject firstNode = GameObject.FindGameObjectWithTag("Respawn");
+        firstNode.transform.GetComponent<MovementNode>().InteractWith();
 
-        gameObject.transform.position = firstNode.position;
-        gameObject.transform.rotation = firstNode.rotation;
+        gameObject.transform.position = firstNode.transform.transform.position;
+        gameObject.transform.rotation = firstNode.transform.transform.rotation;
     }
     
 }
