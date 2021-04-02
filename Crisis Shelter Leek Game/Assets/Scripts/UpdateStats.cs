@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateStatsTransition : MonoBehaviour
+public class UpdateStats : MonoBehaviour
 {
     private int displayedAmountOfDays = GlobalStats.startAmountOfDays;
     private float displayedAmountOfMoney = GlobalStats.costAtStart;
@@ -19,9 +19,8 @@ public class UpdateStatsTransition : MonoBehaviour
     [SerializeField] private AudioClip tickSound;
     [SerializeField] private AudioClip coinSound;
 
-    public void ChapterFinished()
+    public void ShowStats()
     {
-        transition.GetComponent<Transitions>().SimpleTransitionStats(true, "MapWithImage");
         StartCoroutine(StatsUpdater());
     }
 
@@ -40,7 +39,7 @@ public class UpdateStatsTransition : MonoBehaviour
             {
                 tickPlayer.PlayOneShot(tickSound, 0.75f);
             }
-            displayedAmountOfDays++; //Increment the display score by 1
+            displayedAmountOfDays++; //Increment the display score by 
             daysUI.text = displayedAmountOfDays.ToString(); //Write it to the UI
             yield return new WaitForSeconds(1f / GlobalStats.newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
         }

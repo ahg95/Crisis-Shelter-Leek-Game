@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Outline))]
 public class InteractWith : MonoBehaviour
 {
     private Camera cam;
     private LayerMask hitLayer;
+
     private void Start()
     {
         cam = Camera.main;
@@ -18,7 +20,10 @@ public class InteractWith : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, hitLayer))
             {
                 //hit.collider.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-                hit.collider.GetComponentInParent<Interactable>().InteractWith();
+                if (Vector3.Distance(cam.transform.position, hit.transform.position) < 5f)
+                {
+                    hit.collider.GetComponentInParent<Interactable>().InteractWith();
+                }
             }
         }
     }
