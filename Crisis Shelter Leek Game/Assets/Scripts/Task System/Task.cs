@@ -17,9 +17,4 @@ public class Task : ScriptableObject
     public int taskID;
     public bool taskCompleted;
     public List<Task> conditionTasks = new List<Task>();
-
-    public void SetAsCompleted()
-    {
-        taskCompleted = true;
-    }
 }

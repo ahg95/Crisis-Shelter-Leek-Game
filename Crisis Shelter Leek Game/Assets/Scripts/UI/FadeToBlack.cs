@@ -11,14 +11,6 @@ public class FadeToBlack : MonoBehaviour
     [SerializeField] private Image blackScreen;
     [SerializeField] private CanvasGroup stats;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            StartCoroutine(Fade(!screenIsBlack, false, fadeInterval));
-        }
-    }
-
     public void Fade(bool showStats)
     {
         StartCoroutine(Fade(!screenIsBlack, showStats, fadeInterval));
