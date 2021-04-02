@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SpawnOnFirstNode : MonoBehaviour
+public class StartOfSceneEvents : MonoBehaviour
 {
     private void OnEnable()
     {
