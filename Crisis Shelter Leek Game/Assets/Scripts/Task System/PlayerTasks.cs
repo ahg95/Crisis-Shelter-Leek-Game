@@ -29,8 +29,12 @@ public class PlayerTasks : MonoBehaviour
                 if (CheckIfConditionsMet(playerTask))
                 {
                     playerTask.taskCompleted = true;
+                    GlobalStats.newAmountOfDays += playerTask.amountOfDays; // add days to stats
+                    print(GlobalStats.newAmountOfDays);
                     GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
-                    Debug.Log("Task " + playerTask.taskID + " Completed = " + playerTask.taskCompleted);
+                    // Debug.Log("Task " + playerTask.taskID + " Completed = " + playerTask.taskCompleted);
+                    // Transfer scene showing stats, going back to map scene
+                    player.GetComponentInChildren<Transitions>().SimpleTransitionStats(true, "MergingSystemsNextScene");
                 }
                 else
                 {
