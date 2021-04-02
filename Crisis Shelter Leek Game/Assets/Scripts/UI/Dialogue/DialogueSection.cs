@@ -4,8 +4,8 @@ public class DialogueSection : MonoBehaviour
 {
     [HideInInspector]
     public DialogueBox[] dialogueBoxes;
-
-    private void Start()
+    public DialogueSection thisPrefab;
+    private void OnEnable()
     {
         dialogueBoxes = GetComponentsInChildren<DialogueBox>();
     }

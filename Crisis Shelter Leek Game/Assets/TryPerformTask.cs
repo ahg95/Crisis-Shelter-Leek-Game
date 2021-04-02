@@ -1,19 +1,7 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerTasks : MonoBehaviour
+public class TryPerformTask : MonoBehaviour
 {
-    public List<Task> assignedTasks = new List<Task>();
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
-    /// <summary>
-    /// If the player has the task and its conditions are met, it will be completed.
-    /// </summary>
-    /// <param name="taskToPerform"></param> The task that should be attempted to be performed.
     public void SetTasksAsCompletedInCaseTheConditionsAreFulFilled(Task taskToPerform)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

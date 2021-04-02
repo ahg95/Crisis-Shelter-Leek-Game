@@ -4,14 +4,9 @@ public class MovementNode : Interactable
     [SerializeField] private bool debug = false;
     [Space(10)]
     public MovementNode[] connectedNodes;
-    private MoveToNode Movement;
-    public override void Start()
-    {
-        base.Start();
-    }
     public override void InteractWith()
     {
-        Movement = Camera.main.transform.parent.GetComponent<MoveToNode>();
+        MoveToNode Movement = Camera.main.transform.parent.GetComponent<MoveToNode>();
 
         if (!Movement.isMoving)
         {
@@ -21,7 +16,6 @@ public class MovementNode : Interactable
             Movement.MoveTowardsNode(transform);
         }
     }
-
 
     private void OnDrawGizmos()
     {
