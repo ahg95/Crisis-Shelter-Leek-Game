@@ -4,16 +4,16 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Outline))]
 public class Interactable : MonoBehaviour
 {
+    [Header("Action when interacting")]
     public UnityEvent onInteraction;
 
-    private Outline outline;
     [Header("Outline")]
-    [SerializeField]
-    private float outlineThickness = 8f;
-    [SerializeField]
-    private Color outlineColor = Color.white;
-    public Camera cam;
+    [SerializeField] private float outlineThickness = 3f;
+    [SerializeField] private Color outlineColor = Color.white;
     [SerializeField] private float minimumDistance = 5f;
+
+    private Outline outline;
+    private Camera cam;
 
     public virtual void Start()
     {

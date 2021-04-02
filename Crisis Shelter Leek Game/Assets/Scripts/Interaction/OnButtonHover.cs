@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class OnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     private UnityEvent onHover = new UnityEvent();

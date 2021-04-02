@@ -1,43 +1,19 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 public class MovementNode : Interactable
 {
     [SerializeField] private bool debug = false;
     [Space(10)]
-    [SerializeField] private MovementNode[] connectedNodes;
-    private MoveToNode Movement;
-    public override void Start()
-    {
-        base.Start();
-        Movement = Camera.main.transform.parent.GetComponent<MoveToNode>();
-    }
+    public MovementNode[] connectedNodes;
     public override void InteractWith()
     {
+        MoveToNode Movement = Camera.main.transform.parent.GetComponent<MoveToNode>();
+
         if (!Movement.isMoving)
         {
-            NodesManager nodesManager = transform.parent.GetComponent<NodesManager>();
-            // You click on a node
-            // All the other nodes that you could see turn invisible
-            NodeVisibility(false, nodesManager.visibleNodes);
-            nodesManager.visibleNodes.Clear();
+            VisibleNodes visibleNodesManager = transform.parent.GetComponent<VisibleNodes>();
+            visibleNodesManager.SetNewCurrentNode(GetComponent<MovementNode>());
 
-            // You move towards the node you clicked
             Movement.MoveTowardsNode(transform);
-
-            // When you arrive at the node you clicked, you see the nodes where you can go from there.
-            foreach (MovementNode node in connectedNodes)
-            {
-                nodesManager.visibleNodes.Add(node);
-            }
-            NodeVisibility(true, nodesManager.visibleNodes);
-        }
-    }
-
-    private void NodeVisibility(bool visibility, List<MovementNode> nodesToSet)
-    {
-        foreach (MovementNode node in nodesToSet)
-        {
-            node.gameObject.SetActive(visibility);
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,7 +13,17 @@ public class DialogueManager : MonoBehaviour
     // Contains all gameObjects that should be disabled when there is dialogue.
     GameObject[] gameObjectsToDisable;
 
-    private void Start()
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         gameObjectsToDisable = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
     }
