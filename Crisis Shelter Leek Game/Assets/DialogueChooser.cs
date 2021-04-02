@@ -14,12 +14,12 @@ public class DialogueChooser : MonoBehaviour
     public void PlayDialogueCorrespondingToTask()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        PlayerTasks taskList = player.GetComponent<PlayerTasks>();
+        CurrentTask taskList = player.GetComponent<CurrentTask>();
         GameObject dialogueManager = GameObject.Find("DialogueManager");
 
-        if (taskList.assignedTasks.Count > 0)
+        if (taskList.assignedTask != null)
         {
-            Task currentTask = taskList.assignedTasks[0];
+            Task currentTask = taskList.assignedTask;
 
             // check the dialogueassociatedtotask array to see which dialogue is connected to the current task
             foreach (DialogueAssociatedToTask taskAssociatedToDialogue in taskWithAssociatedDialogues)
