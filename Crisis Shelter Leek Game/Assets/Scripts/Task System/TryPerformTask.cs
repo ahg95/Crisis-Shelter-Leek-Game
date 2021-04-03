@@ -17,14 +17,12 @@ public class TryPerformTask : MonoBehaviour
             if (CheckIfAllTheConditionsForTheTaskAreMet(assignedTask))
             {
                 assignedTask.taskCompleted = true;
-                GlobalStats.IncreaseStats(assignedTask.amountOfDays, assignedTask.amountOfDays * 100);
-                GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
-                // Debug.Log("Task " + playerTask.taskID + " Completed = " + playerTask.taskCompleted);
 
-                // Convert the task to a JSON string and save it in the static class
+                
+                GlobalStats.IncreaseStats(assignedTask.amountOfDays, assignedTask.amountOfDays * 100);
                 GlobalStats.SaveTask(assignedTask);
 
-                // print(GlobalStats.currentTaskJSON);
+                GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
 
                 // Transfer scene showing stats, going back to map scene
                 player.GetComponentInChildren<Transitions>().SimpleTransitionStats(true, "MergingSystemsNextScene");
