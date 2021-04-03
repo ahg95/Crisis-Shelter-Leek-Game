@@ -33,16 +33,21 @@ public class DialogueManager : MonoBehaviour
         DisableSystemsToDisableOnDialogue();
 
         dialogueBoxesToShow = new Queue<DialogueBox>(dialogueSection.dialogueBoxes);
-        ShowNextDialogueBoxOrHideIfNoneLeft();
+
+        if (currentlyShownDialogueBox == null)
+            ShowNextDialogueBoxOrHideIfNoneLeft();
     }
 
     public void ShowNextDialogueBoxOrHideIfNoneLeft()
     {
+        if (currentlyShownDialogueBox != null)
+            currentlyShownDialogueBox.OnDialogueContinued.Invoke();
+
         if (0 < dialogueBoxesToShow.Count)
         {
+            Debug.Log(dialogueBoxesToShow.Count);
             currentlyShownDialogueBox = dialogueBoxesToShow.Dequeue();
             dialogueBoxVisualizer.ShowDialogueBox(currentlyShownDialogueBox);
-            currentlyShownDialogueBox.OnDialogueContinued.Invoke();
         } else
         {
             currentlyShownDialogueBox = null;
