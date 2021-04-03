@@ -17,14 +17,16 @@ public class TextScene : MonoBehaviour
     [Header("Scene Switching")]
     [Tooltip("Do you want to switch scene when all the text has been shown?")]
     [SerializeField] private bool switchScene = true;
-    [Tooltip("Enter the name of the scene that you want to load")]
-    [SerializeField] private string SceneToLoadString;
+    private enum scenes { _MapOverview, HousingCorporation, Municipality, Zienn };
+    private string sceneToLoadString;
+    [SerializeField] private scenes sceneToLoad;
 
     private void Start()
     {
         textComponent = GetComponentInChildren<TextMeshProUGUI>();
         textAlpha = GetComponentInChildren<CanvasGroup>();
         textAlpha.alpha = 0;
+        sceneToLoadString = scenes._MapOverview.ToString();
 
         StartCoroutine(TextTimer(textArray[currentText]));
     }
@@ -63,7 +65,7 @@ public class TextScene : MonoBehaviour
     {
         if (switchScene)
         {
-            SceneManager.LoadScene(SceneToLoadString);
+            SceneManager.LoadScene(sceneToLoadString);
         }
         else
         {
