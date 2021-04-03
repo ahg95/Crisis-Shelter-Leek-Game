@@ -5,6 +5,8 @@ public class InteractWith : MonoBehaviour
 {
     private Camera cam;
     private LayerMask hitLayer;
+    [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
+    [SerializeField] private float minimumDistance = 10f;
 
     private void Start()
     {
@@ -20,7 +22,7 @@ public class InteractWith : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, hitLayer))
             {
                 //hit.collider.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-                if (Vector3.Distance(cam.transform.position, hit.transform.position) < 5f)
+                if (Vector3.Distance(cam.transform.position, hit.transform.position) < minimumDistance)
                 {
                     hit.collider.GetComponentInParent<Interactable>().InteractWith();
                 }
