@@ -43,6 +43,8 @@ public class Transitions : MonoBehaviour
     /// <returns></returns>
     IEnumerator LoadScene(string sceneName)
     {
+        yield return new WaitForSeconds(1f);
+
         simpleTransition.SetTrigger("Start");
 
         yield return new WaitForSeconds(sceneTransitionTime);

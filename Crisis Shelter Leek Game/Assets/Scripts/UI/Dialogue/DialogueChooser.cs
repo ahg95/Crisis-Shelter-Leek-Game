@@ -45,20 +45,20 @@ public class DialogueChooser : MonoBehaviour
             // dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(dialogueIfNoTask);
         }
 
-        void FindAndShowDialogueInstance(DialogueSection dialogueSectionAsset)
+        /*void FindAndShowDialogueInstance(DialogueSection dialogueSectionAsset)
         {
             foreach (DialogueSection section in dialoguesInstances)
             {
-                /*
+                *//*
                 // check if the dragged in prefab section is the same as the instance
                 if (section.thisPrefab == dialogueSectionAsset)
                 {
                     dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(section);
                 }
-                */
+                *//*
 
 
             }
-        }
+        }*/
     }
 }

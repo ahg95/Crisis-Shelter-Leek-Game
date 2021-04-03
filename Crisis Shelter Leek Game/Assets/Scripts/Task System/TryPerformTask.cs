@@ -18,15 +18,14 @@ public class TryPerformTask : MonoBehaviour
             {
                 assignedTask.taskCompleted = true;
 
-                
                 GlobalStats.IncreaseStats(assignedTask.amountOfDays, assignedTask.amountOfDays * 100);
                 GlobalStats.SaveTask(assignedTask);
 
-                GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
+                // GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
 
-                // Transfer scene showing stats, going back to map scene
+/*                // Transfer scene showing stats, going back to map scene
                 player.GetComponentInChildren<Transitions>().SimpleTransitionStats(true, "MergingSystemsNextScene");
-                player.GetComponentInChildren<UpdateStats>().ShowStats();
+                player.GetComponentInChildren<UpdateStats>().ShowStats();*/
             }
             else
             {
