@@ -24,9 +24,11 @@ public class DialogueChooser : MonoBehaviour
             // check the dialogueassociatedtotask array to see which dialogue is connected to the current task
             foreach (DialogueAssociatedToTask taskAssociatedToDialogue in taskWithAssociatedDialogues)
             {
-                if (taskAssociatedToDialogue.currentTask.taskID == currentTask.taskID)
+                if (taskAssociatedToDialogue.task.taskID == currentTask.taskID)
                 {
-                    FindAndShowDialogueInstance(taskAssociatedToDialogue.associatedDialogue);
+                    dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(taskAssociatedToDialogue.associatedDialogue);
+
+                    //FindAndShowDialogueInstance(taskAssociatedToDialogue.associatedDialogue);
 
                     // gets it from the inspector == error. needs instance.
                     // dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(taskAssociatedToDialogue.associatedDialogue);
@@ -35,7 +37,9 @@ public class DialogueChooser : MonoBehaviour
         }
         else
         {
-            FindAndShowDialogueInstance(dialogueIfNoTask);
+            dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(dialogueIfNoTask);
+
+            //FindAndShowDialogueInstance(dialogueIfNoTask);
 
             // show the dialogueIfNoTask dialoguesection
             // dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(dialogueIfNoTask);
@@ -45,11 +49,15 @@ public class DialogueChooser : MonoBehaviour
         {
             foreach (DialogueSection section in dialoguesInstances)
             {
+                /*
                 // check if the dragged in prefab section is the same as the instance
                 if (section.thisPrefab == dialogueSectionAsset)
                 {
                     dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(section);
                 }
+                */
+
+
             }
         }
     }
