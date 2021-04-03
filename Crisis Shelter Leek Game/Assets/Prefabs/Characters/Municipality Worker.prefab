@@ -2060,14 +2060,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6364212646166028531}
-  m_LocalRotation: {x: 0.50378937, y: 0.040640462, z: -0.0660961, w: 0.8603348}
-  m_LocalPosition: {x: -0.0000000014305115, y: 0.13675945, z: 0.000000053465367}
+  m_LocalRotation: {x: 0.49461848, y: 0.05026447, z: -0.038325526, w: 0.8668087}
+  m_LocalPosition: {x: 0.0000000020954753, y: 0.13675937, z: -0.00000009313224}
   m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 0.9999999}
   m_Children:
   - {fileID: 6364212646225146284}
   m_Father: {fileID: 6364212646739907214}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 59.466003, y: 5.5600004, z: -1.886}
 --- !u!1 &6364212646185651928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,12 +2341,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b137bddae0410a540b1d74d0567e0edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueIfNoTask: {fileID: 4150488561188334143, guid: 985dae8bc836b5248aaf30517d009d23,
-    type: 3}
+  dialogueIfNoTask: {fileID: 0}
   taskWithAssociatedDialogues:
-  - currentTask: {fileID: 11400000, guid: 1ef503183d3bfe0479a52cacd4ff96fb, type: 2}
-    associatedDialogue: {fileID: 4150488561188334143, guid: 5bcad59dcc82fa54da71a060ed9ca6c7,
-      type: 3}
+  - task: {fileID: 11400000, guid: 1ef503183d3bfe0479a52cacd4ff96fb, type: 2}
+    associatedDialogue: {fileID: 0}
 --- !u!65 &6364212646396141103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3393,7 +3391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6364212646888945015}
-  m_LocalRotation: {x: -0.00000005960465, y: -0.0000000754979, z: 2.621463e-15, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.000000004379728, y: 1.7401707, z: 0.1261714}
   m_LocalScale: {x: 200.12932, y: 200.12932, z: 200.12932}
   m_Children: []

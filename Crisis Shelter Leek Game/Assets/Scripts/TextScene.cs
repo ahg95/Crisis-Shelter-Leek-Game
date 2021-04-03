@@ -26,7 +26,7 @@ public class TextScene : MonoBehaviour
         textComponent = GetComponentInChildren<TextMeshProUGUI>();
         textAlpha = GetComponentInChildren<CanvasGroup>();
         textAlpha.alpha = 0;
-        sceneToLoadString = scenes._MapOverview.ToString();
+        sceneToLoadString = sceneToLoad.ToString();
 
         StartCoroutine(TextTimer(textArray[currentText]));
     }
