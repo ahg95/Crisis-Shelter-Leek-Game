@@ -30,9 +30,9 @@ public class Transitions : MonoBehaviour
     /// </summary>
     /// <param name="name">Tell the name of the scene to switch to </param>
     /// <param name="switchScene">Tells whether to switch the scene or not</param>
-    public void SimpleTransitionStats(bool switchScene, string name)
+    public void SimpleTransitionStats(string name)
     {
-        StartCoroutine(TransitionWithStats(true, fadeInterval, switchScene, name));
+        StartCoroutine(TransitionWithStats(true, fadeInterval, true, name));
     }
 
 
