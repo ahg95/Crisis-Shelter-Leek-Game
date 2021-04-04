@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9134473054469304857
+--- !u!1 &330859242600407653
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9134473054469304862}
-  - component: {fileID: 9134473054469304863}
+  - component: {fileID: 8236387082391073521}
+  - component: {fileID: 8733757553743578737}
   m_Layer: 0
-  m_Name: LOOP
+  m_Name: financial aid rules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &9134473054469304862
+--- !u!224 &8236387082391073521
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134473054469304857}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 330859242600407653}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 9134473054729500373}
-  m_RootOrder: 1
+  m_Father: {fileID: 1539684172366221561}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9134473054469304863
+--- !u!114 &8733757553743578737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134473054469304857}
+  m_GameObject: {fileID: 330859242600407653}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4faa52a6da29da24380e2441c0c44a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speaker: Municipality worker
-  dialogueText: "This is very unfortunate. I\u2019m sorry, but I cannot help you
-    until you have the money for an ID."
+  speaker: You
+  dialogueText: So I essentially need money to get financial aid?
   choices: []
   OnDialogueContinued:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &9134473054729500372
+--- !u!1 &1539684172366221560
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,28 +62,28 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9134473054729500373}
-  - component: {fileID: 9134473054729500378}
+  - component: {fileID: 1539684172366221561}
+  - component: {fileID: 1539684172366221562}
   m_Layer: 0
-  m_Name: '[WORKED UNTIL HERE] Section 3 Municipality II'
+  m_Name: Section 3 Municipality1 TryingToTalkToMunicipalityAfterLoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &9134473054729500373
+--- !u!224 &1539684172366221561
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134473054729500372}
+  m_GameObject: {fileID: 1539684172366221560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 9134473055627060159}
-  - {fileID: 9134473054469304862}
+  - {fileID: 8236387082391073521}
+  - {fileID: 940254194916515115}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -93,21 +92,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9134473054729500378
+--- !u!114 &1539684172366221562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134473054729500372}
+  m_GameObject: {fileID: 1539684172366221560}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74afacbbf8a0d064eb7324d5b709736b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBoxes: []
-  thisPrefab: {fileID: 9134473054729500378}
---- !u!1 &9134473055627060158
+  thisPrefab: {fileID: 1539684172366221562}
+--- !u!1 &6856148783784546641
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,48 +114,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9134473055627060159}
-  - component: {fileID: 9134473055627060156}
+  - component: {fileID: 940254194916515115}
+  - component: {fileID: 1599795025040861271}
   m_Layer: 0
-  m_Name: financial aid rules
+  m_Name: LOOP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &9134473055627060159
+--- !u!224 &940254194916515115
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134473055627060158}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 6856148783784546641}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 9134473054729500373}
-  m_RootOrder: 0
+  m_Father: {fileID: 1539684172366221561}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &9134473055627060156
+--- !u!114 &1599795025040861271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9134473055627060158}
+  m_GameObject: {fileID: 6856148783784546641}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4faa52a6da29da24380e2441c0c44a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speaker: You
-  dialogueText: What am I supposed to do now, then?
+  speaker: Municipality worker
+  dialogueText: I'm sorry. I don't make the rules.
   choices: []
   OnDialogueContinued:
     m_PersistentCalls:

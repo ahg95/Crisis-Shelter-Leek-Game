@@ -4,6 +4,6 @@ public class ActionPerformedTest : MonoBehaviour
 {
 public void ActionPerformed(int days)
     {
-        GlobalStats.IncreaseStats(days, days * 100);
+        GlobalStats.IncreaseStatsManual(days, days * 100);
     }
 }
