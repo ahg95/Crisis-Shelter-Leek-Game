@@ -45,7 +45,6 @@ public class DialogueManager : MonoBehaviour
 
         if (0 < dialogueBoxesToShow.Count)
         {
-            Debug.Log(dialogueBoxesToShow.Count);
             currentlyShownDialogueBox = dialogueBoxesToShow.Dequeue();
             dialogueBoxVisualizer.ShowDialogueBox(currentlyShownDialogueBox);
         } else

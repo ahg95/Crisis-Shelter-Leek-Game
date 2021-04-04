@@ -12,6 +12,8 @@ public class MoveToNode : MonoBehaviour
         if (!isMoving)
         {
             targetNode = node;
+            // Camera.main.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            StartCoroutine(IMoveRotate(Quaternion.Euler(Vector3.zero)));
             isMoving = true;
         }
     }
@@ -51,6 +53,28 @@ public class MoveToNode : MonoBehaviour
         }
         transform.localPosition = targetPosition;
         transform.localRotation = targetRotation;
+        isMoving = false;
+    }
+    private IEnumerator IMoveRotate(Quaternion targetRotation)
+    {
+        // Keep track of how far we've travelled along this path.
+        Transform cam = Camera.main.transform;
+        float progress = 0;
+
+        // Keep our original position
+        Quaternion originalRotation = cam.localRotation;
+
+        // Default transition time is 1
+        while (progress < 3f)
+        {
+            float t = progress / 3f;
+            cam.localRotation = Quaternion.Lerp(originalRotation, targetRotation, t);
+
+            progress += 0.05f;
+
+            yield return null;
+        }
+        cam.localRotation = targetRotation;
         isMoving = false;
     }
 }
