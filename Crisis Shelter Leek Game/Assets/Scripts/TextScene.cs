@@ -17,7 +17,7 @@ public class TextScene : MonoBehaviour
     [Header("Scene Switching")]
     [Tooltip("Do you want to switch scene when all the text has been shown?")]
     [SerializeField] private bool switchScene = true;
-    private enum scenes { _MapOverview, HousingCorporation, Municipality, Zienn };
+    private enum scenes { _MapOverview, HousingCorporation, Municipality, Zienn, ZiennFromRoom };
     private string sceneToLoadString;
     [SerializeField] private scenes sceneToLoad;
 
