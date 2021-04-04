@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9825e02b759ee934386b22fda334b7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationLimit: 125
+  rotationLimit: 135
 --- !u!1 &8913595033506343531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1835,21 @@ PrefabInstance:
       propertyPath: choices.Array.data[1].Consequence.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6952246227930075294}
+    - target: {fileID: 5848030509342438677, guid: d37fc3554b5991e4889adf914d39d82d,
+        type: 3}
+      propertyPath: choices.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848030509342438677, guid: d37fc3554b5991e4889adf914d39d82d,
+        type: 3}
+      propertyPath: choices.Array.data[0].Consequence.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5848030509342438677, guid: d37fc3554b5991e4889adf914d39d82d,
+        type: 3}
+      propertyPath: choices.Array.data[1].Consequence.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6235649864142412071, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: m_Pivot.x
