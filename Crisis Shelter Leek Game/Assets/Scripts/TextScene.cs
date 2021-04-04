@@ -74,7 +74,7 @@ public class TextScene : MonoBehaviour
         }
         else
         {
-            print("end of array reached");
+            // print("end of array reached");
         }
     }
 
