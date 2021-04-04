@@ -12,10 +12,15 @@ public class GlobalStats : MonoBehaviour
     public static int newAmountOfDays = 0;
     public static float newCost = 0f;
 
-    public static void IncreaseStats(int days, float cost)
+    public static void IncreaseStatsManual(int days, float cost)
     {
         newAmountOfDays += days;
         newCost += cost;
+    }
+    public static void IncreaseDaysZienn(int days)
+    {
+        newAmountOfDays += days;
+        newCost += days * 100;
     }
 
     public static void SaveTask(Task task)

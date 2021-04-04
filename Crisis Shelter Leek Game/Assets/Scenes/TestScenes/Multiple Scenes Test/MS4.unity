@@ -390,7 +390,7 @@ PrefabInstance:
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
       propertyPath: sceneToLoad
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
@@ -405,19 +405,18 @@ PrefabInstance:
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
       propertyPath: textArray.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
       propertyPath: textArray.Array.data[0]
-      value: You make an appointment at the municipality, you could go there the
-        same day.
+      value: You make another appointment at the municipality. This time, you have
+        to wait until the next day.
       objectReference: {fileID: 0}
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
       propertyPath: textArray.Array.data[1]
-      value: You have been living in hotels for a while, but now you have run out
-        of money.
+      value: You have grown slightly frustrated with the way you are sent around.
       objectReference: {fileID: 0}
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
@@ -485,5 +484,58 @@ PrefabInstance:
       propertyPath: textArray.Array.data[14]
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: afterSceneVoid.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: afterSceneVoid.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: afterSceneVoid.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6752563021628625966}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: afterSceneVoid.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: afterSceneVoid.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseTimeAtZienn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: afterSceneVoid.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: afterSceneVoid.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2ca1f28f40207418defd51df846a56, type: 3}
+--- !u!1 &6752563021628625965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6752563021544856288, guid: fa2ca1f28f40207418defd51df846a56,
+    type: 3}
+  m_PrefabInstance: {fileID: 6752563021628625964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6752563021628625966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752563021628625965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7eac6a05bc5a744b88098b9fdc8fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

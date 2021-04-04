@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class TextScene : MonoBehaviour
@@ -20,6 +21,8 @@ public class TextScene : MonoBehaviour
     private enum scenes { _MapOverview, HousingCorporation, Municipality, Zienn, ZiennFromRoom };
     private string sceneToLoadString;
     [SerializeField] private scenes sceneToLoad;
+
+    public UnityEvent afterSceneVoid;
 
     private void Start()
     {
@@ -63,6 +66,8 @@ public class TextScene : MonoBehaviour
 
     private void EndOfText()
     {
+        afterSceneVoid.Invoke();
+
         if (switchScene)
         {
             SceneManager.LoadScene(sceneToLoadString);

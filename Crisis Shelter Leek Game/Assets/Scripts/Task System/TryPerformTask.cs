@@ -18,7 +18,7 @@ public class TryPerformTask : MonoBehaviour
             {
                 assignedTask.taskCompleted = true;
 
-                GlobalStats.IncreaseStats(assignedTask.amountOfDays, assignedTask.amountOfDays * 100);
+                GlobalStats.IncreaseStatsManual(assignedTask.amountOfDays, assignedTask.amountOfDays * 100);
                 GlobalStats.SaveTask(assignedTask);
 
                 // GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);
