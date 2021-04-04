@@ -1105,7 +1105,8 @@ PrefabInstance:
         type: 3}
       propertyPath: assignedTask
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 76b8053b4b3680042a95d0b0aac9b47f,
+        type: 2}
     - target: {fileID: 4853446027063906754, guid: 055891f47a2e12b47ba6483858b3c72f,
         type: 3}
       propertyPath: m_Name
@@ -1441,6 +1442,11 @@ PrefabInstance:
         type: 3}
       propertyPath: choices.Array.data[1].Consequence.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6108781182433036206, guid: 055891f47a2e12b47ba6483858b3c72f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6504343050619784446, guid: 055891f47a2e12b47ba6483858b3c72f,
         type: 3}
@@ -1793,6 +1799,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Node (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6294461110920625549, guid: 3b78af03082cc434b87489e23dead134,
+        type: 3}
+      propertyPath: connectedNodes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6294461110920625782, guid: 3b78af03082cc434b87489e23dead134,
         type: 3}
       propertyPath: m_RootOrder
@@ -2143,6 +2154,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!135 &1494831220
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494831215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.8715208
+  m_Center: {x: 0.03186981, y: 0.30000007, z: 0}
 --- !u!1001 &1576036118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2540,6 +2564,19 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!65 &1576036122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576036119}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.019999998, y: 0.019999998, z: 0.019999998}
+  m_Center: {x: 0, y: 0.000000029802322, z: 0}
 --- !u!1 &1657219290
 GameObject:
   m_ObjectHideFlags: 0

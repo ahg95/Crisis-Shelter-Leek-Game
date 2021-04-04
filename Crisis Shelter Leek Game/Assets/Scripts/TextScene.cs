@@ -9,7 +9,7 @@ public class TextScene : MonoBehaviour
     private TextMeshProUGUI textComponent;
     private CanvasGroup textAlpha;
     [SerializeField] private string[] textArray;
-    private int currentText = 0;
+    private int currentTextInt = 0;
 
     [Tooltip("How quickly the text will fade in- and out")]
     [SerializeField] private float fadeSpeed = 0.05f;
@@ -31,37 +31,58 @@ public class TextScene : MonoBehaviour
         textAlpha.alpha = 0;
         sceneToLoadString = sceneToLoad.ToString();
 
-        StartCoroutine(TextTimer(textArray[currentText]));
+        StartCoroutine(TextTimer(textArray[currentTextInt]));
     }
 
-    IEnumerator TextTimer(string text)
+    private void Update()
     {
-        textComponent.text = text;
-
-        while (textAlpha.alpha < 1) // Fade in text
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            textAlpha.alpha += 0.05f;
-            yield return new WaitForSeconds(fadeSpeed);
+            currentTextInt += 1;
+
+            ShowNextText();
         }
-
-        yield return new WaitForSeconds(showTextLength); // wait 6 seconds after the textAlpha is 1.
-
-        while (textAlpha.alpha > 0) // Fade out text
+    }
+    void ShowNextText()
+    {
+        if (currentTextInt < textArray.Length)
         {
-            textAlpha.alpha -= 0.05f;
-            yield return new WaitForSeconds(fadeSpeed);
-        }
-
-        currentText += 1;
-        // if the array has a string in the current text int
-        if (currentText < textArray.Length)
-        {
-            StartCoroutine(TextTimer(textArray[currentText]));
+            StartCoroutine(TextTimer(textArray[currentTextInt]));
         }
         else
         {
             EndOfText();
         }
+    }
+    IEnumerator TextTimer(string text)
+    {
+        // if the next current text int is still below the length
+
+            while (textAlpha.alpha > 0) // Fade out text
+            {
+                textAlpha.alpha -= 0.05f;
+                yield return new WaitForSeconds(fadeSpeed);
+            }
+
+            textComponent.text = text;
+
+            while (textAlpha.alpha < 1) // Fade in text
+            {
+                textAlpha.alpha += 0.05f;
+                yield return new WaitForSeconds(fadeSpeed);
+            }
+
+            yield return new WaitForSeconds(showTextLength); // wait 6 seconds after the textAlpha is 1.
+
+        /*        // if the array has a string in the current text int
+                if (currentText < textArray.Length)
+                {
+                    StartCoroutine(TextTimer(textArray[currentText]));
+                }
+                else
+                {
+                    EndOfText();
+                }*/
     }
 
     private void EndOfText()
