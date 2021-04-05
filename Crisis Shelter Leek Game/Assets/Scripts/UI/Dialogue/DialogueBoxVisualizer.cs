@@ -10,6 +10,9 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
     [Tooltip("The animator responsible for moving the UI of the dialogue box up and down.")]
     public Animator animator;
+    [Tooltip("The interval at which letters show.")]
+    [Range(0, 0.1f)]
+    [SerializeField] private float textShowSpeed = 0.05f;
 
 
     public virtual void ShowDialogueBox(DialogueBox dialogueBox)
@@ -48,7 +51,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
             currentlyShownText += letter;
             dialogueUI.SetDialogueText(currentlyShownText);
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(textShowSpeed);
         }
     }
 
