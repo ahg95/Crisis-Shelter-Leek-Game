@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class DialogueBox : MonoBehaviour
 {
     public string speaker;
+    [TextArea(1, 3)]
     public string dialogueText;
     public DialogueChoice[] choices;
 
