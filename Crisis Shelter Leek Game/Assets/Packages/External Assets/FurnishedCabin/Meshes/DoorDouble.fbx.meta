@@ -1,20 +1,44 @@
 fileFormatVersion: 2
 guid: 0679e7662e39f4c88a029a5a019f1019
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: leftDoor
-    100004: rightDoor
-    400000: //RootNode
-    400002: leftDoor
-    400004: rightDoor
-    2300000: leftDoor
-    2300002: rightDoor
-    3300000: leftDoor
-    3300002: rightDoor
-    4300000: rightDoor
-    4300002: leftDoor
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: leftDoor
+  - first:
+      1: 100004
+    second: rightDoor
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: leftDoor
+  - first:
+      4: 400004
+    second: rightDoor
+  - first:
+      23: 2300000
+    second: leftDoor
+  - first:
+      23: 2300002
+    second: rightDoor
+  - first:
+      33: 3300000
+    second: leftDoor
+  - first:
+      33: 3300002
+    second: rightDoor
+  - first:
+      43: 4300000
+    second: rightDoor
+  - first:
+      43: 4300002
+    second: leftDoor
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -22,7 +46,7 @@ ModelImporter:
       name: Doors_TVStand_MAT
     second: {fileID: 2100000, guid: cdbe46314d4b7ab4ca61d18f0462c8ba, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -54,34 +78,41 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 0
     importCameras: 0
     importLights: 0
-    swapUVChannels: 0
-    generateSecondaryUV: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 1
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -91,14 +122,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
