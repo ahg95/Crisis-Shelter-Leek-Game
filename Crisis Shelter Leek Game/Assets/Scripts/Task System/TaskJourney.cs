@@ -3,17 +3,32 @@
 [CreateAssetMenu(fileName = "Task Journey", menuName = "Tasks/Task Journey")]
 public class TaskJourney : ScriptableObject
 {
+    #region resetData
+    public Task firstTask;
+    #endregion
+
+    public Task assignedTask;
+    [Space(20)]
     public Task[] tasksInOrder;
 
-    private int assignedTaskInt;
-    public Task assignedTask;
+    private int assignedTaskInt = 0;
 
-    /// <summary>
-    /// Go 'up' in the list of tasks == progress.
-    /// </summary>
+    private void OnEnable()
+    {
+        // reset
+        assignedTask = firstTask;
+        assignedTaskInt = 0;
+    }
     public void Progress()
     {
-        assignedTaskInt++;
-        assignedTask = tasksInOrder[assignedTaskInt];
+        if (assignedTaskInt != tasksInOrder.Length - 1)
+        {
+            assignedTaskInt++;
+            assignedTask = tasksInOrder[assignedTaskInt];
+        }
+        else
+        {
+            Debug.Log("Last Task Finished!");
+        }
     }
 }

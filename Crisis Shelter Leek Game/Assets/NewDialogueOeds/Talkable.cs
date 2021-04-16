@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Talkable : Interactable
 {
     private TaskJourney journey;
-    public ConversationTaskCombination convTaskCombi;
+    [Space(20)]
+    public ConversationTaskCombination[] conversationTaskCombinations;
 
     public override void Start()
     {
         base.Start();
         journey = ScriptableObject.CreateInstance<TaskJourney>();
+
+        // start converstationTaskCombination based on journey.assignedtask
     }
 }

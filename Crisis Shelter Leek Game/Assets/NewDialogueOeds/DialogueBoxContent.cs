@@ -1,14 +1,21 @@
-﻿[System.Serializable]
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
 public class DialogueBoxContent
 {
     public enum Speaker
     {
+        You,
         Karen,
         Gerard,
         Daisy
     };
     public Speaker speaker;
 
-    [UnityEngine.TextArea(1, 2)]
+    [TextArea(1, 2)]
     public string content;
+
+    [Space(20)]
+    public ChoiceTest[] choices;
 }

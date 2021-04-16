@@ -1,20 +1,26 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
-[System.Serializable]
-public class DialogueChoice
+[CreateAssetMenu(fileName = "New Dialogue Choice", menuName = "Tasks/New Dialogue Choice")]
+public class DialogueChoice : ScriptableObject
 {
-    public string text;
+    [HideInInspector]
+    public string text; // DELETELATER
+
+    [SerializeField] private TaskJourney taskJourney;
+
+    [TextArea(1, 2)]
+    public string choiceText;
+    [Space(10)]
     public UnityEvent Consequence;
 
-    //public delegate void Consequence();
 
-    //private Consequence consequence;
-
-        /*
-    public DialogueChoice(string text, Consequence consequence)
+    private void ApplyConsequences()
     {
-        this.text = text;
-        this.consequence = consequence;
+        // GameObject.FindGameObjectWithTag("DCCManager").ApplyConsequenceOfChoice(this);
     }
-    */
+    public void ProgressInTask()
+    {
+        taskJourney.Progress();
+    }
 }
