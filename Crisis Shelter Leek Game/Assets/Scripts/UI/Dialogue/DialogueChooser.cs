@@ -14,7 +14,7 @@ public class DialogueChooser : MonoBehaviour
     public void PlayDialogueCorrespondingToTask()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        CurrentTask taskList = player.GetComponent<CurrentTask>();
+        TaskJourney taskList = player.GetComponent<TaskJourney>();
         GameObject dialogueManager = GameObject.Find("DialogueManager");
 
         if (taskList.assignedTask != null)

@@ -4,6 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Outline))]
 public class Interactable : MonoBehaviour
 {
+    // ADD: Cursor change on hover
+
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
 

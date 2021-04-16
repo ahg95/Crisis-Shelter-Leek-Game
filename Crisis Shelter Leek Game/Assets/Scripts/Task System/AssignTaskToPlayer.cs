@@ -4,7 +4,7 @@ public class AssignTaskToPlayer : MonoBehaviour
 {
     public void AssignTask(Task taskToAssign)
     {
-        CurrentTask currentTask = GameObject.FindGameObjectWithTag("Player").GetComponent<CurrentTask>();
+        TaskJourney currentTask = GameObject.FindGameObjectWithTag("Player").GetComponent<TaskJourney>();
 
         currentTask.assignedTask = Instantiate(taskToAssign);
         // print("task " + taskToAssign.taskID + " assigned!");
