@@ -23,7 +23,7 @@ public class StartOfSceneEvents : MonoBehaviour
             Task currentTask = (Task)ScriptableObject.CreateInstance("Task");
             JsonUtility.FromJsonOverwrite(GlobalStats.currentTaskJSON, currentTask);
 
-            GetComponent<CurrentTask>().assignedTask = currentTask;
+            GetComponent<TaskJourney>().assignedTask = currentTask;
         }
 
         gameObject.transform.position = firstNode.transform.transform.position;

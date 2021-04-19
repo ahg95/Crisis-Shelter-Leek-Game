@@ -9,18 +9,22 @@ public class RotateCamera : MonoBehaviour
     {
         cameraTransform = Camera.main.transform;
     }
+    /// <summary>
+    /// Is called on Button Hover
+    /// </summary>
+    /// <param name="rotationSpeed"></param>
     public void MoveCamera(float rotationSpeed)
     {
         float currentRotation = cameraTransform.transform.localEulerAngles.y;
         float rotation = GetRotation(currentRotation);
-        // print(rotation);
+
         if (Mathf.Abs(rotation) <= rotationLimit)
         {
-            cameraTransform.Rotate(Vector3.up * rotationSpeed);
+            cameraTransform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
         else if (rotation <= -rotationLimit && rotationSpeed > 0 || rotation >= rotationLimit && rotationSpeed < 0)
         {
-            cameraTransform.Rotate(Vector3.up * rotationSpeed);
+            cameraTransform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
         }
     }
     private float GetRotation(float currentRotation)
