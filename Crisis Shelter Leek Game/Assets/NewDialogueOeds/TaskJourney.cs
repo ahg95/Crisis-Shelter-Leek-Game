@@ -25,6 +25,8 @@ public class TaskJourney : ScriptableObject
         {
             assignedTaskInt++;
             assignedTask = tasksInOrder[assignedTaskInt];
+            Debug.Log("Progressed Task!");
+            Debug.Log("Current Task: " + assignedTask);
         }
         else
         {

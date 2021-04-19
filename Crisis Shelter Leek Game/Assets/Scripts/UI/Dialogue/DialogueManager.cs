@@ -28,11 +28,11 @@ public class DialogueManager : MonoBehaviour
         gameObjectsToDisable = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
     }
 
-    public void ShowDialogueSection(DialogueSection dialogueSection)
+    public void ShowDialogueSection(ConversationSection dialogueSection)
     {
         DisableSystemsToDisableOnDialogue();
 
-        dialogueBoxesToShow = new Queue<DialogueBox>(dialogueSection.dialogueBoxes);
+        //dialogueBoxesToShow = new Queue<DialogueBox>(dialogueSection.dialogueBoxes);
 
         if (currentlyShownDialogueBox == null)
             ShowNextDialogueBoxOrHideIfNoneLeft();

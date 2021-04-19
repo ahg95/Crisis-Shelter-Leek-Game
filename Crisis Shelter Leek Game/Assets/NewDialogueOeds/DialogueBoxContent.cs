@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 [System.Serializable]
 public class DialogueBoxContent
@@ -11,11 +10,9 @@ public class DialogueBoxContent
         Gerard,
         Daisy
     };
-    public Speaker speaker;
 
     [TextArea(1, 2)]
     public string content;
 
-    [Space(20)]
-    public ChoiceTest[] choices;
+    public Speaker speaker;
 }

@@ -2,15 +2,13 @@
 
 public class Talkable : Interactable
 {
-    private TaskJourney journey;
     [Space(20)]
-    public ConversationTaskCombination[] conversationTaskCombinations;
-
-    public override void Start()
+    public ConversationTaskCombination[] conversationTaskCombination;
+    public void ShowConversationSection(ConversationSection section)
     {
-        base.Start();
-        journey = ScriptableObject.CreateInstance<TaskJourney>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        DialogueManager dialogueManager = player.GetComponentInChildren<DialogueManager>();
 
-        // start converstationTaskCombination based on journey.assignedtask
+        dialogueManager.ShowDialogueSection(section);
     }
 }

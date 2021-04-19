@@ -2,13 +2,13 @@
 
 public class DialogueChooser : MonoBehaviour
 {
-    public DialogueSection dialogueIfNoTask;
+    public ConversationSection dialogueIfNoTask;
     public DialogueAssociatedToTask[] taskWithAssociatedDialogues;
-    private DialogueSection[] dialoguesInstances;
+    private ConversationSection[] dialoguesInstances;
 
     private void Start()
     {
-        dialoguesInstances = GameObject.FindGameObjectWithTag("Dialogues").GetComponentsInChildren<DialogueSection>();
+        dialoguesInstances = GameObject.FindGameObjectWithTag("Dialogues").GetComponentsInChildren<ConversationSection>();
     }
 
     public void PlayDialogueCorrespondingToTask()

@@ -6,8 +6,10 @@ public class Interactable : MonoBehaviour
 {
     // ADD: Cursor change on hover
 
+    bool hovering = false;
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
+    [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
     [SerializeField] private float minimumDistance = 5f;
 
     private Outline outline;
@@ -21,19 +23,23 @@ public class Interactable : MonoBehaviour
     }
     public virtual void InteractWith()
     {
-        onInteraction.Invoke();
-        // print("Interacting with interactable object!");
+        if (hovering)
+        {
+            onInteraction.Invoke();
+        }
     }
 
     public void OnMouseEnter()
     {
         if (Vector3.Distance(cam.transform.position, transform.position) < minimumDistance)
         {
+            hovering = true;
             outline.enabled = true;
         }
     }
     public void OnMouseExit()
     {
+        hovering = false;
         outline.enabled = false;
     }
 }
