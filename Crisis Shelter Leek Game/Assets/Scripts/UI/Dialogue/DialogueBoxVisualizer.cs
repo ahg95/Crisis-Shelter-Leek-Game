@@ -33,7 +33,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
         for (int i = 0; i < nrOfChoices; i++)
         {
-            dialogueUI.SetChoiceText(i, dialogueBox.choices[i].text);
+            dialogueUI.SetChoiceText(i, dialogueBox.choices[i].choiceText);
         }
 
         animator.SetBool("show", true);

@@ -26,7 +26,7 @@ public class DialogueChooser : MonoBehaviour
             {
                 if (taskAssociatedToDialogue.task.taskID == currentTask.taskID)
                 {
-                    dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(taskAssociatedToDialogue.associatedDialogue);
+                    dialogueManager.GetComponent<DialogueManager>().ShowConversationSection(taskAssociatedToDialogue.associatedDialogue);
 
                     //FindAndShowDialogueInstance(taskAssociatedToDialogue.associatedDialogue);
 
@@ -37,7 +37,7 @@ public class DialogueChooser : MonoBehaviour
         }
         else
         {
-            dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(dialogueIfNoTask);
+            dialogueManager.GetComponent<DialogueManager>().ShowConversationSection(dialogueIfNoTask);
 
             //FindAndShowDialogueInstance(dialogueIfNoTask);
 

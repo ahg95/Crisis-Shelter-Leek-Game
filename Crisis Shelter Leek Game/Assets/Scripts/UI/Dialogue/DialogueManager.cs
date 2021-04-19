@@ -28,25 +28,52 @@ public class DialogueManager : MonoBehaviour
         gameObjectsToDisable = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
     }
 
-    public void ShowDialogueSection(ConversationSection dialogueSection)
+    public void ShowConversationSection(ConversationSection conversationSection)
     {
         DisableSystemsToDisableOnDialogue();
 
-        //dialogueBoxesToShow = new Queue<DialogueBox>(dialogueSection.dialogueBoxes);
+        EnqueueConversationSection(conversationSection);
 
-        if (currentlyShownDialogueBox == null)
-            ShowNextDialogueBoxOrHideIfNoneLeft();
+        DequeueDialogueBoxAndShowIt();
+    }
+
+    private void EnqueueConversationSection(ConversationSection conversationSection)
+    {
+        dialogueBoxesToShow = ConvertConversationSectionIntoQueueOfDialogueBoxes(conversationSection);
+    }
+
+    private void DequeueDialogueBoxAndShowIt()
+    {
+        currentlyShownDialogueBox = dialogueBoxesToShow.Dequeue();
+        dialogueBoxVisualizer.ShowDialogueBox(currentlyShownDialogueBox);
+    }
+
+    private Queue<DialogueBox> ConvertConversationSectionIntoQueueOfDialogueBoxes(ConversationSection conversationSection)
+    {
+        Queue<DialogueBox> dialogueBoxes = new Queue<DialogueBox>();
+
+        DialogueBoxContent[] content = conversationSection.dialogueBoxContent;
+
+        for (int i = 0; i < content.Length; i++)
+        {
+            DialogueBox dialogueBoxToAdd;
+
+            if (i + 1 == content.Length)
+                dialogueBoxToAdd = new DialogueBox(content[i].speaker.ToString(), content[i].content, conversationSection.choicesAtEnd);
+            else
+                dialogueBoxToAdd = new DialogueBox(content[i].speaker.ToString(), content[i].content);
+
+            dialogueBoxes.Enqueue(dialogueBoxToAdd);
+        }
+
+        return dialogueBoxes;
     }
 
     public void ShowNextDialogueBoxOrHideIfNoneLeft()
     {
-        if (currentlyShownDialogueBox != null)
-            currentlyShownDialogueBox.OnDialogueContinued.Invoke();
-
-        if (0 < dialogueBoxesToShow.Count)
+        if (ThereAreDialogueBoxesToShow())
         {
-            currentlyShownDialogueBox = dialogueBoxesToShow.Dequeue();
-            dialogueBoxVisualizer.ShowDialogueBox(currentlyShownDialogueBox);
+            DequeueDialogueBoxAndShowIt();
         } else
         {
             currentlyShownDialogueBox = null;
@@ -55,9 +82,19 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private bool ThereAreDialogueBoxesToShow()
+    {
+        return (0 < dialogueBoxesToShow.Count);
+    }
+
     public void OnDialogueChoiceHasBeenSelectedWithIndex(int indexOfChoice)
     {
         currentlyShownDialogueBox.choices[indexOfChoice].Consequence.Invoke();
+
+        ConversationSection followUpConversation = currentlyShownDialogueBox.choices[indexOfChoice].followUpConversation;
+        Debug.Log(followUpConversation);
+        if (followUpConversation != null)
+            EnqueueConversationSection(followUpConversation);
 
         ShowNextDialogueBoxOrHideIfNoneLeft();
     }
