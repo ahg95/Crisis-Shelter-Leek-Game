@@ -2,13 +2,9 @@
 
 public class SmoothRotationFree : MonoBehaviour
 {
-    private Transform cameraTransform;
+    [SerializeField] Transform playerTransform;
     [SerializeField] float rotationSpeedMultiplier = 1f;
 
-    private void Start()
-    {
-        cameraTransform = Camera.main.transform;
-    }
     /// <summary>
     /// Is called on Button Hover
     /// </summary>
@@ -17,6 +13,6 @@ public class SmoothRotationFree : MonoBehaviour
     {
         rotationSpeed *= rotationSpeedMultiplier;
 
-        cameraTransform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
+        playerTransform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
     }
 }
