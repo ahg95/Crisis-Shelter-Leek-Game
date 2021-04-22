@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private float minimumInteractionDistance = 5f;
 
     [Space(15)]
-    [SerializeField] private bool alwaysVisible = false;
+    [SerializeField] private bool debugAlwaysVisible = false;
 
     private Outline outline;
     private Camera cam;
@@ -51,7 +51,7 @@ public class Interactable : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (alwaysVisible)
+        if (debugAlwaysVisible)
         {
             Draw();
         }
