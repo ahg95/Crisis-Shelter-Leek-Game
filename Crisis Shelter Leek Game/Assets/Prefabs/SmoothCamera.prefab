@@ -1560,10 +1560,10 @@ GameObject:
   - component: {fileID: 8371596313123110927}
   - component: {fileID: 8371596313123110924}
   - component: {fileID: 8371596313123110925}
-  - component: {fileID: 8371596313123110926}
   - component: {fileID: 720242705759610332}
   - component: {fileID: 123022121}
   - component: {fileID: 123022122}
+  - component: {fileID: 4363739583680014650}
   m_Layer: 0
   m_Name: SmoothCamera
   m_TagString: MainCamera
@@ -1637,21 +1637,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8371596313123110920}
   m_Enabled: 1
---- !u!114 &8371596313123110926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8371596313123110920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9825e02b759ee934386b22fda334b7e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeedMultiplier: 1.5
-  rotationLimit: 0
-  rotationLimitAngle: 90
 --- !u!114 &720242705759610332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,6 +1661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b891500d4c03f54f85c17005f0e7b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrow: {fileID: 6294461110920625548, guid: 56fe3aba7dcc09d41a2ea7faf640d5f8, type: 3}
 --- !u!195 &123022122
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1685,7 +1671,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8371596313123110920}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1694,7 +1680,20 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.8
-  m_BaseOffset: 1.8
+  m_Height: 1.6
+  m_BaseOffset: 1.6
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &4363739583680014650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371596313123110920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296be4a22f8dbf34dbddc9c0bc444eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeedMultiplier: 1.5
