@@ -10,7 +10,10 @@ public class Interactable : MonoBehaviour
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
-    [SerializeField] private float minimumDistance = 5f;
+    [SerializeField] private float minimumInteractionDistance = 5f;
+
+    [Space(15)]
+    [SerializeField] private bool alwaysVisible = false;
 
     private Outline outline;
     private Camera cam;
@@ -25,14 +28,17 @@ public class Interactable : MonoBehaviour
     {
         if (hovering)
         {
+            print("Interacting");
             onInteraction.Invoke();
         }
     }
 
     public void OnMouseEnter()
     {
-        if (Vector3.Distance(cam.transform.position, transform.position) < minimumDistance)
+        float distance = Vector3.Distance(cam.transform.position, transform.position);
+        if (distance < minimumInteractionDistance)
         {
+            print(distance);
             hovering = true;
             outline.enabled = true;
         }
@@ -41,5 +47,24 @@ public class Interactable : MonoBehaviour
     {
         hovering = false;
         outline.enabled = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (alwaysVisible)
+        {
+            Draw();
+        }
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Draw();
+    }
+
+    void Draw()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
     }
 }
