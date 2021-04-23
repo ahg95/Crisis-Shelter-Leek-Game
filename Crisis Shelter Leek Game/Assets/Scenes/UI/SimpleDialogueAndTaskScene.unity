@@ -334,7 +334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &117801745
 Transform:
   m_ObjectHideFlags: 0
@@ -367,7 +367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &198461762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,9 +992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2fe97930cc0d542956a2987c88abf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  img: {fileID: 1925761229}
-  original: {fileID: 21300000, guid: 1f9b3a92fa819d04fbf47a1254209e50, type: 3}
-  changed: {fileID: 21300000, guid: 8f431f9242bf66042bed5e627bcca93b, type: 3}
 --- !u!1 &381955700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &456882663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2294,7 +2291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb545e64d5b9f374a96d79320985254c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  daysSpentOnTasks: 0
 --- !u!1 &871138170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,17 +3727,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1710225376}
         m_MethodName: TriggerDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 378898021}
-        m_MethodName: ChangeOriginal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
