@@ -13,12 +13,12 @@ public class SmoothRotationFree : MonoBehaviour
     {
         rotationSpeed *= rotationSpeedMultiplier;
 
-        playerTransform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
     }
     public void MoveCameraVer(float rotationSpeed)
     {
         rotationSpeed *= rotationSpeedMultiplier;
 
-        playerTransform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime, Space.World);
+        transform.Rotate(transform.right * rotationSpeed * Time.deltaTime, Space.World);
     }
 }
