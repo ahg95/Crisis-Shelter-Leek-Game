@@ -2,5 +2,5 @@
 public class DialogueAssociatedToTask
 {
     public Task task;
-    public DialogueSection associatedDialogue;
+    public ConversationSection associatedDialogue;
 }

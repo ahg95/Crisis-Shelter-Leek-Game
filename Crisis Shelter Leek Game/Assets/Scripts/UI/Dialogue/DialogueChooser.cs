@@ -2,19 +2,19 @@
 
 public class DialogueChooser : MonoBehaviour
 {
-    public DialogueSection dialogueIfNoTask;
+    public ConversationSection dialogueIfNoTask;
     public DialogueAssociatedToTask[] taskWithAssociatedDialogues;
-    private DialogueSection[] dialoguesInstances;
+    private ConversationSection[] dialoguesInstances;
 
     private void Start()
     {
-        dialoguesInstances = GameObject.FindGameObjectWithTag("Dialogues").GetComponentsInChildren<DialogueSection>();
+        dialoguesInstances = GameObject.FindGameObjectWithTag("Dialogues").GetComponentsInChildren<ConversationSection>();
     }
 
     public void PlayDialogueCorrespondingToTask()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        CurrentTask taskList = player.GetComponent<CurrentTask>();
+        TaskJourney taskList = player.GetComponent<TaskJourney>();
         GameObject dialogueManager = GameObject.Find("DialogueManager");
 
         if (taskList.assignedTask != null)
@@ -26,7 +26,7 @@ public class DialogueChooser : MonoBehaviour
             {
                 if (taskAssociatedToDialogue.task.taskID == currentTask.taskID)
                 {
-                    dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(taskAssociatedToDialogue.associatedDialogue);
+                    dialogueManager.GetComponent<DialogueManager>().ShowConversationSection(taskAssociatedToDialogue.associatedDialogue);
 
                     //FindAndShowDialogueInstance(taskAssociatedToDialogue.associatedDialogue);
 
@@ -37,7 +37,7 @@ public class DialogueChooser : MonoBehaviour
         }
         else
         {
-            dialogueManager.GetComponent<DialogueManager>().ShowDialogueSection(dialogueIfNoTask);
+            dialogueManager.GetComponent<DialogueManager>().ShowConversationSection(dialogueIfNoTask);
 
             //FindAndShowDialogueInstance(dialogueIfNoTask);
 

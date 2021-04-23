@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!225 &1563639625441927967
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5556794347189281310}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8913595031707162562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1922,7 @@ PrefabInstance:
     - target: {fileID: 155261138637631343, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: m_fontSize
-      value: 37.7
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 597836497760340591, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
@@ -1921,6 +1933,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DialogueCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1022911830915233805, guid: d37fc3554b5991e4889adf914d39d82d,
+        type: 3}
+      propertyPath: textShowSpeed
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 4066997294414303905, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
@@ -1960,12 +1977,12 @@ PrefabInstance:
     - target: {fileID: 5721161824610497521, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: m_fontSize
-      value: 35.6
+      value: 46.45
       objectReference: {fileID: 0}
     - target: {fileID: 5721161824916062949, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: m_fontSize
-      value: 36.6
+      value: 48.55
       objectReference: {fileID: 0}
     - target: {fileID: 5721161825387611639, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
@@ -1975,7 +1992,7 @@ PrefabInstance:
     - target: {fileID: 5721161825612251855, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: m_fontSize
-      value: 26
+      value: 37.4
       objectReference: {fileID: 0}
     - target: {fileID: 5721161825612251855, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
@@ -2000,12 +2017,12 @@ PrefabInstance:
     - target: {fileID: 5721161825672360912, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: m_fontSize
-      value: 36.6
+      value: 48.55
       objectReference: {fileID: 0}
     - target: {fileID: 5721161825765984789, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
       propertyPath: m_fontSize
-      value: 31.1
+      value: 46.3
       objectReference: {fileID: 0}
     - target: {fileID: 5848030509342438677, guid: d37fc3554b5991e4889adf914d39d82d,
         type: 3}
@@ -2183,6 +2200,12 @@ PrefabInstance:
 --- !u!224 &6120796349412114121 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6235649864142412071, guid: d37fc3554b5991e4889adf914d39d82d,
+    type: 3}
+  m_PrefabInstance: {fileID: 177915664841615342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5556794347189281310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5721161825387611632, guid: d37fc3554b5991e4889adf914d39d82d,
     type: 3}
   m_PrefabInstance: {fileID: 177915664841615342}
   m_PrefabAsset: {fileID: 0}
