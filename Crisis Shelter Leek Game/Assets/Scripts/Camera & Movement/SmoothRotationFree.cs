@@ -15,10 +15,4 @@ public class SmoothRotationFree : MonoBehaviour
 
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
     }
-    public void MoveCameraVer(float rotationSpeed)
-    {
-        rotationSpeed *= rotationSpeedMultiplier;
-
-        transform.Rotate(transform.right * rotationSpeed * Time.deltaTime, Space.World);
-    }
 }

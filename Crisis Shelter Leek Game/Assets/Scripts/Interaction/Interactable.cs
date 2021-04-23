@@ -38,7 +38,6 @@ public class Interactable : MonoBehaviour
         float distance = Vector3.Distance(cam.transform.position, transform.position);
         if (distance < minimumInteractionDistance)
         {
-            print(distance);
             hovering = true;
             outline.enabled = true;
         }

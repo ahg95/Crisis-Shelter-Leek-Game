@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1143023405}
   - component: {fileID: 1143023406}
-  - component: {fileID: 1143023407}
+  - component: {fileID: 32439677}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -75,7 +75,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1143023407
+--- !u!114 &32439677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,11 +84,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1143023404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 296be4a22f8dbf34dbddc9c0bc444eba, type: 3}
+  m_Script: {fileID: 11500000, guid: 9825e02b759ee934386b22fda334b7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 8371596313123110927}
-  rotationSpeedMultiplier: 1.5
+  rotationSpeedMultiplier: 1
+  rotationLimitAngle: 15
 --- !u!1 &3189433826739960378
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,11 +159,11 @@ RectTransform:
   m_Father: {fileID: 6059131532304397862}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 180}
-  m_SizeDelta: {x: -500, y: -360}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -500, y: 40}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6874807187669315030
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -256,7 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: -32
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
+  rotateSpeed: -24
   vertical: 1
 --- !u!1 &4035814283267761244
 GameObject:
@@ -425,6 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: 48
   vertical: 0
 --- !u!1 &4916696144711028320
@@ -558,6 +562,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: -48
   vertical: 0
 --- !u!1 &8221924210309448330
@@ -595,10 +601,10 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -180}
-  m_SizeDelta: {x: -500, y: -360}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -500, y: 42}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &3100460067710120569
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -691,7 +697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 32
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
+  rotateSpeed: 24
   vertical: 1
 --- !u!1 &8371596311213554500
 GameObject:
@@ -824,6 +832,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: -24
   vertical: 0
 --- !u!1 &8371596311337322774
@@ -1096,6 +1106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: 16
   vertical: 0
 --- !u!1 &8371596312090602852
@@ -1281,6 +1293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: 8
   vertical: 0
 --- !u!1 &8371596312413639223
@@ -1414,6 +1428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: -16
   vertical: 0
 --- !u!1 &8371596312681814118
@@ -1587,6 +1603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: -8
   vertical: 0
 --- !u!1 &8371596312936759775
@@ -1720,6 +1738,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: 24
   vertical: 0
 --- !u!1 &8371596312987981272
@@ -1853,6 +1873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: -32
   vertical: 0
 --- !u!1 &8371596313010886313
@@ -1986,6 +2008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f308942f9e4c8544a764ed52f330567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateCameraFree: {fileID: 1339315834}
+  rotateCameraLimits: {fileID: 32439677}
   rotateSpeed: 32
   vertical: 0
 --- !u!1 &8371596313123110920
@@ -2001,6 +2025,7 @@ GameObject:
   - component: {fileID: 720242705759610332}
   - component: {fileID: 123022121}
   - component: {fileID: 123022122}
+  - component: {fileID: 1339315834}
   m_Layer: 0
   m_Name: SmoothCamera
   m_TagString: Player
@@ -2080,3 +2105,17 @@ NavMeshAgent:
   m_BaseOffset: 1.6
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &1339315834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371596313123110920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296be4a22f8dbf34dbddc9c0bc444eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 8371596313123110927}
+  rotationSpeedMultiplier: 1.5

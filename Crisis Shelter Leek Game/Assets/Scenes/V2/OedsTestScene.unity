@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 724513904}
-  m_IndirectSpecularColor: {r: 0.45127702, g: 0.5009548, b: 0.57332855, a: 1}
+  m_IndirectSpecularColor: {r: 0.17168243, g: 0.21492602, b: 0.28829858, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -122,6 +122,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: c30b3f7201e8ce04a9ea7c7877f00fad, type: 2}
+--- !u!1 &32439673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1143023404, guid: 978125284856d5f4fa17f5d70576b935,
+    type: 3}
+  m_PrefabInstance: {fileID: 123022119}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &32439677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32439673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9825e02b759ee934386b22fda334b7e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeedMultiplier: 1
+  rotationLimitAngle: 15
 --- !u!1 &65473083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5223371340121973061, guid: 0a8a71de32096cc468e1649e1de947a3,
