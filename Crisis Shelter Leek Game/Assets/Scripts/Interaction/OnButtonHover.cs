@@ -1,16 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    private UnityEvent onHover = new UnityEvent();
-    private float timeCount = 0;
-    [SerializeField]
-    private float executionInterval = 1f;
+    SmoothRotationFree rotateCamera;
+    public float rotateSpeed = 1f;
     private bool startTimeCount = false;
-
+    private void Start()
+    {
+        rotateCamera = Camera.main.GetComponent<SmoothRotationFree>();
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         startTimeCount = true;
@@ -18,19 +17,12 @@ public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData eventData)
     {
         startTimeCount = false;
-        timeCount = 0;
     }
     private void Update()
     {
         if (startTimeCount)
         {
-            timeCount += Time.deltaTime;
-
-            if (timeCount > executionInterval)
-            {
-                timeCount = 0;
-                onHover.Invoke();
-            }
+            rotateCamera.MoveCamera(rotateSpeed);
         }
     }
 }
