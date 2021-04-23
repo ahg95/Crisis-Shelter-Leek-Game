@@ -8,7 +8,8 @@ public class Transitions : MonoBehaviour
 {
     [SerializeField] private Animator simpleTransition;//sets a simple transition that happens within the scene
     [SerializeField] private Animator sceneTransition;//sets the transition on scene change
-    [SerializeField] private float simpleTransitionTime;//transition time for the simple transition
+    [SerializeField] private float endTransitionTime;//transition time after a scene end
+    [SerializeField] private float startTransitionTime;//transition time before a scene start
     [SerializeField] private float sceneTransitionTime;//transition time for the scene transition
     [SerializeField] private GameObject transition;//the gameobject responsible for the simpleTransition
 
@@ -63,7 +64,6 @@ public class Transitions : MonoBehaviour
     public IEnumerator TransitionWithStats(bool showStats, float addedFade, bool switchScene, string sceneName)
     {
         float fadeAmount;
-
         simpleTransition.SetTrigger("Start");//starts the transition
         if (showStats)
         {
@@ -78,7 +78,7 @@ public class Transitions : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(simpleTransitionTime);//sets for how long the screen is black 
+        yield return new WaitForSeconds(endTransitionTime);//sets for how long the screen is black after finishing a scene
 
         if(showStats)
         {
