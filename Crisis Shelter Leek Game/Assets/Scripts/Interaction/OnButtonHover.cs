@@ -6,6 +6,7 @@ public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     SmoothRotationFree rotateCamera;
     public float rotateSpeed = 1f;
     private bool startTimeCount = false;
+    [SerializeField] bool vertical = false;
     private void Start()
     {
         rotateCamera = Camera.main.GetComponent<SmoothRotationFree>();
@@ -22,7 +23,14 @@ public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (startTimeCount)
         {
-            rotateCamera.MoveCamera(rotateSpeed);
+            if (!vertical)
+            {
+                rotateCamera.MoveCameraHor(rotateSpeed);
+            }
+            else
+            {
+                rotateCamera.MoveCameraVer(rotateSpeed);
+            }
         }
     }
 }
