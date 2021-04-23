@@ -6,6 +6,7 @@ public class MovementNode : Interactable
     public MovementNode[] connectedNodes;
     public override void InteractWith()
     {
+        onInteraction.Invoke();
         MoveToNode Movement = Camera.main.transform.parent.GetComponent<MoveToNode>();
 
         if (!Movement.isMoving)
