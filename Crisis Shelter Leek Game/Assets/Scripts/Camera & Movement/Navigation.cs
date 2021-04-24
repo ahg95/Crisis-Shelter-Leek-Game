@@ -34,6 +34,7 @@ public class Navigation : MonoBehaviour
             if (!arrow.activeSelf && !agent.hasPath)
             {
                 arrow.SetActive(true);
+                Cursor.visible = false;
             }
 
             Vector3 position = transform.position;
@@ -44,6 +45,7 @@ public class Navigation : MonoBehaviour
         else
         {
             arrow.SetActive(false);
+            Cursor.visible = true;
         }
     }
 }
