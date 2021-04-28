@@ -9,10 +9,10 @@ public class SmoothRotationFree : MonoBehaviour
     /// Is called on Button Hover
     /// </summary>
     /// <param name="rotationSpeed"></param>
-    public void MoveCamera(float rotationSpeed)
+    public void MoveCameraHor(float rotationSpeed)
     {
         rotationSpeed *= rotationSpeedMultiplier;
 
-        playerTransform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
     }
 }

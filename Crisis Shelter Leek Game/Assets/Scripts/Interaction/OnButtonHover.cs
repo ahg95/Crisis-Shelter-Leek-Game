@@ -3,13 +3,12 @@ using UnityEngine.EventSystems;
 
 public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    SmoothRotationFree rotateCamera;
+    [SerializeField] SmoothRotationFree rotateCameraFree;
+    [SerializeField] SmoothRotationWithLimits rotateCameraLimits;
     public float rotateSpeed = 1f;
     private bool startTimeCount = false;
-    private void Start()
-    {
-        rotateCamera = Camera.main.GetComponent<SmoothRotationFree>();
-    }
+    [SerializeField] bool vertical = false;
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         startTimeCount = true;
@@ -22,7 +21,14 @@ public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (startTimeCount)
         {
-            rotateCamera.MoveCamera(rotateSpeed);
+            if (vertical)
+            {
+                rotateCameraLimits.MoveCameraVertical(rotateSpeed);
+            }
+            else
+            {
+                rotateCameraFree.MoveCameraHor(rotateSpeed);
+            }
         }
     }
 }

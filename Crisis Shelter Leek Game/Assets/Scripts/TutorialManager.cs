@@ -23,7 +23,7 @@ public class TutorialManager : MonoBehaviour
 
     //tutorial dialogue
     public DialogManager dialogManager;
-    public DialogueTrigger dialogueTrigger;
+    // public DialogueTrigger dialogueTrigger;
 
     public GameObject skipTutorialButton;
     public GameObject finishDialogueButton;
@@ -42,7 +42,7 @@ public class TutorialManager : MonoBehaviour
 
 
         dialogManager = FindObjectOfType<DialogManager>();
-        dialogueTrigger = FindObjectOfType<DialogueTrigger>();
+        // dialogueTrigger = FindObjectOfType<DialogueTrigger>();
     }
 
     private void Update()

@@ -14,6 +14,7 @@ public class Interactable : MonoBehaviour
 
     [Space(15)]
     [SerializeField] private bool debugAlwaysVisible = false;
+    [SerializeField] private bool fullCube = false;
 
     private Outline outline;
     private Camera cam;
@@ -28,7 +29,6 @@ public class Interactable : MonoBehaviour
     {
         if (hovering)
         {
-            print("Interacting");
             onInteraction.Invoke();
         }
     }
@@ -38,7 +38,6 @@ public class Interactable : MonoBehaviour
         float distance = Vector3.Distance(cam.transform.position, transform.position);
         if (distance < minimumInteractionDistance)
         {
-            print(distance);
             hovering = true;
             outline.enabled = true;
         }
@@ -65,6 +64,14 @@ public class Interactable : MonoBehaviour
     void Draw()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
+
+        if (!fullCube)
+        {
+            Gizmos.DrawWireCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
+        }
+        else
+        {
+            Gizmos.DrawCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
+        }
     }
 }
