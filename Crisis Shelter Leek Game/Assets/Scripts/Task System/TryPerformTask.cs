@@ -14,10 +14,7 @@ public class TryPerformTask : MonoBehaviour
         // Try to find the assigned task in the player's assigned tasks.
         if (assignedTask.taskID == taskToPerform.taskID)
         {
-
-            assignedTask.taskCompleted = true;
-
-            GlobalStats.IncreaseStatsManual(assignedTask.amountOfDays, assignedTask.amountOfDays * 100);
+            GlobalStats.IncreaseDaysZienn(assignedTask.amountOfDays);
             GlobalStats.SaveTask(assignedTask);
 
             // GameObject.Find("TaskChecker").GetComponent<TaskCompleted>().CheckTaskCompleted(true);

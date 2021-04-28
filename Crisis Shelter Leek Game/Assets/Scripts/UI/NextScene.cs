@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 
-public class NextScene : MonoBehaviour
+public static class NextScene
 {
-    public void GetNextScene(string sceneName)
+    public static void GetNextScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }

@@ -14,5 +14,4 @@ public class Task : ScriptableObject
         Zienn
     };
     public int taskID;
-    public bool taskCompleted;
 }
