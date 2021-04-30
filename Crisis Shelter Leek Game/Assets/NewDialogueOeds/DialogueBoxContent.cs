@@ -6,13 +6,16 @@ public class DialogueBoxContent
     public enum Speaker
     {
         You,
+        YouThinking,
         Karen,
         Gerard,
-        Daisy
+        Daisy,
+        DescriptiveText,
+        Stranger
     };
 
-    [TextArea(1, 2)]
-    public string content;
-
     public Speaker speaker;
+
+    [TextArea(1, 3)]
+    public string content;
 }
