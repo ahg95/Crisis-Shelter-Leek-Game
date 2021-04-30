@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &939558017166350369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939558017166350431}
+  - component: {fileID: 939558017166350368}
+  m_Layer: 0
+  m_Name: Day 2 Coach 1 III
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939558017166350431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939558017166350369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &939558017166350368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939558017166350369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc5c8fca1e106946a3dddccb6a86498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxContent:
+  - speaker: 4
+    content: I wanted to meet you to discuss your current situation and help you
+      plan your next steps. Could you tell me a bit more about your situation?
+  - speaker: 0
+    content: "I hate to say it but I have lost my home, I have no income, and no
+      savings.\r This is the first time that I'm doing something about my situation."
+  - speaker: 4
+    content: Don't worry, it's a common situation and many people here have already
+      overcome it. Are you ready to start this journey?
+  choicesAtEnd:
+  - choiceText: Yes, I'm tired of my situation.
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}
+  - choiceText: I don't know if I can do it.
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}

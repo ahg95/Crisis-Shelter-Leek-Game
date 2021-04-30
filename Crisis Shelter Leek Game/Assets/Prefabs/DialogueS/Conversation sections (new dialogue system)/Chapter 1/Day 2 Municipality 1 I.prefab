@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3402563576952253159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3402563576952253153}
+  - component: {fileID: 3402563576952253158}
+  m_Layer: 0
+  m_Name: Day 2 Municipality 1 I
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3402563576952253153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3402563576952253159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3402563576952253158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3402563576952253159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc5c8fca1e106946a3dddccb6a86498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxContent:
+  - speaker: 2
+    content: Hello! Did you have an appointment today?
+  - speaker: 0
+    content: "Good day. Yes, I\u2019m here to apply for financial aid.\r"
+  - speaker: 2
+    content: Of course. Could you please identify yourself?
+  - speaker: 5
+    content: You hand over your ID card.
+  - speaker: 5
+    content: She checks your ID carefully and starts frowning.
+  - speaker: 0
+    content: Is something wrong?
+  - speaker: 2
+    content: Well, your ID expired about two weeks ago. You are also not signed in
+      at this municipality.
+  - speaker: 0
+    content: What does this mean?
+  - speaker: 2
+    content: I can't register you for financial aid if you are not signed in here.
+      You will also need a new ID for this. Do you want to apply for a new one right
+      now?
+  - speaker: 0
+    content: I need the financial aid, so yes.
+  - speaker: 2
+    content: Do you have a passport picture with you?
+  - speaker: 0
+    content: No, I didn't expect that I would need one.
+  - speaker: 2
+    content: "I understand. Could you then please make a new appointment?\r"
+  - speaker: 2
+    content: 'Oh, before I forget: for a new ID a fee of 64 Euros applies, so bring
+      enough money.'
+  - speaker: 1
+    content: Oh god, where should I get this money from?
+  choicesAtEnd:
+  - choiceText: Is it possible to pay the fee later?
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}
+  - choiceText: What if I don't have the money to pay the fee?
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}
+  - choiceText: I will make a new appointment. Goodbye.
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}
