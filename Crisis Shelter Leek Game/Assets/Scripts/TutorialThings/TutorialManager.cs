@@ -16,14 +16,17 @@ public class TutorialManager : MonoBehaviour
     public float[] waitTime;
 
     //tutorial parts checks
+    public bool[] tutorialParts;
+
     public bool tutorialActive = false;
+
     public bool isRotating = false;
     public bool isMoving = false;
     public bool isInteracting = false;
 
     //tutorial dialogue
     public DialogManager dialogManager;
-    public DialogueTrigger dialogueTrigger;
+    // public DialogueTrigger dialogueTrigger;
 
     public GameObject skipTutorialButton;
     public GameObject finishDialogueButton;
@@ -42,7 +45,7 @@ public class TutorialManager : MonoBehaviour
 
 
         dialogManager = FindObjectOfType<DialogManager>();
-        dialogueTrigger = FindObjectOfType<DialogueTrigger>();
+        // dialogueTrigger = FindObjectOfType<DialogueTrigger>();
     }
 
     private void Update()
@@ -126,7 +129,28 @@ public class TutorialManager : MonoBehaviour
 
     }
 
-    //function that is called when the player succeds at rotating
+    //this function will skip the tutorial 
+    public void SkipTutorial()
+    {
+        popUpId = popUps.Length;
+        dialogManager.EndDialogue();
+        skipTutorialButton.SetActive(false);
+    }
+
+    /// <summary>
+    /// This function will be called when the player succeded at accomplishing a tutorial part
+    /// </summary>
+    /// <param name="partNr"> The order of the tutroial part that you wish to accomplish </param>
+    public void CheckTutorialPart(int partNr)
+    {
+        if (tutorialActive)
+        {
+            tutorialParts[partNr] = true;
+        }
+    }
+
+
+
     public void CheckRotation (bool rotating)
     {
         if (tutorialActive)
@@ -151,13 +175,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    //this function will skip the tutorial 
-    public void SkipTutorial()
-    {
-        popUpId = popUps.Length;
-        dialogManager.EndDialogue();
-        skipTutorialButton.SetActive(false);
-    }
+
 }
 
 

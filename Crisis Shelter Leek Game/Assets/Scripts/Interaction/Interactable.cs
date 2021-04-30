@@ -28,7 +28,7 @@ public class Interactable : MonoBehaviour
     {
         if (hovering)
         {
-            print("Interacting");
+            //print("Interacting");
             onInteraction.Invoke();
         }
     }
@@ -38,7 +38,7 @@ public class Interactable : MonoBehaviour
         float distance = Vector3.Distance(cam.transform.position, transform.position);
         if (distance < minimumInteractionDistance)
         {
-            print(distance);
+            //print(distance);
             hovering = true;
             outline.enabled = true;
         }
