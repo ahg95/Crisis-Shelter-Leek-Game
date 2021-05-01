@@ -92,7 +92,7 @@ public class DialogueManager : MonoBehaviour
         currentlyShownDialogueBox.choices[indexOfChoice].Consequence.Invoke();
 
         ConversationSection followUpConversation = currentlyShownDialogueBox.choices[indexOfChoice].followUpConversation;
-        Debug.Log(followUpConversation);
+
         if (followUpConversation != null)
             EnqueueConversationSection(followUpConversation);
 
