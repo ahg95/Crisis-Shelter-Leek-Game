@@ -7,8 +7,8 @@ public class DialogueManager : MonoBehaviour
     [Tooltip("The DialogueBoxVisualizer that should handle how to display the dialogue boxes.")]
     public DialogueBoxVisualizer dialogueBoxVisualizer;
 
-    Queue<DialogueBox> dialogueBoxesToShow;
-    DialogueBox currentlyShownDialogueBox;
+    Queue<DialogueBoxContent> dialogueBoxesToShow;
+    DialogueBoxContent currentlyShownDialogueBox;
 
     // Contains all gameObjects that should be disabled when there is dialogue.
     GameObject[] gameObjectsToDisable;

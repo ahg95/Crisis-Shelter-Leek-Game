@@ -30,9 +30,24 @@ public class DialogueUI : MonoBehaviour
         speakerTextBox.text = name;
     }
 
+    public void SetSpeakerNameColor(Color speakerNameColor)
+    {
+        speakerTextBox.color = speakerNameColor;
+    }
+
     public void SetDialogueText(string dialogueText)
     {
         dialogueTextBox.text = dialogueText;
+    }
+
+    public void SetDialogueTextToItalicFont()
+    {
+        dialogueTextBox.fontStyle = FontStyles.Italic;
+    }
+
+    public void SetDialogueTextToRegularFont()
+    {
+        dialogueTextBox.fontStyle = FontStyles.Normal;
     }
 
     public void SetChoiceText(int optionIndex, string text)

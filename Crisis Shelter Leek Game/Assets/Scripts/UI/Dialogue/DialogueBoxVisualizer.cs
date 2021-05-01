@@ -15,15 +15,46 @@ public class DialogueBoxVisualizer : MonoBehaviour
     [Range(0, 0.1f)]
     [SerializeField] private float textShowSpeed = 0.05f;
 
+    [Tooltip("The colour of the name of the speaker when the player talks.")]
+    [SerializeField]
+    private Color SpeakerNameColourYou;
 
-    public virtual void ShowDialogueBox(DialogueBox dialogueBox)
+    [Tooltip("The colour of the name of the speaker when the player is thinking to themselves.")]
+    [SerializeField]
+    private Color SpeakerNameColourYouThinking;
+
+    [Tooltip("The colour of the name of the speaker when Karen talks.")]
+    [SerializeField]
+    private Color SpeakerNameColourKaren;
+
+    [Tooltip("The colour of the name of the speaker when Gerard talks.")]
+    [SerializeField]
+    private Color SpeakerNameColourGerard;
+
+    [Tooltip("The colour of the name of the speaker when Daisy talks.")]
+    [SerializeField]
+    private Color SpeakerNameColourDaisy;
+
+    [Tooltip("The colour of the name of the speaker when a stranger talks.")]
+    [SerializeField]
+    private Color SpeakerNameColourStranger;
+
+    public virtual void ShowDialogueBoxContentWithChoices(DialogueBoxContent dialogueBoxContent, Choice[] choices = null)
     {
-        dialogueUI.SetSpeaker(dialogueBox.speaker);
+        dialogueUI.SetSpeaker(GetNameToDisplayForSpeaker(dialogueBoxContent.speaker));
+        dialogueUI.SetSpeakerNameColor(GetSpeakerNameColorForSpeaker(dialogueBoxContent.speaker));
+
+        if (dialogueBoxContent.speaker == DialogueBoxContent.Speaker.DescriptiveText ||
+            dialogueBoxContent.speaker == DialogueBoxContent.Speaker.YouThinking)
+            dialogueUI.SetDialogueTextToItalicFont();
+        else
+            dialogueUI.SetDialogueTextToRegularFont();
+
 
         StopAllCoroutines();
-        StartCoroutine(SlowlyRevealDialogueText(dialogueBox.dialogueText));
+        StartCoroutine(SlowlyRevealDialogueText(dialogueBoxContent.content));
 
-        int nrOfChoices = dialogueBox.choices.Length;
+        int nrOfChoices = choices.Length;
 
         dialogueUI.OnlyShowSpecifiedNumberOfChoices(nrOfChoices);
 
@@ -34,12 +65,65 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
         for (int i = 0; i < nrOfChoices; i++)
         {
-            dialogueUI.SetChoiceText(i, dialogueBox.choices[i].choiceText);
+            dialogueUI.SetChoiceText(i, choices[i].choiceText);
         }
 
         animator.SetBool("show", true);
         animator.SetInteger("numberOfChoices", nrOfChoices);
     }
+
+    private string GetNameToDisplayForSpeaker(DialogueBoxContent.Speaker speaker)
+    {
+        string textDoDisplay;
+
+        switch(speaker)
+        {
+            case DialogueBoxContent.Speaker.DescriptiveText:
+                textDoDisplay = "";
+                break;
+            case DialogueBoxContent.Speaker.YouThinking:
+                textDoDisplay = "You, thinking";
+                break;
+            default:
+                textDoDisplay = speaker.ToString();
+                break;
+        }
+
+        return textDoDisplay;
+    }
+
+    private Color GetSpeakerNameColorForSpeaker(DialogueBoxContent.Speaker speaker)
+    {
+        Color colorOfSpeakerName;
+
+        switch(speaker)
+        {
+            case DialogueBoxContent.Speaker.You:
+                colorOfSpeakerName = SpeakerNameColourYou;
+                break;
+            case DialogueBoxContent.Speaker.YouThinking:
+                colorOfSpeakerName = SpeakerNameColourYouThinking;
+                break;
+            case DialogueBoxContent.Speaker.Karen:
+                colorOfSpeakerName = SpeakerNameColourKaren;
+                break;
+            case DialogueBoxContent.Speaker.Gerard:
+                colorOfSpeakerName = SpeakerNameColourGerard;
+                break;
+            case DialogueBoxContent.Speaker.Daisy:
+                colorOfSpeakerName = SpeakerNameColourDaisy;
+                break;
+            case DialogueBoxContent.Speaker.Stranger:
+                colorOfSpeakerName = SpeakerNameColourStranger;
+                break;
+            default:
+                colorOfSpeakerName = Color.white;
+                break;
+        }
+
+        return colorOfSpeakerName;
+    }
+
 
     IEnumerator SlowlyRevealDialogueText(string text)
     {
