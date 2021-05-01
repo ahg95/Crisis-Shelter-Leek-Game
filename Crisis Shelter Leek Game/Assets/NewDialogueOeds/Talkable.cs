@@ -9,6 +9,6 @@ public class Talkable : Interactable
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         DialogueManager dialogueManager = player.GetComponentInChildren<DialogueManager>();
 
-        dialogueManager.ShowConversationSection(section);
+        dialogueManager.StartConversationSection(section);
     }
 }

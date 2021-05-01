@@ -196,7 +196,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5109749117137596695}
-        m_MethodName: ShowNextDialogueBoxOrHideIfNoneLeft
+        m_MethodName: OnContinueButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -655,12 +655,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 14
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 14
-  m_fontSizeMax: 18
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1185,12 +1185,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 14.4
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 14
-  m_fontSizeMax: 18
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1319,12 +1319,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 14
   m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 14
-  m_fontSizeMax: 18
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1523,7 +1523,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 558097818066253265}
   animator: {fileID: 558097818066253278}
-  textShowSpeed: 0.05
+  textShowSpeed: 0.02
+  SpeakerNameColourYou: {r: 0, g: 0, b: 0, a: 1}
+  SpeakerNameColourYouThinking: {r: 1, g: 1, b: 1, a: 1}
+  SpeakerNameColourKaren: {r: 1, g: 0, b: 0, a: 1}
+  SpeakerNameColourGerard: {r: 0, g: 0.40936995, b: 1, a: 1}
+  SpeakerNameColourDaisy: {r: 0.22821665, g: 1, b: 0, a: 1}
+  SpeakerNameColourStranger: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
 --- !u!1 &5109749116624407512
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
     [SerializeField]
     private Color SpeakerNameColourStranger;
 
-    public virtual void ShowDialogueBoxContentWithChoices(DialogueBoxContent dialogueBoxContent, Choice[] choices = null)
+    public virtual void ShowDialogueBox(DialogueBoxContent dialogueBoxContent, Choice[] choices = null)
     {
         dialogueUI.SetSpeaker(GetNameToDisplayForSpeaker(dialogueBoxContent.speaker));
         dialogueUI.SetSpeakerNameColor(GetSpeakerNameColorForSpeaker(dialogueBoxContent.speaker));
@@ -50,26 +50,30 @@ public class DialogueBoxVisualizer : MonoBehaviour
         else
             dialogueUI.SetDialogueTextToRegularFont();
 
-
         StopAllCoroutines();
         StartCoroutine(SlowlyRevealDialogueText(dialogueBoxContent.content));
 
-        int nrOfChoices = choices.Length;
-
-        dialogueUI.OnlyShowSpecifiedNumberOfChoices(nrOfChoices);
-
-        if (0 < nrOfChoices)
-            dialogueUI.HideContinueButton();
-        else
-            dialogueUI.ShowContinueButton();
-
-        for (int i = 0; i < nrOfChoices; i++)
+        if (choices != null)
         {
-            dialogueUI.SetChoiceText(i, choices[i].choiceText);
+            int nrOfChoices = choices.Length;
+
+            dialogueUI.OnlyShowSpecifiedNumberOfChoices(nrOfChoices);
+            dialogueUI.HideContinueButton();
+
+            for (int i = 0; i < nrOfChoices; i++)
+            {
+                dialogueUI.SetChoiceText(i, choices[i].choiceText);
+            }
+
+            animator.SetInteger("numberOfChoices", nrOfChoices);
+        } else
+        {
+            dialogueUI.OnlyShowSpecifiedNumberOfChoices(0);
+            dialogueUI.ShowContinueButton();
+            animator.SetInteger("numberOfChoices", 0);
         }
 
         animator.SetBool("show", true);
-        animator.SetInteger("numberOfChoices", nrOfChoices);
     }
 
     private string GetNameToDisplayForSpeaker(DialogueBoxContent.Speaker speaker)
