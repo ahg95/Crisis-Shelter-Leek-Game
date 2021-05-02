@@ -7,8 +7,8 @@ public class DialogueManager : MonoBehaviour
     [Tooltip("The DialogueBoxVisualizer that should handle how to display the dialogue boxes.")]
     public DialogueBoxVisualizer dialogueBoxVisualizer;
 
-    Queue<DialogueBox> dialogueBoxesToShow;
-    DialogueBox currentlyShownDialogueBox;
+    ConversationSection activeConversationSection;
+    int indexOfcurrentlyShownDialogueBoxContent;
 
     // Contains all gameObjects that should be disabled when there is dialogue.
     GameObject[] gameObjectsToDisable;
@@ -28,86 +28,54 @@ public class DialogueManager : MonoBehaviour
         gameObjectsToDisable = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
     }
 
-    public void ShowConversationSection(ConversationSection conversationSection)
+    public void StartConversationSection(ConversationSection conversationSection)
     {
         DisableSystemsToDisableOnDialogue();
 
-        EnqueueConversationSection(conversationSection);
+        activeConversationSection = conversationSection;
+        indexOfcurrentlyShownDialogueBoxContent = 0;
 
-        DequeueDialogueBoxAndShowIt();
+        ShowDialogueBoxWithCurrentIndex();
     }
 
-    private void EnqueueConversationSection(ConversationSection conversationSection)
+    private void ShowDialogueBoxWithCurrentIndex()
     {
-        dialogueBoxesToShow = ConvertConversationSectionIntoQueueOfDialogueBoxes(conversationSection);
+        if (CurrentIndexIsLastIndex() && ActiveConversationSectionHasChoicesAtEnd())
+            dialogueBoxVisualizer.ShowDialogueBox(activeConversationSection.dialogueBoxContent[indexOfcurrentlyShownDialogueBoxContent], activeConversationSection.choicesAtEnd);
+        else 
+            dialogueBoxVisualizer.ShowDialogueBox(activeConversationSection.dialogueBoxContent[indexOfcurrentlyShownDialogueBoxContent]);
     }
 
-    private void DequeueDialogueBoxAndShowIt()
+    private bool CurrentIndexIsLastIndex() => (indexOfcurrentlyShownDialogueBoxContent + 1 == activeConversationSection.dialogueBoxContent.Length);
+
+    private bool ActiveConversationSectionHasChoicesAtEnd() => (0 < activeConversationSection.choicesAtEnd.Length);
+
+    public void OnContinueButtonPressed()
     {
-        currentlyShownDialogueBox = dialogueBoxesToShow.Dequeue();
-        dialogueBoxVisualizer.ShowDialogueBox(currentlyShownDialogueBox);
-    }
-
-    private Queue<DialogueBox> ConvertConversationSectionIntoQueueOfDialogueBoxes(ConversationSection conversationSection)
-    {
-        Queue<DialogueBox> dialogueBoxes = new Queue<DialogueBox>();
-
-        DialogueBoxContent[] content = conversationSection.dialogueBoxContent;
-
-        for (int i = 0; i < content.Length; i++)
-        {
-            DialogueBox dialogueBoxToAdd;
-
-            if (i + 1 == content.Length)
-                dialogueBoxToAdd = new DialogueBox(content[i].speaker.ToString(), content[i].content, conversationSection.choicesAtEnd);
-            else
-                dialogueBoxToAdd = new DialogueBox(content[i].speaker.ToString(), content[i].content);
-
-            dialogueBoxes.Enqueue(dialogueBoxToAdd);
-        }
-
-        return dialogueBoxes;
-    }
-
-    public void ShowNextDialogueBoxOrHideIfNoneLeft()
-    {
-        if (ThereAreDialogueBoxesToShow())
-        {
-            DequeueDialogueBoxAndShowIt();
-        } else
-        {
-            currentlyShownDialogueBox = null;
+        if (CurrentIndexIsLastIndex())
             dialogueBoxVisualizer.HideDialogueBox();
-            EnableSystemsToDisableOnDialogue();
+        else
+        {
+            indexOfcurrentlyShownDialogueBoxContent++;
+            ShowDialogueBoxWithCurrentIndex();
         }
-    }
-
-    private bool ThereAreDialogueBoxesToShow()
-    {
-        return (0 < dialogueBoxesToShow.Count);
     }
 
     public void OnDialogueChoiceHasBeenSelectedWithIndex(int indexOfChoice)
     {
-        currentlyShownDialogueBox.choices[indexOfChoice].Consequence.Invoke();
+        activeConversationSection.choicesAtEnd[indexOfChoice].Consequence.Invoke();
 
-        ConversationSection followUpConversation = currentlyShownDialogueBox.choices[indexOfChoice].followUpConversation;
-        Debug.Log(followUpConversation);
-        if (followUpConversation != null)
-            EnqueueConversationSection(followUpConversation);
+        ConversationSection followUpConversationForSelectedChoice = activeConversationSection.choicesAtEnd[indexOfChoice].followUpConversation;
 
-        ShowNextDialogueBoxOrHideIfNoneLeft();
+        if (followUpConversationForSelectedChoice != null)
+            StartConversationSection(followUpConversationForSelectedChoice);
+        else
+            dialogueBoxVisualizer.HideDialogueBox();
     }
 
-    public void DisableSystemsToDisableOnDialogue()
-    {
-        SetActivationOfSystemsToDisableOnDialogue(false);
-    }
+    public void DisableSystemsToDisableOnDialogue() => SetActivationOfSystemsToDisableOnDialogue(false);
 
-    public void EnableSystemsToDisableOnDialogue()
-    {
-        SetActivationOfSystemsToDisableOnDialogue(true);
-    }
+    public void EnableSystemsToDisableOnDialogue() => SetActivationOfSystemsToDisableOnDialogue(true);
 
     public void SetActivationOfSystemsToDisableOnDialogue(bool activated)
     {

@@ -2,10 +2,9 @@
 using UnityEngine.Events;
 
 [System.Serializable]
-public class DialogueBox : MonoBehaviour
+public class DialogueBox
 {
     public string speaker;
-    [TextArea(1, 3)]
     public string dialogueText;
     public Choice[] choices;
 
