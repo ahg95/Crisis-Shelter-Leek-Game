@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Navigation : MonoBehaviour
 {
     private NavMeshAgent agent;
-    [SerializeField] GameObject arrow;
+    public GameObject arrow;
     [SerializeField] Camera cam;
     [SerializeField] AudioClip walkingSound;
     private AudioSource walkSoundPlayer;
