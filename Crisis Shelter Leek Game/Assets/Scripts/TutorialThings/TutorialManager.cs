@@ -11,7 +11,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Animator[] rotationAnim; //popUp Animations
     [SerializeField] private float[] waitTime; //how much you have to wait until you disable the object again(disable after the end animation has finished)
 
-    private int popUpId; // the id for every tutorial part
+    [SerializeField] private int popUpId; // the id for every tutorial part
+     private int n = 0;
 
     //tutorial parts checks
     [SerializeField] private bool[] tutorialParts;
@@ -89,7 +90,6 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialActive = true;
         skipTutorialButton.SetActive(true);
-        int n = 0;
         for (int i = 0; i < popUps.Length; i++)
         {
             if (i == popUpId) { popUps[i].SetActive(true); }
@@ -103,7 +103,7 @@ public class TutorialManager : MonoBehaviour
                 if (waitTime[n] <= 0)
                 {
                     n++;
-                    popUpId++;
+                    popUpId = n;
                     dialogManager.DisplayNextSentence();
                 }
                 else

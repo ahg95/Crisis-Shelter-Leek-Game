@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7474526816934310302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7474526816934310300}
+  - component: {fileID: 7474526816934310301}
+  m_Layer: 0
+  m_Name: Day 1 Coach 1 III
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7474526816934310300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474526816934310302}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7474526816934310301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7474526816934310302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc5c8fca1e106946a3dddccb6a86498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxContent:
+  - speaker: 4
+    content: This is your room.
+  - speaker: 5
+    content: '*She hands you the key.*'
+  - speaker: 4
+    content: There is also a public bathroom and a kitchen on this floor.
+  - speaker: 4
+    content: "I\u2019m sure it\u2019s a very new situation for you, so take your
+      time to get comfortable. But there are important things that I would like to
+      talk about with you tomorrow. Is 9am fine with you?"
+  - speaker: 0
+    content: "Yes, I\u2019m free."
+  - speaker: 4
+    content: Great. See you tomorrow!
+  - speaker: 0
+    content: Daisy?
+  - speaker: 4
+    content: Yes?
+  - speaker: 0
+    content: Thank you very much.
+  - speaker: 4
+    content: You're very welcome!
+  choicesAtEnd: []
