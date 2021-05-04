@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Navigation : MonoBehaviour
 {
     private NavMeshAgent agent;
-    [SerializeField] private GameObject arrow;
+    public GameObject arrow;
     [SerializeField] private Camera cam;
     [Header("Audio")]
     [SerializeField] private AudioClip walkingSound;

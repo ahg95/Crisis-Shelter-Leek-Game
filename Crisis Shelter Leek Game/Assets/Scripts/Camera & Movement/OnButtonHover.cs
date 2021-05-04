@@ -5,7 +5,7 @@ public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [SerializeField] private RotateCamera playerRotate;
     [SerializeField] private float rotateSpeed = 1f;
-    private bool startTimeCount = false;
+    public bool startTimeCount = false;
     [SerializeField] bool vertical = false;
 
     public void OnPointerEnter(PointerEventData eventData)
