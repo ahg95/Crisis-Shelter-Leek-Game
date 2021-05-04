@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InteractWith : MonoBehaviour
 {
-    private Camera cam;
-    private LayerMask clickableLayer;
+    [SerializeField] private Camera cam;
+    [SerializeField] private LayerMask clickableLayer;
 
     private void Start()
     {
         cam = Camera.main;
         clickableLayer = 1 << LayerMask.NameToLayer("Clickable");
     }
+    /// <summary>
+    /// If you click something which is on the clickable layer, get the Interactable class from that clickable and execute InteractWith.
+    /// </summary>
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -23,4 +27,6 @@ public class InteractWith : MonoBehaviour
             }
         }
     }
+
+
 }

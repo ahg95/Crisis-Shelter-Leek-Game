@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Navigation : MonoBehaviour
 {
     private NavMeshAgent agent;
     public GameObject arrow;
-    [SerializeField] Camera cam;
-    [SerializeField] AudioClip walkingSound;
+    [SerializeField] private Camera cam;
+    [Header("Audio")]
+    [SerializeField] private AudioClip walkingSound;
+    [Range(0, 1)]
+    [SerializeField] private float walkSoundVolume = 0.375f;
     private AudioSource walkSoundPlayer;
     /// <summary>
     /// Whatever surface is a navigation static and is within the player's vision, it can move towards.
@@ -24,6 +28,7 @@ public class Navigation : MonoBehaviour
         arrow.SetActive(false);
         agent = GetComponent<NavMeshAgent>();
 
+        cam = Camera.main;
     }
     private void Update()
     {
@@ -31,7 +36,7 @@ public class Navigation : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 15f);
 
-        if (hit.collider != null && hit.collider.gameObject.layer == 10)
+        if (hit.collider != null && hit.collider.gameObject.layer == 10 && !EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetMouseButton(0))
             {
@@ -39,7 +44,7 @@ public class Navigation : MonoBehaviour
                 arrow.SetActive(false);
 
                 StopAllCoroutines();
-                walkSoundPlayer.volume = 1f;
+                walkSoundPlayer.volume = walkSoundVolume;
                 walkSoundPlayer.Play();
             }
 
@@ -74,7 +79,7 @@ public class Navigation : MonoBehaviour
         while (walkSoundPlayer.volume > 0)
         {
             currentTime += Time.deltaTime;
-            walkSoundPlayer.volume = Mathf.Lerp(1, 0, currentTime / totalTime);
+            walkSoundPlayer.volume = Mathf.Lerp(walkSoundVolume, 0, currentTime / totalTime);
             yield return null;
         }
 

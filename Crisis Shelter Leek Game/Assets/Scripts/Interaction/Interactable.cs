@@ -7,30 +7,32 @@ public class Interactable : MonoBehaviour
 {
     // ADD: Cursor change on hover
 
-    bool hovering = false;
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
     [SerializeField] private float minimumInteractionDistance = 5f;
 
-    [Space(15)]
+    [Header("Zoom in & Walk Towards?")]
+    [SerializeField] private bool zoom = false;
+    [SerializeField] private bool moveTowards = false;
+    [HideInInspector] public bool isZooming = false;
+    [HideInInspector] public float zoomAmount;
+    [HideInInspector] public bool isSelected = false;
+
+    [Header("Debug")]
+    [Space(10)]
     [SerializeField] private bool debugAlwaysVisible = false;
     [SerializeField] private bool fullCube = false;
 
+    [Space(10)]
+    [SerializeField] private Texture2D hoverCursor;
+
     private Outline outline;
     private Camera cam;
-
-    //zooming variables
-    [SerializeField] private bool zoom = false;
-    [SerializeField] private bool moveTowards = false;
-
-    public bool isZooming = false;
     private NavMeshAgent agent;
-    public float zoomAmount;
     private Quaternion camDefaultAngle;
     private GameObject camerarot;
 
-    public bool isSelected = false;
 
     public virtual void Start()
     {
@@ -122,13 +124,15 @@ public class Interactable : MonoBehaviour
         float distance = Vector3.Distance(cam.transform.position, transform.position);
         if (distance < minimumInteractionDistance)
         {
-            hovering = true;
+            Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
+
             outline.enabled = true;
         }
     }
     public void OnMouseExit()
     {
-        hovering = false;
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
         outline.enabled = false;
     }
 
