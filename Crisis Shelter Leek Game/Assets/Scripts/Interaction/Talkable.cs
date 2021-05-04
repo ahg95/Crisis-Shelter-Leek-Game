@@ -3,7 +3,20 @@
 public class Talkable : Interactable
 {
     [Space(20)]
+    [SerializeField] private DialogueManager dialogueManager;
     public ConversationTaskCombination[] conversationTaskCombination;
+    
+    private void OnValidate()
+    {
+        if (dialogueManager == null)
+        {
+            dialogueManager = FindObjectOfType<DialogueManager>();
+            if (dialogueManager == null)
+            {
+                print("No dialogue manager in the scene");
+            }
+        }
+    }
     public void ShowConversationSection(ConversationSection section)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

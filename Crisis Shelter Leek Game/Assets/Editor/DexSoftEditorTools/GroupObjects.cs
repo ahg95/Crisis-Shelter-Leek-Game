@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class GroupObjects : EditorWindow
 {
-
-
     [MenuItem("Tools/Group Selected/Pivot from first selected %g")]
     private static void GroupSelected()
     {
@@ -17,7 +13,6 @@ public class GroupObjects : EditorWindow
         go.transform.SetParent(Selection.activeTransform.parent, false);
         foreach (var transform in Selection.transforms) Undo.SetTransformParent(transform, go.transform, "Group Selected");
         Selection.activeGameObject = go;
-
     }
 
     [MenuItem("Tools/Group Selected/Pivot zeroed out #g")]
@@ -29,8 +24,5 @@ public class GroupObjects : EditorWindow
         go.transform.SetParent(Selection.activeTransform.parent, false);
         foreach (var transform in Selection.transforms) Undo.SetTransformParent(transform, go.transform, "Group Selected");
         Selection.activeGameObject = go;
-
     }
-
-
 }

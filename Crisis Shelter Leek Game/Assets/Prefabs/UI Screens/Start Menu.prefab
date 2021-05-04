@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7004881006841491272}
   - component: {fileID: 1208651643}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,12 +725,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7004881007377065012}
   m_Layer: 5
-  m_Name: StartMenu
+  m_Name: Start Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7004881007377065012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 7004881008021127665}
   - component: {fileID: 7004881008021127664}
   m_Layer: 5
-  m_Name: Options
+  m_Name: OptionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,12 +902,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7004881008104030157}
+  - component: {fileID: 390848505}
+  - component: {fileID: 7004881008104030158}
   - component: {fileID: 7004881008104030152}
   - component: {fileID: 7004881008104030159}
-  - component: {fileID: 7004881008104030158}
-  - component: {fileID: 390848505}
   m_Layer: 5
-  m_Name: Play
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -933,15 +933,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 47.700005}
   m_SizeDelta: {x: 126.3, y: 44.66}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7004881008104030152
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7004881008104030156}
-  m_CullTransparentMesh: 0
---- !u!114 &7004881008104030159
+--- !u!114 &390848505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -950,26 +942,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7004881008104030156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: fc73cf86fdc7cde478bd32414d10ab84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  sceneToChangeTo: 
+  updateSceneList: 0
+  currentBuildScenesReadOnly:
+  - '[OG] Main Test Scene'
 --- !u!114 &7004881008104030158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,8 +993,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 390848505}
-        m_MethodName: GetNextScene
-        m_Mode: 5
+        m_MethodName: ChangeScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1024,7 +1003,15 @@ MonoBehaviour:
           m_StringArgument: MS
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &390848505
+--- !u!222 &7004881008104030152
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004881008104030156}
+  m_CullTransparentMesh: 0
+--- !u!114 &7004881008104030159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1033,6 +1020,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7004881008104030156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc73cf86fdc7cde478bd32414d10ab84, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
