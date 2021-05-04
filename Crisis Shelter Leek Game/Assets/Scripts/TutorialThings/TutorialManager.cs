@@ -7,29 +7,26 @@ using UnityEngine.Animations;
 public class TutorialManager : MonoBehaviour
 {
 
-    public GameObject[] popUps; //the key tutorial objects
-    public int popUpId;
+    [SerializeField]private GameObject[] popUps; //the key tutorial objects
+    [SerializeField] private Animator[] rotationAnim; //popUp Animations
+    [SerializeField] private float[] waitTime; //how much you have to wait until you disable the object again(disable after the end animation has finished)
 
-    //popUp Animations
-    public Animator[] rotationAnim;
-
-    public float[] waitTime;
+    private int popUpId; // the id for every tutorial part
 
     //tutorial parts checks
-    public bool[] tutorialParts;
+    [SerializeField] private bool[] tutorialParts;
 
-    public bool tutorialActive = false;
-
-    public bool isRotating = false;
-    public bool isMoving = false;
-    public bool isInteracting = false;
+    private bool tutorialActive = false;
 
     //tutorial dialogue
-    public DialogManager dialogManager;
-    // public DialogueTrigger dialogueTrigger;
+    private DialogManager dialogManager;
+    private GameObject skipTutorialButton;
+    private GameObject finishDialogueButton;
 
-    public GameObject skipTutorialButton;
-    public GameObject finishDialogueButton;
+    //tutorial components
+    private OnButtonHover[] cameraRot;
+    private Navigation nav;
+    private Interactable[] camZoom;
 
     void Start()
     {
@@ -44,8 +41,11 @@ public class TutorialManager : MonoBehaviour
         }
 
 
-        dialogManager = FindObjectOfType<DialogManager>();
-        // dialogueTrigger = FindObjectOfType<DialogueTrigger>();
+        dialogManager = gameObject.GetComponentInChildren<DialogManager>();
+        cameraRot = GameObject.FindWithTag("Player").GetComponentsInChildren<OnButtonHover>();
+        nav = GameObject.FindWithTag("Player").GetComponent<Navigation>();
+        camZoom = GameObject.FindObjectsOfType<Interactable>();
+        nav.enabled = false;
     }
 
     private void Update()
@@ -53,6 +53,35 @@ public class TutorialManager : MonoBehaviour
         if (tutorialActive)
         {
             StartTutorial();
+
+
+            //Check is the player is hovering over any rotation buttons
+            for (int i = 0; i < cameraRot.Length; i++)
+            {
+                if (cameraRot[i].startTimeCount)
+                {
+                    CheckTutorialPart(0);
+                }
+            }
+
+            //Check if player is pressing on the ground
+            if(nav.arrow.activeSelf && Input.GetMouseButton(0))
+            {
+                CheckTutorialPart(1);
+            }
+
+            for (int i = 0; i < camZoom.Length; i++)
+            {
+                //Check if player is zooming in on an inspectable
+                if (camZoom[i].isZooming && camZoom[i].isSelected)
+                {
+                    CheckTutorialPart(3);
+                }
+                if (tutorialParts[3] && !camZoom[i].isZooming && camZoom[i].isSelected)
+                {
+                    CheckTutorialPart(4);
+                }
+            }
         }
     }
 
@@ -60,64 +89,26 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialActive = true;
         skipTutorialButton.SetActive(true);
-
+        int n = 0;
         for (int i = 0; i < popUps.Length; i++)
         {
             if (i == popUpId) { popUps[i].SetActive(true); }
             else { popUps[i].SetActive(false); }
         }
 
-        //first tutorial is rotation
-        if (popUpId == 0)
-        {
-            if (isRotating)
+        if (popUpId == n && n < popUps.Length){
+            if (tutorialParts[n])
             {
-                rotationAnim[0].SetBool("animOff", true);
-                if (waitTime[0] <= 0)
+                rotationAnim[n].SetBool("animOff", true);
+                if (waitTime[n] <= 0)
                 {
+                    n++;
                     popUpId++;
                     dialogManager.DisplayNextSentence();
                 }
                 else
                 {
-                    waitTime[0] -= Time.deltaTime;
-                }
-            }
-        }
-        else if (popUpId == 1)//2nd is movement
-        {
-            if (isMoving)
-            {
-                rotationAnim[1].SetBool("animOff", true);
-
-                if(waitTime[1] <= 0)
-                {
-                    popUpId++;
-                    dialogManager.DisplayNextSentence();
-                }
-                else
-                {
-                    waitTime[1] -= Time.deltaTime;
-                }
-            }
-        }
-        else if (popUpId == 2)//3rd is interaction
-        {
-            if (isInteracting)
-            {
-                if (isMoving)
-                {
-                    rotationAnim[2].SetBool("animOff", true);
-
-                    if (waitTime[2] <= 0)
-                    {
-                        popUpId++;
-                        dialogManager.DisplayNextSentence();
-                    }
-                    else
-                    {
-                        waitTime[2] -= Time.deltaTime;
-                    }
+                    waitTime[n] -= Time.deltaTime;
                 }
             }
         }
@@ -126,7 +117,6 @@ public class TutorialManager : MonoBehaviour
             finishDialogueButton.SetActive(true);
             skipTutorialButton.SetActive(false);
         }
-
     }
 
     //this function will skip the tutorial 
@@ -140,7 +130,7 @@ public class TutorialManager : MonoBehaviour
     /// <summary>
     /// This function will be called when the player succeded at accomplishing a tutorial part
     /// </summary>
-    /// <param name="partNr"> The order of the tutroial part that you wish to accomplish </param>
+    /// <param name="partNr"> The order of the tutorial part that you wish to accomplish from the array </param>
     public void CheckTutorialPart(int partNr)
     {
         if (tutorialActive)
@@ -149,33 +139,10 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-
-
-    public void CheckRotation (bool rotating)
+    public void EnableNav()
     {
-        if (tutorialActive)
-        {
-            isRotating = rotating;
-        }
+        nav.enabled = true;
     }
-
-    public void CheckMovement (bool moving)
-    {
-        if (tutorialActive)
-        {
-            isMoving = moving;
-        }
-    }
-
-    public void CheckInteraction (bool interacting)
-    {
-        if (tutorialActive)
-        {
-            isInteracting = interacting;
-        }
-    }
-
-
 }
 
 
@@ -184,3 +151,11 @@ public class TutorialManager : MonoBehaviour
 //a text pop-up for moving to arrow => which is already highlighted
 //an arrow pointing to an object you can interact with 
 //a highlight over the task ui with a popup saying what's it for
+
+
+//get the onbutton hover and check if starttime Count is true
+//check if arrow is visible and you clicked
+
+
+//look at pamphlet
+//look at task

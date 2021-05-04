@@ -21,7 +21,7 @@ public class DialogManager : MonoBehaviour
     public void StartDialogue (Dialogue dialogue)
     {
         anim.SetBool("isOpen", true);
-        Debug.Log("Starting Conversation with " + dialogue.name);
+       //Debug.Log("Starting Conversation with " + dialogue.name);
         NameText.text = dialogue.name;
         sentences.Clear();
 
@@ -35,7 +35,7 @@ public class DialogManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        Debug.Log("NextSentence");
+        //Debug.Log("NextSentence");
         if(sentences.Count == 0)
         {
             EndDialogue();

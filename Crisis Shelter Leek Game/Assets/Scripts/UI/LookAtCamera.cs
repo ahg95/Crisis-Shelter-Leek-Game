@@ -1,23 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LookAtCamera : MonoBehaviour
 {
-    public Camera cam;
-    public float rotX = 0;
-    public float rotY = 180;
-    public float rotZ = 0;
+    private Transform camTransform;
 
     private void Start()
     {
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        camTransform = Camera.main.transform;
     }
     void Update()
     {
-        Vector3 v = cam.transform.position - transform.position;
-        v.x = v.z = 0.0f;
-        transform.LookAt(cam.transform.position - v);
-        transform.Rotate(rotX, rotY, rotZ);
+        Vector3 camPos = camTransform.position;
+        camPos.y = transform.position.y; // Make the arrow only rotate towards the player horizontally.
+
+        transform.LookAt(camPos);
     }
 }

@@ -19,6 +19,6 @@ public class TaskAnastasia : MonoBehaviour
     //Adds days after a task has been completed
     public void AddDays()
     {
-        GlobalStats.IncreaseStatsManual(daysAmount, daysAmount * 100);
+        //GlobalStats.IncreaseStatsManual(daysAmount, daysAmount * 100);
     }
 }
