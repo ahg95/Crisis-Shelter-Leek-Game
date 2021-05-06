@@ -18,7 +18,6 @@ public class NextScene : MonoBehaviour
         if (sceneToChangeTo.Length > 0)
         {
             SceneManager.LoadScene(sceneToChangeTo);
-            Debug.Log("Changed scene!");
         }
         else
         {
