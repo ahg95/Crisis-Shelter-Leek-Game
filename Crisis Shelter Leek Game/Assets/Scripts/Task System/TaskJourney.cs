@@ -8,9 +8,6 @@ public class TaskJourney : ScriptableObject
     public Task firstTask;
     #endregion
 
-    private GameObject taskTextGameObject;
-    private GameObject locationTextGameObject;
-
     [Space(15)]
     public Task assignedTask;
 
@@ -26,8 +23,6 @@ public class TaskJourney : ScriptableObject
             assignedTaskInt++;
             assignedTask = tasksInOrder[assignedTaskInt];
 
-            UpdateUI();
-
             //Debug.Log("Progressed Task!");
             //Debug.Log("Current Task: " + assignedTask);
         }
@@ -36,16 +31,7 @@ public class TaskJourney : ScriptableObject
             //Debug.Log("Last Task Finished!");
         }
     }
-    private void UpdateUI()
-    {
-        taskTextGameObject.GetComponent<TextMeshProUGUI>().SetText(assignedTask.description);
-        locationTextGameObject.GetComponent<TextMeshProUGUI>().SetText(assignedTask.location.ToString());
-    }
-    private void OnEnable()
-    {
-        taskTextGameObject = GameObject.Find("CURRENTTASK");
-        locationTextGameObject = GameObject.Find("TASKLOCATION");
-    }
+
     private void OnDisable()
     {
         // reset
