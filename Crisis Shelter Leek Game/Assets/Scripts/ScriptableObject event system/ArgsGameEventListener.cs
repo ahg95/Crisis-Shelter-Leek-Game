@@ -13,5 +13,5 @@ public abstract class ArgsGameEventListener<T> : MonoBehaviour
 
     private void OnDisable() => GameEvent.RemoveListener(this);
 
-    public void OnEventRaised(T argument) => Response.Invoke(argument);
+    public virtual void OnEventRaised(T argument) => Response.Invoke(argument);
 }
