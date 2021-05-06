@@ -10,14 +10,13 @@ public class DialogueManager : MonoBehaviour
     ConversationSection activeConversationSection;
     int indexOfcurrentlyShownDialogueBoxContent;
 
-    public GameEvent DialogueStarted;
-
-    public GameEvent DialogueEnded;
+    public GameObjectGameEvent DialogueStarted;
+    public GameObjectGameEvent DialogueEnded;
 
     public void StartConversationSection(ConversationSection conversationSection)
     {
         if (activeConversationSection == null)
-            DialogueStarted.Raise();
+            DialogueStarted.Raise(conversationSection.gameObject);
 
         activeConversationSection = conversationSection;
         indexOfcurrentlyShownDialogueBoxContent = 0;
@@ -41,9 +40,16 @@ public class DialogueManager : MonoBehaviour
     {
         if (CurrentIndexIsLastIndex())
         {
-            dialogueBoxVisualizer.HideDialogueBox();
-            activeConversationSection = null;
-            DialogueEnded.Raise();
+            if (activeConversationSection.followUpConversationIfNoChoicesPresent != null)
+            {
+                StartConversationSection(activeConversationSection.followUpConversationIfNoChoicesPresent);
+            }
+            else
+            {
+                dialogueBoxVisualizer.HideDialogueBox();
+                DialogueEnded.Raise(activeConversationSection.gameObject);
+                activeConversationSection = null;
+            }
         }
         else
         {
@@ -61,6 +67,9 @@ public class DialogueManager : MonoBehaviour
         if (followUpConversationForSelectedChoice != null)
             StartConversationSection(followUpConversationForSelectedChoice);
         else
+        {
             dialogueBoxVisualizer.HideDialogueBox();
+            DialogueEnded.Raise(activeConversationSection.gameObject);
+        }
     }
 }
