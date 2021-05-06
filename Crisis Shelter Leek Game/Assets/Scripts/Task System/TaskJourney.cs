@@ -17,7 +17,7 @@ public class TaskJourney : ScriptableObject
     [Space(20)]
     public Task[] tasksInOrder;
 
-    private int assignedTaskInt = -1;
+    private int assignedTaskInt = 0;
 
     public void Progress()
     {
@@ -40,11 +40,16 @@ public class TaskJourney : ScriptableObject
     {
         taskTextGameObject.GetComponent<TextMeshProUGUI>().SetText(assignedTask.description);
         locationTextGameObject.GetComponent<TextMeshProUGUI>().SetText(assignedTask.location.ToString());
+
+        Debug.Log(tasksInOrder[assignedTaskInt]);
     }
+
     private void OnEnable()
     {
         taskTextGameObject = GameObject.Find("CURRENTTASK");
         locationTextGameObject = GameObject.Find("TASKLOCATION");
+
+        UpdateUI();
     }
     private void OnDisable()
     {
