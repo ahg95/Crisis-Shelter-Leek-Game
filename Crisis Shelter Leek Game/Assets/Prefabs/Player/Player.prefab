@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: -16
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &2603660212909523280
 GameObject:
@@ -350,6 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: -8
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &3189433826739960378
 GameObject:
@@ -520,6 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: -32
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &3382097068555562840
 GameObject:
@@ -689,6 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: -24
+  startTimeCount: 0
   vertical: 1
 --- !u!1 &4035814283267761244
 GameObject:
@@ -859,6 +863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: -24
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &4774114162719474091
 GameObject:
@@ -995,6 +1000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: 48
+  startTimeCount: 0
   vertical: 0
 --- !u!223 &8821625304666798932
 Canvas:
@@ -1207,6 +1213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: -48
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &8221924210309448330
 GameObject:
@@ -1341,6 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: 24
+  startTimeCount: 0
   vertical: 1
 --- !u!1 &8371596311337322774
 GameObject:
@@ -1631,6 +1639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: 16
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &8371596312090602852
 GameObject:
@@ -1818,6 +1827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: 8
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &8371596312936759775
 GameObject:
@@ -1952,6 +1962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: 24
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &8371596313010886313
 GameObject:
@@ -2086,6 +2097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRotate: {fileID: 8344777429472347002}
   rotateSpeed: 32
+  startTimeCount: 0
   vertical: 0
 --- !u!1 &8371596313123110920
 GameObject:
@@ -2100,6 +2112,8 @@ GameObject:
   - component: {fileID: 123022121}
   - component: {fileID: 720242705759610332}
   - component: {fileID: 123022122}
+  - component: {fileID: 664607530207701615}
+  - component: {fileID: 7944473682712606382}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2192,3 +2206,79 @@ NavMeshAgent:
   m_BaseOffset: 1.6
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
+--- !u!114 &664607530207701615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371596313123110920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d11bae3f8f6f6d4896163d5125122cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 21d73f2bd672e6143b9c00850e52bcea, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 720242705759610332}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 123022121}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7944473682712606382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371596313123110920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d11bae3f8f6f6d4896163d5125122cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: b2d306527e6652145b0049916a6cf6df, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 720242705759610332}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 123022121}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
