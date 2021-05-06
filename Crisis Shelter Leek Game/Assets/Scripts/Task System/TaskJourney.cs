@@ -14,7 +14,7 @@ public class TaskJourney : ScriptableObject
     [Space(20)]
     public Task[] tasksInOrder;
 
-    private int assignedTaskInt = -1;
+    private int assignedTaskInt = 0;
 
     public void Progress()
     {
