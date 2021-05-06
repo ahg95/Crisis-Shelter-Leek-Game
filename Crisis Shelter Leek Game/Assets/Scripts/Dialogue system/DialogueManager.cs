@@ -10,27 +10,14 @@ public class DialogueManager : MonoBehaviour
     ConversationSection activeConversationSection;
     int indexOfcurrentlyShownDialogueBoxContent;
 
-    // Contains all gameObjects that should be disabled when there is dialogue.
-    GameObject[] gameObjectsToDisable;
+    public GameEvent DialogueStarted;
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnLevelFinishedLoading;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
-    }
-
-    private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
-    {
-        gameObjectsToDisable = GameObject.FindGameObjectsWithTag("disabledOnDialogue");
-    }
+    public GameEvent DialogueEnded;
 
     public void StartConversationSection(ConversationSection conversationSection)
     {
-        DisableSystemsToDisableOnDialogue();
+        if (activeConversationSection == null)
+            DialogueStarted.Raise();
 
         activeConversationSection = conversationSection;
         indexOfcurrentlyShownDialogueBoxContent = 0;
@@ -53,7 +40,11 @@ public class DialogueManager : MonoBehaviour
     public void OnContinueButtonPressed()
     {
         if (CurrentIndexIsLastIndex())
+        {
             dialogueBoxVisualizer.HideDialogueBox();
+            activeConversationSection = null;
+            DialogueEnded.Raise();
+        }
         else
         {
             indexOfcurrentlyShownDialogueBoxContent++;
@@ -71,24 +62,5 @@ public class DialogueManager : MonoBehaviour
             StartConversationSection(followUpConversationForSelectedChoice);
         else
             dialogueBoxVisualizer.HideDialogueBox();
-    }
-
-    public void DisableSystemsToDisableOnDialogue() => SetActivationOfSystemsToDisableOnDialogue(false);
-
-    public void EnableSystemsToDisableOnDialogue() => SetActivationOfSystemsToDisableOnDialogue(true);
-
-    public void SetActivationOfSystemsToDisableOnDialogue(bool activated)
-    {
-        InteractWith interactionScript = FindObjectOfType<InteractWith>();
-
-        foreach (GameObject objectToDisable in gameObjectsToDisable)
-        {
-            objectToDisable.SetActive(activated);
-        }
-
-        if (interactionScript != null)
-            interactionScript.enabled = activated;
-        else
-            Debug.LogWarning("DialogueManager couldn't find interactionScript to disable. Did you forget to put it into the scene?");
     }
 }
