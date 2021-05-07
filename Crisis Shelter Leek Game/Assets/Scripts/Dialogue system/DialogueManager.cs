@@ -41,9 +41,14 @@ public class DialogueManager : MonoBehaviour
     {
         if (CurrentIndexIsLastIndex())
         {
-            dialogueBoxVisualizer.HideDialogueBox();
-            activeConversationSection = null;
-            DialogueEnded.Raise();
+            if (activeConversationSection.followUpConversationIfNoChoicesPresent != null)
+                StartConversationSection(activeConversationSection.followUpConversationIfNoChoicesPresent);
+            else
+            {
+                dialogueBoxVisualizer.HideDialogueBox();
+                activeConversationSection = null;
+                DialogueEnded.Raise();
+            }
         }
         else
         {
