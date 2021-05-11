@@ -6,8 +6,10 @@ public class Talkable : Interactable
     [SerializeField] private DialogueManager dialogueManager;
     public ConversationTaskCombination[] conversationTaskCombination;
     
-    private void OnValidate()
+    public override void OnValidate()
     {
+        base.OnValidate();
+
         if (dialogueManager == null)
         {
             dialogueManager = FindObjectOfType<DialogueManager>();

@@ -28,11 +28,16 @@ public class Interactable : MonoBehaviour
     [SerializeField] private Texture2D hoverCursor;
 
     private Outline outline;
+    protected Vector3 centerOfMesh;
     private Camera cam;
-    private NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
     private Quaternion camDefaultAngle;
     private GameObject camerarot;
 
+    public virtual void OnValidate()
+    {
+        centerOfMesh = GetComponentInChildren<MeshRenderer>().bounds.center;
+    }
 
     public virtual void Start()
     {
@@ -74,7 +79,7 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public void ZoomIn()
     {
-        float distance = Vector3.Distance(transform.position, cam.transform.position);
+        float distance = Vector3.Distance(centerOfMesh, cam.transform.position);
         zoomAmount = Mathf.RoundToInt(Mathf.Lerp(40, 25, Mathf.Clamp01(distance)));
 
         if (moveTowards)
@@ -121,7 +126,7 @@ public class Interactable : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        float distance = Vector3.Distance(cam.transform.position, transform.position);
+        float distance = Vector3.Distance(cam.transform.position, centerOfMesh);
         if (distance < minimumInteractionDistance)
         {
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
@@ -155,11 +160,11 @@ public class Interactable : MonoBehaviour
 
         if (!fullCube)
         {
-            Gizmos.DrawWireCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
+            Gizmos.DrawWireCube(centerOfMesh, Vector3.one * minimumInteractionDistance * 2);
         }
         else
         {
-            Gizmos.DrawCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
+            Gizmos.DrawCube(centerOfMesh, Vector3.one * minimumInteractionDistance * 2);
         }
     }
 }
