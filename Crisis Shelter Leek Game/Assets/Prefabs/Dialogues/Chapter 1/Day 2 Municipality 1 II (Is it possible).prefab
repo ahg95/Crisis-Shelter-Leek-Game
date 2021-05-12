@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6674855813377844732}
   - component: {fileID: 6674855812697320744}
   m_Layer: 0
-  m_Name: Day 2 Municipality 1 II (Is it possible to pay the fee later)
+  m_Name: Day 2 Municipality 1 II (Is it possible)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,9 +51,11 @@ MonoBehaviour:
     Consequence:
       m_PersistentCalls:
         m_Calls: []
-    followUpConversation: {fileID: 0}
+    followUpConversation: {fileID: 7556759186691063153, guid: 144170c080343874195b8449f8547037,
+      type: 3}
   - choiceText: I will make a new appointment. Goodbye.
     Consequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 0}
+  followUpConversationIfNoChoicesPresent: {fileID: 0}

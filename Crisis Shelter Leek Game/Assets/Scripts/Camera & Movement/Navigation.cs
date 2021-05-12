@@ -36,6 +36,16 @@ public class Navigation : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 15f);
 
+        NavMeshHit hitPoint;
+        if (NavMesh.SamplePosition(hit.point, out hitPoint, 1f, NavMesh.AllAreas))
+        {
+            print("hit");
+        }
+        else
+        {
+            print("no hit");
+        }
+
         if (hit.collider != null && hit.collider.gameObject.layer == 10 && !EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetMouseButton(0))
