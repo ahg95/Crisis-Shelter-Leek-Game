@@ -25,6 +25,7 @@ public class NextScene : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         if (updateSceneList) updateSceneList = false;
@@ -38,4 +39,5 @@ public class NextScene : MonoBehaviour
             }
         }
     }
+#endif
 }

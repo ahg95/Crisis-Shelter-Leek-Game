@@ -126,7 +126,6 @@ public class Interactable : MonoBehaviour
         if (cam.transform.localRotation == camDefaultAngle) { isSelected = false; }
 
     }
-
     public void OnMouseEnter()
     {
         float distance = Vector3.Distance(cam.transform.position, centerOfMesh);
@@ -140,6 +139,24 @@ public class Interactable : MonoBehaviour
         else
         {
             withinInteractionDistance = false;
+        }
+    }
+    private void OnMouseOver()
+    {
+        if (!withinInteractionDistance)
+        {
+            float distance = Vector3.Distance(cam.transform.position, centerOfMesh);
+            if (distance < minimumInteractionDistance)
+            {
+                Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
+
+                withinInteractionDistance = true;
+                outline.enabled = true;
+            }
+            else
+            {
+                withinInteractionDistance = false;
+            }
         }
     }
     public void OnMouseExit()

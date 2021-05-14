@@ -10,6 +10,7 @@ public class TextScene : MonoBehaviour
     private CanvasGroup textAlpha;
     [SerializeField] private string[] textArray;
     private int currentTextInt = 0;
+    private bool switchingText = false;
 
     [Tooltip("How quickly the text will fade in- and out")]
     [SerializeField] private float fadeSpeed = 0.05f;
@@ -36,7 +37,7 @@ public class TextScene : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && !switchingText)
         {
             currentTextInt += 1;
 
@@ -57,14 +58,15 @@ public class TextScene : MonoBehaviour
     IEnumerator TextTimer(string text)
     {
         // if the next current text int is still below the length
+        switchingText = true;
 
-            while (textAlpha.alpha > 0) // Fade out text
-            {
-                textAlpha.alpha -= 0.05f;
-                yield return new WaitForSeconds(fadeSpeed);
-            }
+        while (textAlpha.alpha > 0) // Fade out text
+        {
+            textAlpha.alpha -= 0.05f;
+            yield return new WaitForSeconds(fadeSpeed);
+        }
 
-            textComponent.text = text;
+        textComponent.text = text;
 
             while (textAlpha.alpha < 1) // Fade in text
             {
@@ -72,6 +74,7 @@ public class TextScene : MonoBehaviour
                 yield return new WaitForSeconds(fadeSpeed);
             }
 
+        switchingText = false;
             yield return new WaitForSeconds(showTextLength); // wait 6 seconds after the textAlpha is 1.
 
         /*        // if the array has a string in the current text int
@@ -84,10 +87,20 @@ public class TextScene : MonoBehaviour
                     EndOfText();
                 }*/
     }
+    IEnumerator LastFade()
+    {
+        while (textAlpha.alpha > 0) // Fade out text
+        {
+            textAlpha.alpha -= 0.05f;
+            yield return new WaitForSeconds(fadeSpeed);
+        }
+
+        afterSceneVoid.Invoke();
+    }
 
     private void EndOfText()
     {
-        afterSceneVoid.Invoke();
+        StartCoroutine(LastFade());
 
         if (switchScene)
         {

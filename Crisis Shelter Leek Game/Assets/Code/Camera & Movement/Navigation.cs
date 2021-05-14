@@ -29,6 +29,8 @@ public class Navigation : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         cam = Camera.main;
+
+        Cursor.lockState = CursorLockMode.Confined;
     }
     private void Update()
     {
