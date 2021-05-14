@@ -11,6 +11,7 @@ public class Interactable : MonoBehaviour
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
     [SerializeField] private float minimumInteractionDistance = 5f;
+    private bool withinInteractionDistance = false;
 
     [Header("Zoom in & Walk Towards?")]
     [SerializeField] private bool zoom = false;
@@ -50,13 +51,15 @@ public class Interactable : MonoBehaviour
     }
     public virtual void InteractWith()
     {
-
-         onInteraction.Invoke();
-        
-        if (zoom)
+        if (withinInteractionDistance)
         {
-            isSelected = true;
-            isZooming = !isZooming;
+            onInteraction.Invoke();
+
+            if (zoom)
+            {
+                isSelected = true;
+                isZooming = !isZooming;
+            }
         }
     }
     private void Update()
@@ -131,7 +134,12 @@ public class Interactable : MonoBehaviour
         {
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
 
+            withinInteractionDistance = true;
             outline.enabled = true;
+        }
+        else
+        {
+            withinInteractionDistance = false;
         }
     }
     public void OnMouseExit()

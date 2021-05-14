@@ -5,7 +5,7 @@ public class RotateCamera : MonoBehaviour
     [SerializeField] float rotationSpeedMultiplier = 1f;
     [SerializeField] private Camera cam;
 
-    [Range(5f, 30f)]
+    [Range(5f, 45f)]
     [Tooltip("The amount of degrees the player can rotate in.")]
     [Header("Rotation Limit")]
     public int verticalLimit = 15;
