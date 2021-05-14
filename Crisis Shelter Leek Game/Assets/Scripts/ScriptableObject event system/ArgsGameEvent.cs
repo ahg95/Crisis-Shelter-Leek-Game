@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public abstract class ArgsGameEvent<T> : ScriptableObject
 {
     List<ArgsGameEventListener<T>> listeners = new List<ArgsGameEventListener<T>>();
