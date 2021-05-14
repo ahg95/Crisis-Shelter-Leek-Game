@@ -10,13 +10,19 @@ public class DialogueManager : MonoBehaviour
     ConversationSection activeConversationSection;
     int indexOfcurrentlyShownDialogueBoxContent;
 
-    public GameObjectGameEvent DialogueStarted;
-    public GameObjectGameEvent DialogueEnded;
+    public GameEvent DialogueHasStarted;
+    public GameEvent DialogueHasEnded;
+    public GameObjectGameEvent ConversationSectionHasStarted;
+    public GameObjectGameEvent ConversationSectionHasEnded;
 
     public void StartConversationSection(ConversationSection conversationSection)
     {
         if (activeConversationSection == null)
-            DialogueStarted.Raise(conversationSection.gameObject);
+            DialogueHasStarted.Raise();
+        else
+            ConversationSectionHasEnded.Raise(activeConversationSection.gameObject);
+
+        ConversationSectionHasStarted.Raise(conversationSection.gameObject);
 
         activeConversationSection = conversationSection;
         indexOfcurrentlyShownDialogueBoxContent = 0;
@@ -47,7 +53,8 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 dialogueBoxVisualizer.HideDialogueBox();
-                DialogueEnded.Raise(activeConversationSection.gameObject);
+                DialogueHasEnded.Raise();
+                ConversationSectionHasEnded.Raise(activeConversationSection.gameObject);
                 activeConversationSection = null;
             }
         }
@@ -69,7 +76,8 @@ public class DialogueManager : MonoBehaviour
         else
         {
             dialogueBoxVisualizer.HideDialogueBox();
-            DialogueEnded.Raise(activeConversationSection.gameObject);
+            DialogueHasEnded.Raise();
+            ConversationSectionHasEnded.Raise(activeConversationSection.gameObject);
         }
     }
 }

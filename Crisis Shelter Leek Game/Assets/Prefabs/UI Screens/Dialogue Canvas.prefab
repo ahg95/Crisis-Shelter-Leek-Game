@@ -511,7 +511,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -515.1429, y: 293.0715}
+  m_SizeDelta: {x: -123.68823, y: 293.0715}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &558097818066253279
 CanvasRenderer:
@@ -1396,7 +1396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.47407568}
   m_AnchorMax: {x: 1, y: 0.47407568}
-  m_AnchoredPosition: {x: 0, y: -0.000015258789}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -304.77875, y: 103.51987}
   m_Pivot: {x: 0.5, y: 0.9999998}
 --- !u!1 &3297753901486051904
@@ -1680,8 +1680,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBoxVisualizer: {fileID: 5109749115843790887}
-  DialogueStarted: {fileID: 11400000, guid: 21d73f2bd672e6143b9c00850e52bcea, type: 2}
-  DialogueEnded: {fileID: 11400000, guid: b2d306527e6652145b0049916a6cf6df, type: 2}
+  DialogueHasStarted: {fileID: 11400000, guid: 6af39a303d1df8049850f9adedb855c2, type: 2}
+  DialogueHasEnded: {fileID: 11400000, guid: 72af6ff0238576e44aa6513c6cd56d0e, type: 2}
+  ConversationSectionHasStarted: {fileID: 11400000, guid: bfdea8f0268a6cb498805c0ff7f0021b,
+    type: 2}
+  ConversationSectionHasEnded: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719,
+    type: 2}
 --- !u!1 &6831900793397838497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000015259}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 159}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8175778064095578766
