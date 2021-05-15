@@ -19,17 +19,32 @@ public class UpdateStats : MonoBehaviour
     [SerializeField] private AudioClip tickSound;
     [SerializeField] private AudioClip coinSound;
 
+    public bool finished = false;//checks if it has finished showing the days & cost
+    private bool coroutineStarted = false;//checks if coroutine started
     public void ShowStats()
     {
+        coroutineStarted = true;
         StartCoroutine(StatsUpdater());
     }
 
+    private void Update()
+    {
+        if(displayedAmountOfDays == GlobalStats.newAmountOfDays && displayedAmountOfMoney == GlobalStats.newCost && coroutineStarted)
+        {
+            finished = true;
+        }
+        else
+        {
+            finished = false;
+        }
+
+    }
     /// <summary>
     /// An int and a float keep up what the costs and amount of days on screen are.
     /// It is checked whether the currently shown amount of days and costs are still below the new values.
     /// If true, the displayed amounts are increased, and the process repeats itself until it's up-to-date.
     /// </summary>
-    private IEnumerator StatsUpdater()
+    public IEnumerator StatsUpdater()
     {
         yield return new WaitForSeconds(1.5f);
 
