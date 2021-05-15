@@ -1,10 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SimpleSceneLoader : MonoBehaviour
 {
+    public UnityEvent OnSceneStarted;
+
+    private void Start()
+    {
+        OnSceneStarted.Invoke();
+    }
+
     public enum GameScene {
         Wender,
         WenderRoom,
@@ -14,9 +22,18 @@ public class SimpleSceneLoader : MonoBehaviour
 
     public void LoadScene(GameScene scene)
     {
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(GetSceneNameForGameScene(scene));
     }
 
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void MyTestFunction(int a)
+    {
+        Debug.Log("Test");
+    }
 
     private string GetSceneNameForGameScene(GameScene scene)
     {
