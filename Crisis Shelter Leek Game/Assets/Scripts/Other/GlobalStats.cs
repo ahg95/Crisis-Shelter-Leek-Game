@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GlobalStats : MonoBehaviour
+public static class GlobalStats
 {
     public static string currentTaskTitle;
     public static string currentTaskJSON; 

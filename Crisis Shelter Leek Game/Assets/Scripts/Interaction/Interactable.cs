@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private bool zoom = false;
     [SerializeField] private bool moveTowards = false;
     [HideInInspector] public bool isZooming = false;
+    private bool isMoving = false;
     [HideInInspector] public float zoomAmount;
     [HideInInspector] public bool isSelected = false;
 
@@ -53,6 +54,14 @@ public class Interactable : MonoBehaviour
             isSelected = true;
             isZooming = !isZooming;
         }
+        else
+        {
+            if (moveTowards)
+            {
+                isSelected = true;
+                isMoving = !isMoving;
+            }
+        }
     }
     private void Update()
     {
@@ -64,7 +73,18 @@ public class Interactable : MonoBehaviour
             }
             else
             {
-                ZoomOut();
+                ZoomOrRotateOut();
+            }
+        }
+        else if(!zoom && isSelected && moveTowards)
+        {
+            if (isMoving)
+            {
+                MoveTo();
+            }
+            else
+            {
+                ZoomOrRotateOut();
             }
         }
     }
@@ -81,24 +101,51 @@ public class Interactable : MonoBehaviour
         {
             float angle = Vector3.Angle(transform.position, (cam.transform.position - transform.position).normalized); //calculate at which angle you're interacting with the object
 
-            if (angle <= 45)
+            if (this.gameObject.CompareTag("Inspect"))
             {
-                camerarot.SetActive(false);
-                cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-                cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+
+                if (angle <= 45)
+                {
+                    camerarot.SetActive(false);
+                    cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
+                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+                }
+                else if (angle > 45)
+                {
+                    camerarot.SetActive(false);
+                    agent.SetDestination(transform.position + transform.forward * 2);
+                    if (!agent.hasPath)//wait until he has reached the destination to rotate
+                    {
+                        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+
+                        if (angle <= 20)//wait until rotation has finished to zoom in
+                        {
+                            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
+                        }
+                    }
+                }
             }
-            else if (angle > 45)
+
+            camerarot.SetActive(false);
+            agent.SetDestination(transform.position + transform.forward * 2);
+            if (!agent.hasPath)//wait until he has reached the destination to rotate
             {
-                camerarot.SetActive(false);
-                agent.SetDestination(transform.position + transform.forward * 2);
-                if (!agent.hasPath)//wait until he has reached the destination to rotate
+                Vector3 targetPos = transform.position;
+                targetPos.y = cam.transform.position.y;
+
+                if (this.gameObject.CompareTag("Talkable"))
+                {
+                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(targetPos - cam.transform.position), 5 * Time.deltaTime);
+                }
+                else
                 {
                     cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
 
-                    if (cam.transform.rotation == Quaternion.LookRotation(transform.position - cam.transform.position))//wait until rotation has finished to zoom in
-                    {
-                        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-                    }
+                }
+
+                if (angle <= 20)//wait until rotation has finished to zoom in
+                {
+                    cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
                 }
             }
         }
@@ -110,13 +157,33 @@ public class Interactable : MonoBehaviour
         }
 
     }
-    public void ZoomOut()
+    public void ZoomOrRotateOut()
     {
         camerarot.SetActive(true);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 5);
+        if (zoom)
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 5);
+        }
         cam.transform.localRotation = Quaternion.Slerp(cam.transform.localRotation, camDefaultAngle, 5 * Time.deltaTime);
         if (cam.transform.localRotation == camDefaultAngle) { isSelected = false; }
 
+    }
+    /// <summary>
+    /// Moves player towards the object and rotates at it
+    /// </summary>
+    public void MoveTo()
+    {
+        isMoving = true;
+        camerarot.SetActive(false);
+        agent.SetDestination(transform.position + transform.forward * 2);
+        if (!agent.hasPath)//wait until he has reached the destination to rotate
+        {
+            cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+            if (this.gameObject.CompareTag("Talkable"))
+            {
+                cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation((transform.position - cam.transform.position) + transform.up * 3), 5 * Time.deltaTime);
+            }
+        }
     }
 
     public void OnMouseEnter()

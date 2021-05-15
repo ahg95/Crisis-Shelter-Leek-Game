@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 668794177437851752}
   - component: {fileID: 6952246228228443174}
   m_Layer: 0
-  m_Name: SceneLoader
+  m_Name: Scene transitioner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,14 +216,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 668794177437851758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5acbfe8892a04c4fad7aa0305078179, type: 3}
+  m_Script: {fileID: 11500000, guid: 29afaa1f11b18404c95a39a5399362a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTransition: {fileID: 8316612296648237856}
-  sceneTransition: {fileID: 2626922255901737319}
-  simpleTransitionTime: 7
+  sceneTransition: {fileID: 0}
+  endTransitionTime: 0
+  startTransitionTime: 0
   sceneTransitionTime: 1
-  transition: {fileID: 0}
+  transition: {fileID: 7808371764214868882}
   stats: {fileID: 8588861264545205089}
   fadeInterval: 2
 --- !u!1 &668794178108760208
