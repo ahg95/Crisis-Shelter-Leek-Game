@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class UpdateTeddyBearAmount : MonoBehaviour
 {
-    public int amountOfTeddyBears;
-    public int teddyBearsCollected = 0;
+    public static int amountOfTeddyBears;
+    public static int teddyBearsCollected = 0;
     public static UpdateTeddyBearAmount instance;
     [SerializeField] private TextMeshProUGUI amountCounter;
     private int quoteToPlay = 0;
     [Space(10)]
     [SerializeField] private AudioSource quotePlayer;
     [SerializeField] private AudioClip[] quotes;
+    [SerializeField] private AudioClip winClip;
 
     private void Awake()
     {
@@ -24,15 +25,24 @@ public class UpdateTeddyBearAmount : MonoBehaviour
             quotePlayer = GameObject.Find("AudioPlayer").GetComponent<AudioSource>();
         }
     }
-    private void Start()
+    public void AddTeddyBearAmount()
     {
+        amountOfTeddyBears++;
         amountCounter.text = teddyBearsCollected + " / " + amountOfTeddyBears;
     }
+
     public void UpdateAmount()
     {
         teddyBearsCollected++;
 
-        quotePlayer.PlayOneShot(quotes[quoteToPlay]);
+        if (teddyBearsCollected == amountOfTeddyBears)
+        {
+            quotePlayer.PlayOneShot(winClip);
+        }
+        else
+        {
+            quotePlayer.PlayOneShot(quotes[quoteToPlay]);
+        }
 
         if (quoteToPlay < quotes.Length - 1)
         {
@@ -45,6 +55,8 @@ public class UpdateTeddyBearAmount : MonoBehaviour
 
         // print("You've collected " + teddyBearsCollected + " out of the " + amountOfTeddyBears + " teddybears!");
         amountCounter.text = teddyBearsCollected + " / " + amountOfTeddyBears;
+
+        
     }
 
 

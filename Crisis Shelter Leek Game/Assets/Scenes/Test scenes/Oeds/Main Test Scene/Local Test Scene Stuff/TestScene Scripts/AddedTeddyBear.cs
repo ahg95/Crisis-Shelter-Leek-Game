@@ -3,10 +3,9 @@
 [RequireComponent(typeof(Interactable))]
 public class AddedTeddyBear : MonoBehaviour
 {
-
     private void Start()
     {
-        UpdateTeddyBearAmount.instance.amountOfTeddyBears++;
+        UpdateTeddyBearAmount.instance.AddTeddyBearAmount();
 
         GetComponent<Interactable>().onInteraction.AddListener(PickUpBear);
     }

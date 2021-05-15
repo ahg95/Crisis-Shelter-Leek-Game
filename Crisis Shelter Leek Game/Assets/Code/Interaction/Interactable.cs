@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(Outline))]
 public class Interactable : MonoBehaviour
 {
     // ADD: Cursor change on hover
@@ -28,26 +27,19 @@ public class Interactable : MonoBehaviour
     [Space(10)]
     [SerializeField] private Texture2D hoverCursor;
 
-    private Outline outline;
     protected Vector3 centerOfMesh;
     private Camera cam;
     [HideInInspector] public NavMeshAgent agent;
     private Quaternion camDefaultAngle;
-    private GameObject camerarot;
-
-    public virtual void OnValidate()
-    {
-        centerOfMesh = GetComponentInChildren<MeshRenderer>().bounds.center;
-    }
+    private GameObject camRot;
 
     public virtual void Start()
     {
+        centerOfMesh = GetComponentInChildren<MeshRenderer>().bounds.center;
         agent = GameObject.FindGameObjectWithTag("Player").GetComponent<NavMeshAgent>();
         cam = Camera.main;
         camDefaultAngle = Quaternion.Euler(cam.transform.localRotation.eulerAngles);
-        camerarot = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CanvasGroup>().gameObject;
-        outline = GetComponent<Outline>();
-        outline.enabled = false;
+        camRot = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CanvasGroup>().gameObject;
     }
     public virtual void InteractWith()
     {
@@ -91,13 +83,13 @@ public class Interactable : MonoBehaviour
 
             if (angle <= 45)
             {
-                camerarot.SetActive(false);
+                camRot.SetActive(false);
                 cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
                 cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
             }
             else if (angle > 45)
             {
-                camerarot.SetActive(false);
+                camRot.SetActive(false);
                 agent.SetDestination(transform.position + transform.forward * 2);
                 if (!agent.hasPath)//wait until he has reached the destination to rotate
                 {
@@ -112,7 +104,7 @@ public class Interactable : MonoBehaviour
         }
         else
         {
-            camerarot.SetActive(false);
+            camRot.SetActive(false);
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
             cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
         }
@@ -120,7 +112,7 @@ public class Interactable : MonoBehaviour
     }
     public void ZoomOut()
     {
-        camerarot.SetActive(true);
+        camRot.SetActive(true);
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 5);
         cam.transform.localRotation = Quaternion.Slerp(cam.transform.localRotation, camDefaultAngle, 5 * Time.deltaTime);
         if (cam.transform.localRotation == camDefaultAngle) { isSelected = false; }
@@ -134,36 +126,16 @@ public class Interactable : MonoBehaviour
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
 
             withinInteractionDistance = true;
-            outline.enabled = true;
         }
         else
         {
             withinInteractionDistance = false;
         }
     }
-    private void OnMouseOver()
-    {
-        if (!withinInteractionDistance)
-        {
-            float distance = Vector3.Distance(cam.transform.position, centerOfMesh);
-            if (distance < minimumInteractionDistance)
-            {
-                Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
 
-                withinInteractionDistance = true;
-                outline.enabled = true;
-            }
-            else
-            {
-                withinInteractionDistance = false;
-            }
-        }
-    }
     public void OnMouseExit()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
-        outline.enabled = false;
     }
 
     private void OnDrawGizmos()
