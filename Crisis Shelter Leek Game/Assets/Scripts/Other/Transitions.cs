@@ -24,7 +24,7 @@ public class Transitions : MonoBehaviour
     /// Starts a scene change with transition
     /// </summary>
     /// <param name="name"> Tell the name of the scene </param>
-    public void LoadSceneTransition(string name)
+    public void LoadSimpleSceneTransition(string name)
     {
         StartCoroutine(LoadScene(name));
     }
@@ -34,7 +34,7 @@ public class Transitions : MonoBehaviour
     /// </summary>
     /// <param name="name">Tell the name of the scene to switch to </param>
     /// <param name="switchScene">Tells whether to switch the scene or not</param>
-    public void SimpleTransitionStats(string name)
+    public void LoadSceneTransitionStats(string name)
     {
         StartCoroutine(TransitionWithStats(true, fadeInterval, true, name));
     }
