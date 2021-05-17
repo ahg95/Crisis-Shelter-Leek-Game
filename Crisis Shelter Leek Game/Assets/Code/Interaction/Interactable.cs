@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(QuickOutline))]
+[RequireComponent(typeof(Outline))]
 public class Interactable : MonoBehaviour
 {
     // ADD: Cursor change on hover
@@ -11,12 +11,12 @@ public class Interactable : MonoBehaviour
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
     [SerializeField] private float minimumInteractionDistance = 5f;
-    private bool withinInteractionDistance = false;
 
     [Header("Zoom in & Walk Towards?")]
     [SerializeField] private bool zoom = false;
     [SerializeField] private bool moveTowards = false;
     [HideInInspector] public bool isZooming = false;
+    private bool isMoving = false;
     [HideInInspector] public float zoomAmount;
     [HideInInspector] public bool isSelected = false;
 
@@ -28,37 +28,38 @@ public class Interactable : MonoBehaviour
     [Space(10)]
     [SerializeField] private Texture2D hoverCursor;
 
-    private QuickOutline outline;
-    protected Vector3 centerOfMesh;
+    private Outline outline;
     private Camera cam;
-    [HideInInspector] public NavMeshAgent agent;
+    private NavMeshAgent agent;
     private Quaternion camDefaultAngle;
-    private GameObject camRot;
+    private GameObject camerarot;
 
-    private void OnValidate()
-    {
-        centerOfMesh = GetComponentInChildren<MeshRenderer>().bounds.center; // needed to see the gizmos-box in the correct position
-    }
+
     public virtual void Start()
     {
-        centerOfMesh = GetComponentInChildren<MeshRenderer>().bounds.center;
         agent = GameObject.FindGameObjectWithTag("Player").GetComponent<NavMeshAgent>();
         cam = Camera.main;
         camDefaultAngle = Quaternion.Euler(cam.transform.localRotation.eulerAngles);
-        camRot = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CanvasGroup>().gameObject;
-        outline = GetComponent<QuickOutline>();
+        camerarot = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CanvasGroup>().gameObject;
+        outline = GetComponent<Outline>();
         outline.enabled = false;
     }
     public virtual void InteractWith()
     {
-        if (withinInteractionDistance)
-        {
-            onInteraction.Invoke();
 
-            if (zoom)
+         onInteraction.Invoke();
+        
+        if (zoom)
+        {
+            isSelected = true;
+            isZooming = !isZooming;
+        }
+        else
+        {
+            if (moveTowards)
             {
                 isSelected = true;
-                isZooming = !isZooming;
+                isMoving = !isMoving;
             }
         }
     }
@@ -72,7 +73,18 @@ public class Interactable : MonoBehaviour
             }
             else
             {
-                ZoomOut();
+                ZoomOrRotateOut();
+            }
+        }
+        else if(!zoom && isSelected && moveTowards)
+        {
+            if (isMoving)
+            {
+                MoveTo();
+            }
+            else
+            {
+                ZoomOrRotateOut();
             }
         }
     }
@@ -82,68 +94,112 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public void ZoomIn()
     {
-        float distance = Vector3.Distance(centerOfMesh, cam.transform.position);
+        float distance = Vector3.Distance(transform.position, cam.transform.position);
         zoomAmount = Mathf.RoundToInt(Mathf.Lerp(40, 25, Mathf.Clamp01(distance)));
 
         if (moveTowards)
         {
             float angle = Vector3.Angle(transform.position, (cam.transform.position - transform.position).normalized); //calculate at which angle you're interacting with the object
 
-            if (angle <= 45)
+            if (this.gameObject.CompareTag("Inspect"))
             {
-                camRot.SetActive(false);
-                cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-                cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+
+                if (angle <= 45)
+                {
+                    camerarot.SetActive(false);
+                    cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
+                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+                }
+                else if (angle > 45)
+                {
+                    camerarot.SetActive(false);
+                    agent.SetDestination(transform.position + transform.forward * 2);
+                    if (!agent.hasPath)//wait until he has reached the destination to rotate
+                    {
+                        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+
+                        if (angle <= 20)//wait until rotation has finished to zoom in
+                        {
+                            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
+                        }
+                    }
+                }
             }
-            else if (angle > 45)
+
+            camerarot.SetActive(false);
+            agent.SetDestination(transform.position + transform.forward * 2);
+            if (!agent.hasPath)//wait until he has reached the destination to rotate
             {
-                camRot.SetActive(false);
-                agent.SetDestination(transform.position + transform.forward * 2);
-                if (!agent.hasPath)//wait until he has reached the destination to rotate
+                Vector3 targetPos = transform.position;
+                targetPos.y = cam.transform.position.y;
+
+                if (this.gameObject.CompareTag("Talkable"))
+                {
+                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(targetPos - cam.transform.position), 5 * Time.deltaTime);
+                }
+                else
                 {
                     cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
 
-                    if (cam.transform.rotation == Quaternion.LookRotation(transform.position - cam.transform.position))//wait until rotation has finished to zoom in
-                    {
-                        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-                    }
+                }
+
+                if (angle <= 20)//wait until rotation has finished to zoom in
+                {
+                    cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
                 }
             }
         }
         else
         {
-            camRot.SetActive(false);
+            camerarot.SetActive(false);
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
             cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
         }
 
     }
-    public void ZoomOut()
+    public void ZoomOrRotateOut()
     {
-        camRot.SetActive(true);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 5);
+        camerarot.SetActive(true);
+        if (zoom)
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 5);
+        }
         cam.transform.localRotation = Quaternion.Slerp(cam.transform.localRotation, camDefaultAngle, 5 * Time.deltaTime);
         if (cam.transform.localRotation == camDefaultAngle) { isSelected = false; }
 
     }
-    public void OnMouseEnter()
+    /// <summary>
+    /// Moves player towards the object and rotates at it
+    /// </summary>
+    public void MoveTo()
     {
-        float distance = Vector3.Distance(cam.transform.position, centerOfMesh);
-        if (distance < minimumInteractionDistance)
+        isMoving = true;
+        camerarot.SetActive(false);
+        agent.SetDestination(transform.position + transform.forward * 2);
+        if (!agent.hasPath)//wait until he has reached the destination to rotate
         {
-            Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
-            outline.enabled = true;
-            withinInteractionDistance = true;
-        }
-        else
-        {
-            withinInteractionDistance = false;
+            cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+            if (this.gameObject.CompareTag("Talkable"))
+            {
+                cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation((transform.position - cam.transform.position) + transform.up * 3), 5 * Time.deltaTime);
+            }
         }
     }
 
+    public void OnMouseEnter()
+    {
+        float distance = Vector3.Distance(cam.transform.position, transform.position);
+        if (distance < minimumInteractionDistance)
+        {
+            Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
+
+            outline.enabled = true;
+        }
+    }
     public void OnMouseExit()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
         outline.enabled = false;
     }
 
@@ -166,11 +222,11 @@ public class Interactable : MonoBehaviour
 
         if (!fullCube)
         {
-            Gizmos.DrawWireCube(centerOfMesh, Vector3.one * minimumInteractionDistance * 2);
+            Gizmos.DrawWireCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
         }
         else
         {
-            Gizmos.DrawCube(centerOfMesh, Vector3.one * minimumInteractionDistance * 2);
+            Gizmos.DrawCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
         }
     }
 }
