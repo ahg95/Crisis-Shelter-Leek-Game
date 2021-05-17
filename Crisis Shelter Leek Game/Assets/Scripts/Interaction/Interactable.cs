@@ -38,7 +38,7 @@ public class Interactable : MonoBehaviour
     private Outline outline;
     protected Camera cam;
     protected NavMeshAgent agent;
-    protected GameObject cameraRotationComponent;
+    protected RotateCamera rotateCameraComponent;
 
     public void Start()
     {
@@ -47,7 +47,7 @@ public class Interactable : MonoBehaviour
         navComponent = player.GetComponent<Navigation>();
         agent = player.GetComponent<NavMeshAgent>();
         cam = Camera.main;
-        cameraRotationComponent = player.GetComponentInChildren<CanvasGroup>().gameObject;
+        rotateCameraComponent = player.GetComponent<RotateCamera>();
         outline = GetComponent<Outline>();
         outline.enabled = false;
 
@@ -62,14 +62,14 @@ public class Interactable : MonoBehaviour
         {
             if (moveTowards)
             {
-                cameraRotationComponent.SetActive(false);
+                rotateCameraComponent.enabled = false;
                 agent.SetDestination(transform.position + transform.forward * 2);
 
                 StartCoroutine(routine: WaitForDestinationReached());
             }
             else if (zoomIn && !moveTowards)
             {
-                cameraRotationComponent.SetActive(false);
+                rotateCameraComponent.enabled = false;
                 StartCoroutine(routine: RotateTowardsInteractable());
             }
             else
@@ -79,7 +79,7 @@ public class Interactable : MonoBehaviour
         }
         else
         {
-            cameraRotationComponent.SetActive(true);
+            rotateCameraComponent.enabled = true;
             StopAllCoroutines();
             StartCoroutine(routine: ZoomOut());
         }
