@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Outline))]
+[RequireComponent(typeof(QuickOutline))]
 public class Interactable : MonoBehaviour
 {
     // ADD: Cursor change on hover
@@ -28,7 +28,7 @@ public class Interactable : MonoBehaviour
     [Space(10)]
     [SerializeField] private Texture2D hoverCursor;
 
-    private Outline outline;
+    private QuickOutline outline;
     private Camera cam;
     private NavMeshAgent agent;
     private Quaternion camDefaultAngle;
@@ -41,7 +41,7 @@ public class Interactable : MonoBehaviour
         cam = Camera.main;
         camDefaultAngle = Quaternion.Euler(cam.transform.localRotation.eulerAngles);
         camerarot = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CanvasGroup>().gameObject;
-        outline = GetComponent<Outline>();
+        outline = GetComponent<QuickOutline>();
         outline.enabled = false;
     }
     public virtual void InteractWith()
