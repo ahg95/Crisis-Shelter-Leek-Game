@@ -101,7 +101,7 @@ public class Interactable : MonoBehaviour
         {
             float angle = Vector3.Angle(transform.position, (cam.transform.position - transform.position).normalized); //calculate at which angle you're interacting with the object
 
-            if (this.gameObject.CompareTag("Inspect"))
+            if (gameObject.CompareTag("Inspect"))
             {
 
                 if (angle <= 45)
@@ -133,7 +133,7 @@ public class Interactable : MonoBehaviour
                 Vector3 targetPos = transform.position;
                 targetPos.y = cam.transform.position.y;
 
-                if (this.gameObject.CompareTag("Talkable"))
+                if (gameObject.CompareTag("Talkable"))
                 {
                     cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(targetPos - cam.transform.position), 5 * Time.deltaTime);
                 }
@@ -179,7 +179,7 @@ public class Interactable : MonoBehaviour
         if (!agent.hasPath)//wait until he has reached the destination to rotate
         {
             cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
-            if (this.gameObject.CompareTag("Talkable"))
+            if (gameObject.CompareTag("Talkable"))
             {
                 cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation((transform.position - cam.transform.position) + transform.up * 3), 5 * Time.deltaTime);
             }
