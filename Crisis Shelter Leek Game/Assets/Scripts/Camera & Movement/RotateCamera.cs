@@ -4,7 +4,7 @@ public class RotateCamera : MonoBehaviour
 {
     [SerializeField] float rotationSpeedMultiplier = 1f;
     [SerializeField] private Camera cam;
-    [SerializeField] private GameObject UIforRotation;
+    [SerializeField] private GameObject uiForRotation;
 
     [Range(5f, 30f)]
     [Tooltip("The amount of degrees the player can rotate in.")]
@@ -13,7 +13,8 @@ public class RotateCamera : MonoBehaviour
 
     private void Start()
     {
-        _ = Instantiate(UIforRotation);
+        _ = Instantiate(uiForRotation);
+        Cursor.lockState = CursorLockMode.Confined;
     }
     /// <summary>
     /// Is called on Button Hover
