@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class InteractWith : MonoBehaviour
 {
@@ -22,7 +21,6 @@ public class InteractWith : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickableLayer))
             {
-                //hit.collider.GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
                 hit.collider.GetComponentInParent<Interactable>().InteractWith();
             }
         }
