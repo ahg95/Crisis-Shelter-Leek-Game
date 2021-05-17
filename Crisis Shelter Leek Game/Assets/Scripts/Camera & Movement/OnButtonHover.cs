@@ -3,11 +3,15 @@ using UnityEngine.EventSystems;
 
 public class OnButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private RotateCamera playerRotate;
+    [SerializeField] private RotateCamera playerRotate = null;
     [SerializeField] private float rotateSpeed = 1f;
     public bool startTimeCount = false;
     [SerializeField] bool vertical = false;
 
+    private void Start()
+    {
+        playerRotate = GameObject.FindGameObjectWithTag("Player").GetComponent<RotateCamera>();
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         startTimeCount = true;
