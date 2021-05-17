@@ -2,40 +2,38 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Task Journey", menuName = "Tasks/Task Journey")]
-public class TaskJourney : ScriptableObject
+public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 {
-    #region resetData
-    public Task firstTask;
-    #endregion
-
     [Space(15)]
     public Task assignedTask;
 
     [Space(20)]
     public Task[] tasksInOrder;
 
-    private int assignedTaskInt = 0;
+    private int assignedTaskIndex = 0;
+
+    public void OnAfterDeserialize()
+    {
+        Reset();
+    }
+
+    public void OnBeforeSerialize()
+    {
+
+    }
 
     public void Progress()
     {
-        if (assignedTaskInt != tasksInOrder.Length - 1) // if not the last task
+        if (assignedTaskIndex != tasksInOrder.Length - 1) // if not the last task
         {
-            assignedTaskInt++;
-            assignedTask = tasksInOrder[assignedTaskInt];
-
-            //Debug.Log("Progressed Task!");
-            //Debug.Log("Current Task: " + assignedTask);
-        }
-        else
-        {
-            //Debug.Log("Last Task Finished!");
+            assignedTaskIndex++;
+            assignedTask = tasksInOrder[assignedTaskIndex];
         }
     }
 
-    private void OnDisable()
+    private void Reset()
     {
-        // reset
-        assignedTask = firstTask;
-        assignedTaskInt = -1;
+        assignedTaskIndex = 0;
+        assignedTask = tasksInOrder[assignedTaskIndex];
     }
 }

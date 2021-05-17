@@ -5,8 +5,10 @@ using UnityEngine.Events;
 
 public abstract class ArgsGameEventListener<T> : MonoBehaviour
 {
+    [SerializeField]
     public ArgsGameEvent<T> GameEvent;
 
+    [SerializeField]
     public UnityEvent<T> Response;
 
     private void OnEnable() => GameEvent.AddListener(this);

@@ -3,6 +3,7 @@
 public class Talkable : Interactable
 {
     [Space(20)]
+    [SerializeField] private TaskJourney taskJourney;
     [SerializeField] private DialogueManager dialogueManager;
     public ConversationTaskCombination[] conversationTaskCombination;
     
@@ -17,11 +18,23 @@ public class Talkable : Interactable
             }
         }
     }
-    public void ShowConversationSection(ConversationSection section)
-    {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        DialogueManager dialogueManager = player.GetComponentInChildren<DialogueManager>();
 
-        dialogueManager.StartConversationSection(section);
+    public void StartConversationAccordingToCurrentPlayerTask()
+    {
+        Task currentPlayerTask = taskJourney.assignedTask;
+
+        ConversationSection conversationToStart = null;
+
+        foreach (ConversationTaskCombination ctc in conversationTaskCombination)
+        {
+            if (ctc.task == currentPlayerTask)
+            {
+                conversationToStart = ctc.conversationSection;
+                break;
+            }
+        }
+
+        if (conversationToStart != null)
+            dialogueManager.StartConversationSection(conversationToStart);
     }
 }

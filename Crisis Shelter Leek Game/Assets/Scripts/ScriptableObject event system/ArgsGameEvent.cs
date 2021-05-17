@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ArgsGameEvent<T> : ScriptableObject
 {
-    List<ArgsGameEventListener<T>> listeners;
+    List<ArgsGameEventListener<T>> listeners = new List<ArgsGameEventListener<T>>();
 
     public void AddListener(ArgsGameEventListener<T> gameEventListener) => listeners.Add(gameEventListener);
     public void RemoveListener(ArgsGameEventListener<T> gameEventListener) => listeners.Remove(gameEventListener);
