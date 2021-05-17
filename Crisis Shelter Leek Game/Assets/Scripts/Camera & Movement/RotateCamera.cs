@@ -4,11 +4,17 @@ public class RotateCamera : MonoBehaviour
 {
     [SerializeField] float rotationSpeedMultiplier = 1f;
     [SerializeField] private Camera cam;
+    [SerializeField] private GameObject UIforRotation;
 
     [Range(5f, 30f)]
     [Tooltip("The amount of degrees the player can rotate in.")]
     [Header("Rotation Limit")]
     public int verticalLimit = 15;
+
+    private void Start()
+    {
+        _ = Instantiate(UIforRotation);
+    }
     /// <summary>
     /// Is called on Button Hover
     /// </summary>

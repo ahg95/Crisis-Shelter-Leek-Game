@@ -1,24 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(Outline))]
+[DisallowMultipleComponent]
 public class Interactable : MonoBehaviour
 {
-    // ADD: Cursor change on hover
-
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
     [SerializeField] private float minimumInteractionDistance = 5f;
 
     [Header("Zoom in & Walk Towards?")]
-    [SerializeField] private bool zoom = false;
-    [SerializeField] private bool moveTowards = false;
+    [SerializeField] private Transform objectTransformToLookAt = null;
+    [SerializeField] protected bool zoomIn = false;
     [HideInInspector] public bool isZooming = false;
-    private bool isMoving = false;
     [HideInInspector] public float zoomAmount;
-    [HideInInspector] public bool isSelected = false;
+    [Tooltip("The lower this value, the more zoom is possible")]
+    [SerializeField] private float minimumFOV = 25f;
+    [Tooltip("The higher this value, the less zoom is possible")]
+    [SerializeField] private float maxFOV = 40f;
+    [Space(5)]
+    [SerializeField] protected bool moveTowards = false;
+    [SerializeField] private Navigation navComponent = null;
+
+    public bool isSelected = false;
 
     [Header("Debug")]
     [Space(10)]
@@ -29,164 +36,165 @@ public class Interactable : MonoBehaviour
     [SerializeField] private Texture2D hoverCursor;
 
     private Outline outline;
-    private Camera cam;
-    private NavMeshAgent agent;
-    private Quaternion camDefaultAngle;
-    private GameObject camerarot;
+    protected Camera cam;
+    protected NavMeshAgent agent;
+    protected GameObject cameraRotationComponent;
 
-
-    public virtual void Start()
+    public void Start()
     {
-        agent = GameObject.FindGameObjectWithTag("Player").GetComponent<NavMeshAgent>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (navComponent == null)
+        navComponent = player.GetComponent<Navigation>();
+        agent = player.GetComponent<NavMeshAgent>();
         cam = Camera.main;
-        camDefaultAngle = Quaternion.Euler(cam.transform.localRotation.eulerAngles);
-        camerarot = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CanvasGroup>().gameObject;
+        cameraRotationComponent = player.GetComponentInChildren<CanvasGroup>().gameObject;
         outline = GetComponent<Outline>();
         outline.enabled = false;
+
+        if (objectTransformToLookAt == null)
+        {
+            objectTransformToLookAt = transform;
+        }
     }
     public virtual void InteractWith()
     {
-
-         onInteraction.Invoke();
-        
-        if (zoom)
-        {
-            isSelected = true;
-            isZooming = !isZooming;
-        }
-        else
+        if (!isSelected)
         {
             if (moveTowards)
             {
-                isSelected = true;
-                isMoving = !isMoving;
+                cameraRotationComponent.SetActive(false);
+                agent.SetDestination(transform.position + transform.forward * 2);
+
+                StartCoroutine(routine: WaitForDestinationReached());
             }
-        }
-    }
-    private void Update()
-    {
-        if (zoom && isSelected)
-        {
-            if (isZooming)
+            else if (zoomIn && !moveTowards)
             {
-                ZoomIn();
+                cameraRotationComponent.SetActive(false);
+                StartCoroutine(routine: RotateTowardsInteractable());
             }
             else
             {
-                ZoomOrRotateOut();
-            }
-        }
-        else if(!zoom && isSelected && moveTowards)
-        {
-            if (isMoving)
-            {
-                MoveTo();
-            }
-            else
-            {
-                ZoomOrRotateOut();
-            }
-        }
-    }
-
-    /// <summary>
-    /// if move towards is true 
-    /// </summary>
-    public void ZoomIn()
-    {
-        float distance = Vector3.Distance(transform.position, cam.transform.position);
-        zoomAmount = Mathf.RoundToInt(Mathf.Lerp(40, 25, Mathf.Clamp01(distance)));
-
-        if (moveTowards)
-        {
-            float angle = Vector3.Angle(transform.position, (cam.transform.position - transform.position).normalized); //calculate at which angle you're interacting with the object
-
-            if (this.gameObject.CompareTag("Inspect"))
-            {
-
-                if (angle <= 45)
-                {
-                    camerarot.SetActive(false);
-                    cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
-                }
-                else if (angle > 45)
-                {
-                    camerarot.SetActive(false);
-                    agent.SetDestination(transform.position + transform.forward * 2);
-                    if (!agent.hasPath)//wait until he has reached the destination to rotate
-                    {
-                        cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
-
-                        if (angle <= 20)//wait until rotation has finished to zoom in
-                        {
-                            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-                        }
-                    }
-                }
-            }
-
-            camerarot.SetActive(false);
-            agent.SetDestination(transform.position + transform.forward * 2);
-            if (!agent.hasPath)//wait until he has reached the destination to rotate
-            {
-                Vector3 targetPos = transform.position;
-                targetPos.y = cam.transform.position.y;
-
-                if (this.gameObject.CompareTag("Talkable"))
-                {
-                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(targetPos - cam.transform.position), 5 * Time.deltaTime);
-                }
-                else
-                {
-                    cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
-
-                }
-
-                if (angle <= 20)//wait until rotation has finished to zoom in
-                {
-                    cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-                }
+                onInteraction.Invoke();
             }
         }
         else
         {
-            camerarot.SetActive(false);
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoomAmount, Time.deltaTime * 5);
-            cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
+            cameraRotationComponent.SetActive(true);
+            StopAllCoroutines();
+            StartCoroutine(routine: ZoomOut());
         }
-
     }
-    public void ZoomOrRotateOut()
+
+    #region Zooming
+    public IEnumerator ZoomIn()
     {
-        camerarot.SetActive(true);
-        if (zoom)
-        {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, 60, Time.deltaTime * 5);
-        }
-        cam.transform.localRotation = Quaternion.Slerp(cam.transform.localRotation, camDefaultAngle, 5 * Time.deltaTime);
-        if (cam.transform.localRotation == camDefaultAngle) { isSelected = false; }
+        float distance = Vector3.Distance(transform.position, cam.transform.position);
+        zoomAmount = Mathf.RoundToInt(Mathf.Lerp(maxFOV, minimumFOV, Mathf.Clamp01(distance)));
 
+        float timeStartedZooming = Time.time;
+        float startFOV = cam.fieldOfView;
+        float targetFOV = zoomAmount;
+
+        while (cam.fieldOfView > zoomAmount)
+        {
+            isZooming = true;
+            float timeSinceStartedZooming = Time.time - timeStartedZooming;
+            float percentageCompleted = timeSinceStartedZooming / 0.75f; // zoom in speed
+            cam.fieldOfView = Mathf.Lerp(startFOV, targetFOV, percentageCompleted);
+            yield return null;
+        }
+
+        isSelected = true;
+        cam.fieldOfView = zoomAmount; // When close enough to zoomamount, snap to zoomamount.
     }
+
+    public IEnumerator ZoomOut()
+    {
+        // variables for looking the 'normal' forward direction.
+        Vector3 objectPos = objectTransformToLookAt.position;
+        objectPos.y = cam.transform.position.y;
+        Vector3 targetDirection = (objectPos - cam.transform.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        Quaternion startrotation = cam.transform.rotation;
+
+        float timeStartedZooming = Time.time;
+        float startingFOV = cam.fieldOfView;
+        float targetFOV = 60;
+
+        while (cam.fieldOfView < targetFOV || Quaternion.Angle(cam.transform.rotation, targetRotation) > 0.01f)
+        {
+            float timeSinceStartedZooming = Time.time - timeStartedZooming;
+            float percentageCompleted = timeSinceStartedZooming / 0.5f; // how fast the zoom out and rotation-correction goes
+
+            cam.transform.rotation = Quaternion.Slerp(startrotation, targetRotation, percentageCompleted); // lerp rotation
+
+            cam.fieldOfView = Mathf.Lerp(startingFOV, targetFOV, percentageCompleted);
+
+            yield return null;
+        }
+        // 'Reset' values: needs to be done because the yRotation of the player is handled by the parent object, while the horizontal rotation is done by the camera. 
+        // This is necessary because of how the navMeshAgent works.
+        cam.transform.parent.LookAt(objectPos);
+        cam.transform.LookAt(objectPos);
+
+        isSelected = false;
+    }
+    public IEnumerator RotateTowardsInteractable()
+    {
+        Vector3 directionToObject = objectTransformToLookAt.position - cam.transform.position;
+
+        // Smooth and precise lerping
+        float timeStartedRotating = Time.time;
+        Quaternion startingAngle = cam.transform.rotation;
+        Quaternion targetAngleCam = Quaternion.LookRotation((objectTransformToLookAt.position - cam.transform.position));
+
+        while (Vector3.Angle(cam.transform.forward, directionToObject) > 0.1f)
+        {
+            float timeSinceStarted = Time.time - timeStartedRotating;
+            float percentageCompleted = timeSinceStarted / 0.75f;
+
+            cam.transform.rotation = Quaternion.Slerp(startingAngle, targetAngleCam, percentageCompleted);
+            yield return null;
+        }
+
+        // Zoom in if this is enabled.
+        if (zoomIn)
+        {
+            StartCoroutine(routine: ZoomIn());
+        }
+        else
+        {
+            isSelected = true;
+        }
+    }
+    #endregion
+
+    #region Movement Towards
     /// <summary>
-    /// Moves player towards the object and rotates at it
+    /// Moves player towards the object, then turn towards it.
     /// </summary>
-    public void MoveTo()
+    private IEnumerator WaitForDestinationReached()
     {
-        isMoving = true;
-        camerarot.SetActive(false);
-        agent.SetDestination(transform.position + transform.forward * 2);
-        if (!agent.hasPath)//wait until he has reached the destination to rotate
+        if (agent.pathPending) // need to check for this, otherwise the while loop  might return true, because the path hadn't been calculated yet.
         {
-            cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation(transform.position - cam.transform.position), 5 * Time.deltaTime);
-            if (this.gameObject.CompareTag("Talkable"))
-            {
-                cam.transform.rotation = Quaternion.Slerp(cam.transform.rotation, Quaternion.LookRotation((transform.position - cam.transform.position) + transform.up * 3), 5 * Time.deltaTime);
-            }
+            yield return null;
+        }
+        while (agent.remainingDistance > 0.1f)
+        {
+            //print("moving towards destination");
+            yield return null;
+        }
+
+        if (agent.remainingDistance < 0.1f)
+        {
+            //print("Reached destination!");
+            StartCoroutine(RotateTowardsInteractable()); // Rotate towards the interactable when the destination is reached.
         }
     }
+    #endregion
 
-    public void OnMouseEnter()
+    #region OnMouseStuff
+    private void OnMouseEnter()
     {
         float distance = Vector3.Distance(cam.transform.position, transform.position);
         if (distance < minimumInteractionDistance)
@@ -194,15 +202,20 @@ public class Interactable : MonoBehaviour
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
 
             outline.enabled = true;
+            navComponent.enabled = false;
         }
     }
-    public void OnMouseExit()
+    private void OnMouseExit()
     {
+        navComponent.enabled = true;
+
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         outline.enabled = false;
     }
+    #endregion
 
+    #region Gizmos
     private void OnDrawGizmos()
     {
         if (debugAlwaysVisible)
@@ -210,12 +223,10 @@ public class Interactable : MonoBehaviour
             Draw();
         }
     }
-
     public void OnDrawGizmosSelected()
     {
         Draw();
     }
-
     void Draw()
     {
         Gizmos.color = Color.green;
@@ -229,4 +240,5 @@ public class Interactable : MonoBehaviour
             Gizmos.DrawCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
         }
     }
+    #endregion
 }

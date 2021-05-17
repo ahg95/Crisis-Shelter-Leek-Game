@@ -36,16 +36,6 @@ public class Navigation : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 15f);
 
-        NavMeshHit hitPoint;
-        if (NavMesh.SamplePosition(hit.point, out hitPoint, 1f, NavMesh.AllAreas))
-        {
-            print("hit");
-        }
-        else
-        {
-            print("no hit");
-        }
-
         if (hit.collider != null && hit.collider.gameObject.layer == 10 && !EventSystem.current.IsPointerOverGameObject())
         {
             if (Input.GetMouseButton(0))
@@ -81,7 +71,7 @@ public class Navigation : MonoBehaviour
         }
     }
 
-    IEnumerator LowerVolume()
+    private IEnumerator LowerVolume()
     {
         float totalTime = 0.6f; // fade audio out over 3 seconds
         float currentTime = 0;
@@ -94,5 +84,11 @@ public class Navigation : MonoBehaviour
         }
 
         walkSoundPlayer.Pause();
+    }
+
+    private void OnDisable()
+    {
+        arrow.SetActive(false);
+        Cursor.visible = true;
     }
 }
