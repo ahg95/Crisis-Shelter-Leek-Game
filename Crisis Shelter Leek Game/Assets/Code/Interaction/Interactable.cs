@@ -2,6 +2,7 @@
 using UnityEngine.AI;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(QuickOutline))]
 public class Interactable : MonoBehaviour
 {
     // ADD: Cursor change on hover
@@ -27,12 +28,17 @@ public class Interactable : MonoBehaviour
     [Space(10)]
     [SerializeField] private Texture2D hoverCursor;
 
+    private QuickOutline outline;
     protected Vector3 centerOfMesh;
     private Camera cam;
     [HideInInspector] public NavMeshAgent agent;
     private Quaternion camDefaultAngle;
     private GameObject camRot;
 
+    private void OnValidate()
+    {
+        centerOfMesh = GetComponentInChildren<MeshRenderer>().bounds.center; // needed to see the gizmos-box in the correct position
+    }
     public virtual void Start()
     {
         centerOfMesh = GetComponentInChildren<MeshRenderer>().bounds.center;
@@ -40,6 +46,8 @@ public class Interactable : MonoBehaviour
         cam = Camera.main;
         camDefaultAngle = Quaternion.Euler(cam.transform.localRotation.eulerAngles);
         camRot = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<CanvasGroup>().gameObject;
+        outline = GetComponent<QuickOutline>();
+        outline.enabled = false;
     }
     public virtual void InteractWith()
     {
@@ -124,7 +132,7 @@ public class Interactable : MonoBehaviour
         if (distance < minimumInteractionDistance)
         {
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
-
+            outline.enabled = true;
             withinInteractionDistance = true;
         }
         else
@@ -136,6 +144,7 @@ public class Interactable : MonoBehaviour
     public void OnMouseExit()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        outline.enabled = false;
     }
 
     private void OnDrawGizmos()
