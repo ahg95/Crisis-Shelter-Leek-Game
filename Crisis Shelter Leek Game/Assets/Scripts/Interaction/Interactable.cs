@@ -13,17 +13,17 @@ public class Interactable : MonoBehaviour
     [SerializeField] private float minimumInteractionDistance = 5f;
 
     [Header("Zoom in & Walk Towards?")]
-    [SerializeField] private Transform objectTransformToLookAt = null;
-    [SerializeField] protected bool zoomIn = false;
-    [HideInInspector] public bool isZooming = false;
+    [SerializeField] public Transform objectTransformToLookAt = null;
+    [SerializeField] public bool zoomIn = false;
+    [HideInInspector] public bool zoomedInOn = false;
     [HideInInspector] public float zoomAmount;
     [Tooltip("The lower this value, the more zoom is possible")]
     [SerializeField] private float minimumFOV = 25f;
     [Tooltip("The higher this value, the less zoom is possible")]
     [SerializeField] private float maxFOV = 40f;
     [Space(5)]
-    [SerializeField] protected bool moveTowards = false;
-    [SerializeField] private Navigation navComponent = null;
+    [SerializeField] public bool moveTowards = false;
+    [SerializeField] protected Navigation navComponent = null;
 
     public bool isSelected = false;
 
@@ -38,7 +38,7 @@ public class Interactable : MonoBehaviour
     private Outline outline;
     protected Camera cam;
     protected NavMeshAgent agent;
-    protected RotateCamera rotateCameraComponent;
+    protected GameObject rotateCameraCanvas;
 
     public void Start()
     {
@@ -47,7 +47,7 @@ public class Interactable : MonoBehaviour
         navComponent = player.GetComponent<Navigation>();
         agent = player.GetComponent<NavMeshAgent>();
         cam = Camera.main;
-        rotateCameraComponent = player.GetComponent<RotateCamera>();
+        rotateCameraCanvas = GameObject.FindGameObjectWithTag("RotationCanvas");
         outline = GetComponent<Outline>();
         outline.enabled = false;
 
@@ -56,20 +56,42 @@ public class Interactable : MonoBehaviour
             objectTransformToLookAt = transform;
         }
     }
+    #region OnMouseStuff
+    private void OnMouseEnter()
+    {
+        float distance = Vector3.Distance(cam.transform.position, transform.position);
+        if (distance < minimumInteractionDistance)
+        {
+            Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
+
+            outline.enabled = true;
+        }
+    }
+    private void OnMouseExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+        outline.enabled = false;
+    }
+    #endregion
+
     public virtual void InteractWith()
     {
-        if (!isSelected)
+        print("interacted through InteractWith Void");
+        onInteraction.Invoke();
+       /* if (!isSelected)
         {
             if (moveTowards)
             {
-                rotateCameraComponent.enabled = false;
+                rotateCameraCanvas.SetActive(false);
+                navComponent.enabled = false;
                 agent.SetDestination(transform.position + transform.forward * 2);
 
                 StartCoroutine(routine: WaitForDestinationReached());
             }
             else if (zoomIn && !moveTowards)
             {
-                rotateCameraComponent.enabled = false;
+                rotateCameraCanvas.SetActive(false);
                 StartCoroutine(routine: RotateTowardsInteractable());
             }
             else
@@ -79,13 +101,17 @@ public class Interactable : MonoBehaviour
         }
         else
         {
-            rotateCameraComponent.enabled = true;
+            rotateCameraCanvas.SetActive(true);
             StopAllCoroutines();
             StartCoroutine(routine: ZoomOut());
-        }
+        }*/
     }
 
-    #region Zooming
+/*    #region Zooming
+    public void ZoomCamOut()
+    {
+        StartCoroutine(routine: ZoomOut());
+    }
     public IEnumerator ZoomIn()
     {
         float distance = Vector3.Distance(transform.position, cam.transform.position);
@@ -105,6 +131,7 @@ public class Interactable : MonoBehaviour
         }
 
         isSelected = true;
+        onInteraction.Invoke();
         cam.fieldOfView = zoomAmount; // When close enough to zoomamount, snap to zoomamount.
     }
 
@@ -142,6 +169,8 @@ public class Interactable : MonoBehaviour
     public IEnumerator RotateTowardsInteractable()
     {
         Vector3 directionToObject = objectTransformToLookAt.position - cam.transform.position;
+        Vector3 objectPos = objectTransformToLookAt.position;
+        objectPos.y = cam.transform.position.y;
 
         // Smooth and precise lerping
         float timeStartedRotating = Time.time;
@@ -164,6 +193,9 @@ public class Interactable : MonoBehaviour
         }
         else
         {
+            navComponent.enabled = true;
+            rotateCameraCanvas.SetActive(true);
+            onInteraction.Invoke();
             isSelected = true;
         }
     }
@@ -191,29 +223,8 @@ public class Interactable : MonoBehaviour
             StartCoroutine(RotateTowardsInteractable()); // Rotate towards the interactable when the destination is reached.
         }
     }
-    #endregion
+    #endregion*/
 
-    #region OnMouseStuff
-    private void OnMouseEnter()
-    {
-        float distance = Vector3.Distance(cam.transform.position, transform.position);
-        if (distance < minimumInteractionDistance)
-        {
-            Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
-
-            outline.enabled = true;
-            navComponent.enabled = false;
-        }
-    }
-    private void OnMouseExit()
-    {
-        navComponent.enabled = true;
-
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
-        outline.enabled = false;
-    }
-    #endregion
 
     #region Gizmos
     private void OnDrawGizmos()

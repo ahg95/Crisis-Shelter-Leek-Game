@@ -13,7 +13,6 @@ public class RotateCamera : MonoBehaviour
 
     private void Start()
     {
-        _ = Instantiate(uiForRotation);
         Cursor.lockState = CursorLockMode.Confined;
     }
     /// <summary>

@@ -14,6 +14,7 @@ public class Navigation : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float walkSoundVolume = 0.375f;
     private AudioSource walkSoundPlayer;
+    private bool isMoving = false;
     /// <summary>
     /// Whatever surface is a navigation static and is within the player's vision, it can move towards.
     /// </summary>
@@ -36,22 +37,14 @@ public class Navigation : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 15f);
 
-        if (hit.collider != null && hit.collider.gameObject.layer == 10 && !EventSystem.current.IsPointerOverGameObject())
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !EventSystem.current.IsPointerOverGameObject() && !isMoving)
         {
+            arrow.SetActive(true);
+
             if (Input.GetMouseButton(0))
             {
                 agent.SetDestination(hit.point);
-                arrow.SetActive(false);
-
-                StopAllCoroutines();
-                walkSoundPlayer.volume = walkSoundVolume;
-                walkSoundPlayer.Play();
-            }
-
-            if (!arrow.activeSelf && !agent.hasPath)
-            {
-                arrow.SetActive(true);
-                Cursor.visible = false;
+                StartCoroutine(routine: WaitForDestinationReached());
             }
 
             Vector3 position = transform.position;
@@ -59,18 +52,41 @@ public class Navigation : MonoBehaviour
             arrow.transform.LookAt(position, Vector3.up);
             arrow.transform.position = hit.point;
         }
-        else
+        else // if not hovering over the floor
         {
             arrow.SetActive(false);
             Cursor.visible = true;
         }
+    }
+    private IEnumerator WaitForDestinationReached()
+    {
+        isMoving = true;
+        arrow.SetActive(false);
+        walkSoundPlayer.volume = walkSoundVolume;
+        walkSoundPlayer.Play();
 
-        if (!agent.hasPath && walkSoundPlayer.isPlaying)
+        if (agent.pathPending) // need to check for this, otherwise the while loop  might return true, because the path hadn't been calculated yet.
         {
+            //print("Path Pending");
+            yield return null;
+        }
+        while (agent.remainingDistance > 0.1f)
+        {
+            //print("moving towards destination");
+            yield return new WaitForFixedUpdate();
+        }
+
+        if (agent.remainingDistance < 0.1f)
+        {
+            isMoving = false;
+
+            arrow.SetActive(true);
+            Cursor.visible = false;
             StartCoroutine(LowerVolume());
+            
+            //print("Reached destination!");
         }
     }
-
     private IEnumerator LowerVolume()
     {
         float totalTime = 0.6f; // fade audio out over 3 seconds
@@ -84,11 +100,5 @@ public class Navigation : MonoBehaviour
         }
 
         walkSoundPlayer.Pause();
-    }
-
-    private void OnDisable()
-    {
-        arrow.SetActive(false);
-        Cursor.visible = true;
     }
 }
