@@ -53,7 +53,7 @@ public class InteractWith : MonoBehaviour
                     else if (interactableInteractedWith.zoomIn && !interactableInteractedWith.moveTowards) // ZOOM IN ON INTERACTABLE
                     {
                         rotateCameraCanvas.SetActive(false);
-                        StartCoroutine(routine: RotateTowardsInteractable(interactableInteractedWith, true));
+                        StartCoroutine(routine: RotateTowardsInteractable(interactableInteractedWith));
                     }
                     else // immmediately invoke
                     {
@@ -72,7 +72,7 @@ public class InteractWith : MonoBehaviour
 
     public void LookAt(Interactable inter)
     {
-        StartCoroutine(routine: RotateTowardsInteractable(inter, false));
+        StartCoroutine(routine: RotateTowardsInteractable(inter));
     }
     #region Zooming
     public void ZoomCamOut()
@@ -136,7 +136,7 @@ public class InteractWith : MonoBehaviour
         interactableInteractedWith = null;
     }
 
-    public IEnumerator RotateTowardsInteractable(Interactable interactable, bool invokeOnRotationComplete)
+    public IEnumerator RotateTowardsInteractable(Interactable interactable)
     {
         Vector3 lookAtPos = interactable.objectTransformToLookAt.position;
         Vector3 directionToObject = lookAtPos - cam.transform.position;
@@ -156,25 +156,20 @@ public class InteractWith : MonoBehaviour
             cam.transform.rotation = Quaternion.Slerp(startingAngle, targetAngleCam, percentageCompleted);
             yield return null;
         }
-        cam.transform.parent.LookAt(interactable.transform.position, Vector3.up);
-        cam.transform.LookAt(interactable.transform.position, Vector3.up);
 
         rotatingTowardsObject = false;
 
         // Zoom in if this is enabled.
-        if (invokeOnRotationComplete)
+        if (interactable.zoomIn)
         {
-            if (interactable.zoomIn)
-            {
-                StartCoroutine(routine: ZoomIn());
-            }
-            else
-            {
-                navComponent.enabled = true;
-                rotateCameraCanvas.SetActive(true);
-                interactable.onInteraction.Invoke();
-                interactable.isSelected = true;
-            }
+            StartCoroutine(routine: ZoomIn());
+        }
+        else
+        {
+            navComponent.enabled = true;
+            rotateCameraCanvas.SetActive(true);
+            interactable.onInteraction.Invoke();
+            interactable.isSelected = true;
         }
     }
     #endregion
@@ -194,7 +189,7 @@ public class InteractWith : MonoBehaviour
         if (agent.remainingDistance < 0.1f)
         {
             //print("Reached destination!");
-            StartCoroutine(RotateTowardsInteractable(interactableInteractedWith, true)); // Rotate towards the interactable when the destination is reached.
+            StartCoroutine(RotateTowardsInteractable(interactableInteractedWith)); // Rotate towards the interactable when the destination is reached.
         }
     }
 }
