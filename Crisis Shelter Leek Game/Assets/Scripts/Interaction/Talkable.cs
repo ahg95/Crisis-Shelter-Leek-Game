@@ -22,7 +22,7 @@ public class Talkable : Interactable
     public void StartConversationAccordingToCurrentPlayerTask()
     {
         Task currentPlayerTask = taskJourney.assignedTask;
-
+        
         ConversationSection conversationToStart = null;
 
         foreach (ConversationTaskCombination ctc in conversationTaskCombination)

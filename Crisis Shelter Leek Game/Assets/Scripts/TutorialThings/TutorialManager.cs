@@ -41,7 +41,6 @@ public class TutorialManager : MonoBehaviour
             popUp.SetActive(false);
         }
 
-
         dialogManager = gameObject.GetComponentInChildren<DialogManager>();
         cameraRot = GameObject.FindWithTag("Player").GetComponentsInChildren<OnButtonHover>();
         nav = GameObject.FindWithTag("Player").GetComponent<Navigation>();
@@ -54,7 +53,6 @@ public class TutorialManager : MonoBehaviour
         if (tutorialActive)
         {
             StartTutorial();
-
 
             //Check is the player is hovering over any rotation buttons
             for (int i = 0; i < cameraRot.Length; i++)
@@ -74,11 +72,11 @@ public class TutorialManager : MonoBehaviour
             for (int i = 0; i < camZoom.Length; i++)
             {
                 //Check if player is zooming in on an inspectable
-                if (camZoom[i].isZooming && camZoom[i].isSelected)
+                if (camZoom[i].zoomedInOn && camZoom[i].isSelected)
                 {
                     CheckTutorialPart(3);
                 }
-                if (tutorialParts[3] && !camZoom[i].isZooming && camZoom[i].isSelected)
+                if (tutorialParts[3] && !camZoom[i].zoomedInOn && camZoom[i].isSelected)
                 {
                     CheckTutorialPart(4);
                 }
