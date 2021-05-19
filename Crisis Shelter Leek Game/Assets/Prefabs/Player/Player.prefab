@@ -257,10 +257,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185d090970d21894d9642a8a9716e282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimumFOV: 25
+  maxFOV: 40
+  zoomAmount: 0
+  horizontalRotationSpeed: 1
+  verticalRotationSpeed: 0.75
   cam: {fileID: 1143023406}
   clickableLayer:
     serializedVersion: 2
     m_Bits: 256
+  rotateCameraCanvas: {fileID: 5446185185378869738}
+  navComponent: {fileID: 123022121}
+  agent: {fileID: 123022122}
 --- !u!195 &123022122
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -373,6 +381,17 @@ MonoBehaviour:
       - m_Target: {fileID: 5446185185378869738}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 720242705759610332}
+        m_MethodName: ZoomCamOut
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
