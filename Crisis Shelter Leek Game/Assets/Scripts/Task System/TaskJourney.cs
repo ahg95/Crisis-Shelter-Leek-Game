@@ -10,6 +10,9 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     [Space(20)]
     public Task[] tasksInOrder;
 
+    [Space(10)]
+    public GameEvent OnTaskProgressionEvent;
+
     private int assignedTaskIndex = 0;
 
     public void OnAfterDeserialize()
@@ -24,6 +27,8 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 
     public void Progress()
     {
+        OnTaskProgressionEvent.Raise();
+
         if (assignedTaskIndex != tasksInOrder.Length - 1) // if not the last task
         {
             assignedTaskIndex++;

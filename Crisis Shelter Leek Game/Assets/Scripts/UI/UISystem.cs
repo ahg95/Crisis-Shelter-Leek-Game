@@ -59,7 +59,7 @@ public class UISystem : MonoBehaviour
     }
 
     //updates the text of the ui and shows the "new task" popup(by instantiating it and deleting after couple sec)
-    public void updateTaskUI()
+    public void UpdateTaskUI()
     {
         taskText.text = taskJourney.assignedTask.description;
 
