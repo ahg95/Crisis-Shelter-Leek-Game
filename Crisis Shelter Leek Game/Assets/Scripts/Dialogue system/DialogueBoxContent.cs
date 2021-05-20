@@ -15,6 +15,7 @@ public class DialogueBoxContent
     };
 
     public Speaker speaker;
+    public AudioClip speakerVoice;
 
     [TextArea(1, 3)]
     public string content;

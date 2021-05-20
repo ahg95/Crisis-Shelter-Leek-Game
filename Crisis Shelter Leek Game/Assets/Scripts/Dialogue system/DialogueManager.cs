@@ -6,6 +6,7 @@ public class DialogueManager : MonoBehaviour
 {
     [Tooltip("The DialogueBoxVisualizer that should handle how to display the dialogue boxes.")]
     public DialogueBoxVisualizer dialogueBoxVisualizer;
+    [SerializeField] private AudioSource voicePlayer;
 
     ConversationSection activeConversationSection;
     int indexOfcurrentlyShownDialogueBoxContent;
@@ -32,6 +33,9 @@ public class DialogueManager : MonoBehaviour
 
     private void ShowDialogueBoxWithCurrentIndex()
     {
+        if (activeConversationSection.dialogueBoxContent[indexOfcurrentlyShownDialogueBoxContent].speakerVoice != null)
+        voicePlayer.PlayOneShot(activeConversationSection.dialogueBoxContent[indexOfcurrentlyShownDialogueBoxContent].speakerVoice);
+        // talk sound play
         if (CurrentIndexIsLastIndex() && ActiveConversationSectionHasChoicesAtEnd())
             dialogueBoxVisualizer.ShowDialogueBox(activeConversationSection.dialogueBoxContent[indexOfcurrentlyShownDialogueBoxContent], activeConversationSection.choicesAtEnd);
         else 

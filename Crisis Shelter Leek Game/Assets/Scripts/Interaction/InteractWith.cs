@@ -225,13 +225,13 @@ public class InteractWith : MonoBehaviour
        
         if (zooming)
         {
-            Debug.Log("waiting until zooming is finished");
+            //Debug.Log("waiting until zooming is finished");
             yield return new WaitForFixedUpdate();
         }
 
         while ((int)horizontalTargetAngle != 0)
         {
-            Debug.Log("Rotating Horizontally!");
+            //Debug.Log("Rotating Horizontally!");
 
             transform.Rotate(Vector3.up, Mathf.Sign(horizontalTargetAngle), Space.Self);
             localTarget = transform.InverseTransformPoint(interactable.transform.position);
@@ -241,7 +241,7 @@ public class InteractWith : MonoBehaviour
         }
 
         rotatingHorizontally = false;
-        Debug.Log("Finished Horizontal Rotation!");
+        //Debug.Log("Finished Horizontal Rotation!");
 
         StartCoroutine(routine: RotateVertically(interactable));
     }
@@ -255,28 +255,28 @@ public class InteractWith : MonoBehaviour
         rotatingVertically = true;
         Transform cameraTransform = cam.transform; // Vertical rotation is done with the camera.
 
-        Vector3 localTarget = cameraTransform.InverseTransformPoint(interactable.transform.position); // Get the relative local transform position
+        Vector3 localTarget = cameraTransform.InverseTransformPoint(interactable.objectTransformToLookAt.position); // Get the relative local transform position
         float verticalTargetAngle = Mathf.Atan2(localTarget.y, localTarget.z) * Mathf.Rad2Deg; // Calculate the angle and convert to degrees. Math stuff...  Only works 2D (Which means only on 1 axis I believe?)
 
         if (zooming)
         {
-            Debug.Log("waiting until zooming is finished");
+            //Debug.Log("waiting until zooming is finished");
             yield return new WaitForFixedUpdate();
         }
 
         while ((int)verticalTargetAngle != 0)
         {
-            Debug.Log("Rotating Vertically!");
+            //Debug.Log("Rotating Vertically!");
 
             cameraTransform.Rotate(Vector3.right, -Mathf.Sign(verticalTargetAngle), Space.Self);
-            localTarget = cameraTransform.InverseTransformPoint(interactable.transform.position);
+            localTarget = cameraTransform.InverseTransformPoint(interactable.objectTransformToLookAt.position);
             verticalTargetAngle = Mathf.Atan2(localTarget.y, localTarget.z) * Mathf.Rad2Deg;
 
             yield return new WaitForFixedUpdate();
         }
 
         rotatingVertically = false;
-        Debug.Log("Finished Vertical Rotation!");
+        //Debug.Log("Finished Vertical Rotation!");
 
         if (interactable.zoomIn)
         {
@@ -292,11 +292,11 @@ public class InteractWith : MonoBehaviour
     {
         while (rotatingHorizontally || rotatingVertically)
         {
-            print("Waiting until looking at");
+            //print("Waiting until looking at");
             yield return new WaitForFixedUpdate();
         }
 
-        print("Looking at!");
+        //print("Looking at!");
 
         interactable.onInteraction.Invoke();
     }
