@@ -21,7 +21,7 @@ public static class GlobalStats
         startAmountOfDays = newAmountOfDays;
 
         newAmountOfDays += days;
-        newCost += newAmountOfDays * 100;
+        newCost = newAmountOfDays * 100;
     }
     /// <summary>
     /// Save the player's current task as a JSON string to transfer it to the next scene, where it is reapplied to the player.
