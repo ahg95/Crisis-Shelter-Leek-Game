@@ -270,6 +270,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1298476554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8951414794136295375, guid: ff5f72878e042864985151fccde3dd92,
+    type: 3}
+  m_PrefabInstance: {fileID: 8951414794094825709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1298476560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298476554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64502ce60feca04faad6e622ef02674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1420262846
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +387,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8951414794136295370, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951414794136295374, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 3645.0432
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951414794136295374, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -165
+      objectReference: {fileID: 0}
     - target: {fileID: 8951414794600220364, guid: ff5f72878e042864985151fccde3dd92,
         type: 3}
       propertyPath: m_Pivot.x
@@ -473,6 +506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951414794600220365, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8951414794600220401, guid: ff5f72878e042864985151fccde3dd92,
         type: 3}
