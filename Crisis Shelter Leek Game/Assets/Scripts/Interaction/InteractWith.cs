@@ -4,15 +4,19 @@ using UnityEngine.AI;
 
 public class InteractWith : MonoBehaviour
 {
+    [Header("Zooming")]
     [Tooltip("The lower this value, the more zoom is possible")]
     [SerializeField] private float minimumFOV = 25f;
     [Tooltip("The higher this value, the less zoom is possible")]
     [SerializeField] private float maxFOV = 40f;
     [HideInInspector] public float zoomAmount;
-    [Header("Rotation Speed")]
-    [SerializeField] private float horizontalRotationSpeed = 1.5f;
-    [SerializeField] private float verticalRotationSpeed = 0.75f;
+    private bool zoomedIn = false;
 
+    [Header("Rotation Speed")]
+    [SerializeField] private float rotationSpeed = 1f;
+    private bool rotating = false;
+
+    [Header("Instantiating")]
     [Space(10)]
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask clickableLayer;
@@ -22,10 +26,6 @@ public class InteractWith : MonoBehaviour
 
 
     private Interactable interactableInteractedWith;
-    private bool rotatingHorizontally = false;
-    private bool rotatingVertically = false;
-    private bool zooming = false;
-    private bool zoomedIn = false;
 
     private void Start()
     {
@@ -85,16 +85,17 @@ public class InteractWith : MonoBehaviour
     public void LookAt(Interactable interactable)
     {
         interactableInteractedWith = interactable;
-        StartCoroutine(routine: RotateHorizontally(interactable));
-    }    
+        StartCoroutine(routine: RotateTo(interactable));
+    }
     /// <summary>
     /// Look at- and invoke the onInteraction event.
     /// </summary>
     /// <param name="interactable"></param>
     public void LookAtAndInvoke(Interactable interactable)
     {
-        StartCoroutine(routine: RotateHorizontally(interactable));
-        StartCoroutine(routine: WaitForLookAtToInvoke(interactable));
+        StartCoroutine(RotateTo(interactable));
+        //StartCoroutine(routine: RotateHorizontally(interactable));
+        //StartCoroutine(routine: WaitForLookAtToInvoke(interactable));
     }
     #region Zooming
     public void ZoomCamOut()
@@ -104,7 +105,6 @@ public class InteractWith : MonoBehaviour
 
     public IEnumerator ZoomIn()
     {
-        zooming = true;
         float distance = Vector3.Distance(transform.position, cam.transform.position);
         zoomAmount = Mathf.RoundToInt(Mathf.Lerp(maxFOV, minimumFOV, Mathf.Clamp01(distance)));
 
@@ -121,7 +121,6 @@ public class InteractWith : MonoBehaviour
         }
 
         zoomedIn = true;
-        zooming = false;
 
         interactableInteractedWith.isSelected = true;
         interactableInteractedWith.zoomedInOn = true;
@@ -131,8 +130,6 @@ public class InteractWith : MonoBehaviour
     {
         if (zoomedIn)
         {
-            zooming = true;
-
             float timeStartedZooming = Time.time;
             float startingFOV = cam.fieldOfView;
             float targetFOV = 60;
@@ -148,7 +145,6 @@ public class InteractWith : MonoBehaviour
             }
 
             zoomedIn = false;
-            zooming = false;
             interactableInteractedWith.isSelected = false;
             interactableInteractedWith = null;
         }
@@ -212,77 +208,48 @@ public class InteractWith : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Calculates the horizontal angle between the parent object with the navmeshagent and the transform it should face towards, then rotate towards it until facing it.
-    /// </summary>
-    /// <param name="transformToLookAt"></param>
-    /// <returns></returns>
-    private IEnumerator RotateHorizontally(Interactable interactable)
+    private IEnumerator RotateTo(Interactable interactable)
     {
-        rotatingVertically = true;
-        Vector3 localTarget = transform.InverseTransformPoint(interactable.transform.position); // Get the relative local transform position
-        float horizontalTargetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg; // Calculate the angle and convert to degrees. Math stuff...  Only works 2D (Which means only on 1 axis I believe?)
-       
-        if (zooming)
+        rotating = true;
+
+        // Horizontal position of interactable
+        Vector3 horizontalTargetPos = new Vector3(interactable.transform.position.x, transform.position.y, interactable.transform.position.z);
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.LookRotation(horizontalTargetPos - transform.position);
+
+        Quaternion camStartRotation = cam.transform.localRotation; // stamp of startRotation camera
+
+        // Calculate the angle: Opposite distance / adjacent distance
+        float directionMultiplier = -Mathf.Sign(interactable.transform.position.y - cam.transform.position.y); // Makes the angle positive when the player should look down, negative when up
+        float angleOnY = directionMultiplier * Mathf.Atan(Vector3.Distance(horizontalTargetPos, interactable.transform.position) / Vector3.Distance(cam.transform.position, horizontalTargetPos)) * Mathf.Rad2Deg;
+        // Quaternion.angleaxis == give an angle, will give you back the right quaternion to rotate to.
+        Quaternion camTargetRotation = Quaternion.AngleAxis(angleOnY, Vector3.right); // rotate on the local x Axis
+
+        float timeStamp = Time.time;
+
+        while (transform.rotation != targetRotation || cam.transform.localRotation != camTargetRotation)
         {
-            //Debug.Log("waiting until zooming is finished");
-            yield return new WaitForFixedUpdate();
-        }
+            print("Rotating!");
+            float timeSinceStarted = Time.time - timeStamp;
+            float progression = timeSinceStarted / rotationSpeed;
 
-        while ((int)horizontalTargetAngle != 0)
-        {
-            //Debug.Log("Rotating Horizontally!");
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progression);
+            cam.transform.localRotation = Quaternion.Slerp(camStartRotation, camTargetRotation, progression);
 
-            transform.Rotate(Vector3.up, Mathf.Sign(horizontalTargetAngle), Space.Self);
-            localTarget = transform.InverseTransformPoint(interactable.transform.position);
-            horizontalTargetAngle = Mathf.Atan2(localTarget.x, localTarget.z) * Mathf.Rad2Deg;
-
-            yield return new WaitForFixedUpdate();
-        }
-
-        rotatingHorizontally = false;
-        //Debug.Log("Finished Horizontal Rotation!");
-
-        StartCoroutine(routine: RotateVertically(interactable));
-    }
-
-    /// <summary>
-    /// Rotates the camera vertically in the direction of the transform to look at
-    /// </summary>
-    /// <param name="transformToLookAt"></param>
-    IEnumerator RotateVertically(Interactable interactable)
-    {
-        rotatingVertically = true;
-        Transform cameraTransform = cam.transform; // Vertical rotation is done with the camera.
-
-        Vector3 localTarget = cameraTransform.InverseTransformPoint(interactable.objectTransformToLookAt.position); // Get the relative local transform position
-        float verticalTargetAngle = Mathf.Atan2(localTarget.y, localTarget.z) * Mathf.Rad2Deg; // Calculate the angle and convert to degrees. Math stuff...  Only works 2D (Which means only on 1 axis I believe?)
-
-        if (zooming)
-        {
-            //Debug.Log("waiting until zooming is finished");
-            yield return new WaitForFixedUpdate();
-        }
-
-        while ((int)verticalTargetAngle != 0)
-        {
-            //Debug.Log("Rotating Vertically!");
-
-            cameraTransform.Rotate(Vector3.right, -Mathf.Sign(verticalTargetAngle), Space.Self);
-            localTarget = cameraTransform.InverseTransformPoint(interactable.objectTransformToLookAt.position);
-            verticalTargetAngle = Mathf.Atan2(localTarget.y, localTarget.z) * Mathf.Rad2Deg;
 
             yield return new WaitForFixedUpdate();
         }
 
-        rotatingVertically = false;
-        //Debug.Log("Finished Vertical Rotation!");
+        rotating = false;
+        print("Finished rotating!");
 
         if (interactable.zoomIn)
         {
             StartCoroutine(routine: ZoomIn());
         }
     }
+
     /// <summary>
     /// Invoked to check whether the player is still rotating on any axis, then invoke onINteraction when it is no longer.
     /// </summary>
@@ -290,13 +257,13 @@ public class InteractWith : MonoBehaviour
     /// <returns></returns>
     private IEnumerator WaitForLookAtToInvoke(Interactable interactable)
     {
-        while (rotatingHorizontally || rotatingVertically)
+        while (rotating)
         {
-            //print("Waiting until looking at");
+            print("Waiting until looking at");
             yield return new WaitForFixedUpdate();
         }
 
-        //print("Looking at!");
+        print("Looking at!");
 
         interactable.onInteraction.Invoke();
     }
