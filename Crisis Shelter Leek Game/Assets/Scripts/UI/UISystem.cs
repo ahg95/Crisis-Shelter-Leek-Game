@@ -68,6 +68,7 @@ public class UISystem : MonoBehaviour
         if (!taskUIAnim.GetBool("Show"))
         {
             taskUIAnim.SetBool("Show", true);
+            taskUIAnim.SetTrigger("Pressed");
         }
 
         /*        //the small icon
