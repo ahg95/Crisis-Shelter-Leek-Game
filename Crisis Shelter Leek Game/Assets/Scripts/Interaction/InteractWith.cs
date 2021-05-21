@@ -219,18 +219,18 @@ public class InteractWith : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(horizontalTargetPos - transform.position);
 
         Quaternion camStartRotation = cam.transform.localRotation; // stamp of startRotation camera
-
         // Calculate the angle: Opposite distance / adjacent distance
         float directionMultiplier = -Mathf.Sign(interactable.objectTransformToLookAt.position.y - cam.transform.position.y); // Makes the angle positive when the player should look down, negative when up
         float angleOnY = directionMultiplier * Mathf.Atan(Vector3.Distance(horizontalTargetPos, interactable.objectTransformToLookAt.position) / Vector3.Distance(cam.transform.position, horizontalTargetPos)) * Mathf.Rad2Deg;
         // Quaternion.angleaxis == give an angle, will give you back the right quaternion to rotate to.
-        Quaternion camTargetRotation = Quaternion.AngleAxis(angleOnY, Vector3.right); // rotate on the local x Axis
+        Quaternion camTargetRotation = Quaternion.AngleAxis(angleOnY, transform.right); // rotate on the local x Axis
 
         float timeStamp = Time.time;
 
         while (transform.rotation != targetRotation || cam.transform.localRotation != camTargetRotation)
         {
-            print("Rotating!");
+            print("Current Rotation: " + transform.localRotation);
+            print("Target Rotation" + targetRotation);
             float timeSinceStarted = Time.time - timeStamp;
             float progression = timeSinceStarted / rotationSpeed;
 
@@ -258,7 +258,7 @@ public class InteractWith : MonoBehaviour
     {
         while (rotating)
         {
-            print("Waiting until looking at");
+            //print("Waiting until looking at");
             yield return new WaitForFixedUpdate();
         }
 
