@@ -95,7 +95,7 @@ public class InteractWith : MonoBehaviour
     {
         StartCoroutine(RotateTo(interactable));
         //StartCoroutine(routine: RotateHorizontally(interactable));
-        //StartCoroutine(routine: WaitForLookAtToInvoke(interactable));
+        StartCoroutine(routine: WaitForLookAtToInvoke(interactable));
     }
     #region Zooming
     public void ZoomCamOut()
@@ -213,7 +213,7 @@ public class InteractWith : MonoBehaviour
         rotating = true;
 
         // Horizontal position of interactable
-        Vector3 horizontalTargetPos = new Vector3(interactable.transform.position.x, transform.position.y, interactable.transform.position.z);
+        Vector3 horizontalTargetPos = new Vector3(interactable.objectTransformToLookAt.position.x, transform.position.y, interactable.objectTransformToLookAt.position.z);
 
         Quaternion startRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.LookRotation(horizontalTargetPos - transform.position);
@@ -221,8 +221,8 @@ public class InteractWith : MonoBehaviour
         Quaternion camStartRotation = cam.transform.localRotation; // stamp of startRotation camera
 
         // Calculate the angle: Opposite distance / adjacent distance
-        float directionMultiplier = -Mathf.Sign(interactable.transform.position.y - cam.transform.position.y); // Makes the angle positive when the player should look down, negative when up
-        float angleOnY = directionMultiplier * Mathf.Atan(Vector3.Distance(horizontalTargetPos, interactable.transform.position) / Vector3.Distance(cam.transform.position, horizontalTargetPos)) * Mathf.Rad2Deg;
+        float directionMultiplier = -Mathf.Sign(interactable.objectTransformToLookAt.position.y - cam.transform.position.y); // Makes the angle positive when the player should look down, negative when up
+        float angleOnY = directionMultiplier * Mathf.Atan(Vector3.Distance(horizontalTargetPos, interactable.objectTransformToLookAt.position) / Vector3.Distance(cam.transform.position, horizontalTargetPos)) * Mathf.Rad2Deg;
         // Quaternion.angleaxis == give an angle, will give you back the right quaternion to rotate to.
         Quaternion camTargetRotation = Quaternion.AngleAxis(angleOnY, Vector3.right); // rotate on the local x Axis
 
@@ -236,7 +236,6 @@ public class InteractWith : MonoBehaviour
 
             transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progression);
             cam.transform.localRotation = Quaternion.Slerp(camStartRotation, camTargetRotation, progression);
-
 
             yield return new WaitForFixedUpdate();
         }
