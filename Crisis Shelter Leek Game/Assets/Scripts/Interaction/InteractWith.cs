@@ -105,7 +105,7 @@ public class InteractWith : MonoBehaviour
     public IEnumerator ZoomIn()
     {
         float distance = Vector3.Distance(transform.position, cam.transform.position);
-        zoomAmount = Mathf.RoundToInt(Mathf.Lerp(maxFOV, minimumFOV, Mathf.Clamp01(distance)));
+        zoomAmount = Mathf.RoundToInt(Mathf.Lerp(40, 25, Mathf.Clamp01(distance)));
 
         float timeStartedZooming = Time.time;
         float startFOV = cam.fieldOfView;
@@ -142,7 +142,7 @@ public class InteractWith : MonoBehaviour
                 yield return null;
             }
 
-            print("zoomed out!");
+            // print("zoomed out!");
             navComponent.enabled = true;
             zoomedIn = false;
             interactableInteractedWith.isSelected = false;
@@ -211,7 +211,7 @@ public class InteractWith : MonoBehaviour
     private IEnumerator RotateTo(Interactable interactable)
     {
         rotating = true;
-
+        print("Rotate");
         // Horizontal position of interactable
         Vector3 horizontalTargetPos = new Vector3(interactable.transform.position.x, transform.position.y, interactable.objectTransformToLookAt.position.z);
 
@@ -230,6 +230,7 @@ public class InteractWith : MonoBehaviour
 
         while (Quaternion.Angle(transform.rotation, targetRotation) > 1 || Quaternion.Angle(cam.transform.localRotation, camTargetRotation) > 1) // "close enough angles"
         {
+            print("Rotating");
             float timeSinceStarted = Time.time - timeStamp;
             float progression = timeSinceStarted / rotationSpeed;
 
@@ -242,7 +243,7 @@ public class InteractWith : MonoBehaviour
 
         rotating = false;
         interactable.isSelected = true;
-        print("Finished rotating!");
+        //print("Finished rotating!");
 
         if (interactable.zoomIn)
         {
@@ -263,7 +264,7 @@ public class InteractWith : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        print("Looking at!");
+        // print("Looking at!");
 
         interactable.onInteraction.Invoke();
     }
