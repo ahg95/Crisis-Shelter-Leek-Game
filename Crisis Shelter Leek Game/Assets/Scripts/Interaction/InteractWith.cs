@@ -42,9 +42,8 @@ public class InteractWith : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickableLayer))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, clickableLayer))
             {
                 GameObject interactedObject = hit.collider.gameObject;
                 interactableInteractedWith = interactedObject.GetComponent<Interactable>();
@@ -121,7 +120,6 @@ public class InteractWith : MonoBehaviour
         }
 
         zoomedIn = true;
-
         interactableInteractedWith.isSelected = true;
         interactableInteractedWith.zoomedInOn = true;
         cam.fieldOfView = zoomAmount; // When close enough to zoomamount, snap to zoomamount.
@@ -144,6 +142,7 @@ public class InteractWith : MonoBehaviour
                 yield return null;
             }
 
+            print("zoomed out!");
             zoomedIn = false;
             interactableInteractedWith.isSelected = false;
             interactableInteractedWith = null;
@@ -228,9 +227,8 @@ public class InteractWith : MonoBehaviour
 
         float timeStamp = Time.time;
 
-        while (transform.rotation != targetRotation || cam.transform.localRotation != camTargetRotation)
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 1 || Quaternion.Angle(cam.transform.localRotation, camTargetRotation) > 1) // "close enough angles"
         {
-            print("Rotating!");
             float timeSinceStarted = Time.time - timeStamp;
             float progression = timeSinceStarted / rotationSpeed;
 
@@ -242,6 +240,7 @@ public class InteractWith : MonoBehaviour
         }
 
         rotating = false;
+        interactable.isSelected = true;
         print("Finished rotating!");
 
         if (interactable.zoomIn)
@@ -259,7 +258,7 @@ public class InteractWith : MonoBehaviour
     {
         while (rotating)
         {
-            print("Waiting until looking at");
+            // print("Waiting until looking at");
             yield return new WaitForFixedUpdate();
         }
 
