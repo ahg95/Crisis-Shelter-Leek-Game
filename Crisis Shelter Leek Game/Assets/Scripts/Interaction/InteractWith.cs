@@ -143,6 +143,7 @@ public class InteractWith : MonoBehaviour
             }
 
             print("zoomed out!");
+            navComponent.enabled = true;
             zoomedIn = false;
             interactableInteractedWith.isSelected = false;
             interactableInteractedWith = null;
