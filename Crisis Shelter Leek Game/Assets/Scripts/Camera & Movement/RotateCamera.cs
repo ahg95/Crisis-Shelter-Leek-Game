@@ -3,7 +3,7 @@
 public class RotateCamera : MonoBehaviour
 {
     [SerializeField] float rotationSpeedMultiplier = 1f;
-    [SerializeField] private Camera cam;
+    [SerializeField] private Camera cam = null;
     [SerializeField] private GameObject uiForRotation;
 
     [Range(5f, 30f)]
@@ -33,11 +33,12 @@ public class RotateCamera : MonoBehaviour
         float currentRotation = cam.transform.localEulerAngles.x;
         float rotation = GetRotation(currentRotation);
 
-        if (Mathf.Abs(rotation) <= verticalLimit)
+/*        if (Mathf.Abs(rotation) <= verticalLimit)
         {
             cam.transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime);
-        }
-        else if (rotation <= -verticalLimit && rotationSpeed > 0 || rotation >= verticalLimit && rotationSpeed < 0)
+        }*/
+        if ((rotation <= verticalLimit && rotationSpeed > 0) // negative rot == looking up > if trying to look down & haven't reached lower limit
+            || (rotation >= -verticalLimit && rotationSpeed < 0)) // positive rot == looking down > if trying to look up & haven't reached upper limit
         {
             cam.transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime);
         }
