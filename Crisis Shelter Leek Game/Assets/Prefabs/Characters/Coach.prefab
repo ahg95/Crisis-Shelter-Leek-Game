@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 1720718659443772183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4695959, y: -1.0993445, z: -0.831707}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_Children:
   - {fileID: 8977516786826169099}
   - {fileID: 941056154606252299}
@@ -180,9 +180,8 @@ MonoBehaviour:
   zoomIn: 0
   zoomedInOn: 0
   zoomAmount: 0
-  minimumFOV: 35
-  maxFOV: 50
   moveTowards: 1
+  moveTowardsDistance: 2
   navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
@@ -199,53 +198,13 @@ MonoBehaviour:
     task: {fileID: 11400000, guid: 0c0e58cd22c2b1b428c115954ec051ab, type: 2}
     conversationSection: {fileID: 6561476326340245502, guid: c53a8471084e4504092d245e36849b54,
       type: 3}
+  - combinationName: Day 1 - 3
+    task: {fileID: 11400000, guid: ee4b26541361d8345b7512cd82828c73, type: 2}
+    conversationSection: {fileID: 7474526816934310301, guid: c14944ab19b5bfe469e1d4c98e57eb28,
+      type: 3}
   - combinationName: Day 2 - 1
     task: {fileID: 11400000, guid: 813548cece0b058429e5bccc89b851f7, type: 2}
-    conversationSection: {fileID: 6561476326340245502, guid: c53a8471084e4504092d245e36849b54,
-      type: 3}
-  - combinationName: Day 2 - 2
-    task: {fileID: 11400000, guid: afac4c8a9c1c54448919beb1e0bb10c6, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 2 - 3
-    task: {fileID: 11400000, guid: 3df87dc2073c1a443a0a1e6a3c43c079, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 2 - 4
-    task: {fileID: 11400000, guid: be7551701c7ceac4c891d21411b0e0f8, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 2 - 5
-    task: {fileID: 11400000, guid: 8e69abdfe5b02904ea652f2453807435, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 2 - 6
-    task: {fileID: 11400000, guid: 072d3cc4e31569443bffb3df64fc90df, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 3 - 1
-    task: {fileID: 11400000, guid: 15f37f4651051d44ba8d288cfdc08110, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 3 - 2
-    task: {fileID: 11400000, guid: fe046b5aaae505444aa5981e3c2d2c67, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 4 - 1
-    task: {fileID: 11400000, guid: 38fb526e8b0c7f146a72ae0667c5d1d7, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 4 - 2
-    task: {fileID: 11400000, guid: 104bdfcb331d4404d95374506c71eaf8, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 4 - 3
-    task: {fileID: 11400000, guid: 59952758fb5807942b1801c4721319d9, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-      type: 3}
-  - combinationName: Day 5 - 1
-    task: {fileID: 11400000, guid: 1c0ef940fab6a4b41825cf909e1ab4fe, type: 2}
-    conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
+    conversationSection: {fileID: 4450825001050343129, guid: 558b5c546b450484099f4ddcdf51ce90,
       type: 3}
 --- !u!65 &3992774046770595627
 BoxCollider:

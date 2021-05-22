@@ -13,5 +13,4 @@ public class Task : ScriptableObject
         HousingCorporation,
         Zienn
     };
-    public int taskID;
 }

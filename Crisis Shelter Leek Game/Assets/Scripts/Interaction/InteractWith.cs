@@ -64,7 +64,7 @@ public class InteractWith : MonoBehaviour
                     }
                     else // immmediately invoke
                     {
-                        interactableInteractedWith.onInteraction.Invoke();
+                        interactableInteractedWith.InteractWith();
                     }
                 }
                 else // Else, zoom out of interactable

@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class UpdateStats : MonoBehaviour
 {
-    private int displayedAmountOfDays = GlobalStats.startAmountOfDays;
-    private float displayedAmountOfMoney = GlobalStats.costAtStart;
+    private int displayedAmountOfDays = DaysPassed.startAmountOfDays;
+    private float displayedAmountOfMoney = DaysPassed.costAtStart;
     [SerializeField] private float daySpeedMultiplier = 1.5f;
     [SerializeField] private float costsSpeedMultiplier = 1f;
     [SerializeField] private GameObject transition;
@@ -29,7 +29,7 @@ public class UpdateStats : MonoBehaviour
 
     private void Update()
     {
-        if(displayedAmountOfDays == GlobalStats.newAmountOfDays && displayedAmountOfMoney == GlobalStats.newCost && coroutineStarted)
+        if(displayedAmountOfDays == DaysPassed.newAmountOfDays && displayedAmountOfMoney == DaysPassed.newCost && coroutineStarted)
         {
             finished = true;
         }
@@ -48,7 +48,7 @@ public class UpdateStats : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        while (displayedAmountOfDays < GlobalStats.newAmountOfDays)
+        while (displayedAmountOfDays < DaysPassed.newAmountOfDays)
         {
             if (!tickPlayer.isPlaying) // To prevent 'spamming' of coinsounds.
             {
@@ -56,10 +56,10 @@ public class UpdateStats : MonoBehaviour
             }
             displayedAmountOfDays++; //Increment the display score by 
             daysUI.text = displayedAmountOfDays.ToString(); //Write it to the UI
-            yield return new WaitForSeconds(1f / GlobalStats.newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
+            yield return new WaitForSeconds(1f / DaysPassed.newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
         }
 
-        while (displayedAmountOfMoney < GlobalStats.newCost)
+        while (displayedAmountOfMoney < DaysPassed.newCost)
         {
             if (!tickPlayer.isPlaying) // To prevent 'spamming' of coinsounds.
             {
@@ -67,7 +67,7 @@ public class UpdateStats : MonoBehaviour
             }
             displayedAmountOfMoney += 25f; //Increment the display score by 1
             costsUI.text = displayedAmountOfMoney.ToString(); //Write it to the UI
-            yield return new WaitForSeconds(1f / GlobalStats.newCost * costsSpeedMultiplier);
+            yield return new WaitForSeconds(1f / DaysPassed.newCost * costsSpeedMultiplier);
         }
     }
 }

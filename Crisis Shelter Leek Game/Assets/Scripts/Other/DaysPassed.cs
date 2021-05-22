@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public static class GlobalStats
+public static class DaysPassed
 {
     public static string currentTaskTitle;
     public static string currentTaskJSON; 

@@ -46,4 +46,22 @@ MonoBehaviour:
   dialogueBoxContent:
   - speaker: 5
     content: You made an appointment at 15:00 pm tomorrow.
-  choicesAtEnd: []
+  - speaker: 5
+    content: It's still afternoon. What do I want to do?
+  choicesAtEnd:
+  - choiceText: Go for a run
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}
+  - choiceText: Contact friends
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}
+  - choiceText: Get to know other residents
+    Consequence:
+      m_PersistentCalls:
+        m_Calls: []
+    followUpConversation: {fileID: 0}
+  followUpConversationIfNoChoicesPresent: {fileID: 0}
