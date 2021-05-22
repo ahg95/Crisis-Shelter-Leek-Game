@@ -54,7 +54,7 @@ public class InteractWith : MonoBehaviour
                     {
                         rotateCameraCanvas.SetActive(false);
                         navComponent.enabled = false;
-                        agent.SetDestination(interactedObject.transform.position + interactedObject.transform.forward * 2);
+                        agent.SetDestination(interactedObject.transform.position + interactedObject.transform.forward * interactableInteractedWith.moveTowardsDistance);
                         StartCoroutine(routine: WaitForDestinationReached());
                     }
                     else if (interactableInteractedWith.zoomIn && !interactableInteractedWith.moveTowards) // ZOOM IN ON INTERACTABLE
@@ -105,7 +105,7 @@ public class InteractWith : MonoBehaviour
     public IEnumerator ZoomIn()
     {
         float distance = Vector3.Distance(transform.position, cam.transform.position);
-        zoomAmount = Mathf.RoundToInt(Mathf.Lerp(40, 25, Mathf.Clamp01(distance)));
+        zoomAmount = Mathf.RoundToInt(Mathf.Lerp(maxFOV, minimumFOV, Mathf.Clamp01(distance)));
 
         float timeStartedZooming = Time.time;
         float startFOV = cam.fieldOfView;
@@ -230,7 +230,7 @@ public class InteractWith : MonoBehaviour
 
         while (Quaternion.Angle(transform.rotation, targetRotation) > 1 || Quaternion.Angle(cam.transform.localRotation, camTargetRotation) > 1) // "close enough angles"
         {
-            print("Rotating");
+            // print("Rotating");
             float timeSinceStarted = Time.time - timeStamp;
             float progression = timeSinceStarted / rotationSpeed;
 

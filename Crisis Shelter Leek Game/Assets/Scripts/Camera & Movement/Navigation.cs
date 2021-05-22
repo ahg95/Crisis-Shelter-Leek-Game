@@ -37,7 +37,7 @@ public class Navigation : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 15f);
 
-        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !EventSystem.current.IsPointerOverGameObject() && !isMoving)
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") /*&& !EventSystem.current.IsPointerOverGameObject()*/ && !isMoving)
         {
             arrow.SetActive(true);
 

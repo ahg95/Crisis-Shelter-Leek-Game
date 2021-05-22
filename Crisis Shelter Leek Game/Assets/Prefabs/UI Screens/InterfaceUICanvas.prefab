@@ -1511,6 +1511,7 @@ GameObject:
   - component: {fileID: 8951414794136295369}
   - component: {fileID: 8951414794136295365}
   - component: {fileID: 8951414794136295370}
+  - component: {fileID: 1420023327206488224}
   m_Layer: 5
   m_Name: Task UI
   m_TagString: Untagged
@@ -1651,6 +1652,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1420023327206488224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951414794136295375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64502ce60feca04faad6e622ef02674, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8951414794406556786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +1992,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &8951414794600220402
 MonoBehaviour:
