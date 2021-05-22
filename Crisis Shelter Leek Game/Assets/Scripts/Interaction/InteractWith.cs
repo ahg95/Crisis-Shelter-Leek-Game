@@ -211,7 +211,7 @@ public class InteractWith : MonoBehaviour
     private IEnumerator RotateTo(Interactable interactable)
     {
         rotating = true;
-        print("Rotate");
+        // print("Rotate");
         // Horizontal position of interactable
         Vector3 horizontalTargetPos = new Vector3(interactable.transform.position.x, transform.position.y, interactable.objectTransformToLookAt.position.z);
 
@@ -237,12 +237,10 @@ public class InteractWith : MonoBehaviour
             transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progression);
             cam.transform.localRotation = Quaternion.Slerp(camStartRotation, camTargetRotation, progression);
 
-
             yield return new WaitForFixedUpdate();
         }
 
         rotating = false;
-        interactable.isSelected = true;
         //print("Finished rotating!");
 
         if (interactable.zoomIn)
@@ -265,7 +263,7 @@ public class InteractWith : MonoBehaviour
         }
 
         // print("Looking at!");
-
+        interactable.isSelected = true;
         interactable.onInteraction.Invoke();
     }
 }
