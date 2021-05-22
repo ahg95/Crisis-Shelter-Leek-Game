@@ -781,6 +781,83 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3111564835822239739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019014662589147838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &6901984707991353872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019014662589147838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e5f64de2640b7439387392e6b94a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  minimumInteractionDistance: 5
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
+  zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  navComponent: {fileID: 0}
+  isSelected: 0
+  debugAlwaysVisible: 0
+  fullCube: 0
+  hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
+  positionId: 0
+  sceneName: Wender Day
+--- !u!1 &7326691703289255766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4082337458792322134}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: PositionPoint
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4082337458792322134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326691703289255766}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.00181, y: -0, z: -0.0109}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8698251594724431825}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &8897326904842125304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1528,6 +1605,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 85d5b77a1544d3d4d9f286d2df59aaa9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 042693c0666ee0b47ae45b924b4f61a6, type: 3}
+--- !u!4 &8698251594724431825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2647898422681595148, guid: 042693c0666ee0b47ae45b924b4f61a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6631933267707083485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7019014662589147838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4423045620967985251, guid: 042693c0666ee0b47ae45b924b4f61a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6631933267707083485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6594366437425143094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 042693c0666ee0b47ae45b924b4f61a6,
@@ -1663,15 +1752,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0de929046a39b6d41b854c0b7fb66aaa, type: 3}
---- !u!1 &7833756516643546513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -5711052370896006010, guid: 0de929046a39b6d41b854c0b7fb66aaa,
-    type: 3}
-  m_PrefabInstance: {fileID: 6631933267986084119}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6594366437112583932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0de929046a39b6d41b854c0b7fb66aaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 6631933267986084119}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7833756516643546513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5711052370896006010, guid: 0de929046a39b6d41b854c0b7fb66aaa,
     type: 3}
   m_PrefabInstance: {fileID: 6631933267986084119}
   m_PrefabAsset: {fileID: 0}

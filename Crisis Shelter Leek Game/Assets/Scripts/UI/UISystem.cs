@@ -71,27 +71,27 @@ public class UISystem : MonoBehaviour
             taskUIAnim.SetTrigger("Pressed");
         }
 
-        /*        //the small icon
-                GameObject taskIconClone = Instantiate(newTaskPopUpIcon);
-                taskIconClone.SetActive(true);
+        //the small icon
+        GameObject taskIconClone = Instantiate(newTaskPopUpIcon);
+        taskIconClone.SetActive(true);
 
-                taskIconClone.transform.SetParent(taskUI.transform);
-                taskIconClone.GetComponent<RectTransform>().sizeDelta = newTaskPopUpIcon.GetComponent<RectTransform>().sizeDelta;
-                taskIconClone.GetComponent<RectTransform>().localScale = newTaskPopUpIcon.GetComponent<RectTransform>().localScale;
-                taskIconClone.GetComponent<RectTransform>().localPosition = newTaskPopUpIcon.GetComponent<RectTransform>().localPosition;
+        taskIconClone.transform.SetParent(taskUI.transform);
+        taskIconClone.GetComponent<RectTransform>().sizeDelta = newTaskPopUpIcon.GetComponent<RectTransform>().sizeDelta;
+        taskIconClone.GetComponent<RectTransform>().localScale = newTaskPopUpIcon.GetComponent<RectTransform>().localScale;
+        taskIconClone.GetComponent<RectTransform>().localPosition = newTaskPopUpIcon.GetComponent<RectTransform>().localPosition;
 
-                Destroy(taskIconClone, 2.5f);*/
+        Destroy(taskIconClone, 2.5f);
 
-        //the middle screen popUP
-        GameObject taskPopUpClone = Instantiate(newTaskPopUp);
-        taskPopUpClone.SetActive(true);
+        /*        //the middle screen popUP
+                GameObject taskPopUpClone = Instantiate(newTaskPopUp);
+                taskPopUpClone.SetActive(true);
 
-        taskPopUpClone.transform.SetParent(gameObject.transform);
-        taskPopUpClone.GetComponent<RectTransform>().sizeDelta = newTaskPopUp.GetComponent<RectTransform>().sizeDelta;
-        taskPopUpClone.GetComponent<RectTransform>().localScale = newTaskPopUp.GetComponent<RectTransform>().localScale;
-        taskPopUpClone.GetComponent<RectTransform>().localPosition = newTaskPopUp.GetComponent<RectTransform>().localPosition;
+                taskPopUpClone.transform.SetParent(gameObject.transform);
+                taskPopUpClone.GetComponent<RectTransform>().sizeDelta = newTaskPopUp.GetComponent<RectTransform>().sizeDelta;
+                taskPopUpClone.GetComponent<RectTransform>().localScale = newTaskPopUp.GetComponent<RectTransform>().localScale;
+                taskPopUpClone.GetComponent<RectTransform>().localPosition = newTaskPopUp.GetComponent<RectTransform>().localPosition;
 
-        Destroy(taskPopUpClone, 1.5f);
+                Destroy(taskPopUpClone, 1.5f);*/
     }
 
     //add new task to the list

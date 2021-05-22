@@ -146,11 +146,6 @@ PrefabInstance:
       propertyPath: navComponent
       value: 
       objectReference: {fileID: 153833975}
-    - target: {fileID: 3465966687752050576, guid: 8c92efa11afed4644a36cd57acb6bcab,
-        type: 3}
-      propertyPath: minimumInteractionDistance
-      value: 2.4
-      objectReference: {fileID: 0}
     - target: {fileID: 5744128128742496793, guid: 8c92efa11afed4644a36cd57acb6bcab,
         type: 3}
       propertyPath: m_RootOrder
@@ -206,6 +201,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6115247179239191293, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115247179239191293, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 6633008321425263373, guid: 8c92efa11afed4644a36cd57acb6bcab,
         type: 3}
       propertyPath: m_Name
@@ -213,19 +218,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7837539282222427284, guid: 8c92efa11afed4644a36cd57acb6bcab,
         type: 3}
-      propertyPath: zoomIn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7837539282222427284, guid: 8c92efa11afed4644a36cd57acb6bcab,
-        type: 3}
       propertyPath: navComponent
       value: 
       objectReference: {fileID: 153833975}
-    - target: {fileID: 7837539282222427284, guid: 8c92efa11afed4644a36cd57acb6bcab,
-        type: 3}
-      propertyPath: minimumInteractionDistance
-      value: 2.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c92efa11afed4644a36cd57acb6bcab, type: 3}
 --- !u!1001 &395389023
@@ -394,9 +389,8 @@ MonoBehaviour:
   zoomIn: 0
   zoomedInOn: 0
   zoomAmount: 0
-  minimumFOV: 25
-  maxFOV: 40
   moveTowards: 0
+  moveTowardsDistance: 2
   navComponent: {fileID: 153833975}
   isSelected: 0
   debugAlwaysVisible: 0
@@ -735,7 +729,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1953548001}
     - target: {fileID: 2188567406120788607, guid: 051da62ab30593240b883e14049146da,
         type: 3}
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
@@ -925,6 +919,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Bedroom Wender With Coach
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+        m_MethodName: Progress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   gameObjectToListenFor: {fileID: 6561476326340245501, guid: c53a8471084e4504092d245e36849b54,

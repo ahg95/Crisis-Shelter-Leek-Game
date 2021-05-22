@@ -8,9 +8,9 @@ public class Door : Interactable
     {
         onInteraction.Invoke();
 
-        SetID();
+        GoToScene();
     }
-    public void SetID() 
+    public void GoToScene() 
     {
         SetPosOnSceneChange.instance.currentPositionId = positionId;
 

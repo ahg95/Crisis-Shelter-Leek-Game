@@ -13,16 +13,13 @@ public class Interactable : MonoBehaviour
     [SerializeField] private float minimumInteractionDistance = 5f;
 
     [Header("Zoom in & Walk Towards?")]
-    [SerializeField] public Transform objectTransformToLookAt = null;
-    [SerializeField] public bool zoomIn = false;
+    public Transform objectTransformToLookAt = null;
+    public bool zoomIn = false;
     [HideInInspector] public bool zoomedInOn = false;
     [HideInInspector] public float zoomAmount;
-    [Tooltip("The lower this value, the more zoom is possible")]
-    [SerializeField] private float minimumFOV = 25f;
-    [Tooltip("The higher this value, the less zoom is possible")]
-    [SerializeField] private float maxFOV = 40f;
     [Space(5)]
-    [SerializeField] public bool moveTowards = false;
+    public bool moveTowards = false;
+    public float moveTowardsDistance = 2f;
     [SerializeField] protected Navigation navComponent = null;
 
     public bool isSelected = false;
@@ -77,7 +74,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void InteractWith()
     {
-        print("interacted through InteractWith Void");
+        print("invoked through InteractWith Void");
         onInteraction.Invoke();
        /* if (!isSelected)
         {
