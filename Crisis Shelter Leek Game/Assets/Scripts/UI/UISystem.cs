@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Animations;
-using TMPro;
 
 public class UISystem : MonoBehaviour
 {
@@ -23,9 +19,6 @@ public class UISystem : MonoBehaviour
 
     [Space(15)]
     [SerializeField] private TaskJourney taskJourney;
-
-
-
 
     void Start()
     {
