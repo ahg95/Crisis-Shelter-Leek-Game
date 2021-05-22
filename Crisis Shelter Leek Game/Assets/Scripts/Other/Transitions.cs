@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Transitions : MonoBehaviour
 {
     [SerializeField] private Animator simpleTransition;//sets a simple transition that happens within the scene
-    [SerializeField] private Animator sceneTransition;//sets the transition on scene change
     [SerializeField] private float sceneTransitionTime;//transition time for the scene transition
 
     [SerializeField] private CanvasGroup stats;
