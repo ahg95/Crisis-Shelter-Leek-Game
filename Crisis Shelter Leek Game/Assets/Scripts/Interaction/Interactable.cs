@@ -7,6 +7,7 @@ using System.Collections;
 [DisallowMultipleComponent]
 public class Interactable : MonoBehaviour
 {
+    #region variables
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
@@ -36,7 +37,7 @@ public class Interactable : MonoBehaviour
     protected Camera cam;
     protected NavMeshAgent agent;
     protected GameObject rotateCameraCanvas;
-
+    #endregion
     public void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -76,32 +77,6 @@ public class Interactable : MonoBehaviour
     {
         print("invoked through InteractWith Void");
         onInteraction.Invoke();
-       /* if (!isSelected)
-        {
-            if (moveTowards)
-            {
-                rotateCameraCanvas.SetActive(false);
-                navComponent.enabled = false;
-                agent.SetDestination(transform.position + transform.forward * 2);
-
-                StartCoroutine(routine: WaitForDestinationReached());
-            }
-            else if (zoomIn && !moveTowards)
-            {
-                rotateCameraCanvas.SetActive(false);
-                StartCoroutine(routine: RotateTowardsInteractable());
-            }
-            else
-            {
-                onInteraction.Invoke();
-            }
-        }
-        else
-        {
-            rotateCameraCanvas.SetActive(true);
-            StopAllCoroutines();
-            StartCoroutine(routine: ZoomOut());
-        }*/
     }
 
 

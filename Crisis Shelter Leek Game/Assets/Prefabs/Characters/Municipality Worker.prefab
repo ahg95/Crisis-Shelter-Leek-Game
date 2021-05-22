@@ -310,22 +310,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onInteraction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 521944431459996367}
+        m_MethodName: StartConversationAccordingToCurrentPlayerTask
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   minimumInteractionDistance: 5
-  objectTransformToLookAt: {fileID: 1150207140317268814}
+  objectTransformToLookAt: {fileID: 0}
   zoomIn: 0
-  isZooming: 0
+  zoomedInOn: 0
   zoomAmount: 0
-  minimumFOV: 25
-  maxFOV: 40
   moveTowards: 0
+  moveTowardsDistance: 2
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
   hoverCursor: {fileID: 0}
-  taskJourney: {fileID: 0}
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
   dialogueManager: {fileID: 0}
-  conversationTaskCombination: []
+  conversationTaskCombination:
+  - combinationName: 
+    task: {fileID: 11400000, guid: 3df87dc2073c1a443a0a1e6a3c43c079, type: 2}
+    conversationSection: {fileID: 3402563576952253158, guid: f5d12d08f40a97f4085185d2bb1c54ab,
+      type: 3}
+  - combinationName: 
+    task: {fileID: 11400000, guid: 15f37f4651051d44ba8d288cfdc08110, type: 2}
+    conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+  - combinationName: 
+    task: {fileID: 11400000, guid: fe046b5aaae505444aa5981e3c2d2c67, type: 2}
+    conversationSection: {fileID: 4332921894689323990, guid: b853214c4b01dc548bce523a9b5dba85,
+      type: 3}
+  - combinationName: 
+    task: {fileID: 11400000, guid: 104bdfcb331d4404d95374506c71eaf8, type: 2}
+    conversationSection: {fileID: 983746550997804749, guid: 07a1ae48d1e7b1e46a8318807fdcaafb,
+      type: 3}
+  - combinationName: 
+    task: {fileID: 11400000, guid: 1c0ef940fab6a4b41825cf909e1ab4fe, type: 2}
+    conversationSection: {fileID: 2869492840581819916, guid: db8c56ae6739b3c47824e60a1a2e7030,
+      type: 3}
 --- !u!65 &6927897453655520156
 BoxCollider:
   m_ObjectHideFlags: 0

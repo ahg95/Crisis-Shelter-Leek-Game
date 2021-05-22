@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Task Journey", menuName = "Tasks/Task Journey")]
 public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
@@ -33,7 +32,7 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 
     private void Reset()
     {
-        assignedTaskIndex = 0;
-        assignedTask = tasksInOrder[assignedTaskIndex];
+/*        assignedTaskIndex = 0;
+        assignedTask = tasksInOrder[assignedTaskIndex];*/
     }
 }

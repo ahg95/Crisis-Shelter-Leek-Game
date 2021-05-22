@@ -184,6 +184,9 @@ GameObject:
   m_Component:
   - component: {fileID: 668794177437851752}
   - component: {fileID: 6952246228228443174}
+  - component: {fileID: 2837920870486279978}
+  - component: {fileID: 4327836510399315874}
+  - component: {fileID: 8524464880893420667}
   m_Layer: 0
   m_Name: Scene transitioner
   m_TagString: Untagged
@@ -220,13 +223,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleTransition: {fileID: 8316612296648237856}
-  sceneTransition: {fileID: 0}
-  endTransitionTime: 0
-  startTransitionTime: 0
   sceneTransitionTime: 1
-  transition: {fileID: 7808371764214868882}
   stats: {fileID: 8588861264545205089}
   fadeInterval: 2
+--- !u!114 &2837920870486279978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668794177437851758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f886e1d59f96b1a4a92b075dee62f4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6952246228228443174}
+        m_MethodName: LoadSimpleSceneTransition
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Bedroom Wender With Coach
+          m_BoolArgument: 0
+        m_CallState: 2
+  gameObjectToListenFor: {fileID: 6561476326340245501, guid: c53a8471084e4504092d245e36849b54,
+    type: 3}
+--- !u!114 &4327836510399315874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668794177437851758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2f5fcdfe0914849a323a80cce0383d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoaded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StartConversationSection
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6111893449838858543, guid: 5c7ba181a28811a41bf6f863827d6c7b,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: ConversationSection, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+  currentTask: {fileID: 11400000, guid: ee4b26541361d8345b7512cd82828c73, type: 2}
+--- !u!114 &8524464880893420667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668794177437851758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2f5fcdfe0914849a323a80cce0383d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoaded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+        m_MethodName: Progress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+  currentTask: {fileID: 11400000, guid: ff45b383d0715aa4396811beccfa1108, type: 2}
 --- !u!1 &668794178108760208
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +878,7 @@ MonoBehaviour:
   tickPlayer: {fileID: 2981741016742736810}
   tickSound: {fileID: 8300000, guid: 671a6fc79e2814a4999c6e24fb225ee7, type: 3}
   coinSound: {fileID: 8300000, guid: 9f3758ac5663ea347bfad43c350b8570, type: 3}
+  finished: 0
 --- !u!1 &2875299673874914138
 GameObject:
   m_ObjectHideFlags: 0

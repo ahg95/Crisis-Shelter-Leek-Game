@@ -8,7 +8,11 @@ public class TextScene : MonoBehaviour
 {
     private TextMeshProUGUI textComponent;
     private CanvasGroup textAlpha;
-    [SerializeField] private string[] textArray;
+
+    [SerializeField] private TaskJourney taskJourney;
+    [SerializeField] private TransitionTextAssociatedToTask[] transitionTextAssociatedToTask;
+
+    private string[] textArray;
     private int currentTextInt = 0;
 
     [Tooltip("How quickly the text will fade in- and out")]
@@ -30,6 +34,16 @@ public class TextScene : MonoBehaviour
         textAlpha = GetComponentInChildren<CanvasGroup>();
         textAlpha.alpha = 0;
         sceneToLoadString = sceneToLoad.ToString();
+
+        // Get current task and associated transition text
+        foreach (TransitionTextAssociatedToTask transText in transitionTextAssociatedToTask)
+        {
+            if (transText.associatedTask == taskJourney.assignedTask)
+            {
+                textArray = transText.textArray;
+                break;
+            }
+        }
 
         StartCoroutine(TextTimer(textArray[currentTextInt]));
     }
