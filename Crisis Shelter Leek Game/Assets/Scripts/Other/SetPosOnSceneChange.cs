@@ -9,7 +9,7 @@ public class SetPosOnSceneChange : MonoBehaviour
     public GameObject player;
     public GameObject[] positionPoint;
 
-    public int currentPositionId;
+    public int doorId;
     private void Awake()
     {
         if(instance == null)
@@ -43,7 +43,7 @@ public class SetPosOnSceneChange : MonoBehaviour
         {
             for (int i = 0; i < positionPoint.Length; i++)
             {
-                if (positionPoint[i].transform.parent.GetComponent<Door>().positionId == currentPositionId)
+                if (positionPoint[i].transform.parent.GetComponent<Door>().positionId == doorId)
                 {
                     player.transform.position = positionPoint[i].transform.position;
                     player.transform.rotation = Quaternion.LookRotation(positionPoint[i].transform.forward);//make the player look in the same direction as the position point
@@ -53,6 +53,6 @@ public class SetPosOnSceneChange : MonoBehaviour
     }
     public void SetPositionId(int passedPositionId)
     {
-        currentPositionId = passedPositionId;
+        instance.doorId = passedPositionId;
     }
 }

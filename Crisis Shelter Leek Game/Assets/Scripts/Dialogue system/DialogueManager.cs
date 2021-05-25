@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     public GameObjectGameEvent ConversationSectionHasStarted;
     public GameObjectGameEvent ConversationSectionHasEnded;
 
+
+
     public void StartConversationSection(ConversationSection conversationSection)
     {
         if (activeConversationSection == null)
@@ -34,11 +36,11 @@ public class DialogueManager : MonoBehaviour
     {
         if (CurrentIndexIsLastIndex() && ActiveConversationSectionHasChoicesAtEnd())
             dialogueBoxVisualizer.ShowDialogueBox(activeConversationSection.dialogueBoxContent[indexOfcurrentlyShownDialogueBoxContent], activeConversationSection.choicesAtEnd);
-        else 
+        else if (0 <= indexOfcurrentlyShownDialogueBoxContent && indexOfcurrentlyShownDialogueBoxContent < activeConversationSection.dialogueBoxContent.Length)
             dialogueBoxVisualizer.ShowDialogueBox(activeConversationSection.dialogueBoxContent[indexOfcurrentlyShownDialogueBoxContent]);
     }
 
-    private bool CurrentIndexIsLastIndex() => (indexOfcurrentlyShownDialogueBoxContent + 1 == activeConversationSection.dialogueBoxContent.Length);
+    private bool CurrentIndexIsLastIndex() => (activeConversationSection != null && indexOfcurrentlyShownDialogueBoxContent + 1 == activeConversationSection.dialogueBoxContent.Length);
 
     private bool ActiveConversationSectionHasChoicesAtEnd() => (0 < activeConversationSection.choicesAtEnd.Length);
 
@@ -58,7 +60,7 @@ public class DialogueManager : MonoBehaviour
                 activeConversationSection = null;
             }
         }
-        else
+        else if (activeConversationSection != null && 0 <= indexOfcurrentlyShownDialogueBoxContent && indexOfcurrentlyShownDialogueBoxContent < activeConversationSection.dialogueBoxContent.Length)
         {
             indexOfcurrentlyShownDialogueBoxContent++;
             ShowDialogueBoxWithCurrentIndex();

@@ -8,7 +8,7 @@ public class UpdateUI : MonoBehaviour
 
     public void UpdateUIStats()
     {
-        days.text = GlobalStats.newAmountOfDays.ToString();
-        costs.text = GlobalStats.newCost.ToString();
+        days.text = DaysPassed.newAmountOfDays.ToString();
+        costs.text = DaysPassed.newCost.ToString();
     }
 }

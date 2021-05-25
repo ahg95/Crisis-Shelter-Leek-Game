@@ -12,7 +12,15 @@ public class Door : Interactable
     }
     public void GoToScene() 
     {
-        SetPosOnSceneChange.instance.currentPositionId = positionId;
+        SetPosOnSceneChange.instance.doorId = positionId;
+
+        Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
+        sceneTransition.LoadSimpleSceneTransition(sceneName);
+    }
+
+    public void GoToScene(int id)
+    {
+        SetPosOnSceneChange.instance.doorId = id;
 
         Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
         sceneTransition.LoadSimpleSceneTransition(sceneName);

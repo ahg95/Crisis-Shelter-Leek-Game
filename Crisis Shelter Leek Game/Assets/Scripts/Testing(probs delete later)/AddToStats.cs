@@ -8,11 +8,11 @@ public class AddToStats : MonoBehaviour
     public float cost;
     private void Update()
     {
-        days = GlobalStats.newAmountOfDays;
-        cost = GlobalStats.newCost;
+        days = DaysPassed.newAmountOfDays;
+        cost = DaysPassed.newCost;
     }
     public void addDays (int days)
     {
-        GlobalStats.IncreaseDaysZienn(days);
+        DaysPassed.IncreaseDaysZienn(days);
     }
 }

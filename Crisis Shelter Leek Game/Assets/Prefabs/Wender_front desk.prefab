@@ -560,6 +560,19 @@ Transform:
   m_Father: {fileID: 5744128128742496793}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3684816363689025392
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966668324750515852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7333177e-16, y: 0.011906377, z: 0.022012211}
+  m_Center: {x: -0.036221433, y: 0.00478888, z: 0.011138608}
 --- !u!114 &2554203173220780757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +601,7 @@ MonoBehaviour:
   fullCube: 0
   hoverCursor: {fileID: 0}
   positionId: 0
-  sceneName: 
+  sceneName: Bedroom Wender Alone
 --- !u!114 &8361623535159706504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,7 +988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3398936770220509493}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.0344, y: 0.0041, z: -0}
+  m_LocalPosition: {x: -0.0349, y: 0.0041, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7336471713881564145}
@@ -2880,63 +2893,19 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &4663489655342463122
-MonoBehaviour:
+--- !u!65 &2579249785120193567
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6887807322500016199}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!114 &2216056603048097816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6887807322500016199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35a984b083b14c043ac5c6793fc57825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteraction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3180791989713978786}
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: fce3f50d476aa774a80fd98855c4490b,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  minimumInteractionDistance: 5
-  objectTransformToLookAt: {fileID: 0}
-  zoomIn: 0
-  zoomedInOn: 0
-  zoomAmount: 0
-  moveTowards: 0
-  moveTowardsDistance: 2
-  navComponent: {fileID: 0}
-  isSelected: 0
-  debugAlwaysVisible: 0
-  fullCube: 0
-  hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.0114627, y: 0.99999666, z: 1.7594006}
+  m_Center: {x: 0, y: 0.37920594, z: 0}
 --- !u!82 &3180791989713978786
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3033,19 +3002,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &2579249785120193567
-BoxCollider:
+--- !u!114 &2216056603048097816
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6887807322500016199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0114627, y: 0.99999666, z: 1.7594006}
-  m_Center: {x: 0, y: 0.37920594, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a984b083b14c043ac5c6793fc57825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3180791989713978786}
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: fce3f50d476aa774a80fd98855c4490b,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  minimumInteractionDistance: 5
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
+  zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  navComponent: {fileID: 0}
+  isSelected: 0
+  debugAlwaysVisible: 0
+  fullCube: 0
+  hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
+--- !u!114 &4663489655342463122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887807322500016199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7209663661300169740
 GameObject:
   m_ObjectHideFlags: 0
@@ -5492,12 +5505,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82d0f5557f1cf194fb78bc13580781aa, type: 3}
---- !u!1 &966668324750515852 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6314046295882885173, guid: 82d0f5557f1cf194fb78bc13580781aa,
-    type: 3}
-  m_PrefabInstance: {fileID: 6554342879573587641}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7314357130770983184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4572390648781152169, guid: 82d0f5557f1cf194fb78bc13580781aa,
@@ -5507,6 +5514,12 @@ GameObject:
 --- !u!4 &7336471713881564145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4550278535264376136, guid: 82d0f5557f1cf194fb78bc13580781aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 6554342879573587641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &966668324750515852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6314046295882885173, guid: 82d0f5557f1cf194fb78bc13580781aa,
     type: 3}
   m_PrefabInstance: {fileID: 6554342879573587641}
   m_PrefabAsset: {fileID: 0}

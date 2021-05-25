@@ -22,8 +22,8 @@ public class UISystem : MonoBehaviour
 
     void Start()
     {
-        daysDataText.text = "Days: " + GlobalStats.newAmountOfDays;
-        costDataText.text = "Cost: " + GlobalStats.newCost;
+        daysDataText.text = "Days: " + DaysPassed.newAmountOfDays;
+        costDataText.text = "Cost: " + DaysPassed.newCost;
 
         taskText.text = taskJourney.assignedTask.description;
     }
@@ -47,8 +47,8 @@ public class UISystem : MonoBehaviour
 
     public void UpdateDaysAndCostUI()
     {
-        daysDataText.text = "Days: " + GlobalStats.newAmountOfDays;
-        costDataText.text = "Cost: " + GlobalStats.newCost;
+        daysDataText.text = "Days: " + DaysPassed.newAmountOfDays;
+        costDataText.text = "Cost: " + DaysPassed.newCost;
     }
 
     //updates the text of the ui and shows the "new task" popup(by instantiating it and deleting after couple sec)
