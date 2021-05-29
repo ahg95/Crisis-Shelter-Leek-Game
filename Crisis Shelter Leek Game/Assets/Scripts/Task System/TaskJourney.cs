@@ -32,7 +32,7 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 
     private void Reset()
     {
-/*        assignedTaskIndex = 0;
-        assignedTask = tasksInOrder[assignedTaskIndex];*/
+        assignedTaskIndex = 0;
+        assignedTask = tasksInOrder[assignedTaskIndex];
     }
 }
