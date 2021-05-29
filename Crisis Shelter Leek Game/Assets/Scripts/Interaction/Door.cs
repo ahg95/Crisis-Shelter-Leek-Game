@@ -6,6 +6,7 @@ public class Door : Interactable
     [SerializeField] private string sceneName;
     public override void InteractWith()
     {
+        print("test");
         onInteraction.Invoke();
 
         GoToScene();
@@ -13,7 +14,6 @@ public class Door : Interactable
     public void GoToScene() 
     {
         SetPosOnSceneChange.instance.doorId = positionId;
-
         Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
         sceneTransition.LoadSimpleSceneTransition(sceneName);
     }

@@ -6,18 +6,6 @@ public class Talkable : Interactable
     [SerializeField] private TaskJourney taskJourney;
     [SerializeField] private DialogueManager dialogueManager;
     public ConversationTaskCombination[] conversationTaskCombination;
-    
-    private void OnValidate()
-    {
-        if (dialogueManager == null)
-        {
-            dialogueManager = FindObjectOfType<DialogueManager>();
-            if (dialogueManager == null)
-            {
-                print("No dialogue manager in the scene");
-            }
-        }
-    }
 
     public void StartConversationAccordingToCurrentPlayerTask()
     {
