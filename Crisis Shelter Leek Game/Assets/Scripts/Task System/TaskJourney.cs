@@ -5,13 +5,13 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 {
     [Space(15)]
     public Task assignedTask;
+    [SerializeField] private int assignedTaskIndex = 0;
+
     [Space(5)]
     [SerializeField] private bool resetTask = true;
 
     [Space(20)]
     public Task[] tasksInOrder;
-
-    [SerializeField] private int assignedTaskIndex = 0;
 
     public void OnAfterDeserialize()
     {
