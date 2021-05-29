@@ -24,7 +24,6 @@ public class InteractWith : MonoBehaviour
     [SerializeField] private Navigation navComponent = null;
     [SerializeField] private NavMeshAgent agent;
 
-
     private Interactable interactableInteractedWith;
 
     private void Start()
@@ -41,37 +40,46 @@ public class InteractWith : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (interactableInteractedWith) // Make sure the previous interacted object is 'unselected'
+            {
+                interactableInteractedWith.isSelected = false;
+                StartCoroutine(ZoomOut(interactableInteractedWith));
+            }
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, clickableLayer))
             {
                 GameObject interactedObject = hit.collider.gameObject;
-                interactableInteractedWith = interactedObject.GetComponent<Interactable>();
 
-                if (!interactableInteractedWith.isSelected)
+                if (interactedObject.GetComponent<Interactable>() != interactableInteractedWith)
                 {
-                    if (interactableInteractedWith.moveTowards) // MOVE TO OBJECT
+                    interactableInteractedWith = interactedObject.GetComponent<Interactable>();
+
+                    if (!interactableInteractedWith.isSelected)
                     {
-                        rotateCameraCanvas.SetActive(false);
-                        navComponent.enabled = false;
-                        agent.SetDestination(interactedObject.transform.position + interactedObject.transform.forward * interactableInteractedWith.moveTowardsDistance);
-                        StartCoroutine(routine: WaitForDestinationReached());
+                        if (interactableInteractedWith.moveTowards) // MOVE TO OBJECT
+                        {
+                            rotateCameraCanvas.SetActive(false);
+                            navComponent.enabled = false;
+                            agent.SetDestination(interactedObject.transform.position + interactedObject.transform.forward * interactableInteractedWith.moveTowardsDistance);
+                            StartCoroutine(routine: WaitForDestinationReached());
+                        }
+                        else if (interactableInteractedWith.zoomIn && !interactableInteractedWith.moveTowards) // ZOOM IN ON INTERACTABLE
+                        {
+                            rotateCameraCanvas.SetActive(false);
+                            LookAtAndInvoke(interactableInteractedWith);
+                        }
+                        else // immmediately invoke
+                        {
+                            interactableInteractedWith.InteractWith();
+                        }
                     }
-                    else if (interactableInteractedWith.zoomIn && !interactableInteractedWith.moveTowards) // ZOOM IN ON INTERACTABLE
+                    else // Else, zoom out of interactable
                     {
-                        rotateCameraCanvas.SetActive(false);
-                        LookAtAndInvoke(interactableInteractedWith);
+                        rotateCameraCanvas.SetActive(true);
+                        StopAllCoroutines();
+                        StartCoroutine(routine: ZoomOut(interactableInteractedWith));
                     }
-                    else // immmediately invoke
-                    {
-                        interactableInteractedWith.InteractWith();
-                    }
-                }
-                else // Else, zoom out of interactable
-                {
-                    rotateCameraCanvas.SetActive(true);
-                    StopAllCoroutines();
-                    StartCoroutine(routine: ZoomOut());
                 }
             }
         }
@@ -97,12 +105,12 @@ public class InteractWith : MonoBehaviour
         StartCoroutine(routine: WaitForLookAtToInvoke(interactable));
     }
     #region Zooming
-    public void ZoomCamOut()
+    public void ZoomCamOut(Interactable interactableToZoomOutFrom)
     {
-        StartCoroutine(routine: ZoomOut());
+        StartCoroutine(routine: ZoomOut(interactableToZoomOutFrom));
     }
 
-    public IEnumerator ZoomIn()
+    public IEnumerator ZoomIn(Interactable interactable)
     {
         float distance = Vector3.Distance(transform.position, cam.transform.position);
         zoomAmount = Mathf.RoundToInt(Mathf.Lerp(maxFOV, minimumFOV, Mathf.Clamp01(distance)));
@@ -120,11 +128,11 @@ public class InteractWith : MonoBehaviour
         }
 
         zoomedIn = true;
-        interactableInteractedWith.isSelected = true;
-        interactableInteractedWith.zoomedInOn = true;
+        interactable.isSelected = true;
+        interactable.zoomedInOn = true;
         cam.fieldOfView = zoomAmount; // When close enough to zoomamount, snap to zoomamount.
     }
-    public IEnumerator ZoomOut()
+    public IEnumerator ZoomOut(Interactable interactable)
     {
         if (zoomedIn)
         {
@@ -145,7 +153,7 @@ public class InteractWith : MonoBehaviour
             // print("zoomed out!");
             navComponent.enabled = true;
             zoomedIn = false;
-            interactableInteractedWith.isSelected = false;
+            interactable.isSelected = false;
             interactableInteractedWith = null;
         }
     }
@@ -245,7 +253,7 @@ public class InteractWith : MonoBehaviour
 
         if (interactable.zoomIn)
         {
-            StartCoroutine(routine: ZoomIn());
+            StartCoroutine(routine: ZoomIn(interactable));
         }
     }
 
