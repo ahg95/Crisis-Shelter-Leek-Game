@@ -10,6 +10,8 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     [Space(5)]
     [SerializeField] private bool resetTask = true;
 
+    [SerializeField] GameEvent progressionEvent = null;
+
     [Space(20)]
     public Task[] tasksInOrder;
 
@@ -29,6 +31,7 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
         {
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
+            progressionEvent.Raise();
         }
     }    
     public void ProgressIfCurrentTask(Task conditionTask)
@@ -37,6 +40,7 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
         {
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
+            progressionEvent.Raise();
         }
     }
 
