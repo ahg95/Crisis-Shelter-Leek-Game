@@ -50,6 +50,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!114 &4969290550114629385
@@ -83,13 +84,14 @@ MonoBehaviour:
   zoomIn: 0
   zoomedInOn: 0
   zoomAmount: 0
-  moveTowards: 0
-  moveTowardsDistance: 2
+  moveTowards: 1
+  moveTowardsDistance: 1.5
+  frontOfObject: 0
   navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
-  hoverCursor: {fileID: 0}
+  hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
   taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
   dialogueManager: {fileID: 0}
   conversationTaskCombination:

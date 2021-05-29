@@ -5,11 +5,15 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 {
     [Space(15)]
     public Task assignedTask;
+    [SerializeField] private int assignedTaskIndex = 0;
+
+    [Space(5)]
+    [SerializeField] private bool resetTask = true;
+
+    [SerializeField] GameEvent progressionEvent = null;
 
     [Space(20)]
     public Task[] tasksInOrder;
-
-    private int assignedTaskIndex = 0;
 
     public void OnAfterDeserialize()
     {
@@ -27,12 +31,25 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
         {
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
+            progressionEvent.Raise();
+        }
+    }    
+    public void ProgressIfCurrentTask(Task conditionTask)
+    {
+        if (assignedTaskIndex != tasksInOrder.Length - 1 && assignedTask == conditionTask) // if not the last task
+        {
+            assignedTaskIndex++;
+            assignedTask = tasksInOrder[assignedTaskIndex];
+            progressionEvent.Raise();
         }
     }
 
     private void Reset()
     {
-/*        assignedTaskIndex = 0;
-        assignedTask = tasksInOrder[assignedTaskIndex];*/
+        if (resetTask)
+        {
+            assignedTaskIndex = 0;
+            assignedTask = tasksInOrder[assignedTaskIndex];
+        }
     }
 }
