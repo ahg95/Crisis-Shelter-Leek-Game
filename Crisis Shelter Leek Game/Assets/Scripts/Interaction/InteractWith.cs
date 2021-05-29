@@ -175,8 +175,6 @@ public class InteractWith : MonoBehaviour
     {
         agent.SetDestination(interactable.transform.position + GetFront(interactable.transform) * interactedObject.moveTowardsDistance);
 
-        navComponent.enabled = false;
-
         if (agent.pathPending) // need to check for this, otherwise the while loop  might return true, because the path hadn't been calculated yet.
         {
             yield return null;
@@ -188,8 +186,6 @@ public class InteractWith : MonoBehaviour
         }
 
         LookAtAndInvoke(interactedObject); // Rotate towards the interactable when the destination is reached.
-
-        navComponent.enabled = true;
 
         Vector3 GetFront (Transform interactableTransform)
         {

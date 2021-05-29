@@ -23,6 +23,8 @@ public class Talkable : Interactable
         }
 
         if (conversationToStart != null)
+        {
             dialogueManager.StartConversationSection(conversationToStart);
+        }
     }
 }
