@@ -6,7 +6,6 @@ public class Door : Interactable
     [SerializeField] private string sceneName;
     public override void InteractWith()
     {
-        print("test");
         onInteraction.Invoke();
 
         GoToScene();

@@ -15,7 +15,7 @@ public class WaitUntilVoidExecution : MonoBehaviour
         StartCoroutine(WaitToExecute(timeToWait));
     }
 
-    IEnumerator WaitToExecute(float timeToWait)
+    private IEnumerator WaitToExecute(float timeToWait)
     {
         yield return new WaitForSeconds(timeToWait);
         thingsToDo.Invoke();

@@ -324,13 +324,18 @@ PrefabInstance:
     - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
         type: 3}
       propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1458300470}
     - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
         type: 3}
       propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1458300470}
+      objectReference: {fileID: 1964827453}
     - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
         type: 3}
       propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -338,13 +343,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
         type: 3}
-      propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: updateTaskUI
       objectReference: {fileID: 0}
     - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
         type: 3}
+      propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartConversationSection
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6111893449838858543, guid: 5c7ba181a28811a41bf6f863827d6c7b,
+        type: 3}
+    - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
       propertyPath: sceneLoaded.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: ConversationSection, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c09df7eae13025418f5a9ade20019d8, type: 3}
@@ -791,7 +807,7 @@ PrefabInstance:
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.19
+      value: -1.624
       objectReference: {fileID: 0}
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
@@ -801,22 +817,22 @@ PrefabInstance:
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.243
       objectReference: {fileID: 0}
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.44283658
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8966024
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
@@ -831,7 +847,7 @@ PrefabInstance:
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -232.57
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8371596313123110927, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}

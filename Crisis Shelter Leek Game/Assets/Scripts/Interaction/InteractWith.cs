@@ -10,7 +10,6 @@ public class InteractWith : MonoBehaviour
     [Tooltip("The higher this value, the less zoom is possible")]
     [SerializeField] private float maxFOV = 40f;
     [HideInInspector] public float zoomAmount;
-    private bool zoomedIn = false;
 
     [Header("Rotation Speed")]
     [SerializeField] private float rotationSpeed = 1f;
@@ -39,21 +38,19 @@ public class InteractWith : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Deselect();
-
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, clickableLayer))
             {
                 GameObject clickedObject = hit.collider.gameObject;
 
-                if (clickedObject.GetComponent<Interactable>() != interactedObject) //If not already selected
+                if (!alreadySelectedInteractable(clickedObject.GetComponent<Interactable>()))
                 {
                     interactedObject = clickedObject.GetComponent<Interactable>();
 
                     if (interactedObject.moveTowards) // MOVE TO OBJECT
                     {
-                        StartCoroutine(routine: MoveTowards(interactedObject));
+                        StartCoroutine(MoveTowards(interactedObject));
                     }
                     else if (interactedObject.zoomIn && !interactedObject.moveTowards) // ZOOM IN ON INTERACTABLE
                     {
@@ -64,9 +61,32 @@ public class InteractWith : MonoBehaviour
                         interactedObject.InteractWith();
                     }
                 }
-                else // Deselect if clicked on the object already interacted with.
+                else
                 {
-                    Deselect();
+                    Deselect(); // Deselect if clicking on object that is already focused on
+                }
+            }
+            else
+            {
+                Deselect();
+            }
+
+            bool alreadySelectedInteractable(Interactable interactable)
+            {
+                if (interactedObject != null)
+                {
+                    if (interactedObject.gameObject.GetInstanceID() == interactable.gameObject.GetInstanceID())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
         }
@@ -74,10 +94,11 @@ public class InteractWith : MonoBehaviour
 
     private void Deselect()
     {
-        if (interactedObject != null)
+        StopAllCoroutines();
+        StartCoroutine(ZoomOut());
+        if (interactedObject)
         {
-            StopAllCoroutines();
-            StartCoroutine(ZoomOut(interactedObject));
+            interactedObject.isSelected = false;
             interactedObject = null;
         }
     }
@@ -89,7 +110,7 @@ public class InteractWith : MonoBehaviour
     public void LookAt(Interactable interactable)
     {
         interactedObject = interactable;
-        StartCoroutine(routine: RotateTo(interactable));
+        StartCoroutine(RotateTo(interactable));
     }    
 
     /// <summary>
@@ -99,12 +120,12 @@ public class InteractWith : MonoBehaviour
     public void LookAtAndInvoke(Interactable interactable)
     {
         StartCoroutine(RotateTo(interactable));
-        StartCoroutine(routine: WaitForLookAtToInvoke(interactable));
+        StartCoroutine(WaitForLookAtToInvoke(interactable));
     }
     #region Zooming
-    public void ZoomCameraOut(Interactable interactableToZoomOutFrom)
+    public void ZoomCameraOut()
     {
-        StartCoroutine(routine: ZoomOut(interactableToZoomOutFrom));
+        StartCoroutine(ZoomOut());
     }
 
     public IEnumerator ZoomIn(Interactable interactable)
@@ -124,33 +145,24 @@ public class InteractWith : MonoBehaviour
             yield return null;
         }
 
-        zoomedIn = true;
         interactable.isSelected = true;
         interactable.zoomedInOn = true;
         cam.fieldOfView = zoomAmount; // When close enough to zoomamount, snap to zoomamount.
     }
-    public IEnumerator ZoomOut(Interactable interactable)
+    public IEnumerator ZoomOut()
     {
-        if (zoomedIn)
+        float timeStartedZooming = Time.time;
+        float startingFOV = cam.fieldOfView;
+        float targetFOV = 60;
+
+        while (cam.fieldOfView < targetFOV)
         {
-            float timeStartedZooming = Time.time;
-            float startingFOV = cam.fieldOfView;
-            float targetFOV = 60;
+            float timeSinceStartedZooming = Time.time - timeStartedZooming;
+            float percentageCompleted = timeSinceStartedZooming / 0.5f; // how fast the zoom out and rotation-correction goes
 
-            while (cam.fieldOfView < targetFOV)
-            {
-                float timeSinceStartedZooming = Time.time - timeStartedZooming;
-                float percentageCompleted = timeSinceStartedZooming / 0.5f; // how fast the zoom out and rotation-correction goes
+            cam.fieldOfView = Mathf.Lerp(startingFOV, targetFOV, percentageCompleted);
 
-                cam.fieldOfView = Mathf.Lerp(startingFOV, targetFOV, percentageCompleted);
-
-                yield return null;
-            }
-
-            // print("zoomed out!");
-            zoomedIn = false;
-            interactable.isSelected = false;
-            interactedObject = null;
+            yield return null;
         }
     }
     #endregion
@@ -194,7 +206,7 @@ public class InteractWith : MonoBehaviour
             }
         }
     }
-        private IEnumerator RotateTo(Interactable interactable)
+    private IEnumerator RotateTo(Interactable interactable)
     {
         rotating = true;
         // print("Rotate");
@@ -231,7 +243,7 @@ public class InteractWith : MonoBehaviour
 
         if (interactable.zoomIn)
         {
-            StartCoroutine(routine: ZoomIn(interactable));
+            StartCoroutine(ZoomIn(interactable));
         }
     }
 
@@ -248,8 +260,8 @@ public class InteractWith : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        print("Looking at!");
+        //print("Looking at!");
         interactable.isSelected = true;
-        interactedObject.InteractWith();
+        interactable.InteractWith();
     }
 }
