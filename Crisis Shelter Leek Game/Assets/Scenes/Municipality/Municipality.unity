@@ -392,7 +392,6 @@ MonoBehaviour:
   zoomAmount: 0
   moveTowards: 0
   moveTowardsDistance: 2
-  frontOfObject: 0
   navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
@@ -414,7 +413,6 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
-  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!65 &911975222
@@ -839,7 +837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   positionPoint: []
-  doorId: 0
+  currentPositionId: 0
 --- !u!4 &1423937749
 Transform:
   m_ObjectHideFlags: 0
@@ -955,14 +953,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1203668548, guid: ff5f72878e042864985151fccde3dd92, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1203668550, guid: ff5f72878e042864985151fccde3dd92, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8951414794600220364, guid: ff5f72878e042864985151fccde3dd92,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1260,15 +1250,14 @@ MonoBehaviour:
   zoomIn: 0
   zoomedInOn: 0
   zoomAmount: 0
-  moveTowards: 1
+  moveTowards: 0
   moveTowardsDistance: 2
-  frontOfObject: 0
   navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
-  hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
-  positionId: 0
+  hoverCursor: {fileID: 0}
+  positionId: 1
   sceneName: Wender Day
 --- !u!114 &2076173610
 MonoBehaviour:
@@ -1286,6 +1275,5 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
-  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
