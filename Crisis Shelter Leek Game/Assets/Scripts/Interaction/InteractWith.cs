@@ -10,7 +10,6 @@ public class InteractWith : MonoBehaviour
     [Tooltip("The higher this value, the less zoom is possible")]
     [SerializeField] private float maxFOV = 40f;
     [HideInInspector] public float zoomAmount;
-    private bool zoomedIn = false;
 
     [Header("Rotation Speed")]
     [SerializeField] private float rotationSpeed = 1f;
@@ -20,12 +19,10 @@ public class InteractWith : MonoBehaviour
     [Space(10)]
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask clickableLayer;
-    [SerializeField] private GameObject rotateCameraCanvas;
     [SerializeField] private Navigation navComponent = null;
     [SerializeField] private NavMeshAgent agent;
 
-
-    private Interactable interactableInteractedWith;
+    private Interactable interactedObject;
 
     private void Start()
     {
@@ -45,35 +42,64 @@ public class InteractWith : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, clickableLayer))
             {
-                GameObject interactedObject = hit.collider.gameObject;
-                interactableInteractedWith = interactedObject.GetComponent<Interactable>();
+                GameObject clickedObject = hit.collider.gameObject;
 
-                if (!interactableInteractedWith.isSelected)
+                if (!alreadySelectedInteractable(clickedObject.GetComponent<Interactable>()))
                 {
-                    if (interactableInteractedWith.moveTowards) // MOVE TO OBJECT
+                    interactedObject = clickedObject.GetComponent<Interactable>();
+
+                    if (interactedObject.moveTowards) // MOVE TO OBJECT
                     {
-                        rotateCameraCanvas.SetActive(false);
-                        navComponent.enabled = false;
-                        agent.SetDestination(interactedObject.transform.position + interactedObject.transform.forward * interactableInteractedWith.moveTowardsDistance);
-                        StartCoroutine(routine: WaitForDestinationReached());
+                        StartCoroutine(MoveTowards(interactedObject));
                     }
-                    else if (interactableInteractedWith.zoomIn && !interactableInteractedWith.moveTowards) // ZOOM IN ON INTERACTABLE
+                    else if (interactedObject.zoomIn && !interactedObject.moveTowards) // ZOOM IN ON INTERACTABLE
                     {
-                        rotateCameraCanvas.SetActive(false);
-                        LookAtAndInvoke(interactableInteractedWith);
+                        LookAtAndInvoke(interactedObject);
                     }
                     else // immmediately invoke
                     {
-                        interactableInteractedWith.InteractWith();
+                        interactedObject.InteractWith();
                     }
                 }
-                else // Else, zoom out of interactable
+                else
                 {
-                    rotateCameraCanvas.SetActive(true);
-                    StopAllCoroutines();
-                    StartCoroutine(routine: ZoomOut());
+                    Deselect(); // Deselect if clicking on object that is already focused on
                 }
             }
+            else
+            {
+                Deselect();
+            }
+
+            bool alreadySelectedInteractable(Interactable interactable)
+            {
+                if (interactedObject != null)
+                {
+                    if (interactedObject.gameObject.GetInstanceID() == interactable.gameObject.GetInstanceID())
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }
+
+    private void Deselect()
+    {
+        StopAllCoroutines();
+        StartCoroutine(ZoomOut());
+        if (interactedObject)
+        {
+            interactedObject.isSelected = false;
+            interactedObject = null;
         }
     }
 
@@ -83,9 +109,10 @@ public class InteractWith : MonoBehaviour
     /// <param name="interactable"></param>
     public void LookAt(Interactable interactable)
     {
-        interactableInteractedWith = interactable;
-        StartCoroutine(routine: RotateTo(interactable));
+        interactedObject = interactable;
+        StartCoroutine(RotateTo(interactable));
     }    
+
     /// <summary>
     /// Look at- and invoke the onInteraction event.
     /// </summary>
@@ -93,16 +120,15 @@ public class InteractWith : MonoBehaviour
     public void LookAtAndInvoke(Interactable interactable)
     {
         StartCoroutine(RotateTo(interactable));
-        //StartCoroutine(routine: RotateHorizontally(interactable));
-        StartCoroutine(routine: WaitForLookAtToInvoke(interactable));
+        StartCoroutine(WaitForLookAtToInvoke(interactable));
     }
     #region Zooming
-    public void ZoomCamOut()
+    public void ZoomCameraOut()
     {
-        StartCoroutine(routine: ZoomOut());
+        StartCoroutine(ZoomOut());
     }
 
-    public IEnumerator ZoomIn()
+    public IEnumerator ZoomIn(Interactable interactable)
     {
         float distance = Vector3.Distance(transform.position, cam.transform.position);
         zoomAmount = Mathf.RoundToInt(Mathf.Lerp(maxFOV, minimumFOV, Mathf.Clamp01(distance)));
@@ -119,95 +145,63 @@ public class InteractWith : MonoBehaviour
             yield return null;
         }
 
-        zoomedIn = true;
-        interactableInteractedWith.isSelected = true;
-        interactableInteractedWith.zoomedInOn = true;
+        interactable.isSelected = true;
+        interactable.zoomedInOn = true;
         cam.fieldOfView = zoomAmount; // When close enough to zoomamount, snap to zoomamount.
     }
     public IEnumerator ZoomOut()
     {
-        if (zoomedIn)
+        float timeStartedZooming = Time.time;
+        float startingFOV = cam.fieldOfView;
+        float targetFOV = 60;
+
+        while (cam.fieldOfView < targetFOV)
         {
-            float timeStartedZooming = Time.time;
-            float startingFOV = cam.fieldOfView;
-            float targetFOV = 60;
+            float timeSinceStartedZooming = Time.time - timeStartedZooming;
+            float percentageCompleted = timeSinceStartedZooming / 0.5f; // how fast the zoom out and rotation-correction goes
 
-            while (cam.fieldOfView < targetFOV)
-            {
-                float timeSinceStartedZooming = Time.time - timeStartedZooming;
-                float percentageCompleted = timeSinceStartedZooming / 0.5f; // how fast the zoom out and rotation-correction goes
+            cam.fieldOfView = Mathf.Lerp(startingFOV, targetFOV, percentageCompleted);
 
-                cam.fieldOfView = Mathf.Lerp(startingFOV, targetFOV, percentageCompleted);
-
-                yield return null;
-            }
-
-            // print("zoomed out!");
-            navComponent.enabled = true;
-            zoomedIn = false;
-            interactableInteractedWith.isSelected = false;
-            interactableInteractedWith = null;
-        }
-    }
-
-    /*public IEnumerator RotateTowardsInteractable(Interactable interactable)
-    {
-        Vector3 lookAtPos = interactable.objectTransformToLookAt.position;
-        Vector3 directionToObject = lookAtPos - cam.transform.position;
-
-        float timeStartedRotating = Time.time;
-        Quaternion startingAngle = cam.transform.rotation;
-        Quaternion targetAngleCam = Quaternion.LookRotation(lookAtPos - cam.transform.position);
-
-        while (Vector3.Angle(cam.transform.forward, directionToObject) > 0.1f) // VECTOR IS NOT WORKING
-        {
-            print(Vector3.Angle(cam.transform.forward, directionToObject));
-
-            float timeSinceStarted = Time.time - timeStartedRotating;
-            float percentageCompleted = timeSinceStarted / 0.75f;
-
-            cam.transform.rotation = Quaternion.Slerp(startingAngle, targetAngleCam, percentageCompleted);
             yield return null;
         }
-
-        // Zoom in if this is enabled.
-        if (interactable.zoomIn)
-        {
-            StartCoroutine(routine: ZoomIn());
-        }
-        else
-        {
-            navComponent.enabled = true;
-            rotateCameraCanvas.SetActive(true);
-            interactable.onInteraction.Invoke();
-            interactable.isSelected = true;
-        }
-    }*/
+    }
     #endregion
 
     /// <summary>
     /// Sets off a set of functions that will first move in front of the interactable, then rotate towards it to face it, then invoke the interaction.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator WaitForDestinationReached()
+    private IEnumerator MoveTowards(Interactable interactable)
     {
+        agent.SetDestination(interactable.transform.position + GetFront(interactable.transform) * interactedObject.moveTowardsDistance);
+
         if (agent.pathPending) // need to check for this, otherwise the while loop  might return true, because the path hadn't been calculated yet.
         {
             yield return null;
         }
-        while (agent.remainingDistance > 0.1f)
+
+        while (agent.remainingDistance > 0.05f)
         {
-            //print("moving towards destination");
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
-        if (agent.remainingDistance < 0.1f)
+        LookAtAndInvoke(interactedObject); // Rotate towards the interactable when the destination is reached.
+
+        Vector3 GetFront (Transform interactableTransform)
         {
-            //print("Reached destination!");
-            LookAtAndInvoke(interactableInteractedWith); // Rotate towards the interactable when the destination is reached.
+            switch (interactable.frontOfObject)
+            {
+                case Interactable.FrontOfObject.Forward:
+                    return interactableTransform.forward;
+                case Interactable.FrontOfObject.Right:
+                    return interactableTransform.right;
+                case Interactable.FrontOfObject.Up:
+                    return interactableTransform.up;
+                default:
+                    return interactableTransform.forward;
+            }
         }
     }
-
     private IEnumerator RotateTo(Interactable interactable)
     {
         rotating = true;
@@ -245,7 +239,7 @@ public class InteractWith : MonoBehaviour
 
         if (interactable.zoomIn)
         {
-            StartCoroutine(routine: ZoomIn());
+            StartCoroutine(ZoomIn(interactable));
         }
     }
 
@@ -262,8 +256,8 @@ public class InteractWith : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        // print("Looking at!");
+        //print("Looking at!");
         interactable.isSelected = true;
-        interactable.onInteraction.Invoke();
+        interactable.InteractWith();
     }
 }
