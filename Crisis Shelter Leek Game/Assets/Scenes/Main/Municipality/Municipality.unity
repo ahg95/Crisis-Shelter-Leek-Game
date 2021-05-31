@@ -600,6 +600,87 @@ MonoBehaviour:
         m_CallState: 2
   gameObjectToListenFor: {fileID: 3402563576952253159, guid: f5d12d08f40a97f4085185d2bb1c54ab,
     type: 3}
+--- !u!114 &1060700304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060700302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186a8da9ccbbc10499e93fd9a84e6034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1060700305}
+        m_MethodName: OnConversationSectionEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1060700305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060700302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb68ef7d100c5549af5d324311a384b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+  settings:
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
 --- !u!1001 &1139242315
 PrefabInstance:
   m_ObjectHideFlags: 0

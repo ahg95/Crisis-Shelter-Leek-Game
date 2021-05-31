@@ -16,7 +16,6 @@ public class DialogueManager : MonoBehaviour
     public GameObjectGameEvent ConversationSectionHasEnded;
 
 
-
     public void StartConversationSection(ConversationSection conversationSection)
     {
         if (activeConversationSection == null)
