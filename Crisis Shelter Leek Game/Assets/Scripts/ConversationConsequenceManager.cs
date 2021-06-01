@@ -8,7 +8,6 @@ public class ConversationConsequenceManager : MonoBehaviour
 
     public void OnConversationSectionEnd(GameObject argument) // argument = the task which progressed
     {
-        // print(argument.name);
         for (int i = 0; i < settings.Length; i++)
         {
             ConversationConsequenceSettings conversationConsequence = settings[i];
@@ -25,11 +24,23 @@ public class ConversationConsequenceManager : MonoBehaviour
             }
         }
     }
+
+    private void OnValidate() // Update the element names of the array
+    {
+        if (!Application.isPlaying)
+        {
+            foreach (ConversationConsequenceSettings setting in settings)
+            {
+                setting.elementName = setting.conversationSection.name;
+            }
+        }
+    }
 }
 
 [System.Serializable]
 public class ConversationConsequenceSettings
 {
+    [HideInInspector] public string elementName;
     public ConversationSection conversationSection;
     public bool shouldTaskProgress;
     public bool shouldUIUpdate;
