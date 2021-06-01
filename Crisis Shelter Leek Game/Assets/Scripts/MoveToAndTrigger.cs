@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
-public class MoveToShowRoom : MonoBehaviour
+public class MoveToAndTrigger : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent = null;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform destination;
-    [SerializeField] private Transitions transitions;
+    [SerializeField] private UnityEvent response;
 
     void Start()
     {
@@ -23,18 +24,15 @@ public class MoveToShowRoom : MonoBehaviour
 
         if (agent.pathPending) // need to check for this, otherwise the while loop  might return true, because the path hadn't been calculated yet.
         {
-            //print("Path Pending");
             yield return null;
         }
         while (agent.remainingDistance > 0.1f)
         {
-            //print("moving towards destination");
             yield return new WaitForFixedUpdate();
         }
 
         animator.SetBool("isWalking", false);
-        transitions.LoadSimpleSceneTransition("Bedroom Wender With Coach");
+        response.Invoke();
         // When destination reached, switch scene.
     }
-
 }

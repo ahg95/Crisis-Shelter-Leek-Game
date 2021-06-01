@@ -92,14 +92,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4540545505250030165}
-  - component: {fileID: 129780516489075940}
-  - component: {fileID: 3200906155476643805}
   - component: {fileID: 1494717953651229022}
-  - component: {fileID: 2574156280168647908}
-  - component: {fileID: 1078109914}
-  - component: {fileID: 1078109916}
-  - component: {fileID: 1078109919}
-  - component: {fileID: 1078109921}
+  - component: {fileID: 123037365}
+  - component: {fileID: 123037369}
+  - component: {fileID: 1584635416}
   m_Layer: 0
   m_Name: Conversation consequence manager
   m_TagString: Untagged
@@ -121,64 +117,6 @@ Transform:
   m_Father: {fileID: 8371596313123110927}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &129780516489075940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135735259881487153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f886e1d59f96b1a4a92b075dee62f4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectToListenFor: {fileID: 2881636470262476152, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
-    type: 3}
---- !u!114 &3200906155476643805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135735259881487153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f886e1d59f96b1a4a92b075dee62f4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: LoadSimpleSceneTransition
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Bedroom Wender With Coach
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectToListenFor: {fileID: 6561476326340245501, guid: c53a8471084e4504092d245e36849b54,
-    type: 3}
 --- !u!114 &1494717953651229022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,30 +134,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadSimpleSceneTransition
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Bedroom Wender Alone
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   gameObjectToListenFor: {fileID: 7474526816934310302, guid: c14944ab19b5bfe469e1d4c98e57eb28,
     type: 3}
---- !u!114 &2574156280168647908
+--- !u!114 &123037365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,136 +162,113 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectToListenFor: {fileID: 6111893449838858542, guid: 5c7ba181a28811a41bf6f863827d6c7b,
-    type: 3}
---- !u!114 &1078109914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135735259881487153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f886e1d59f96b1a4a92b075dee62f4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectToListenFor: {fileID: 7565425908783830426, guid: 054295a7fe6453f4cbb8aad83dc03073,
-    type: 3}
---- !u!114 &1078109916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135735259881487153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f886e1d59f96b1a4a92b075dee62f4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectToListenFor: {fileID: 5410426393171811500, guid: b521b4da5a3172d4fa0e4313d72355f5,
-    type: 3}
---- !u!114 &1078109919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135735259881487153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f886e1d59f96b1a4a92b075dee62f4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  gameObjectToListenFor: {fileID: 5868987169418183171, guid: 69d92b068e426ee47997a3314416c316,
-    type: 3}
---- !u!114 &1078109921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135735259881487153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f886e1d59f96b1a4a92b075dee62f4b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: updateTaskUI
-        m_Mode: 1
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  gameObjectToListenFor: {fileID: 6561476326340245501, guid: c53a8471084e4504092d245e36849b54,
+    type: 3}
+--- !u!114 &123037369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135735259881487153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb68ef7d100c5549af5d324311a384b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+  uiSystem: {fileID: 0}
+  settings:
+  - conversationSection: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 6561476326340245502, guid: c53a8471084e4504092d245e36849b54,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 7474526816934310301, guid: c14944ab19b5bfe469e1d4c98e57eb28,
+      type: 3}
+    shouldTaskProgress: 0
+    shouldUIUpdate: 0
+  - conversationSection: {fileID: 7565425908783830427, guid: 054295a7fe6453f4cbb8aad83dc03073,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 4350594424807335565, guid: 6631d8401da3f2a479e90bd5e7dc1d78,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 350937697526257888, guid: 969265cdf29216741b6272749be39078,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 1963250019105068576, guid: 7d2381700ce8d3a4cb1d92e1e14ac9d8,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 5410426393171811501, guid: b521b4da5a3172d4fa0e4313d72355f5,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 5868987169418183170, guid: 69d92b068e426ee47997a3314416c316,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 451874222358473900, guid: c1f11f995482791468bb48ec75b2fec3,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 3984775687137983782, guid: 5f869d96b3fee244ca707a866c9f41c6,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 3984775687137983782, guid: 5f869d96b3fee244ca707a866c9f41c6,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 7318733081651607265, guid: 38f70925bb396434d980e7d97ee175ac,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 7085830916659430254, guid: 9d7a60c68eefa44419ede13605da50dc,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+  - conversationSection: {fileID: 6111893449838858543, guid: 5c7ba181a28811a41bf6f863827d6c7b,
+      type: 3}
+    shouldTaskProgress: 1
+    shouldUIUpdate: 1
+--- !u!114 &1584635416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135735259881487153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186a8da9ccbbc10499e93fd9a84e6034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 123037369}
+        m_MethodName: OnConversationSectionEnd
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -373,8 +277,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  gameObjectToListenFor: {fileID: 350937696792304981, guid: 969265cdf29216741b6272749be39078,
-    type: 3}
 --- !u!1 &8371596313123110920
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +434,17 @@ MonoBehaviour:
       - m_Target: {fileID: 5446185185378869738}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: HideUI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

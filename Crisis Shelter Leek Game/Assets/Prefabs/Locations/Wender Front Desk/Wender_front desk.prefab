@@ -758,7 +758,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -0.0000000011227996, z: 7.83e-43, w: -8.7049745e-10}
+  m_BoundingSphereOverride: {x: 0, y: 1.27726e-40, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -850,7 +850,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.83e-43, y: 6.1343e-41, z: 6e-45, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.2925e-40, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1163,7 +1163,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -0.0000000011227996, z: 7.83e-43, w: -0.0000000027073241}
+  m_BoundingSphereOverride: {x: 0, y: 1.26375e-40, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1255,7 +1255,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.83e-43, y: 9.4e-44, z: 0, w: -7.006036e-10}
+  m_BoundingSphereOverride: {x: 0, y: 1.31963e-40, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1477,7 +1477,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -0.0000000011227996, z: 7.83e-43, w: -0.0000000022619346}
+  m_BoundingSphereOverride: {x: 0, y: 1.27445e-40, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1729,6 +1729,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5744128128742496793}
     m_Modifications:
+    - target: {fileID: 1086144379368062624, guid: 5b8e152e7c5de574198d3298611d1be9,
+        type: 3}
+      propertyPath: outlineWidth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3747529273414990164, guid: 5b8e152e7c5de574198d3298611d1be9,
         type: 3}
       propertyPath: m_Name
@@ -2352,6 +2357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737713900358474929, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: sceneName
+      value: Bedroom Wender
       objectReference: {fileID: 0}
     - target: {fileID: 5166144037207617640, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}

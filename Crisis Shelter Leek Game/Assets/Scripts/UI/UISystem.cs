@@ -60,7 +60,7 @@ public class UISystem : MonoBehaviour
 
         if (!taskUIAnim.GetBool("Show"))
         {
-            taskUIAnim.SetBool("Show", true);
+            ShowUI();
             taskUIAnim.SetTrigger("Pressed");
         }
 
@@ -85,6 +85,14 @@ public class UISystem : MonoBehaviour
                 taskPopUpClone.GetComponent<RectTransform>().localPosition = newTaskPopUp.GetComponent<RectTransform>().localPosition;
 
                 Destroy(taskPopUpClone, 1.5f);*/
+    }
+    public void ShowUI()
+    {
+        taskUIAnim.SetBool("Show", true);
+    }
+    public void HideUI()
+    {
+        taskUIAnim.SetBool("Show", false);
     }
 
     //add new task to the list
