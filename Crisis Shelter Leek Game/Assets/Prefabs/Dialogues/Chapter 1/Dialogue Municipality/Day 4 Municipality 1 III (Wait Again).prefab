@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6394345513084787555}
   - component: {fileID: 6394345513729976775}
   m_Layer: 0
-  m_Name: Day 4 Municipality 1 III (I have to wait again)
+  m_Name: Day 4 Municipality 1 III (Wait Again)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 2
-    content: Unfortunately yes. It takes about a day until our system has registered
-      you, and I can't do anything about it.
+    content: Unfortunately, yes. It takes about a day until everything has been checked
+      for your sign-in.
   - speaker: 0
-    content: Okay, goodbye.
+    content: Okay then, goodbye.
   choicesAtEnd: []
+  followUpConversationIfNoChoicesPresent: {fileID: 0}

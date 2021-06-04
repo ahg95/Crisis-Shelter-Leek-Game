@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40e8f954976f1db49b55e4f5e0be7c4e, type: 3}
-  m_Name: Day 2 - 3 transition
+  m_Name: Day 2-6 to 3-1 transition
   m_EditorClassIdentifier: 
-  associatedTask: {fileID: 11400000, guid: 072d3cc4e31569443bffb3df64fc90df, type: 2}
+  associatedTask: {fileID: 11400000, guid: 15f37f4651051d44ba8d288cfdc08110, type: 2}
   textArray:
-  - You have spent the rest of the day at Wender. performing your activity of choice.
-  - 'You''ve gotten to know some of the other residents at Wender.
+  - 'You spend the rest of your day around Wender.
 
 '
-  - You wake up in your room the next day.
+  - You have met and dined with some peers who also reside at Wender.
+  - It was good to meet peers in the same situation; You are not alone.
+  SceneToTransferTo: Wender Bedroom
+  doorID: 2

@@ -1866,7 +1866,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6864262945449399066}
   animator: {fileID: -203990445671726243}
-  cam: {fileID: 0}
+  destination: {fileID: 0}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: LoadSimpleSceneTransition
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wender Bedroom
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!136 &5349217484831094948
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 393e64682def3944cb305d3eeea2617b, type: 2}
+--- !u!114 &47180752 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2560683169675131357, guid: e01db6baad3d2924b8cf31e846d3ccde,
+    type: 3}
+  m_PrefabInstance: {fileID: 6970112529806572062}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917c904b8642368479c865a47de2aa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &288411478
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +337,7 @@ GameObject:
   - component: {fileID: 911975220}
   - component: {fileID: 911975219}
   m_Layer: 8
-  m_Name: Clipboard thingy
+  m_Name: Form for ID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,8 +358,42 @@ MonoBehaviour:
   GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
   Response:
     m_PersistentCalls:
-      m_Calls: []
-  gameObjectToListenFor: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 911975223}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 911975222}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1060700303}
+        m_MethodName: LookAt
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 911975220}
+          m_ObjectArgumentAssemblyTypeName: Interactable, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  gameObjectToListenFor: {fileID: 4146245278914597069, guid: 108756bb3801d614bbd13d06db1a033f,
+    type: 3}
 --- !u!114 &911975220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +426,17 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1060700303}
+        m_MethodName: LookAtAndInvoke
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 47180752}
+          m_ObjectArgumentAssemblyTypeName: Interactable, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -448,7 +505,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8dbc0a569d21654db2689118ee2362f, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -485,7 +542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911975218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.528, y: 1.11, z: 0}
+  m_LocalPosition: {x: 0.54, y: 1.11, z: 0.392}
   m_LocalScale: {x: 0.55649, y: 0.030635135, z: 0.42495802}
   m_Children: []
   m_Father: {fileID: 0}
@@ -503,9 +560,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1958509387}
     - target: {fileID: 123037369, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
-      propertyPath: UiUpdateSections.Array.size
-      value: 3
+      propertyPath: settings.Array.size
+      value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 123037369, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
+      propertyPath: settings.Array.data[14].elementName
+      value: Day 3 Municipality 1 IV (Fill in form ID)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123037369, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
+      propertyPath: settings.Array.data[15].elementName
+      value: Day 3 Municipality 1 V (Applied for ID)
+      objectReference: {fileID: 0}
+    - target: {fileID: 123037369, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
+      propertyPath: settings.Array.data[15].shouldUIUpdate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 123037369, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
+      propertyPath: settings.Array.data[15].shouldTaskProgress
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 123037369, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
+      propertyPath: settings.Array.data[14].conversationSection
+      value: 
+      objectReference: {fileID: 4146245279536455802, guid: 108756bb3801d614bbd13d06db1a033f,
+        type: 3}
+    - target: {fileID: 123037369, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
+      propertyPath: settings.Array.data[15].conversationSection
+      value: 
+      objectReference: {fileID: 4332921894689323990, guid: b853214c4b01dc548bce523a9b5dba85,
+        type: 3}
     - target: {fileID: 5446185185378869737, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -579,6 +662,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1060700301}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1060700303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 720242705759610332, guid: 978125284856d5f4fa17f5d70576b935,
+    type: 3}
+  m_PrefabInstance: {fileID: 1060700301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060700302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 185d090970d21894d9642a8a9716e282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1139242315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1213,7 +1308,7 @@ MonoBehaviour:
   fullCube: 0
   hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
   positionId: 0
-  sceneName: Wender Day
+  sceneName: Wender Front Desk
 --- !u!114 &2076173610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,10 +1400,5 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1303196607}
-    - target: {fileID: 6915736684323977053, guid: e01db6baad3d2924b8cf31e846d3ccde,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6b8209a521bcfa14e9e80106fd66d5ec, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e01db6baad3d2924b8cf31e846d3ccde, type: 3}
