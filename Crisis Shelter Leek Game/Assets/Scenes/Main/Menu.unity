@@ -379,6 +379,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2862252784029778447, guid: efa67dd54f7b14a4897ef00cb93442d3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862252784029778447, guid: efa67dd54f7b14a4897ef00cb93442d3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1943651819}
+    - target: {fileID: 2862252784029778447, guid: efa67dd54f7b14a4897ef00cb93442d3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSimpleSceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 2862252784029778447, guid: efa67dd54f7b14a4897ef00cb93442d3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Wender Front Desk
+      objectReference: {fileID: 0}
     - target: {fileID: 2953242824354096729, guid: efa67dd54f7b14a4897ef00cb93442d3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -514,5 +534,98 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5084165508406157880, guid: efa67dd54f7b14a4897ef00cb93442d3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: efa67dd54f7b14a4897ef00cb93442d3, type: 3}
+--- !u!1001 &1943651818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 624.48645
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 269.6709
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -77.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851752, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668794177437851758, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_Name
+      value: Scene transitioner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1128356045341113291, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3174559948338515923, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3971978351128437690, guid: 4c09df7eae13025418f5a9ade20019d8, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 4c09df7eae13025418f5a9ade20019d8, type: 3}
+--- !u!114 &1943651819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6952246228228443174, guid: 4c09df7eae13025418f5a9ade20019d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1943651818}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29afaa1f11b18404c95a39a5399362a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

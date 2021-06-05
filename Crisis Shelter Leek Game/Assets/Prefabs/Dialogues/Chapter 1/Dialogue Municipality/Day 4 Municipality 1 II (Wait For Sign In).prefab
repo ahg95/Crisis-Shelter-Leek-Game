@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 983746550997804750}
   - component: {fileID: 983746550997804749}
   m_Layer: 0
-  m_Name: Day 4 Municipality 1 II
+  m_Name: Day 4 Municipality 1 II (Wait For Sign In)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 2
-    content: Thank you. The process of signing in will take about a day, so please
-      make a new appointment if you want to apply for financial aid.
+    content: Thank you. The process of signing in will take about a day, so we will
+      have to make a new appointment if you want to apply for financial aid.
   choicesAtEnd:
   - choiceText: I have to wait again?
     Consequence:
@@ -54,9 +54,10 @@ MonoBehaviour:
         m_Calls: []
     followUpConversation: {fileID: 6394345513729976775, guid: 333ff9f7e8f684147b618554564990ac,
       type: 3}
-  - choiceText: Okay, goodbye.
+  - choiceText: Okay then.
     Consequence:
       m_PersistentCalls:
         m_Calls: []
-    followUpConversation: {fileID: 0}
+    followUpConversation: {fileID: 1475597863657797238, guid: 4c0d0b3a60f6d29479aea9947ad7d066,
+      type: 3}
   followUpConversationIfNoChoicesPresent: {fileID: 0}

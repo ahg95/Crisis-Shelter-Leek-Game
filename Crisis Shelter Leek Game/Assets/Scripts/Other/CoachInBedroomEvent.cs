@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class OnSceneLoaded : MonoBehaviour
+public class CoachInBedroomEvent : MonoBehaviour
 {
     public UnityEvent sceneLoaded;
     [SerializeField] private TaskJourney taskJourney;

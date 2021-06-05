@@ -151,8 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  positionPoint: []
-  doorId: 0
+  currentSpawnPoint: 0
 --- !u!4 &164967719
 Transform:
   m_ObjectHideFlags: 0
@@ -292,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
       propertyPath: transitionTextAssociatedToTask.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
@@ -305,6 +304,18 @@ PrefabInstance:
       propertyPath: transitionTextAssociatedToTask.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 849521679472dec4c912de9ee92df6e3,
+        type: 2}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: transitionTextAssociatedToTask.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c779b164c142b04bae62eb77a6a4f79,
+        type: 2}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: transitionTextAssociatedToTask.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a9990c0ac50dd14a9946dfef1e7c87a,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2ca1f28f40207418defd51df846a56, type: 3}
