@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class ConversationConsequenceManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class ConversationConsequenceManager : MonoBehaviour
                 {
                     uiSystem.updateTaskUI();
                 }
+
+                conversationConsequence.consequenceEvent.Invoke();
             }
         }
     }
@@ -44,4 +47,5 @@ public class ConversationConsequenceSettings
     public ConversationSection conversationSection;
     public bool shouldTaskProgress;
     public bool shouldUIUpdate;
+    public UnityEvent consequenceEvent;
 }

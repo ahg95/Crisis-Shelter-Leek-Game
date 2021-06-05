@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
-
 public class SetPosOnSceneChange : MonoBehaviour
 {
     public static SetPosOnSceneChange instance = null;
 
     public GameObject player;
-    public GameObject[] positionPoint;
+    public SpawnPoint[] positionPoint;
 
-    public int doorId;
+    public SpawnPoint._SpawnPoint currentSpawnPoint;
     private void Awake()
     {
         if(instance == null)
@@ -27,7 +26,7 @@ public class SetPosOnSceneChange : MonoBehaviour
 
         if(positionPoint.Length == 0)
         {
-            positionPoint = GameObject.FindGameObjectsWithTag("PositionPoint");
+            positionPoint = FindObjectsOfType<SpawnPoint>();
         }
     }
 
@@ -35,13 +34,13 @@ public class SetPosOnSceneChange : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        positionPoint = GameObject.FindGameObjectsWithTag("PositionPoint");
+        positionPoint = FindObjectsOfType<SpawnPoint>();
 
         if (player != null && positionPoint.Length != 0)
         {
             for (int i = 0; i < positionPoint.Length; i++)
             {
-                if (positionPoint[i].transform.parent.GetComponent<Door>().positionId == doorId)
+                if (positionPoint[i].thisSpawnPoint == currentSpawnPoint)
                 {
                     player.transform.position = positionPoint[i].transform.position;
                     player.transform.rotation = Quaternion.LookRotation(positionPoint[i].transform.forward);//make the player look in the same direction as the position point
@@ -49,8 +48,8 @@ public class SetPosOnSceneChange : MonoBehaviour
             }
         }
     }
-    public void SetPositionId(int passedPositionId)
+    public void SetPositionId(SpawnPoint._SpawnPoint spawnPoint)
     {
-        instance.doorId = passedPositionId;
+        instance.currentSpawnPoint = spawnPoint;
     }
 }

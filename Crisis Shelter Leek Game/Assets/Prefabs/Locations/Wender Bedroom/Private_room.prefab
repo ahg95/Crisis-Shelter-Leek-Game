@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1237453613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781023398183596711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aceb9522c8c75344a88926d7963dcfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+  minimumInteractionDistance: 5
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
+  zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 1.5
+  frontOfObject: 0
+  navComponent: {fileID: 0}
+  isSelected: 0
+  debugAlwaysVisible: 0
+  fullCube: 0
+  hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
+  positionId: 2
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+  goToTextSceneIfHasTasks: []
 --- !u!1 &6631933266245519636
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +648,9 @@ PrefabInstance:
       propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Task, Assembly-CSharp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8901978086605904060, guid: 4e6065dc26b78d44e996ba0c5cea958d, type: 3}
+    - {fileID: 753153247681944557, guid: 4e6065dc26b78d44e996ba0c5cea958d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4e6065dc26b78d44e996ba0c5cea958d, type: 3}
 --- !u!4 &2107581624778294821 stripped
 Transform:
@@ -628,6 +661,12 @@ Transform:
 --- !u!4 &3883229649982949678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4564830122359208727, guid: 4e6065dc26b78d44e996ba0c5cea958d,
+    type: 3}
+  m_PrefabInstance: {fileID: 773924267430949433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4781023398183596711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5252344464237052062, guid: 4e6065dc26b78d44e996ba0c5cea958d,
     type: 3}
   m_PrefabInstance: {fileID: 773924267430949433}
   m_PrefabAsset: {fileID: 0}

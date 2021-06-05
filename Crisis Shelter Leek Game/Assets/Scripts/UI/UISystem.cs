@@ -93,6 +93,7 @@ public class UISystem : MonoBehaviour
     public void HideUI()
     {
         taskUIAnim.SetBool("Show", false);
+        print("Called");
     }
 
     //add new task to the list

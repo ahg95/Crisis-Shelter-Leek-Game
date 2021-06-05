@@ -10,5 +10,6 @@ public class TransitionTextAssociatedToTask : ScriptableObject
     [Tooltip("Type it exactly as you see the name in the Build Settings")]
     public string SceneToTransferTo;
     [Tooltip("If you need the player to spawn at a specific spawnpoint in the room.")]
-    public int doorID;
+    public SpawnPoint._SpawnPoint spawnPoint;
+    public bool progressAfterText;
 }

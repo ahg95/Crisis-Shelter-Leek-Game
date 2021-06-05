@@ -104,7 +104,8 @@ public class TextScene : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
 
-            SetPosOnSceneChange.instance.doorId = currentTransitionText.doorID;
+            if (currentTransitionText.progressAfterText) taskJourney.Progress();
+            SetPosOnSceneChange.instance.currentSpawnPoint = currentTransitionText.spawnPoint;
             SceneManager.LoadScene(currentTransitionText.SceneToTransferTo);
         }
     }

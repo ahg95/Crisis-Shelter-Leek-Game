@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 668794177437851752}
   - component: {fileID: 6952246228228443174}
-  - component: {fileID: 8524464880893420667}
+  - component: {fileID: 1136064369}
   m_Layer: 0
   m_Name: Scene transitioner
   m_TagString: Untagged
@@ -224,7 +224,7 @@ MonoBehaviour:
   sceneTransitionTime: 1
   stats: {fileID: 8588861264545205089}
   fadeInterval: 2
---- !u!114 &8524464880893420667
+--- !u!114 &1136064369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,25 +233,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 668794177437851758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2f5fcdfe0914849a323a80cce0383d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e68a02e256afcb418fcb9034f17acd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoaded:
+  thingsToDo:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-        m_MethodName: Progress
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_MethodName: LookAtAndInvoke
+        m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: Interactable, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
-  currentTask: {fileID: 11400000, guid: ff45b383d0715aa4396811beccfa1108, type: 2}
+  timeToWait: 1
 --- !u!1 &668794178108760208
 GameObject:
   m_ObjectHideFlags: 0
