@@ -29,7 +29,6 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     {
         if (assignedTaskIndex != tasksInOrder.Length - 1) // if not the last task
         {
-            Debug.Log("Progress!");
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
             progressionEvent.Raise();
