@@ -540,6 +540,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8524464880893420667, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: taskJourney
+      value: 
+      objectReference: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c09df7eae13025418f5a9ade20019d8, type: 3}
 --- !u!1 &418133566
@@ -860,6 +866,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2188567406120788607, guid: 051da62ab30593240b883e14049146da,
         type: 3}
+      propertyPath: taskJourney
+      value: 
+      objectReference: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9,
+        type: 2}
+    - target: {fileID: 2188567406120788607, guid: 051da62ab30593240b883e14049146da,
+        type: 3}
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1953548001}
@@ -933,39 +945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917c904b8642368479c865a47de2aa5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &688552249 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8951414794600220401, guid: ff5f72878e042864985151fccde3dd92,
-    type: 3}
-  m_PrefabInstance: {fileID: 1640321058}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &688552254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688552249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d11bae3f8f6f6d4896163d5125122cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: 2be6c193904a33d4ca8cb68df5d55f8e, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1945520970}
-        m_MethodName: updateTaskUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &731612535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1499,10 +1478,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8951414794136295370, guid: ff5f72878e042864985151fccde3dd92,
+    - target: {fileID: 185423326, guid: ff5f72878e042864985151fccde3dd92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 185423326, guid: ff5f72878e042864985151fccde3dd92, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980719199, guid: ff5f72878e042864985151fccde3dd92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980719199, guid: ff5f72878e042864985151fccde3dd92, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980719199, guid: ff5f72878e042864985151fccde3dd92, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721224688861042672, guid: ff5f72878e042864985151fccde3dd92,
         type: 3}
-      propertyPath: m_Transition
-      value: 3
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721224688861042672, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219161059134956527, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219161059134956527, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219161059134956527, guid: ff5f72878e042864985151fccde3dd92,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8951414794600220364, guid: ff5f72878e042864985151fccde3dd92,
         type: 3}
@@ -1609,25 +1628,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8951414794600220365, guid: ff5f72878e042864985151fccde3dd92,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8951414794600220401, guid: ff5f72878e042864985151fccde3dd92,
         type: 3}
       propertyPath: m_Name
       value: InterfaceUICanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8951414795273775139, guid: ff5f72878e042864985151fccde3dd92,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9168251573605044644, guid: ff5f72878e042864985151fccde3dd92,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -15.000061
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff5f72878e042864985151fccde3dd92, type: 3}
@@ -1637,7 +1641,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1640321058}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688552249}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea6af662c19025489ecf1bca935a4cd, type: 3}

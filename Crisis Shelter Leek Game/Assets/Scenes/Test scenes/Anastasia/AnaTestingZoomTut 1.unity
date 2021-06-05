@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6109020964802205643, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192044453928887023, guid: 4c09df7eae13025418f5a9ade20019d8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c09df7eae13025418f5a9ade20019d8, type: 3}
 --- !u!114 &19776262 stripped
@@ -943,7 +953,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 19776262}
-        m_MethodName: LoadSceneTransition
+        m_MethodName: LoadSimpleSceneTransition
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1483,6 +1493,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TASKLOCATION
       objectReference: {fileID: 0}
+    - target: {fileID: 5446185185378869737, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8371596311337322773, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1830,10 +1845,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumInteractionDistance: 2
-  zoom: 1
-  moveTowards: 0
-  isZooming: 0
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
   zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  frontOfObject: 0
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
@@ -1854,6 +1873,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!65 &170203621
@@ -2041,7 +2061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   positionPoint: []
-  currentPositionId: 0
+  doorId: 0
 --- !u!4 &204125388
 Transform:
   m_ObjectHideFlags: 0
@@ -2343,10 +2363,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumInteractionDistance: 5
-  zoom: 1
-  moveTowards: 0
-  isZooming: 0
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
   zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  frontOfObject: 0
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
@@ -2367,6 +2391,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!23 &227939237
@@ -3576,7 +3601,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 19776262}
-        m_MethodName: SimpleTransitionStats
+        m_MethodName: LoadSceneTransitionStats
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5758,6 +5783,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!114 &536930054
@@ -5799,10 +5825,14 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   minimumInteractionDistance: 5
-  zoom: 0
-  moveTowards: 0
-  isZooming: 0
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
   zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  frontOfObject: 0
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
@@ -8426,7 +8456,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.35
+  m_fontSize: 21.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10379,10 +10409,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumInteractionDistance: 5
-  zoom: 0
-  moveTowards: 0
-  isZooming: 0
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
   zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  frontOfObject: 0
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
@@ -10405,6 +10439,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!64 &968062102
@@ -13029,10 +13064,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumInteractionDistance: 2
-  zoom: 0
-  moveTowards: 0
-  isZooming: 0
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
   zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  frontOfObject: 0
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
@@ -13055,6 +13094,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!1 &1201181403
@@ -13941,10 +13981,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumInteractionDistance: 5
-  zoom: 0
-  moveTowards: 0
-  isZooming: 0
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
   zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  frontOfObject: 0
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
@@ -13981,6 +14025,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!23 &1236717572
@@ -14124,7 +14169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1249017460
 Transform:
   m_ObjectHideFlags: 0
@@ -15538,10 +15583,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumInteractionDistance: 5
-  zoom: 1
-  moveTowards: 0
-  isZooming: 0
+  objectTransformToLookAt: {fileID: 0}
+  zoomIn: 0
+  zoomedInOn: 0
   zoomAmount: 0
+  moveTowards: 0
+  moveTowardsDistance: 2
+  frontOfObject: 0
+  navComponent: {fileID: 0}
   isSelected: 0
   debugAlwaysVisible: 0
   fullCube: 0
@@ -15562,6 +15611,7 @@ MonoBehaviour:
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
+  includeSubMeshes: 0
   bakeKeys: []
   bakeValues: []
 --- !u!23 &1392795749
@@ -22613,8 +22663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa024f8a889579b4c892696825f71722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textArray:
-  - Would you like to play our tutorial first?
+  taskJourney: {fileID: 0}
+  transitionTextAssociatedToTask: []
   fadeSpeed: 0.05
   showTextLength: 5.5
   switchScene: 0
