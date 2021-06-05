@@ -104,7 +104,7 @@ public class Transitions : MonoBehaviour
         if (switchScene)
         {
             statsTransition.SetBool("StartAnim", false);//ends the transition
-            yield return new WaitForSeconds(1f);//waits for a bit more sec before switching scenes
+            yield return new WaitForSeconds(1.5f);//waits for a bit more sec before switching scenes
             SceneManager.LoadScene(sceneName);
         }
     }
