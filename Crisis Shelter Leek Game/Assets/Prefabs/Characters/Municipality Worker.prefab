@@ -147,25 +147,33 @@ MonoBehaviour:
   taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
   dialogueManager: {fileID: 0}
   conversationTaskCombination:
-  - combinationName: 
+  - combinationName: First Conversation
     task: {fileID: 11400000, guid: 3df87dc2073c1a443a0a1e6a3c43c079, type: 2}
     conversationSection: {fileID: 3402563576952253158, guid: f5d12d08f40a97f4085185d2bb1c54ab,
       type: 3}
-  - combinationName: 
+  - combinationName: Wait for ID
     task: {fileID: 11400000, guid: 15f37f4651051d44ba8d288cfdc08110, type: 2}
     conversationSection: {fileID: 7613907091773757081, guid: 2cdb926b5b15d99468983429d0379dfe,
       type: 3}
-  - combinationName: 
+  - combinationName: Applied for ID
     task: {fileID: 11400000, guid: fe046b5aaae505444aa5981e3c2d2c67, type: 2}
     conversationSection: {fileID: 4332921894689323990, guid: b853214c4b01dc548bce523a9b5dba85,
       type: 3}
-  - combinationName: 
-    task: {fileID: 11400000, guid: 104bdfcb331d4404d95374506c71eaf8, type: 2}
-    conversationSection: {fileID: 983746550997804749, guid: 07a1ae48d1e7b1e46a8318807fdcaafb,
+  - combinationName: Sign in Municipality
+    task: {fileID: 11400000, guid: 38fb526e8b0c7f146a72ae0667c5d1d7, type: 2}
+    conversationSection: {fileID: 2113089120703480494, guid: 5a49976158000de4eb8e1c8634a754ff,
       type: 3}
-  - combinationName: 
+  - combinationName: Apply for financial aid
     task: {fileID: 11400000, guid: 1c0ef940fab6a4b41825cf909e1ab4fe, type: 2}
     conversationSection: {fileID: 2869492840581819916, guid: db8c56ae6739b3c47824e60a1a2e7030,
+      type: 3}
+  - combinationName: Wait for Sign-in Process
+    task: {fileID: 11400000, guid: 59952758fb5807942b1801c4721319d9, type: 2}
+    conversationSection: {fileID: 983746550997804749, guid: 07a1ae48d1e7b1e46a8318807fdcaafb,
+      type: 3}
+  - combinationName: Wait for Application Process
+    task: {fileID: 11400000, guid: 03539c23b231a714eb97e303b6d0e05c, type: 2}
+    conversationSection: {fileID: 9186819055750401463, guid: 74d7b4b491761fd46bc378215a8f710d,
       type: 3}
 --- !u!114 &1357773013197264911
 MonoBehaviour:
@@ -210,7 +218,7 @@ Animator:
   m_GameObject: {fileID: 167299110465517469}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d2c93aff30162b648bbc2468c52680a4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b8209a521bcfa14e9e80106fd66d5ec, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

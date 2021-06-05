@@ -4,6 +4,7 @@
 public class Task : ScriptableObject
 {
     public string title;
+    [TextArea(1, 2)]
     public string description;
     public int amountOfDays;
     public Locations location;
@@ -11,6 +12,6 @@ public class Task : ScriptableObject
     {
         Municipality,
         HousingCorporation,
-        Zienn
+        Wender
     };
 }

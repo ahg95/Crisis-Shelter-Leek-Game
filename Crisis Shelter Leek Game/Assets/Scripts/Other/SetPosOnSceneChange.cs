@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-
 public class SetPosOnSceneChange : MonoBehaviour
 {
     public static SetPosOnSceneChange instance = null;
 
     public GameObject player;
-    public GameObject[] positionPoint;
 
-    public int doorId;
+    public SpawnPoint._SpawnPoint currentSpawnPoint;
     private void Awake()
     {
         if(instance == null)
@@ -24,33 +22,29 @@ public class SetPosOnSceneChange : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
-        if(positionPoint.Length == 0)
-        {
-            positionPoint = GameObject.FindGameObjectsWithTag("PositionPoint");
-        }
     }
 
     private void OnLevelWasLoaded()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        positionPoint = GameObject.FindGameObjectsWithTag("PositionPoint");
 
-        if (player != null && positionPoint.Length != 0)
+        SpawnPoint[] spawnPointsInScene = FindObjectsOfType<SpawnPoint>();
+
+        if (player != null && spawnPointsInScene.Length != 0)
         {
-            for (int i = 0; i < positionPoint.Length; i++)
+            for (int i = 0; i < spawnPointsInScene.Length; i++)
             {
-                if (positionPoint[i].transform.parent.GetComponent<Door>().positionId == doorId)
+                if (spawnPointsInScene[i].thisSpawnPoint == currentSpawnPoint)
                 {
-                    player.transform.position = positionPoint[i].transform.position;
-                    player.transform.rotation = Quaternion.LookRotation(positionPoint[i].transform.forward);//make the player look in the same direction as the position point
+                    player.transform.position = spawnPointsInScene[i].transform.position;
+                    player.transform.rotation = Quaternion.LookRotation(spawnPointsInScene[i].transform.forward);//make the player look in the same direction as the position point
                 }
             }
         }
     }
-    public void SetPositionId(int passedPositionId)
+    public void SetPositionId(SpawnPoint._SpawnPoint spawnPoint)
     {
-        instance.doorId = passedPositionId;
+        instance.currentSpawnPoint = spawnPoint;
     }
 }

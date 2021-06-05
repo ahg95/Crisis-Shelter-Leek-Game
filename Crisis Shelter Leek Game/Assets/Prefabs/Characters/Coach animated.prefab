@@ -1852,6 +1852,14 @@ MonoBehaviour:
     task: {fileID: 11400000, guid: 3df87dc2073c1a443a0a1e6a3c43c079, type: 2}
     conversationSection: {fileID: 7332116125829426709, guid: bfd5590c5a06df74b817623a4e5c26f1,
       type: 3}
+  - combinationName: Day 3-1
+    task: {fileID: 11400000, guid: 15f37f4651051d44ba8d288cfdc08110, type: 2}
+    conversationSection: {fileID: 451874222358473900, guid: c1f11f995482791468bb48ec75b2fec3,
+      type: 3}
+  - combinationName: Day 3 - 3 Go Back To Wender And Wait
+    task: {fileID: 11400000, guid: d635b3df7952afa499aae4e4ef408952, type: 2}
+    conversationSection: {fileID: 451874222358473900, guid: f2992c5e75fd9ea4689e74fb46abbf2f,
+      type: 3}
 --- !u!114 &4397130926350734444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1866,7 +1874,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 6864262945449399066}
   animator: {fileID: -203990445671726243}
-  cam: {fileID: 0}
+  destination: {fileID: 0}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: LoadSimpleSceneTransition
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Wender Bedroom
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!136 &5349217484831094948
 CapsuleCollider:
   m_ObjectHideFlags: 0

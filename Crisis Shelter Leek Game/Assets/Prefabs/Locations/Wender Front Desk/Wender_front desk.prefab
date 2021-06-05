@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &426682615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426682616}
+  - component: {fileID: 426682617}
+  m_Layer: 0
+  m_Name: Entrance Municipality
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &426682616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426682615}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6737118282810768334}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &426682617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426682615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea532568f6816a488c60fe51ecf3fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisSpawnPoint: 4
 --- !u!1 &463106832
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +136,19 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &287671393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270679227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea532568f6816a488c60fe51ecf3fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisSpawnPoint: 1
 --- !u!1 &1324361910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1861,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7896799500861718820, guid: 5b8e152e7c5de574198d3298611d1be9,
+        type: 3}
+      propertyPath: moveTowards
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8e152e7c5de574198d3298611d1be9, type: 3}
 --- !u!4 &4405674726883904481 stripped
@@ -2071,6 +2133,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05e7372d03613ab4fa1e4ce5d9d9a5f0, type: 3}
+--- !u!1 &5148817237227829088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5148817236446094103, guid: 05e7372d03613ab4fa1e4ce5d9d9a5f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1368937591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543450652364583836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 05e7372d03613ab4fa1e4ce5d9d9a5f0,
@@ -2080,12 +2148,6 @@ Transform:
 --- !u!1 &2193423311991539981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7029948723529949830, guid: 05e7372d03613ab4fa1e4ce5d9d9a5f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1368937591}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5148817237227829088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5148817236446094103, guid: 05e7372d03613ab4fa1e4ce5d9d9a5f0,
     type: 3}
   m_PrefabInstance: {fileID: 1368937591}
   m_PrefabAsset: {fileID: 0}
@@ -2160,6 +2222,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969290550114629385, guid: 4ee17e2fa8b44884782af27dac5d5f47,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969290550114629385, guid: 4ee17e2fa8b44884782af27dac5d5f47,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].task
+      value: 
+      objectReference: {fileID: 11400000, guid: d1a1ec9f00577c643847f38b522074f5,
+        type: 2}
+    - target: {fileID: 4969290550114629385, guid: 4ee17e2fa8b44884782af27dac5d5f47,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[0].combinationName
+      value: First Appointment
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969290550114629385, guid: 4ee17e2fa8b44884782af27dac5d5f47,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].combinationName
+      value: Second Appointment
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969290550114629385, guid: 4ee17e2fa8b44884782af27dac5d5f47,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[2].combinationName
+      value: Third Appointment
       objectReference: {fileID: 0}
     - target: {fileID: 5209280256840537745, guid: 4ee17e2fa8b44884782af27dac5d5f47,
         type: 3}
@@ -2344,14 +2432,36 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190631152201596098, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
+      propertyPath: conversationTaskCombination.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 190631152201596098, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].task
+      value: 
+      objectReference: {fileID: 11400000, guid: d1a1ec9f00577c643847f38b522074f5,
+        type: 2}
+    - target: {fileID: 190631152201596098, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
       propertyPath: conversationTaskCombination.Array.data[0].combinationName
       value: First Appointment Municipality
+      objectReference: {fileID: 0}
+    - target: {fileID: 190631152201596098, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].combinationName
+      value: Second Appointment
       objectReference: {fileID: 0}
     - target: {fileID: 190631152201596098, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
       propertyPath: conversationTaskCombination.Array.data[0].conversationSection
       value: 
       objectReference: {fileID: 7565425908783830427, guid: 054295a7fe6453f4cbb8aad83dc03073,
+        type: 3}
+    - target: {fileID: 190631152201596098, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].conversationSection
+      value: 
+      objectReference: {fileID: 5944678556682814916, guid: 16988699be3000b4a8b8ca553796fd4a,
         type: 3}
     - target: {fileID: 1767719022487511512, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
@@ -2361,7 +2471,12 @@ PrefabInstance:
     - target: {fileID: 2737713900358474929, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
       propertyPath: sceneName
-      value: Bedroom Wender
+      value: Wender Bedroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737713900358474929, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: spawnLocation
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5166144037207617640, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
@@ -2423,6 +2538,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6810984527364560403, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: m_Name
+      value: Bedroom Door Front Desk
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810984527364560403, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239782624788627665, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239782624788627665, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].task
+      value: 
+      objectReference: {fileID: 11400000, guid: d1a1ec9f00577c643847f38b522074f5,
+        type: 2}
     - target: {fileID: 7239782624788627665, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
       propertyPath: conversationTaskCombination.Array.data[0].combinationName
@@ -2430,9 +2566,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7239782624788627665, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].combinationName
+      value: Second Appointment
+      objectReference: {fileID: 0}
+    - target: {fileID: 7239782624788627665, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
       propertyPath: conversationTaskCombination.Array.data[0].conversationSection
       value: 
       objectReference: {fileID: 7565425908783830427, guid: 054295a7fe6453f4cbb8aad83dc03073,
+        type: 3}
+    - target: {fileID: 7239782624788627665, guid: 7e666a64d6531ca4693c9c613a486df4,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[1].conversationSection
+      value: 
+      objectReference: {fileID: 5944678556682814916, guid: 16988699be3000b4a8b8ca553796fd4a,
         type: 3}
     - target: {fileID: 8358594654901251636, guid: 7e666a64d6531ca4693c9c613a486df4,
         type: 3}
@@ -2449,6 +2596,12 @@ PrefabInstance:
 --- !u!4 &1332922943385205370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5546750349218638546, guid: 7e666a64d6531ca4693c9c613a486df4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6810984526211322024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1270679227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6810984527364560403, guid: 7e666a64d6531ca4693c9c613a486df4,
     type: 3}
   m_PrefabInstance: {fileID: 6810984526211322024}
   m_PrefabAsset: {fileID: 0}
