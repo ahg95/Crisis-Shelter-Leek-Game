@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Transitions : MonoBehaviour
 {
-    [SerializeField] private Animator simpleTransition;//sets a simple transition that happens within the scene
+    [SerializeField] private Animator simpleTransition;//sets a simple transition that happens within the scene or scene change
+    [SerializeField] private Animator statsTransition;//the day/night cycle animation with stats
     [SerializeField] private float sceneTransitionTime;//transition time for the scene transition
 
     [SerializeField] private CanvasGroup stats;
@@ -66,7 +67,8 @@ public class Transitions : MonoBehaviour
     public IEnumerator TransitionWithStats(bool showStats, float addedFade, bool switchScene, string sceneName)
     {
         float fadeAmount;
-        simpleTransition.SetTrigger("Start");//starts the transition
+        //simpleTransition.SetTrigger("Start");//starts the transition
+        statsTransition.SetBool("StartAnim", true);//starts the transition
 
         if (showStats)
         {
@@ -93,10 +95,16 @@ public class Transitions : MonoBehaviour
                 yield return null;
             }
         }
-        simpleTransition.SetTrigger("End");//ends the transition
+        //simpleTransition.SetTrigger("End");//ends the transition
+        if (!switchScene)
+        {
+            statsTransition.SetBool("StartAnim", false);//ends the transition
+        }
 
         if (switchScene)
         {
+            statsTransition.SetBool("StartAnim", false);//ends the transition
+            yield return new WaitForSeconds(1.5f);//waits for a bit more sec before switching scenes
             SceneManager.LoadScene(sceneName);
         }
     }

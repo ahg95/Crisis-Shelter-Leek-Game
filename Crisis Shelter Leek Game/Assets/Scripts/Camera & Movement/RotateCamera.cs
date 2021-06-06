@@ -2,7 +2,7 @@
 
 public class RotateCamera : MonoBehaviour
 {
-    [SerializeField] float rotationSpeedMultiplier = 1f;
+    [SerializeField] public float rotationSpeedMultiplier = 1f;
     [SerializeField] private Camera cam = null;
     [SerializeField] private GameObject uiForRotation;
 

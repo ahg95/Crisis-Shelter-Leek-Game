@@ -25,7 +25,7 @@ public class UISystem : MonoBehaviour
         daysDataText.text = "Days: " + DaysPassed.newAmountOfDays;
         costDataText.text = "Cost: " + DaysPassed.newCost;
 
-        taskText.text = taskJourney.assignedTask.description;
+        taskText.text = taskJourney.assignedTask.title;
     }
 
     public void onTaskClicked()
@@ -54,13 +54,13 @@ public class UISystem : MonoBehaviour
     //updates the text of the ui and shows the "new task" popup(by instantiating it and deleting after couple sec)
     public void updateTaskUI()
     {
-        taskText.text = taskJourney.assignedTask.description;
+        taskText.text = taskJourney.assignedTask.title;
 
         //newTaskPopUpIcon.SetActive(true);
 
         if (!taskUIAnim.GetBool("Show"))
         {
-            taskUIAnim.SetBool("Show", true);
+            ShowUI();
             taskUIAnim.SetTrigger("Pressed");
         }
 
@@ -85,6 +85,14 @@ public class UISystem : MonoBehaviour
                 taskPopUpClone.GetComponent<RectTransform>().localPosition = newTaskPopUp.GetComponent<RectTransform>().localPosition;
 
                 Destroy(taskPopUpClone, 1.5f);*/
+    }
+    public void ShowUI()
+    {
+        taskUIAnim.SetBool("Show", true);
+    }
+    public void HideUI()
+    {
+        taskUIAnim.SetBool("Show", false);
     }
 
     //add new task to the list

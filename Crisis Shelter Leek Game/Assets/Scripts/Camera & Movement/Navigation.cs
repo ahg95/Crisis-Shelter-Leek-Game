@@ -14,7 +14,6 @@ public class Navigation : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float walkSoundVolume = 0.375f;
     private AudioSource walkSoundPlayer;
-    private bool isMoving = false;
     /// <summary>
     /// Whatever surface is a navigation static and is within the player's vision, it can move towards.
     /// </summary>
@@ -37,7 +36,7 @@ public class Navigation : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 15f);
 
-        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") /*&& !EventSystem.current.IsPointerOverGameObject()*/ && !isMoving)
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !EventSystem.current.IsPointerOverGameObject())
         {
             arrow.SetActive(true);
 
@@ -60,8 +59,6 @@ public class Navigation : MonoBehaviour
     }
     private IEnumerator WaitForDestinationReached()
     {
-        isMoving = true;
-        arrow.SetActive(false);
         walkSoundPlayer.volume = walkSoundVolume;
         walkSoundPlayer.Play();
 
@@ -78,9 +75,6 @@ public class Navigation : MonoBehaviour
 
         if (agent.remainingDistance < 0.1f)
         {
-            isMoving = false;
-
-            arrow.SetActive(true);
             Cursor.visible = false;
             StartCoroutine(LowerVolume());
             

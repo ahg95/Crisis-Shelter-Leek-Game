@@ -121,6 +121,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &164967717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164967719}
+  - component: {fileID: 164967718}
+  m_Layer: 0
+  m_Name: SetPosOnSceneChange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &164967718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164967717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca1f03cdde62e94d826616a8cbfd550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  currentSpawnPoint: 0
+--- !u!4 &164967719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164967717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &852340007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,13 +291,31 @@ PrefabInstance:
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
       propertyPath: transitionTextAssociatedToTask.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
         type: 3}
       propertyPath: transitionTextAssociatedToTask.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: b8a2d13acfdf5904b81293a62cf9f084,
+      objectReference: {fileID: 11400000, guid: f87a9c0f9bd7aad4c819149ad3199a07,
+        type: 2}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: transitionTextAssociatedToTask.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 849521679472dec4c912de9ee92df6e3,
+        type: 2}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: transitionTextAssociatedToTask.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c779b164c142b04bae62eb77a6a4f79,
+        type: 2}
+    - target: {fileID: 8728452805740281294, guid: fa2ca1f28f40207418defd51df846a56,
+        type: 3}
+      propertyPath: transitionTextAssociatedToTask.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a9990c0ac50dd14a9946dfef1e7c87a,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2ca1f28f40207418defd51df846a56, type: 3}

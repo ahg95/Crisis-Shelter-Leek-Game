@@ -21,6 +21,13 @@ public class Interactable : MonoBehaviour
     [Space(5)]
     public bool moveTowards = false;
     public float moveTowardsDistance = 2f;
+    public enum FrontOfObject
+    {
+        Forward,
+        Up,
+        Right,
+    }
+    public FrontOfObject frontOfObject = FrontOfObject.Forward;
     [SerializeField] protected Navigation navComponent = null;
 
     public bool isSelected = false;
@@ -57,13 +64,13 @@ public class Interactable : MonoBehaviour
     #region OnMouseStuff
     private void OnMouseEnter()
     {
-        float distance = Vector3.Distance(cam.transform.position, transform.position);
+ /*       float distance = Vector3.Distance(cam.transform.position, transform.position);
         if (distance < minimumInteractionDistance)
-        {
+        {*/
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
 
             outline.enabled = true;
-        }
+        //}
     }
     private void OnMouseExit()
     {
@@ -75,7 +82,6 @@ public class Interactable : MonoBehaviour
 
     public virtual void InteractWith()
     {
-        print("invoked through InteractWith Void");
         onInteraction.Invoke();
     }
 
