@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Navigation : MonoBehaviour
@@ -35,7 +36,7 @@ public class Navigation : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out hit, 15f);
 
-        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") /*&& !EventSystem.current.IsPointerOverGameObject()*/)
+        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !EventSystem.current.IsPointerOverGameObject())
         {
             arrow.SetActive(true);
 
