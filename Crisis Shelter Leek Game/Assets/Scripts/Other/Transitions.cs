@@ -2,23 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class Transitions : MonoBehaviour
 {
+    #region Variables
+    [Header("Transition Animations")]
     [SerializeField] private Animator simpleTransition;//sets a simple transition that happens within the scene or scene change
     [SerializeField] private Animator statsTransition;//the day/night cycle animation with stats
-    [SerializeField] private float sceneTransitionTime;//transition time for the scene transition
+    [Tooltip("the time it takes for the scene to change after the transition animation started")]
+    [SerializeField] private float sceneTransitionTime = 1f;
 
-    [SerializeField] private CanvasGroup stats;
-    [SerializeField] private float fadeInterval = 2f;//fade for the stats
-    private bool finishes;
+    [Header("Stats")]
+    [SerializeField] private CanvasGroup statsCanvasGroup;
+    [Tooltip("the interval for how fast the stats will fade in/out")]
+    [SerializeField] private float fadeInterval = 2f;
 
-    private void Update()
+    private int displayedAmountOfDays = DaysPassed.startAmountOfDays;
+    private float displayedAmountOfMoney = DaysPassed.costAtStart;
+    [Space(10)]
+    [SerializeField] private float daySpeedMultiplier = 1.5f;
+    [SerializeField] private float costsSpeedMultiplier = 1f;
+
+    [Header("Stats Components")]
+    [Space(20)]
+    [SerializeField] private Text daysUI;
+    [SerializeField] private Text costsUI;
+    [SerializeField] private AudioSource tickPlayer;
+    [Header("Stats Sounds")]
+    [SerializeField] private AudioClip tickSound;
+    [SerializeField] private AudioClip coinSound;
+
+    //[HideInInspector] 
+    public bool finishedUpdatingUI = false;//checks if it finished updating the days & cost text
+
+    #endregion
+
+    #region Functions
+
+    /// <summary>
+    /// Will start the coroutine that updates the stats on the UI
+    /// </summary>
+    public void ShowStats()
     {
-        finishes = gameObject.GetComponentInChildren<UpdateStats>().finished;
+        StartCoroutine(StatsUpdater());
     }
-
 
     /// <summary>
     /// Starts a scene change with transition
@@ -36,9 +65,12 @@ public class Transitions : MonoBehaviour
     /// <param name="switchScene">Tells whether to switch the scene or not</param>
     public void LoadSceneTransitionStats(string name)
     {
+        ShowStats();
         StartCoroutine(TransitionWithStats(true, fadeInterval, true, name));
     }
+    #endregion
 
+    #region Coroutines
 
     /// <summary>
     /// Switches scenes with transitions
@@ -74,24 +106,25 @@ public class Transitions : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
 
-            while (stats.alpha < 1) // under 1
+            while (statsCanvasGroup.alpha < 1) // under 1
             {
-                fadeAmount = stats.alpha + (addedFade * Time.deltaTime); // add
+                fadeAmount = statsCanvasGroup.alpha + (addedFade * Time.deltaTime); // add
 
-                stats.alpha = fadeAmount;
+                statsCanvasGroup.alpha = fadeAmount;
                 yield return null;
             }
         }
-        yield return new WaitUntil(() => finishes);//waits until the stats have finished showing 
-        //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));//waits until the player clicked the mouse 
+        yield return new WaitUntil(() => finishedUpdatingUI);//waits until the stats have finished showing
         yield return new WaitForSeconds(1.5f);//waits for a bit more sec before switching scenes
+        //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));//waits until the player clicked the mouse 
+
 
         if (showStats)
         {
-            while (stats.alpha > 0) // above 0
+            while (statsCanvasGroup.alpha > 0) // above 0
             {
-                fadeAmount = stats.alpha - (addedFade * Time.deltaTime); // substract
-                stats.alpha = fadeAmount;
+                fadeAmount = statsCanvasGroup.alpha - (addedFade * Time.deltaTime); // substract
+                statsCanvasGroup.alpha = fadeAmount;
                 yield return null;
             }
         }
@@ -108,4 +141,44 @@ public class Transitions : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
     }
+
+    /// <summary>
+    /// An int and a float keep up what the costs and amount of days on screen are.
+    /// It is checked whether the currently shown amount of days and costs are still below the new values.
+    /// If true, the displayed amounts are increased, and the process repeats itself until it's up-to-date.
+    /// </summary>
+    public IEnumerator StatsUpdater()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        while (displayedAmountOfDays < DaysPassed.newAmountOfDays)
+        {
+            if (!tickPlayer.isPlaying) // To prevent 'spamming' of coinsounds.
+            {
+                tickPlayer.PlayOneShot(tickSound, 0.75f);
+            }
+            displayedAmountOfDays++; //Increment the display score by 
+            daysUI.text = displayedAmountOfDays.ToString(); //Write it to the UI
+            yield return new WaitForSeconds(1f / DaysPassed.newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
+        }
+
+        while (displayedAmountOfMoney < DaysPassed.newCost)
+        {
+            if (!tickPlayer.isPlaying) // To prevent 'spamming' of coinsounds.
+            {
+                tickPlayer.PlayOneShot(coinSound, 0.35f);
+            }
+            displayedAmountOfMoney += 25f; //Increment the display score by 1
+            costsUI.text = displayedAmountOfMoney.ToString(); //Write it to the UI
+
+            //check if the UI has been updated completely
+            if (displayedAmountOfDays == DaysPassed.newAmountOfDays && displayedAmountOfMoney == DaysPassed.newCost)
+            {
+                finishedUpdatingUI = true;
+            }
+
+            yield return new WaitForSeconds(1f / DaysPassed.newCost * costsSpeedMultiplier);
+        }
+    }
+    #endregion
 }

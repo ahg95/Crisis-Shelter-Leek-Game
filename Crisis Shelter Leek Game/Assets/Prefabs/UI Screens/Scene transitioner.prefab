@@ -225,8 +225,16 @@ MonoBehaviour:
   simpleTransition: {fileID: 8316612296648237856}
   statsTransition: {fileID: 6109020963921643529}
   sceneTransitionTime: 1
-  stats: {fileID: 8588861264545205089}
+  statsCanvasGroup: {fileID: 8588861264545205089}
   fadeInterval: 2
+  daySpeedMultiplier: 1.5
+  costsSpeedMultiplier: 1
+  daysUI: {fileID: 2324715085741537838}
+  costsUI: {fileID: 7669732412619495933}
+  tickPlayer: {fileID: 2981741016742736810}
+  tickSound: {fileID: 8300000, guid: 671a6fc79e2814a4999c6e24fb225ee7, type: 3}
+  coinSound: {fileID: 8300000, guid: 9f3758ac5663ea347bfad43c350b8570, type: 3}
+  finishedUpdatingUI: 0
 --- !u!114 &8524464880893420667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,7 +767,6 @@ GameObject:
   - component: {fileID: 7463866465661170887}
   - component: {fileID: 438176599241189517}
   - component: {fileID: 7107879962845928117}
-  - component: {fileID: 3345451056462503025}
   m_Layer: 5
   m_Name: StatisticsUI
   m_TagString: Untagged
@@ -847,27 +854,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3345451056462503025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2804314556824768355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4562138b93254f743ab02d55f328d8cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  daySpeedMultiplier: 1.5
-  costsSpeedMultiplier: 1
-  transition: {fileID: 668794177437851758}
-  daysUI: {fileID: 2324715085741537838}
-  costsUI: {fileID: 7669732412619495933}
-  tickPlayer: {fileID: 2981741016742736810}
-  tickSound: {fileID: 8300000, guid: 671a6fc79e2814a4999c6e24fb225ee7, type: 3}
-  coinSound: {fileID: 8300000, guid: 9f3758ac5663ea347bfad43c350b8570, type: 3}
-  finished: 0
 --- !u!1 &2875299673874914138
 GameObject:
   m_ObjectHideFlags: 0
