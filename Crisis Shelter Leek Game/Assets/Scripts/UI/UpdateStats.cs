@@ -19,26 +19,12 @@ public class UpdateStats : MonoBehaviour
     [SerializeField] private AudioClip tickSound;
     [SerializeField] private AudioClip coinSound;
 
-    public bool finished = false;//checks if it has finished showing the days & cost
-    private bool coroutineStarted = false;//checks if coroutine started
+    public bool finishedStatUpdate = false;//checks if it has finished showing the days & cost
     public void ShowStats()
     {
-        coroutineStarted = true;
         StartCoroutine(StatsUpdater());
     }
 
-    private void Update()
-    {
-        if(displayedAmountOfDays == DaysPassed.newAmountOfDays && displayedAmountOfMoney == DaysPassed.newCost && coroutineStarted)
-        {
-            finished = true;
-        }
-        else
-        {
-            finished = false;
-        }
-
-    }
     /// <summary>
     /// An int and a float keep up what the costs and amount of days on screen are.
     /// It is checked whether the currently shown amount of days and costs are still below the new values.
@@ -46,6 +32,8 @@ public class UpdateStats : MonoBehaviour
     /// </summary>
     public IEnumerator StatsUpdater()
     {
+        finishedStatUpdate = false;
+
         yield return new WaitForSeconds(1.5f);
 
         while (displayedAmountOfDays < DaysPassed.newAmountOfDays)
@@ -69,5 +57,7 @@ public class UpdateStats : MonoBehaviour
             costsUI.text = displayedAmountOfMoney.ToString(); //Write it to the UI
             yield return new WaitForSeconds(1f / DaysPassed.newCost * costsSpeedMultiplier);
         }
+
+        finishedStatUpdate = true;
     }
 }
