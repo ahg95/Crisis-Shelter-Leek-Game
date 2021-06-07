@@ -34,7 +34,7 @@ public class InteractWith : MonoBehaviour
     /// <summary>
     /// If you click something which is on the clickable layer, get the Interactable class from that clickable and execute InteractWith.
     /// </summary>
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {

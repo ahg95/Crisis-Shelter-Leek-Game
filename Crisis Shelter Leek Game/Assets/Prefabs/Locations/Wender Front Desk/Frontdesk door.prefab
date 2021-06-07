@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &426682615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426682616}
+  - component: {fileID: 426682617}
+  m_Layer: 0
+  m_Name: Entrance Municipality
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &426682616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426682615}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5.524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2334712728737746216}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &426682617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426682615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea532568f6816a488c60fe51ecf3fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisSpawnPoint: 4
 --- !u!1 &227986004015512228
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +374,7 @@ Transform:
   - {fileID: 681741727344631643}
   - {fileID: 2180449805921268983}
   - {fileID: 1909437855622948480}
+  - {fileID: 426682616}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -789,6 +834,7 @@ GameObject:
   - component: {fileID: 7886150992674394112}
   - component: {fileID: 422749552838742768}
   - component: {fileID: 5954456960529123722}
+  - component: {fileID: 873992967442460718}
   m_Layer: 8
   m_Name: Doors
   m_TagString: Untagged
@@ -997,7 +1043,29 @@ MonoBehaviour:
   fullCube: 0
   hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
   positionId: 0
+  spawnLocation: 0
   sceneName: Municipality
+--- !u!114 &873992967442460718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999249291239171735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426ec022420055642a8d22c394afdf6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+  tasks:
+  - {fileID: 11400000, guid: 2eb426390f438cf44855f3a8293f2935, type: 2}
+  - {fileID: 11400000, guid: 0c0e58cd22c2b1b428c115954ec051ab, type: 2}
+  - {fileID: 11400000, guid: ee4b26541361d8345b7512cd82828c73, type: 2}
+  - {fileID: 11400000, guid: ff45b383d0715aa4396811beccfa1108, type: 2}
+  - {fileID: 11400000, guid: 813548cece0b058429e5bccc89b851f7, type: 2}
+  - {fileID: 11400000, guid: afac4c8a9c1c54448919beb1e0bb10c6, type: 2}
+  disableInteraction: 1
 --- !u!1 &8264852586032006790
 GameObject:
   m_ObjectHideFlags: 0
