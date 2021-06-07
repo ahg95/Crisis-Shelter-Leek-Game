@@ -254,7 +254,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &352415268165768510
 Transform:
@@ -334,9 +334,14 @@ MonoBehaviour:
   taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
   dialogueManager: {fileID: 0}
   conversationTaskCombination:
-  - combinationName: 
+  - combinationName: First Appointment Municipality
     task: {fileID: 11400000, guid: afac4c8a9c1c54448919beb1e0bb10c6, type: 2}
-    conversationSection: {fileID: 0}
+    conversationSection: {fileID: 7565425908783830427, guid: 054295a7fe6453f4cbb8aad83dc03073,
+      type: 3}
+  - combinationName: Second Appointment
+    task: {fileID: 11400000, guid: d1a1ec9f00577c643847f38b522074f5, type: 2}
+    conversationSection: {fileID: 5944678556682814916, guid: 16988699be3000b4a8b8ca553796fd4a,
+      type: 3}
 --- !u!65 &7855821948495266266
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1242,7 +1247,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5166144037207617640}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.8086126, y: -1.5651505, z: 0.3310808}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1355,9 +1360,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6810984527364560404}
+  - component: {fileID: 287671393}
   m_Layer: 8
-  m_Name: Spawn Point Bedroom
-  m_TagString: PositionPoint
+  m_Name: Bedroom Door Front Desk
+  m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1376,6 +1382,19 @@ Transform:
   m_Father: {fileID: 8056804384267231285}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &287671393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810984527364560403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea532568f6816a488c60fe51ecf3fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisSpawnPoint: 1
 --- !u!1 &6996218864377147120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,7 +1808,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2456741202363525862
 Transform:
@@ -1869,9 +1888,14 @@ MonoBehaviour:
   taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
   dialogueManager: {fileID: 0}
   conversationTaskCombination:
-  - combinationName: 
+  - combinationName: First Appointment Municipality
     task: {fileID: 11400000, guid: afac4c8a9c1c54448919beb1e0bb10c6, type: 2}
-    conversationSection: {fileID: 0}
+    conversationSection: {fileID: 7565425908783830427, guid: 054295a7fe6453f4cbb8aad83dc03073,
+      type: 3}
+  - combinationName: Second Appointment
+    task: {fileID: 11400000, guid: d1a1ec9f00577c643847f38b522074f5, type: 2}
+    conversationSection: {fileID: 5944678556682814916, guid: 16988699be3000b4a8b8ca553796fd4a,
+      type: 3}
 --- !u!65 &8119533241659523677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2367,7 +2391,8 @@ MonoBehaviour:
   fullCube: 0
   hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
   positionId: 1
-  sceneName: Bedroom Wender Alone
+  spawnLocation: 3
+  sceneName: Wender Bedroom
 --- !u!1 &8841313608047307890
 GameObject:
   m_ObjectHideFlags: 0
