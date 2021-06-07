@@ -1,0 +1,265 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Talkable Coach
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 917c904b8642368479c865a47de2aa5d,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+    value: StartConversationAccordingToCurrentPlayerTask
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+    value: UnityEngine.Object, UnityEngine
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minimumInteractionDistance
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: objectTransformToLookAt
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: zoomIn
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: zoomedInOn
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: zoomAmount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: moveTowards
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: moveTowardsDistance
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: frontOfObject
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: navComponent
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: isSelected
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: debugAlwaysVisible
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: fullCube
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: hoverCursor
+    value: 
+    objectReference: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
+  - target: {fileID: 0}
+    propertyPath: taskJourney
+    value: 
+    objectReference: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: dialogueManager
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.size
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[0].combinationName
+    value: Day 1 - 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[0].task
+    value: 
+    objectReference: {fileID: 11400000, guid: 2eb426390f438cf44855f3a8293f2935, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[0].conversationSection
+    value: 
+    objectReference: {fileID: 2881636470262476159, guid: 7c093af31bc66884ebbdbac0e4d2f29e,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[1].combinationName
+    value: Day 1 - 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[1].task
+    value: 
+    objectReference: {fileID: 11400000, guid: 0c0e58cd22c2b1b428c115954ec051ab, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[1].conversationSection
+    value: 
+    objectReference: {fileID: 6561476326340245502, guid: c53a8471084e4504092d245e36849b54,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[2].combinationName
+    value: Day 1 - 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[2].task
+    value: 
+    objectReference: {fileID: 11400000, guid: ee4b26541361d8345b7512cd82828c73, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[2].conversationSection
+    value: 
+    objectReference: {fileID: 7474526816934310301, guid: c14944ab19b5bfe469e1d4c98e57eb28,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[3].combinationName
+    value: Day 2 - 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[3].task
+    value: 
+    objectReference: {fileID: 11400000, guid: 813548cece0b058429e5bccc89b851f7, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[3].conversationSection
+    value: 
+    objectReference: {fileID: 4450825001050343129, guid: 558b5c546b450484099f4ddcdf51ce90,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[4].combinationName
+    value: Day 2 - 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[4].task
+    value: 
+    objectReference: {fileID: 11400000, guid: be7551701c7ceac4c891d21411b0e0f8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[4].conversationSection
+    value: 
+    objectReference: {fileID: 1963250019105068576, guid: 7d2381700ce8d3a4cb1d92e1e14ac9d8,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[5].combinationName
+    value: Day 2 - 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[5].task
+    value: 
+    objectReference: {fileID: 11400000, guid: afac4c8a9c1c54448919beb1e0bb10c6, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[5].conversationSection
+    value: 
+    objectReference: {fileID: 350937697526257888, guid: 545e9b6cf73b3e84ca95320a793f7950,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[6].combinationName
+    value: Good Luck First Appointment
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[6].task
+    value: 
+    objectReference: {fileID: 11400000, guid: 3df87dc2073c1a443a0a1e6a3c43c079, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[6].conversationSection
+    value: 
+    objectReference: {fileID: 7332116125829426709, guid: bfd5590c5a06df74b817623a4e5c26f1,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[7].combinationName
+    value: Day 3-1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[7].task
+    value: 
+    objectReference: {fileID: 11400000, guid: 15f37f4651051d44ba8d288cfdc08110, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[7].conversationSection
+    value: 
+    objectReference: {fileID: 451874222358473900, guid: c1f11f995482791468bb48ec75b2fec3,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[8].combinationName
+    value: Day 3 - 3 Go Back To Wender And Wait
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[8].task
+    value: 
+    objectReference: {fileID: 11400000, guid: d635b3df7952afa499aae4e4ef408952, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[8].conversationSection
+    value: 
+    objectReference: {fileID: 451874222358473900, guid: f2992c5e75fd9ea4689e74fb46abbf2f,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[9].combinationName
+    value: 4-4 Wait for Sign-in process
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[9].task
+    value: 
+    objectReference: {fileID: 11400000, guid: 393b203585ccebc4cacb3a6598916284, type: 2}
+  - target: {fileID: 0}
+    propertyPath: conversationTaskCombination.Array.data[9].conversationSection
+    value: 
+    objectReference: {fileID: 3984775687137983782, guid: bdab17c7dfa3fe548b7d89e56f9dea18,
+      type: 3}
