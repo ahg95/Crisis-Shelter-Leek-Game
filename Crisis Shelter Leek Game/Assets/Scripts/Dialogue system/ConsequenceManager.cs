@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class ConversationConsequenceManager : MonoBehaviour
+public class ConsequenceManager : MonoBehaviour
 {
     [SerializeField] private TaskJourney taskJourney;
     [SerializeField] private UISystem uiSystem;

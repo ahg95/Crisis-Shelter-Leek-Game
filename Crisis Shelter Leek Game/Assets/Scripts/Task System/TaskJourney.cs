@@ -11,6 +11,9 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     [Space(5)]
     [SerializeField] private bool resetTask = true;
 
+    [Space(5)]
+    public GameEvent taskProgressionEvent;
+
     [Space(20)]
     public Task[] tasksInOrder;
 
@@ -35,6 +38,7 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
             AddDaysSpent(assignedTask.amountOfDays);
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
+            taskProgressionEvent.Raise();
         }
     }
     public void AddDaysSpent(int days)
