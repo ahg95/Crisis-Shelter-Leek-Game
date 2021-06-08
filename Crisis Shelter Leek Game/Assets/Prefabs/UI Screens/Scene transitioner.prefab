@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 8524464880893420667}
   - component: {fileID: 1056032242}
   - component: {fileID: 1056032245}
+  - component: {fileID: 7600626499079338764}
   m_Layer: 0
   m_Name: Scene transitioner
   m_TagString: Untagged
@@ -320,6 +321,18 @@ MonoBehaviour:
         m_CallState: 2
   gameObjectToListenFor: {fileID: 5944678556682814917, guid: 16988699be3000b4a8b8ca553796fd4a,
     type: 3}
+--- !u!114 &7600626499079338764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668794177437851758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc73cf86fdc7cde478bd32414d10ab84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &668794178108760208
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,15 +2794,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f828ead418b369d4d84db5b306af9992, type: 3}
---- !u!95 &6109020963921643529 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7866069638231733091, guid: f828ead418b369d4d84db5b306af9992,
-    type: 3}
-  m_PrefabInstance: {fileID: 4174413113010912106}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6109020964802205643 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7866069637317553313, guid: f828ead418b369d4d84db5b306af9992,
+    type: 3}
+  m_PrefabInstance: {fileID: 4174413113010912106}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6109020963921643529 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7866069638231733091, guid: f828ead418b369d4d84db5b306af9992,
     type: 3}
   m_PrefabInstance: {fileID: 4174413113010912106}
   m_PrefabAsset: {fileID: 0}
