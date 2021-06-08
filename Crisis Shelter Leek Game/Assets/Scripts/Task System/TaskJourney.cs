@@ -3,6 +3,7 @@
 [CreateAssetMenu(fileName = "Task Journey", menuName = "Tasks/Task Journey")]
 public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 {
+    #region Variables
     [Space(15)]
     public Task assignedTask;
     [SerializeField] private int assignedTaskIndex = 0;
@@ -10,11 +11,13 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     [Space(5)]
     [SerializeField] private bool resetTask = true;
 
-    [SerializeField] GameEvent progressionEvent = null;
-
     [Space(20)]
     public Task[] tasksInOrder;
 
+    // Days spent at Zienn
+    private int currentAmountOfDaysAtWender = 0;
+    private int daysSpentAfterProgression = 0;
+    #endregion
     public void OnAfterDeserialize()
     {
         Reset();
@@ -29,21 +32,16 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     {
         if (assignedTaskIndex != tasksInOrder.Length - 1) // if not the last task
         {
+            AddDaysSpent();
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
-            progressionEvent.Raise();
-        }
-    }    
-    public void ProgressIfCurrentTask(Task conditionTask)
-    {
-        if (assignedTaskIndex != tasksInOrder.Length - 1 && assignedTask == conditionTask) // if not the last task
-        {
-            assignedTaskIndex++;
-            assignedTask = tasksInOrder[assignedTaskIndex];
-            progressionEvent.Raise();
         }
     }
-
+    public void AddDaysSpent()
+    {
+        currentAmountOfDaysAtWender = daysSpentAfterProgression;
+        daysSpentAfterProgression += assignedTask.amountOfDays; // Add the amount of days it takes to progress to the next task
+    }
     private void Reset()
     {
         if (resetTask)
