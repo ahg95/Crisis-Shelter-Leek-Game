@@ -34,7 +34,7 @@ public class Transitions : MonoBehaviour
     [SerializeField] private AudioClip coinSound;
 
     //[HideInInspector] 
-    public bool finishedUpdatingUI = false;//checks if it finished updating the days & cost text
+    public bool finishedUpdatingUI = false; //checks if it finished updating the days & cost text
 
     #endregion
 
@@ -88,19 +88,24 @@ public class Transitions : MonoBehaviour
     {
         float fadeAmount;
 
+        int startAmountOfDays = taskJourney.CurrentAmountOfDaysAtWender;
+        float startCost = taskJourney.GetCosts(startAmountOfDays);
+        daysUI.text = startAmountOfDays.ToString();
+        costsUI.text = startCost.ToString();
+
         statsTransition.SetBool("StartAnim", true); //starts the transition
 
         while (statsCanvasGroup.alpha < 1)
         {
             fadeAmount = statsCanvasGroup.alpha + (fadeInterval * Time.deltaTime); // add
-
             statsCanvasGroup.alpha = fadeAmount;
             yield return null;
         }
 
         yield return new WaitUntil(() => finishedUpdatingUI); //waits until the stats have finished showing
+
         yield return new WaitForSeconds(1.5f); //waits for a bit more sec before switching scenes
-                                              //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));//waits until the player clicked the mouse 
+                                               //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));//waits until the player clicked the mouse 
 
         while (statsCanvasGroup.alpha > 0)
         {
@@ -123,26 +128,32 @@ public class Transitions : MonoBehaviour
     /// </summary>
     public IEnumerator StatsUpdater()
     {
+        // Days
+        int startAmountOfDays = taskJourney.CurrentAmountOfDaysAtWender;
+        float startCost = taskJourney.GetCosts(startAmountOfDays);
+
+        int newAmountOfDays = taskJourney.DaysSpentAfterProgression;
+        float newCost = taskJourney.GetCosts(newAmountOfDays);
+
+        // Costs
+        float displayedCost = startCost;
+        float addAmount = (int)Mathf.Clamp((newAmountOfDays - startAmountOfDays) / 100, 1, Mathf.Infinity);
+
+        daysUI.text = startAmountOfDays.ToString();
+        costsUI.text = startCost.ToString();
+
         yield return new WaitForSeconds(1.5f);
 
-        int displayedAmountOfDays = taskJourney.CurrentAmountOfDaysAtWender;
-        int newAmountOfDays = taskJourney.DaysSpentAfterProgression;
-
-        while (displayedAmountOfDays < newAmountOfDays)
+        while (startAmountOfDays < newAmountOfDays)
         {
             if (!tickPlayer.isPlaying) // To prevent 'spamming' of coinsounds.
             {
                 tickPlayer.PlayOneShot(tickSound, 0.75f);
             }
-            displayedAmountOfDays++; //Increment the display score by 
-            daysUI.text = displayedAmountOfDays.ToString(); //Write it to the UI
+            startAmountOfDays++; //Increment the display score by 
+            daysUI.text = startAmountOfDays.ToString(); //Write it to the UI
             yield return new WaitForSeconds(1f / newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
         }
-
-        int startCost = taskJourney.GetCosts(taskJourney.CurrentAmountOfDaysAtWender);
-        int displayedCost = startCost;
-        int newCost = taskJourney.GetCosts(taskJourney.DaysSpentAfterProgression);
-        int addAmount = (newCost - startCost) / 600;
 
         while (displayedCost < newCost)
         {
@@ -155,7 +166,7 @@ public class Transitions : MonoBehaviour
             costsUI.text = displayedCost.ToString(); //Write it to the UI
 
             //check if the UI has been updated completely
-            if (displayedAmountOfDays == newAmountOfDays && displayedCost == newCost)
+            if (startAmountOfDays == newAmountOfDays && displayedCost == newCost)
             {
                 finishedUpdatingUI = true;
             }

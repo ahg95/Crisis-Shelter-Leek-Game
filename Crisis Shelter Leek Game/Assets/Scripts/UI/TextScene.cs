@@ -9,6 +9,7 @@ public class TextScene : MonoBehaviour
     private CanvasGroup textAlpha;
 
     [SerializeField] private TaskJourney taskJourney;
+    [SerializeField] private Transitions transitions;
     [SerializeField] private TransitionTextAssociatedToTask[] transitionTextAssociatedToTask;
     private TransitionTextAssociatedToTask currentTransitionText;
 
@@ -106,7 +107,14 @@ public class TextScene : MonoBehaviour
 
             if (currentTransitionText.progressAfterText) taskJourney.Progress();
             SetPosOnSceneChange.instance.currentSpawnPoint = currentTransitionText.spawnPoint;
-            SceneManager.LoadScene(currentTransitionText.SceneToTransferTo);
+            if (!currentTransitionText.TransitionWithStats)
+            {
+                SceneManager.LoadScene(currentTransitionText.SceneToTransferTo);
+            }
+            else
+            {
+                transitions.LoadSceneTransitionStats(currentTransitionText.SceneToTransferTo);
+            }
         }
     }
 

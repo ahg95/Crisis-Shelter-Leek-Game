@@ -1,15 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TestingAddingTask : MonoBehaviour
 {
     [SerializeField] private TaskJourney taskJourney;
 
-
-
-    public void addTask()
+    public void ProgressTask()
     {
         taskJourney.Progress();
+    }    
+    public void UnProgressTask()
+    {
+        taskJourney.assignedTaskIndex--;
+        taskJourney.assignedTask = taskJourney.tasksInOrder[taskJourney.assignedTaskIndex];
     }
 }

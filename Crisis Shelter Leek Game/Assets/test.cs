@@ -8,7 +8,7 @@ public class test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            taskJourney.AddDaysSpent(100);
+            taskJourney.AddDaysSpent(1);
             FindObjectOfType<Transitions>().LoadSceneTransitionStats("Wender Front Desk");
         }
     }
