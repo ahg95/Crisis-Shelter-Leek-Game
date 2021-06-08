@@ -48,15 +48,26 @@ MonoBehaviour:
     content: It will take about 5 days for your new ID to arrive.
   choicesAtEnd:
   - choiceText: Can't I just sign in right now?
-    Consequence:
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 8502241405928979983, guid: 2d753cad52fc67d44bc4191f5a24bf44,
       type: 3}
   - choiceText: Okay, I will sign in another day.
-    Consequence:
+    choiceConsequence:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
+          m_MethodName: Progress
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     followUpConversation: {fileID: 4146245279536455802, guid: 108756bb3801d614bbd13d06db1a033f,
       type: 3}
   followUpConversationIfNoChoicesPresent: {fileID: 0}

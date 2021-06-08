@@ -43,6 +43,7 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     }
     public void AddDaysSpent(int days)
     {
+        Debug.Log("Called");
         CurrentAmountOfDaysAtWender = DaysSpentAfterProgression;
         DaysSpentAfterProgression += days; // Add the amount of days it takes to progress to the next task
     }

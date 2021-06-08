@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 public class ConversationSection : MonoBehaviour
 {
     public DialogueBoxContent[] dialogueBoxContent;

@@ -19,7 +19,7 @@ public class DisableOnTask : MonoBehaviour
         if (disableInteraction)
         {
             bool currentTaskInList = false;
-            print("Called");
+
             for (int i = 0; i < tasks.Length; i++)
             {
                 Task task = tasks[i];

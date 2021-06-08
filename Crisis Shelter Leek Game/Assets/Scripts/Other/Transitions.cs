@@ -41,14 +41,6 @@ public class Transitions : MonoBehaviour
     #region Functions
 
     /// <summary>
-    /// Will start the coroutine that updates the stats on the UI
-    /// </summary>
-    public void ShowStats()
-    {
-        StartCoroutine(StatsUpdater());
-    }
-
-    /// <summary>
     /// Starts a scene change with transition
     /// </summary>
     /// <param name="name"> Tell the name of the scene </param>
@@ -64,8 +56,8 @@ public class Transitions : MonoBehaviour
     /// <param name="switchScene">Tells whether to switch the scene or not</param>
     public void LoadSceneTransitionStats(string name)
     {
-        ShowStats();
-        StartCoroutine(TransitionWithStats(true, fadeInterval, true, name));
+        StartCoroutine(StatsUpdater());
+        StartCoroutine(TransitionWithStats(name));
     }
     #endregion
 
@@ -90,55 +82,38 @@ public class Transitions : MonoBehaviour
     /// <summary>
     /// Creates a transition with stats
     /// </summary>
-    /// <param name="showStats"> Tells if you want display stats or not </param>
-    /// <param name="addedFade"> Tells with what interval the stats alpha show</param>
-    /// <param name="switchScene"> Tell if you want to switch scenes </param>
     /// <param name="sceneName"> Tell what scene to switch to </param>
     /// <returns></returns>
-    public IEnumerator TransitionWithStats(bool showStats, float addedFade, bool switchScene, string sceneName)
+    public IEnumerator TransitionWithStats(string sceneName)
     {
         float fadeAmount;
-        //simpleTransition.SetTrigger("Start");//starts the transition
-        statsTransition.SetBool("StartAnim", true);//starts the transition
 
-        if (showStats)
+        statsTransition.SetBool("StartAnim", true); //starts the transition
+
+        while (statsCanvasGroup.alpha < 1)
         {
-            yield return new WaitForSeconds(1);
+            fadeAmount = statsCanvasGroup.alpha + (fadeInterval * Time.deltaTime); // add
 
-            while (statsCanvasGroup.alpha < 1) // under 1
-            {
-                fadeAmount = statsCanvasGroup.alpha + (addedFade * Time.deltaTime); // add
-
-                statsCanvasGroup.alpha = fadeAmount;
-                yield return null;
-            }
-        }
-        yield return new WaitUntil(() => finishedUpdatingUI);//waits until the stats have finished showing
-        yield return new WaitForSeconds(1.5f);//waits for a bit more sec before switching scenes
-        //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));//waits until the player clicked the mouse 
-
-
-        if (showStats)
-        {
-            while (statsCanvasGroup.alpha > 0) // above 0
-            {
-                fadeAmount = statsCanvasGroup.alpha - (addedFade * Time.deltaTime); // substract
-                statsCanvasGroup.alpha = fadeAmount;
-                yield return null;
-            }
-        }
-        //simpleTransition.SetTrigger("End");//ends the transition
-        if (!switchScene)
-        {
-            statsTransition.SetBool("StartAnim", false);//ends the transition
+            statsCanvasGroup.alpha = fadeAmount;
+            yield return null;
         }
 
-        if (switchScene)
+        yield return new WaitUntil(() => finishedUpdatingUI); //waits until the stats have finished showing
+        yield return new WaitForSeconds(1.5f); //waits for a bit more sec before switching scenes
+                                              //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));//waits until the player clicked the mouse 
+
+        while (statsCanvasGroup.alpha > 0)
         {
-            statsTransition.SetBool("StartAnim", false);//ends the transition
-            yield return new WaitForSeconds(1.5f);//waits for a bit more sec before switching scenes
-            SceneManager.LoadScene(sceneName);
+            fadeAmount = statsCanvasGroup.alpha - (fadeInterval * Time.deltaTime); // substract
+            statsCanvasGroup.alpha = fadeAmount;
+            yield return null;
         }
+
+        statsTransition.SetBool("StartAnim", false); //ends the transition
+
+        yield return new WaitForSeconds(1.5f); //waits for a bit more sec before switching scenes
+
+        SceneManager.LoadScene(sceneName);
     }
 
     /// <summary>
@@ -164,8 +139,10 @@ public class Transitions : MonoBehaviour
             yield return new WaitForSeconds(1f / newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
         }
 
-        int displayedCost = taskJourney.CurrentAmountOfDaysAtWender * 100;
-        int newCost = taskJourney.DaysSpentAfterProgression * 100;
+        int startCost = taskJourney.GetCosts(taskJourney.CurrentAmountOfDaysAtWender);
+        int displayedCost = startCost;
+        int newCost = taskJourney.GetCosts(taskJourney.DaysSpentAfterProgression);
+        int addAmount = (newCost - startCost) / 600;
 
         while (displayedCost < newCost)
         {
@@ -173,7 +150,8 @@ public class Transitions : MonoBehaviour
             {
                 tickPlayer.PlayOneShot(coinSound, 0.35f);
             }
-            displayedCost += 25; //Increment the display score by 1
+
+            displayedCost += addAmount; //Increment the display score by 1
             costsUI.text = displayedCost.ToString(); //Write it to the UI
 
             //check if the UI has been updated completely

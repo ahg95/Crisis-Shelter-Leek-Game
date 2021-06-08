@@ -80,19 +80,19 @@ MonoBehaviour:
     content: Oh god, where should I get this money from?
   choicesAtEnd:
   - choiceText: Is it possible to pay the fee later?
-    Consequence:
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 6674855812697320744, guid: ec27fd9e5b501594e9acb576ac037c72,
       type: 3}
   - choiceText: What if I don't have the money to pay the fee?
-    Consequence:
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 7556759186691063153, guid: 144170c080343874195b8449f8547037,
       type: 3}
   - choiceText: I will make a new appointment. Goodbye.
-    Consequence:
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
