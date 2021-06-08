@@ -6,7 +6,7 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     #region Variables
     [Space(15)]
     public Task assignedTask;
-    [SerializeField] private int assignedTaskIndex = 0;
+    public int assignedTaskIndex = 0;
 
     [Space(5)]
     [SerializeField] private bool resetTask = true;
@@ -35,7 +35,8 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     {
         if (assignedTaskIndex != tasksInOrder.Length - 1) // if not the last task
         {
-            AddDaysSpent(assignedTask.amountOfDays);
+            if (assignedTask.amountOfDays > 0) AddDaysSpent(assignedTask.amountOfDays);
+
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
             taskProgressionEvent.Raise();
@@ -45,6 +46,9 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     {
         CurrentAmountOfDaysAtWender = DaysSpentAfterProgression;
         DaysSpentAfterProgression += days; // Add the amount of days it takes to progress to the next task
+
+        Debug.Log("Before " + CurrentAmountOfDaysAtWender);
+        Debug.Log("After " + DaysSpentAfterProgression);
     }
     public int GetCosts(int days)
     {

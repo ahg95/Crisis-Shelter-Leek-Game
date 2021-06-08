@@ -68,6 +68,8 @@ public class DialogueManager : MonoBehaviour
 
     public void OnDialogueChoiceHasBeenSelectedWithIndex(int indexOfChoice)
     {
+        activeConversationSection.choicesAtEnd[indexOfChoice].choiceConsequence.Invoke();
+
         ConversationSection followUpConversationForSelectedChoice = activeConversationSection.choicesAtEnd[indexOfChoice].followUpConversation;
 
         if (followUpConversationForSelectedChoice != null)

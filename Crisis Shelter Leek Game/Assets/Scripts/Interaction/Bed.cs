@@ -50,6 +50,6 @@ public class Bed : Interactable
             }
         }
 
-        sceneTransition.LoadSimpleSceneTransition(sceneToGoTo);
+        sceneTransition.LoadSceneTransitionStats(sceneToGoTo);
     }
 }

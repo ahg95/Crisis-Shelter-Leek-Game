@@ -303,7 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CompleteTask
+  m_text: UnProgress
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AddTask
+  m_text: Progress
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -922,8 +922,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8951414794600220400}
-        m_MethodName: updateTaskUI
+      - m_Target: {fileID: 8951414794032760020}
+        m_MethodName: ProgressTask
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -933,8 +933,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8951414794032760020}
-        m_MethodName: addTask
+      - m_Target: {fileID: 8951414794600220400}
+        m_MethodName: updateTaskUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1643,9 +1643,9 @@ GameObject:
   - component: {fileID: 8951414794693135476}
   - component: {fileID: 8951414794693135477}
   - component: {fileID: 8951414794693135482}
-  - component: {fileID: 8951414794693135479}
+  - component: {fileID: 148276523}
   m_Layer: 5
-  m_Name: AddDay
+  m_Name: Unprogress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1751,9 +1751,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8951414794693135479}
-        m_MethodName: addDays
-        m_Mode: 3
+      - m_Target: {fileID: 148276523}
+        m_MethodName: UnProgressTask
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1763,7 +1763,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8951414794600220400}
-        m_MethodName: UpdateDaysAndCostUI
+        m_MethodName: updateTaskUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1773,7 +1773,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8951414794693135479
+--- !u!114 &148276523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1782,11 +1782,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8951414794693135480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d0d9daba046844b93e503607421bfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e90e99e50f7d0a46a2fa135559b7dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  days: 0
-  cost: 0
+  taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
 --- !u!1 &8951414794721494571
 GameObject:
   m_ObjectHideFlags: 0
