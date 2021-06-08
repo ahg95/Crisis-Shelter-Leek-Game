@@ -37,7 +37,7 @@ public class OpenCabinet : MonoBehaviour
 
             transform.localRotation = Quaternion.Slerp(startRotation, targetRotation, progress);
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         rotating = false;

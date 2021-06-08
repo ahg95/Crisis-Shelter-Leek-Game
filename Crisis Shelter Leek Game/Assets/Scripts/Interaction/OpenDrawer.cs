@@ -13,6 +13,7 @@ public class OpenDrawer : MonoBehaviour
     }
     public DrawerDirection directionToOpenIn = DrawerDirection.Right;
     [SerializeField] private float openingPercentage = 0.7f;
+    [SerializeField] private float openingSpeed = 0.75f;
     private int isOpen = 1;
     private bool isMoving = false;
     private void OnEnable()
@@ -24,9 +25,30 @@ public class OpenDrawer : MonoBehaviour
     {
         if (!isMoving)
         {
-            StartCoroutine(SmoothMove(transform.position + (GetDirectionToOpenIn() * isOpen * GetComponent<Renderer>().bounds.size.x * openingPercentage), 0.05f));
-            isOpen *= -1;
+            StartCoroutine(SmoothMove());
         }
+    }
+
+    private IEnumerator SmoothMove()
+    {
+        isMoving = true;
+
+        float startTime = Time.time;
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = transform.position + GetDirectionToOpenIn() * isOpen * GetComponent<Renderer>().bounds.size.x * openingPercentage;
+
+        while (transform.position != targetPosition)
+        {
+            float timeSinceStarted = Time.time - startTime;
+            float progress = timeSinceStarted / openingSpeed;
+
+            transform.position = Vector3.Lerp(startPosition, targetPosition, progress);
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        isMoving = false;
+        isOpen *= -1;
 
         Vector3 GetDirectionToOpenIn()
         {
@@ -44,37 +66,5 @@ public class OpenDrawer : MonoBehaviour
                     return Vector3.forward;
             }
         }
-    }
-
-    IEnumerator SmoothMove(Vector3 target, float delta)
-    {
-        // Will need to perform some of this process and yield until next frames
-        isMoving = true;
-        float closeEnough = 0.01f;
-        float distance = (transform.position - target).magnitude;
-
-        // GC will trigger unless we define this ahead of time
-        WaitForEndOfFrame wait = new WaitForEndOfFrame();
-
-        // Continue until we're there
-        while (distance >= closeEnough)
-        {
-            // Confirm that it's moving
-            //Debug.Log("Executing Movement");
-
-            // Move a bit then  wait until next  frame
-            transform.position = Vector3.Slerp(transform.position, target, delta);
-            yield return wait;
-
-            // Check if we should repeat
-            distance = (transform.position - target).magnitude;
-        }
-
-        // Complete the motion to prevent negligible sliding
-        transform.position = target;
-
-        // Confirm  it's ended
-        //Debug.Log("Movement Complete");
-        isMoving = false;
     }
 }
