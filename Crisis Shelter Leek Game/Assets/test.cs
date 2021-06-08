@@ -2,12 +2,13 @@
 
 public class test : MonoBehaviour
 {
+    [SerializeField] TaskJourney taskJourney;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DaysPassed.IncreaseDaysZienn(100);
-            FindObjectOfType<UpdateStats>().ShowStats();
+            taskJourney.AddDaysSpent(100);
             FindObjectOfType<Transitions>().LoadSceneTransitionStats("Wender Front Desk");
         }
     }

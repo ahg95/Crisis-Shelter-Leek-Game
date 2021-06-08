@@ -3,6 +3,7 @@
 [CreateAssetMenu(fileName = "Task Journey", menuName = "Tasks/Task Journey")]
 public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
 {
+    #region Variables
     [Space(15)]
     public Task assignedTask;
     [SerializeField] private int assignedTaskIndex = 0;
@@ -10,11 +11,16 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     [Space(5)]
     [SerializeField] private bool resetTask = true;
 
-    [SerializeField] GameEvent progressionEvent = null;
+    [Space(5)]
+    public GameEvent taskProgressionEvent;
 
     [Space(20)]
     public Task[] tasksInOrder;
 
+    public int CurrentAmountOfDaysAtWender { get; private set; } = 0;
+    public int DaysSpentAfterProgression { get; private set; } = 0;
+
+    #endregion
     public void OnAfterDeserialize()
     {
         Reset();
@@ -29,27 +35,30 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     {
         if (assignedTaskIndex != tasksInOrder.Length - 1) // if not the last task
         {
+            AddDaysSpent(assignedTask.amountOfDays);
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
-            progressionEvent.Raise();
-        }
-    }    
-    public void ProgressIfCurrentTask(Task conditionTask)
-    {
-        if (assignedTaskIndex != tasksInOrder.Length - 1 && assignedTask == conditionTask) // if not the last task
-        {
-            assignedTaskIndex++;
-            assignedTask = tasksInOrder[assignedTaskIndex];
-            progressionEvent.Raise();
+            taskProgressionEvent.Raise();
         }
     }
-
+    public void AddDaysSpent(int days)
+    {
+        CurrentAmountOfDaysAtWender = DaysSpentAfterProgression;
+        DaysSpentAfterProgression += days; // Add the amount of days it takes to progress to the next task
+    }
+    public int GetCosts(int days)
+    {
+        return days * 100;
+    }
     private void Reset()
     {
         if (resetTask)
         {
             assignedTaskIndex = 0;
             assignedTask = tasksInOrder[assignedTaskIndex];
+
+            CurrentAmountOfDaysAtWender = 0;
+            DaysSpentAfterProgression = 0;
         }
     }
 }
