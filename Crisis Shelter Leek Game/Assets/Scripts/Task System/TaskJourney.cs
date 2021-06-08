@@ -14,9 +14,9 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     [Space(20)]
     public Task[] tasksInOrder;
 
-    // Days spent at Zienn
-    private int currentAmountOfDaysAtWender = 0;
-    private int daysSpentAfterProgression = 0;
+    public int CurrentAmountOfDaysAtWender { get; private set; } = 0;
+    public int DaysSpentAfterProgression { get; private set; } = 0;
+
     #endregion
     public void OnAfterDeserialize()
     {
@@ -32,15 +32,19 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     {
         if (assignedTaskIndex != tasksInOrder.Length - 1) // if not the last task
         {
-            AddDaysSpent();
+            AddDaysSpent(assignedTask.amountOfDays);
             assignedTaskIndex++;
             assignedTask = tasksInOrder[assignedTaskIndex];
         }
     }
-    public void AddDaysSpent()
+    public void AddDaysSpent(int days)
     {
-        currentAmountOfDaysAtWender = daysSpentAfterProgression;
-        daysSpentAfterProgression += assignedTask.amountOfDays; // Add the amount of days it takes to progress to the next task
+        CurrentAmountOfDaysAtWender = DaysSpentAfterProgression;
+        DaysSpentAfterProgression += days; // Add the amount of days it takes to progress to the next task
+    }
+    public int GetCosts(int days)
+    {
+        return days * 100;
     }
     private void Reset()
     {
@@ -48,6 +52,9 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
         {
             assignedTaskIndex = 0;
             assignedTask = tasksInOrder[assignedTaskIndex];
+
+            CurrentAmountOfDaysAtWender = 0;
+            DaysSpentAfterProgression = 0;
         }
     }
 }

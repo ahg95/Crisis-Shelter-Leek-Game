@@ -5,8 +5,6 @@ public class UISystem : MonoBehaviour
 {
     [SerializeField]private Animator taskUIAnim;
     [SerializeField] private GameObject taskUI;
-    /*[SerializeField] private GameObject taskDescription;
-    public List<GameObject> tasksClone = new List<GameObject>();*/
 
     [Header("Text UI")]
     [SerializeField] private TextMeshProUGUI daysDataText;
@@ -22,8 +20,8 @@ public class UISystem : MonoBehaviour
 
     void Start()
     {
-        daysDataText.text = "Days: " + DaysPassed.newAmountOfDays;
-        costDataText.text = "Cost: " + DaysPassed.newCost;
+        daysDataText.text = "Days: " + taskJourney.CurrentAmountOfDaysAtWender;
+        costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.CurrentAmountOfDaysAtWender);
 
         taskText.text = taskJourney.assignedTask.title;
     }
@@ -47,8 +45,8 @@ public class UISystem : MonoBehaviour
 
     public void UpdateDaysAndCostUI()
     {
-        daysDataText.text = "Days: " + DaysPassed.newAmountOfDays;
-        costDataText.text = "Cost: " + DaysPassed.newCost;
+        daysDataText.text = "Days: " + taskJourney.CurrentAmountOfDaysAtWender;
+        costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.CurrentAmountOfDaysAtWender);
     }
 
     //updates the text of the ui and shows the "new task" popup(by instantiating it and deleting after couple sec)

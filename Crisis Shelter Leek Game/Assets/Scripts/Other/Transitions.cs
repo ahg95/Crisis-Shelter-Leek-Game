@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,8 +18,8 @@ public class Transitions : MonoBehaviour
     [Tooltip("the interval for how fast the stats will fade in/out")]
     [SerializeField] private float fadeInterval = 2f;
 
-    private int displayedAmountOfDays = DaysPassed.startAmountOfDays;
-    private float displayedAmountOfMoney = DaysPassed.costAtStart;
+    [SerializeField] private TaskJourney taskJourney;
+
     [Space(10)]
     [SerializeField] private float daySpeedMultiplier = 1.5f;
     [SerializeField] private float costsSpeedMultiplier = 1f;
@@ -77,7 +76,7 @@ public class Transitions : MonoBehaviour
     /// </summary>
     /// <param name="sceneName">Tells the name of the scene to switch to</param> 
     /// <returns></returns>
-    IEnumerator LoadScene(string sceneName)
+    private IEnumerator LoadScene(string sceneName)
     {
         yield return new WaitForSeconds(1f);
 
@@ -151,7 +150,10 @@ public class Transitions : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        while (displayedAmountOfDays < DaysPassed.newAmountOfDays)
+        int displayedAmountOfDays = taskJourney.CurrentAmountOfDaysAtWender;
+        int newAmountOfDays = taskJourney.DaysSpentAfterProgression;
+
+        while (displayedAmountOfDays < newAmountOfDays)
         {
             if (!tickPlayer.isPlaying) // To prevent 'spamming' of coinsounds.
             {
@@ -159,25 +161,28 @@ public class Transitions : MonoBehaviour
             }
             displayedAmountOfDays++; //Increment the display score by 
             daysUI.text = displayedAmountOfDays.ToString(); //Write it to the UI
-            yield return new WaitForSeconds(1f / DaysPassed.newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
+            yield return new WaitForSeconds(1f / newAmountOfDays * daySpeedMultiplier);  // The time it takes for the count to be done should be about the same every time.
         }
 
-        while (displayedAmountOfMoney < DaysPassed.newCost)
+        int displayedCost = taskJourney.CurrentAmountOfDaysAtWender * 100;
+        int newCost = taskJourney.DaysSpentAfterProgression * 100;
+
+        while (displayedCost < newCost)
         {
             if (!tickPlayer.isPlaying) // To prevent 'spamming' of coinsounds.
             {
                 tickPlayer.PlayOneShot(coinSound, 0.35f);
             }
-            displayedAmountOfMoney += 25f; //Increment the display score by 1
-            costsUI.text = displayedAmountOfMoney.ToString(); //Write it to the UI
+            displayedCost += 25; //Increment the display score by 1
+            costsUI.text = displayedCost.ToString(); //Write it to the UI
 
             //check if the UI has been updated completely
-            if (displayedAmountOfDays == DaysPassed.newAmountOfDays && displayedAmountOfMoney == DaysPassed.newCost)
+            if (displayedAmountOfDays == newAmountOfDays && displayedCost == newCost)
             {
                 finishedUpdatingUI = true;
             }
 
-            yield return new WaitForSeconds(1f / DaysPassed.newCost * costsSpeedMultiplier);
+            yield return new WaitForSeconds(1f / newCost * costsSpeedMultiplier);
         }
     }
     #endregion
