@@ -88,7 +88,7 @@ public class Transitions : MonoBehaviour
     {
         float fadeAmount;
 
-        int startAmountOfDays = taskJourney.CurrentAmountOfDaysAtWender;
+        int startAmountOfDays = taskJourney.oldDays;
         float startCost = taskJourney.GetCosts(startAmountOfDays);
         daysUI.text = startAmountOfDays.ToString();
         costsUI.text = startCost.ToString();
@@ -129,10 +129,10 @@ public class Transitions : MonoBehaviour
     public IEnumerator StatsUpdater()
     {
         // Days
-        int startAmountOfDays = taskJourney.CurrentAmountOfDaysAtWender;
+        int startAmountOfDays = taskJourney.oldDays;
         float startCost = taskJourney.GetCosts(startAmountOfDays);
 
-        int newAmountOfDays = taskJourney.DaysSpentAfterProgression;
+        int newAmountOfDays = taskJourney.newDays;
         float newCost = taskJourney.GetCosts(newAmountOfDays);
 
         // Costs

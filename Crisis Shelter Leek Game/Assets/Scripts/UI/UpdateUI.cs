@@ -9,7 +9,7 @@ public class UpdateUI : MonoBehaviour
 
     public void UpdateUIStats()
     {
-        days.text = taskJourney.CurrentAmountOfDaysAtWender.ToString();
-        costs.text = taskJourney.GetCosts(taskJourney.CurrentAmountOfDaysAtWender).ToString();
+        days.text = taskJourney.oldDays.ToString();
+        costs.text = taskJourney.GetCosts(taskJourney.oldDays).ToString();
     }
 }

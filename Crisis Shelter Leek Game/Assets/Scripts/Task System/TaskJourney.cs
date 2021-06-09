@@ -17,8 +17,8 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     [Space(20)]
     public Task[] tasksInOrder;
 
-    public int CurrentAmountOfDaysAtWender { get; private set; } = 0;
-    public int DaysSpentAfterProgression { get; private set; } = 0;
+    public int oldDays { get; private set; } = 0;
+    public int newDays { get; private set; } = 0;
 
     #endregion
     public void OnAfterDeserialize()
@@ -44,11 +44,8 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
     }
     public void AddDaysSpent(int days)
     {
-        CurrentAmountOfDaysAtWender = DaysSpentAfterProgression;
-        DaysSpentAfterProgression += days; // Add the amount of days it takes to progress to the next task
-
-        Debug.Log("Before " + CurrentAmountOfDaysAtWender);
-        Debug.Log("After " + DaysSpentAfterProgression);
+        oldDays = newDays;
+        newDays += days; // Add the amount of days it takes to progress to the next task
     }
     public int GetCosts(int days)
     {
@@ -61,8 +58,8 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
             assignedTaskIndex = 0;
             assignedTask = tasksInOrder[assignedTaskIndex];
 
-            CurrentAmountOfDaysAtWender = 0;
-            DaysSpentAfterProgression = 0;
+            oldDays = 0;
+            newDays = 0;
         }
     }
 }
