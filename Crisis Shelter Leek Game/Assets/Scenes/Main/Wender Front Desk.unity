@@ -640,6 +640,61 @@ PrefabInstance:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1945520970}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1945520970}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1945520970}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateDaysAndCostUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935,
+        type: 3}
+      propertyPath: onSceneStartConsequence.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5446185185378869737, guid: 978125284856d5f4fa17f5d70576b935,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -715,7 +770,8 @@ PrefabInstance:
       propertyPath: settings.Array.data[0].consequenceEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1171308973}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1686098272212389932, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
 --- !u!114 &731612536 stripped
 MonoBehaviour:
