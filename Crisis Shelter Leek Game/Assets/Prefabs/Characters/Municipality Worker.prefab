@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 4183669780219882065}
   - component: {fileID: 6915736684323977053}
   - component: {fileID: 4426991975294349687}
+  - component: {fileID: 3564508677486666353}
   m_Layer: 8
   m_Name: Municipality Worker
   m_TagString: Untagged
@@ -281,7 +282,7 @@ MonoBehaviour:
     consequenceEvent:
       m_PersistentCalls:
         m_Calls: []
-  - elementName: Day 5 Municipality 1 I
+  - elementName: Day 5 Municipality 1 I Apply Financial Aid
     conversationSection: {fileID: 2869492840581819916, guid: db8c56ae6739b3c47824e60a1a2e7030,
       type: 3}
     shouldTaskProgress: 0
@@ -387,6 +388,33 @@ MonoBehaviour:
             m_StringArgument: TextTransitionScene
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &3564508677486666353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167299110465517469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186a8da9ccbbc10499e93fd9a84e6034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: cad763321d4ef5a43adfa6ad92779719, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4426991975294349687}
+        m_MethodName: OnConversationSectionEnd
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &191151457709735661
 GameObject:
   m_ObjectHideFlags: 0
