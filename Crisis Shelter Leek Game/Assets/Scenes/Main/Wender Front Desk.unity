@@ -174,6 +174,31 @@ PrefabInstance:
       propertyPath: navComponent
       value: 
       objectReference: {fileID: 153833975}
+    - target: {fileID: 1352932721946350348, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1953548001}
+    - target: {fileID: 1352932721946350348, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352932721946350348, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 287671393}
+    - target: {fileID: 1352932721946350348, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartConversationAccordingToCurrentPlayerTask
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352932721946350348, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2726991434255797259, guid: 8c92efa11afed4644a36cd57acb6bcab,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
@@ -258,6 +283,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385154430470569174, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1953548001}
+    - target: {fileID: 6385154430470569174, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 287671392}
+    - target: {fileID: 6385154430470569174, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
+      propertyPath: onInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartConversationAccordingToCurrentPlayerTask
       objectReference: {fileID: 0}
     - target: {fileID: 6554342878415522204, guid: 8c92efa11afed4644a36cd57acb6bcab,
         type: 3}
@@ -376,6 +416,30 @@ PrefabInstance:
       objectReference: {fileID: 153833975}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c92efa11afed4644a36cd57acb6bcab, type: 3}
+--- !u!114 &287671392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6385154430470569174, guid: 8c92efa11afed4644a36cd57acb6bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 287671391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917c904b8642368479c865a47de2aa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &287671393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1352932721946350348, guid: 8c92efa11afed4644a36cd57acb6bcab,
+    type: 3}
+  m_PrefabInstance: {fileID: 287671391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917c904b8642368479c865a47de2aa5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &302763724
 GameObject:
   m_ObjectHideFlags: 0
