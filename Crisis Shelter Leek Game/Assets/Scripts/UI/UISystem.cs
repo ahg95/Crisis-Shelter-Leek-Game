@@ -18,12 +18,10 @@ public class UISystem : MonoBehaviour
     [Space(15)]
     [SerializeField] private TaskJourney taskJourney;
 
-    void Start()
+    private void Start()
     {
-        daysDataText.text = "Days: " + taskJourney.CurrentAmountOfDaysAtWender;
-        costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.CurrentAmountOfDaysAtWender);
-
-        taskText.text = taskJourney.assignedTask.title;
+        updateTaskUI();
+        UpdateDaysAndCostUI();
     }
 
     public void onTaskClicked()
@@ -45,8 +43,8 @@ public class UISystem : MonoBehaviour
 
     public void UpdateDaysAndCostUI()
     {
-        daysDataText.text = "Days: " + taskJourney.CurrentAmountOfDaysAtWender;
-        costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.CurrentAmountOfDaysAtWender);
+        daysDataText.text = "Days: " + taskJourney.newDays;
+        costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.newDays);
     }
 
     //updates the text of the ui and shows the "new task" popup(by instantiating it and deleting after couple sec)
