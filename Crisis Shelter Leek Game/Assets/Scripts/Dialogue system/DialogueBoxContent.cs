@@ -11,7 +11,8 @@ public class DialogueBoxContent
         Gerard,
         Daisy,
         DescriptiveText,
-        Stranger
+        Stranger,
+        frontDeskWorker
     };
 
     public Speaker speaker;

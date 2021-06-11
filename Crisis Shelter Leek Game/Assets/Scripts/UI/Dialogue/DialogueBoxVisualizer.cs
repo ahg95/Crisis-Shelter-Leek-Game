@@ -38,6 +38,9 @@ public class DialogueBoxVisualizer : MonoBehaviour
     [Tooltip("The colour of the name of the speaker when a stranger talks.")]
     [SerializeField]
     private Color SpeakerNameColourStranger;
+    [Tooltip("The colour of Daisy before you know her name.")]
+    [SerializeField]
+    private Color SpeakerNameColourFrontDesk = Color.yellow;
 
     public virtual void ShowDialogueBox(DialogueBoxContent dialogueBoxContent, Choice[] choices = null)
     {
@@ -88,6 +91,9 @@ public class DialogueBoxVisualizer : MonoBehaviour
             case DialogueBoxContent.Speaker.YouThinking:
                 textDoDisplay = "You, thinking";
                 break;
+            case DialogueBoxContent.Speaker.frontDeskWorker:
+                textDoDisplay = "Front Desk Worker";
+                break;
             default:
                 textDoDisplay = speaker.ToString();
                 break;
@@ -100,7 +106,7 @@ public class DialogueBoxVisualizer : MonoBehaviour
     {
         Color colorOfSpeakerName;
 
-        switch(speaker)
+        switch (speaker)
         {
             case DialogueBoxContent.Speaker.You:
                 colorOfSpeakerName = SpeakerNameColourYou;
@@ -119,6 +125,9 @@ public class DialogueBoxVisualizer : MonoBehaviour
                 break;
             case DialogueBoxContent.Speaker.Stranger:
                 colorOfSpeakerName = SpeakerNameColourStranger;
+                break;
+            case DialogueBoxContent.Speaker.frontDeskWorker:
+                colorOfSpeakerName = SpeakerNameColourFrontDesk;
                 break;
             default:
                 colorOfSpeakerName = Color.white;
