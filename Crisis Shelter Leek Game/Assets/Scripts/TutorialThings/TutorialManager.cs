@@ -6,13 +6,13 @@ using UnityEngine.Animations;
 
 public class TutorialManager : MonoBehaviour
 {
-
+    #region Variables
     [SerializeField]private GameObject[] popUps; //the key tutorial objects
     [SerializeField] private Animator[] rotationAnim; //popUp Animations
     [SerializeField] private float[] waitTime; //how much you have to wait until you disable the object again(disable after the end animation has finished)
 
     [SerializeField] private int popUpId; // the id for every tutorial part
-     private int n = 0;
+    private int n = 0;
 
     //tutorial parts checks
     [SerializeField] private bool[] tutorialParts;
@@ -29,6 +29,9 @@ public class TutorialManager : MonoBehaviour
     private Navigation nav;
     private Interactable[] camZoom;
 
+    [SerializeField]private List<Interactable> targetedCamZoom;
+
+    #endregion
     void Start()
     {
         skipTutorialButton = GameObject.Find("SkipTutorialButton");
@@ -45,47 +48,83 @@ public class TutorialManager : MonoBehaviour
         cameraRot = GameObject.FindWithTag("Player").GetComponentsInChildren<OnButtonHover>();
         nav = GameObject.FindWithTag("Player").GetComponent<Navigation>();
         camZoom = GameObject.FindObjectsOfType<Interactable>();
-        nav.enabled = false;
     }
 
-    private void Update()
+/*    private void Update()
     {
         if (tutorialActive)
         {
             StartTutorial();
+        }
+    }*/
 
-            //Check is the player is hovering over any rotation buttons
-            for (int i = 0; i < cameraRot.Length; i++)
+    #region TutorialChecks
+    //Check is the player is hovering over any rotation buttons
+    private bool CheckButtonHover()
+    {
+        bool hovering = false;
+        for (int i = 0; i < cameraRot.Length; i++)
+        {
+            if (cameraRot[i].startTimeCount)
             {
-                if (cameraRot[i].startTimeCount)
-                {
-                    CheckTutorialPart(0);
-                }
-            }
-
-            //Check if player is pressing on the ground
-            if(nav.arrow.activeSelf && Input.GetMouseButton(0))
-            {
-                CheckTutorialPart(1);
-            }
-
-            for (int i = 0; i < camZoom.Length; i++)
-            {
-                //Check if player is zooming in on an inspectable
-                if (camZoom[i].zoomedInOn && camZoom[i].isSelected)
-                {
-                    CheckTutorialPart(3);
-                }
-                if (tutorialParts[3] && !camZoom[i].zoomedInOn && camZoom[i].isSelected)
-                {
-                    CheckTutorialPart(4);
-                }
+                hovering = true;
             }
         }
+        return hovering;
+    }
+
+    //Check if player is zooming in on an inspectable
+    private bool CheckZoomIn()
+    {
+        bool zooming = false;
+        for (int i = 0; i < camZoom.Length; i++)
+        {
+            if (camZoom[i].zoomedInOn && camZoom[i].isSelected)
+            {
+                zooming = true;
+                targetedCamZoom.Add(camZoom[i]);
+            }
+        }
+        return zooming;
+    }
+
+    //Check if player is zooming out on an inspectable
+    private bool CheckZoomOut()
+    {
+        bool zoomingOut = false;
+
+        if (tutorialParts[3] && !targetedCamZoom[0].zoomedInOn && !targetedCamZoom[0].isSelected)
+        {
+            zoomingOut = true;
+            targetedCamZoom.Clear();
+        }
+        return zoomingOut;
+    }
+    #endregion
+    public void CheckTutorial()
+    {
+        StartCoroutine("CheckForTutorialParts");
+    }
+    IEnumerator CheckForTutorialParts()
+    {
+        yield return new WaitUntil(() => CheckButtonHover());
+        TutorialPartAchieved(0);
+
+        //Check if player is pressing on the ground
+        yield return new WaitUntil(() => nav.arrow.activeSelf && Input.GetMouseButton(0));
+        TutorialPartAchieved(1);
+
+        yield return new WaitUntil(() => CheckZoomIn());
+        TutorialPartAchieved(3);
+
+        yield return new WaitUntil(() => CheckZoomOut());
+        TutorialPartAchieved(4);
+
     }
 
     public void StartTutorial()
     {
+        //StartCoroutine("TutorialStart");
         tutorialActive = true;
         skipTutorialButton.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
@@ -116,7 +155,13 @@ public class TutorialManager : MonoBehaviour
             skipTutorialButton.SetActive(false);
         }
     }
+    IEnumerator TutorialStart()
+    {
+        tutorialActive = true;
+        skipTutorialButton.SetActive(true);
 
+        yield return null;
+    }
     //this function will skip the tutorial 
     public void SkipTutorial()
     {
@@ -129,7 +174,7 @@ public class TutorialManager : MonoBehaviour
     /// This function will be called when the player succeded at accomplishing a tutorial part
     /// </summary>
     /// <param name="partNr"> The order of the tutorial part that you wish to accomplish from the array </param>
-    public void CheckTutorialPart(int partNr)
+    public void TutorialPartAchieved(int partNr)
     {
         if (tutorialActive)
         {
@@ -137,10 +182,6 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void EnableNav()
-    {
-        nav.enabled = true;
-    }
 }
 
 

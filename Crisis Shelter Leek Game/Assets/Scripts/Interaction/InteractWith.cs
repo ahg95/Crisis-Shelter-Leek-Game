@@ -99,6 +99,7 @@ public class InteractWith : MonoBehaviour
         if (interactedObject)
         {
             interactedObject.isSelected = false;
+            interactedObject.zoomedInOn = false;
             interactedObject = null;
         }
     }
