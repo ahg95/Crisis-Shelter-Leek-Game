@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: room
+  m_Name: Municipality Room Material
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP _PARALLAXMAP
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 56164eb91af5180498f4064d6345da98, type: 3}
+        m_Texture: {fileID: 2800000, guid: f67d558d3c0de394ea2b223ad6b357a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,19 +40,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4017a53206d25d1429ef329376940bd4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8d57c543fea382f4b823b1f6ced2bf8b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 267e72e9d028ca341ac6fc27a23383f7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 09d4cf795cb18cd47a74549a76c2ce25, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: dbfa3555afff8444a820b7ed51070162, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 81464850ad7ad484ba8322f5ee2cf660, type: 3}
+        m_Texture: {fileID: 2800000, guid: c89333b5ae8e74544ace17aeb3f61536, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -65,7 +65,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _OcclusionStrength: 1
+    - _OcclusionStrength: 0
     - _Parallax: 0.005
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
