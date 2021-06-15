@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class WaitUntilVoidExecution : MonoBehaviour
 {
     public UnityEvent thingsToDo;
-    [SerializeField] float timeToWait = 5f;
+    [SerializeField] internal float timeToWait = 5f;
 
     /// <summary>
     /// Wait the the timeToWait seconds, then execute the event.

@@ -2,8 +2,6 @@
 
 public class Door : Interactable
 {
-    // To do: clean up position ID stuff
-    public int positionId;
     public SpawnPoint._SpawnPoint spawnLocation;
 
     [SerializeField] private string sceneName;

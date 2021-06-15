@@ -216,7 +216,7 @@ public class InteractWith : MonoBehaviour
         Quaternion camStartRotation = cam.transform.localRotation; // stamp of startRotation camera
 
         // Calculate the angle: Opposite distance / adjacent distance
-        float directionMultiplier = -Mathf.Sign(interactable.objectTransformToLookAt.position.y - cam.transform.position.y); // Makes the angle positive when the player should look down, negative when up
+        float directionMultiplier = -Mathf.Sign(interactable.transform.position.y - cam.transform.position.y); // Makes the angle positive when the player should look down, negative when up
         float angleOnY = directionMultiplier * Mathf.Atan(Vector3.Distance(horizontalTargetPos, interactable.objectTransformToLookAt.position) / Vector3.Distance(cam.transform.position, horizontalTargetPos)) * Mathf.Rad2Deg;
         // Quaternion.angleaxis == give an angle, will give you back the right quaternion to rotate to.
         Quaternion camTargetRotation = Quaternion.AngleAxis(angleOnY, Vector3.right); // rotate on the local x Axis
