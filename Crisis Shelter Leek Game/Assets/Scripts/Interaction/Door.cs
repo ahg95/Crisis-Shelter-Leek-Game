@@ -13,17 +13,10 @@ public class Door : Interactable
     }
     public void GoToScene() 
     {
-        SetPosOnSceneChange.instance.currentSpawnPoint = spawnLocation;
-        Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
+        SetPosOnSceneChange.instance.SetSpawnPoint(spawnLocation);
 
-        sceneTransition.LoadSimpleSceneTransition(sceneName);
-    }
-
-    public void GoToScene(SpawnPoint._SpawnPoint point)
-    {
-        SetPosOnSceneChange.instance.currentSpawnPoint = point;
-
-        Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
+        print(SetPosOnSceneChange.instance.currentSpawnPoint);
+        Transitions sceneTransition = FindObjectOfType<Transitions>();
 
         sceneTransition.LoadSimpleSceneTransition(sceneName);
     }

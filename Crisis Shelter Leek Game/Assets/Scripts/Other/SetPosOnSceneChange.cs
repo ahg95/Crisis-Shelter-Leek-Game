@@ -3,8 +3,6 @@ public class SetPosOnSceneChange : MonoBehaviour
 {
     public static SetPosOnSceneChange instance = null;
 
-    public GameObject player;
-
     public SpawnPoint._SpawnPoint currentSpawnPoint;
     private void Awake()
     {
@@ -17,34 +15,61 @@ public class SetPosOnSceneChange : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if(player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
     }
 
     private void OnLevelWasLoaded()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        SpawnOnCurrentSpawnPoint();
+    }
 
+    public void SpawnOnCurrentSpawnPoint()
+    {
+        SpawnPoint currentSpawnPoint = GetCurrentSpawnPoint();
 
+        SpawnPlayerOnPoint(currentSpawnPoint);
+    }
+
+    private SpawnPoint GetCurrentSpawnPoint()
+    {
         SpawnPoint[] spawnPointsInScene = FindObjectsOfType<SpawnPoint>();
 
-        if (player != null && spawnPointsInScene.Length != 0)
+        if (spawnPointsInScene.Length != 0)
         {
             for (int i = 0; i < spawnPointsInScene.Length; i++)
             {
                 if (spawnPointsInScene[i].thisSpawnPoint == currentSpawnPoint)
                 {
-                    player.transform.position = spawnPointsInScene[i].transform.position;
-                    player.transform.rotation = Quaternion.LookRotation(spawnPointsInScene[i].transform.forward);//make the player look in the same direction as the position point
+                    return spawnPointsInScene[i];
                 }
             }
         }
+
+        return null;
     }
-    public void SetPositionId(SpawnPoint._SpawnPoint spawnPoint)
+
+    /// <summary>
+    /// Set the position and rotation of the player to the given point.
+    /// </summary>
+    /// <param name="point"></param>
+    public void SpawnPlayerOnPoint(SpawnPoint point)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null && point != null)
+        {
+            Debug.Break();
+            player.transform.SetPositionAndRotation(point.transform.position, Quaternion.LookRotation(point.transform.forward));
+            player.transform.position = point.transform.position;
+
+            Transform camTransform = Camera.main.transform;
+            Vector3 cameraEulerRot = new Vector3(6, camTransform.rotation.eulerAngles.y, camTransform.rotation.eulerAngles.z);
+            camTransform.rotation = Quaternion.Euler(cameraEulerRot);
+        }
+    }
+
+    public void SetSpawnPoint(SpawnPoint._SpawnPoint spawnPoint)
     {
         instance.currentSpawnPoint = spawnPoint;
+        Debug.Break();
     }
 }

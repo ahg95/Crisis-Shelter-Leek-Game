@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class InvokeOnStartIfTask : MonoBehaviour
 {
-    public UnityEvent sceneLoaded;
+    public UnityEvent thingsToDo;
     [SerializeField] private TaskJourney taskJourney;
     [SerializeField] private Task currentTask;
 
@@ -11,7 +11,7 @@ public class InvokeOnStartIfTask : MonoBehaviour
     {
         if (currentTask == taskJourney.assignedTask)
         {
-            sceneLoaded.Invoke();
+            thingsToDo.Invoke();
         }
     }
 

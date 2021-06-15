@@ -22,5 +22,7 @@ public class PersonalStuff : MonoBehaviour
         interactedWithPersonalStuff = true;
         untidy.SetActive(false);
         tidy.SetActive(true);
+
+        SetPosOnSceneChange.instance.SpawnOnCurrentSpawnPoint();
     }
 }
