@@ -61,7 +61,8 @@ public class TutorialManager : MonoBehaviour
         popUpId = popUps.Length;
         dialogManager.EndDialogue();
         skipTutorialButton.SetActive(false);
-        StopCoroutine("TutorialStart");
+        //StopCoroutine("TutorialStart");
+        StopCoroutine("CheckIfCompletedTutorialParts");
     }
 
     /// <summary>
