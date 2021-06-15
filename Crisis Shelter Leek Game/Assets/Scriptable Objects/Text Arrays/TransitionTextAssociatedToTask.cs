@@ -4,7 +4,7 @@
 public class TransitionTextAssociatedToTask : ScriptableObject
 {
     public Task associatedTask;
-    [TextArea(0, 1)]
+    [TextArea(0, 3)]
     public string[] textArray;
     [Space(10)]
     [Tooltip("Type it exactly as you see the name in the Build Settings")]

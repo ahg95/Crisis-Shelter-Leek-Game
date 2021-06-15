@@ -30,8 +30,8 @@ public class Bed : Interactable
     {
         string sceneToGoTo = "Wender Bedroom";
 
-        SetPosOnSceneChange.instance.currentSpawnPoint = point;
-        Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
+        SetPosOnSceneChange.SetSpawnPoint(point);
+        Transitions sceneTransition = FindObjectOfType<Transitions>();
 
         for (int i = 0; i < goToTextSceneTasks.Length; i++)
         {

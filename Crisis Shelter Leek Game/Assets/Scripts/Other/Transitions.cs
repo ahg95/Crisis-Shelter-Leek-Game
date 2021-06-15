@@ -41,6 +41,26 @@ public class Transitions : MonoBehaviour
     #region Functions
 
     /// <summary>
+    /// Simple Transition without changing the scene.
+    /// </summary>
+    public void TransitionWithoutSceneSwitch()
+    {
+        StartCoroutine(OnAnimationComplete());
+
+        IEnumerator OnAnimationComplete()
+        {
+            simpleTransition.SetTrigger("Start");
+
+            while (simpleTransition.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f) // Wait until the animation has finished
+                yield return new WaitForFixedUpdate();
+
+            yield return new WaitForSeconds(1f);
+
+            simpleTransition.SetTrigger("End");
+        }
+    }
+
+    /// <summary>
     /// Starts a scene change with transition
     /// </summary>
     /// <param name="name"> Tell the name of the scene </param>
