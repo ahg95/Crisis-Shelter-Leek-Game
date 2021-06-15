@@ -106,7 +106,7 @@ public class TextScene : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             if (currentTransitionText.progressAfterText) taskJourney.Progress();
-            SetPosOnSceneChange.instance.currentSpawnPoint = currentTransitionText.spawnPoint;
+            SetPosOnSceneChange.currentSpawnPoint = currentTransitionText.spawnPoint;
             if (!currentTransitionText.TransitionWithStats)
             {
                 SceneManager.LoadScene(currentTransitionText.SceneToTransferTo);

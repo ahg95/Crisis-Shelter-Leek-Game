@@ -2,8 +2,6 @@
 
 public class Door : Interactable
 {
-    // To do: clean up position ID stuff
-    public int positionId;
     public SpawnPoint._SpawnPoint spawnLocation;
 
     [SerializeField] private string sceneName;
@@ -15,17 +13,9 @@ public class Door : Interactable
     }
     public void GoToScene() 
     {
-        SetPosOnSceneChange.instance.currentSpawnPoint = spawnLocation;
-        Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
+        SetPosOnSceneChange.SetSpawnPoint(spawnLocation);
 
-        sceneTransition.LoadSimpleSceneTransition(sceneName);
-    }
-
-    public void GoToScene(SpawnPoint._SpawnPoint point)
-    {
-        SetPosOnSceneChange.instance.currentSpawnPoint = point;
-
-        Transitions sceneTransition = GameObject.FindObjectOfType<Transitions>();
+        Transitions sceneTransition = FindObjectOfType<Transitions>();
 
         sceneTransition.LoadSimpleSceneTransition(sceneName);
     }

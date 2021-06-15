@@ -1631,19 +1631,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978125284856d5f4fa17f5d70576b935, type: 3}
---- !u!1 &1060700302 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8371596313123110920, guid: 978125284856d5f4fa17f5d70576b935,
-    type: 3}
-  m_PrefabInstance: {fileID: 1060700301}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1060700303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 720242705759610332, guid: 978125284856d5f4fa17f5d70576b935,
     type: 3}
   m_PrefabInstance: {fileID: 1060700301}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1060700302}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 185d090970d21894d9642a8a9716e282, type: 3}
@@ -1903,51 +1897,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1303196606}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1423937747
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1423937749}
-  - component: {fileID: 1423937748}
-  m_Layer: 0
-  m_Name: SetPositionOnSceneChange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1423937748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423937747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca1f03cdde62e94d826616a8cbfd550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1060700302}
-  currentSpawnPoint: 0
---- !u!4 &1423937749
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423937747}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.83743405, y: -0.18660605, z: 0.47689462}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1852731059}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1756080976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2021,6 @@ Transform:
   - {fileID: 288411480}
   - {fileID: 1756080980}
   - {fileID: 779424841}
-  - {fileID: 1423937749}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2367,7 +2315,6 @@ MonoBehaviour:
   debugAlwaysVisible: 0
   fullCube: 0
   hoverCursor: {fileID: 2800000, guid: 42942b82ee44e9e49be28b417a9266e4, type: 3}
-  positionId: 0
   spawnLocation: 0
   sceneName: Wender Front Desk
 --- !u!114 &2076173610
