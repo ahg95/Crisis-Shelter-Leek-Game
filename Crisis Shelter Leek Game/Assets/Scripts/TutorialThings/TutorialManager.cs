@@ -28,6 +28,8 @@ public class TutorialManager : MonoBehaviour
     private Navigation nav;
     private InteractWith camZoom;
 
+    [SerializeField]private QuestionTutorial askTutorial;
+
     #endregion
 
     #region Functions
@@ -47,12 +49,20 @@ public class TutorialManager : MonoBehaviour
         cameraRot = GameObject.FindWithTag("Player").GetComponentsInChildren<OnButtonHover>();
         nav = GameObject.FindWithTag("Player").GetComponent<Navigation>();
         camZoom = GameObject.FindGameObjectWithTag("Player").GetComponent<InteractWith>();
+
+        askTutorial = GameObject.FindObjectOfType<QuestionTutorial>();
+
+        //Start the tutorial when the scene has loaded
+        DialogueTrigger startDialogue = GetComponent<DialogueTrigger>();
+        startDialogue.TriggerDialogue();
+        StartTutorial();
+        CheckTutorial();
     }
 
     public void StartTutorial()
     {
-        tutorialActive = true;
         skipTutorialButton.SetActive(true);
+        tutorialActive = true;
         StartCoroutine("TutorialStart");
     }
 
@@ -61,8 +71,8 @@ public class TutorialManager : MonoBehaviour
         popUpId = popUps.Length;
         dialogManager.EndDialogue();
         skipTutorialButton.SetActive(false);
-        //StopCoroutine("TutorialStart");
         StopCoroutine("CheckIfCompletedTutorialParts");
+        askTutorial.SetTutorial(false);
     }
 
     /// <summary>
@@ -129,6 +139,7 @@ public class TutorialManager : MonoBehaviour
             finishDialogueButton.SetActive(true);
             skipTutorialButton.SetActive(false);
             StopCoroutine("TutorialStart");
+            askTutorial.SetTutorial(false);
         }
 
         yield return null;
@@ -137,6 +148,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator CheckIfCompletedTutorialParts()
     {
+        yield return new WaitForSeconds(1.5f);
         yield return new WaitUntil(() => CheckButtonHover());
         CompleteTutorialPart(0);
 

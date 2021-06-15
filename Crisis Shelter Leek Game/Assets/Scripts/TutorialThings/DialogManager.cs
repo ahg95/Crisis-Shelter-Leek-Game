@@ -9,11 +9,11 @@ public class DialogManager : MonoBehaviour
 
     public Animator anim;
 
-    public Queue<string> sentences;
+    public Queue<string> sentences = new Queue<string>();
 
     void Start()
     {
-        sentences = new Queue<string>();
+        //sentences;
     }
 
     
