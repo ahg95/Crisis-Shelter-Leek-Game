@@ -13,9 +13,8 @@ public class Door : Interactable
     }
     public void GoToScene() 
     {
-        SetPosOnSceneChange.instance.SetSpawnPoint(spawnLocation);
+        SetPosOnSceneChange.SetSpawnPoint(spawnLocation);
 
-        print(SetPosOnSceneChange.instance.currentSpawnPoint);
         Transitions sceneTransition = FindObjectOfType<Transitions>();
 
         sceneTransition.LoadSimpleSceneTransition(sceneName);

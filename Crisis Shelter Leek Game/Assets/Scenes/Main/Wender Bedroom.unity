@@ -2287,19 +2287,13 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1237453611}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &674878988 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8371596313123110920, guid: 978125284856d5f4fa17f5d70576b935,
-    type: 3}
-  m_PrefabInstance: {fileID: 1988022270}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &674878994 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8344777429472347002, guid: 978125284856d5f4fa17f5d70576b935,
     type: 3}
   m_PrefabInstance: {fileID: 1988022270}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674878988}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 296be4a22f8dbf34dbddc9c0bc444eba, type: 3}
@@ -2463,7 +2457,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1988022270}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674878988}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 185d090970d21894d9642a8a9716e282, type: 3}
@@ -2670,7 +2664,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1253464331
 MonoBehaviour:
@@ -2713,7 +2707,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thingsToDo:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412056969}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1253464331}
+        m_MethodName: WaitAndExecute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   taskJourney: {fileID: 11400000, guid: ff2b97074cb37b440b72ef51451e21c9, type: 2}
   currentTask: {fileID: 11400000, guid: ee4b26541361d8345b7512cd82828c73, type: 2}
 --- !u!1 &1264272220
@@ -2808,51 +2824,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 24.071001, y: -89.649, z: -41.419003}
---- !u!1 &1375569558
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1375569560}
-  - component: {fileID: 1375569559}
-  m_Layer: 0
-  m_Name: SetPosOnSceneChange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1375569559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375569558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca1f03cdde62e94d826616a8cbfd550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 674878988}
-  currentSpawnPoint: 3
---- !u!4 &1375569560
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375569558}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6475592, y: -0.5654776, z: -1.062314}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1389428719
 GameObject:
   m_ObjectHideFlags: 0

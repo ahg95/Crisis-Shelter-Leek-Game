@@ -1,37 +1,18 @@
 ﻿using UnityEngine;
-public class SetPosOnSceneChange : MonoBehaviour
+public static class SetPosOnSceneChange
 {
-    public static SetPosOnSceneChange instance = null;
+    public static SpawnPoint._SpawnPoint currentSpawnPoint = SpawnPoint._SpawnPoint.entranceWender;
 
-    public SpawnPoint._SpawnPoint currentSpawnPoint;
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            DontDestroyOnLoad(gameObject);
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnLevelWasLoaded()
-    {
-        SpawnOnCurrentSpawnPoint();
-    }
-
-    public void SpawnOnCurrentSpawnPoint()
+    public static void SpawnOnCurrentSpawnPoint()
     {
         SpawnPoint currentSpawnPoint = GetCurrentSpawnPoint();
 
         SpawnPlayerOnPoint(currentSpawnPoint);
     }
 
-    private SpawnPoint GetCurrentSpawnPoint()
+    private static SpawnPoint GetCurrentSpawnPoint()
     {
-        SpawnPoint[] spawnPointsInScene = FindObjectsOfType<SpawnPoint>();
+        SpawnPoint[] spawnPointsInScene = GameObject.FindObjectsOfType<SpawnPoint>();
 
         if (spawnPointsInScene.Length != 0)
         {
@@ -51,13 +32,12 @@ public class SetPosOnSceneChange : MonoBehaviour
     /// Set the position and rotation of the player to the given point.
     /// </summary>
     /// <param name="point"></param>
-    public void SpawnPlayerOnPoint(SpawnPoint point)
+    public static void SpawnPlayerOnPoint(SpawnPoint point)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null && point != null)
         {
-            Debug.Break();
             player.transform.SetPositionAndRotation(point.transform.position, Quaternion.LookRotation(point.transform.forward));
             player.transform.position = point.transform.position;
 
@@ -67,9 +47,8 @@ public class SetPosOnSceneChange : MonoBehaviour
         }
     }
 
-    public void SetSpawnPoint(SpawnPoint._SpawnPoint spawnPoint)
+    public static void SetSpawnPoint(SpawnPoint._SpawnPoint spawnPoint)
     {
-        instance.currentSpawnPoint = spawnPoint;
-        Debug.Break();
+        currentSpawnPoint = spawnPoint;
     }
 }

@@ -5,6 +5,6 @@ public class ChangeSpawnPoint : MonoBehaviour
     [SerializeField] private SpawnPoint._SpawnPoint spawnLocation;
     public void ChangePlayerSpawnPoint()
     {
-        SetPosOnSceneChange.instance.SetSpawnPoint(spawnLocation);
+        SetPosOnSceneChange.SetSpawnPoint(spawnLocation);
     }
 }
