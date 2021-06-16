@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
+    private float volumeHeight = 1f;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Toggle muteAudio;
     [SerializeField] private Slider sensitivitySlider;
@@ -16,12 +17,21 @@ public class Options : MonoBehaviour
     }
     public void MuteAudio()
     {
-        AudioListener.pause = !AudioListener.pause;
+        if (muteAudio.isOn)
+        {
+            AudioListener.volume = 0;
+        }
+        else
+        {
+            AudioListener.volume = volumeHeight;
+        }
     }
 
-    public void ChangeVol(Slider slider)
+    public void ChangeVolume(Slider slider)
     {
-        AudioListener.volume = slider.value;
+        muteAudio.isOn = false;
+        volumeHeight = slider.value;
+        AudioListener.volume = volumeHeight;
     }
 
     public void ChangeSensitivity(Slider slider)
@@ -58,7 +68,12 @@ public class Options : MonoBehaviour
 
     private void OnEnable()
     {
-        volumeSlider.value = AudioListener.volume;
-        muteAudio.isOn = !AudioListener.pause;
+        volumeSlider.value = volumeHeight;
+
+        if (muteAudio.isOn)
+        {
+            AudioListener.volume = 0;
+            muteAudio.isOn = true;
+        }
     }
 }

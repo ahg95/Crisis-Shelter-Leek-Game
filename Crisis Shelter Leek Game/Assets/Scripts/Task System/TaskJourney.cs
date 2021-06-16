@@ -62,4 +62,12 @@ public class TaskJourney : ScriptableObject, ISerializationCallbackReceiver
             newDays = 0;
         }
     }
+    public void ManualReset()
+    {
+        assignedTaskIndex = 0;
+        assignedTask = tasksInOrder[assignedTaskIndex];
+
+        oldDays = 0;
+        newDays = 0;
+    }
 }
