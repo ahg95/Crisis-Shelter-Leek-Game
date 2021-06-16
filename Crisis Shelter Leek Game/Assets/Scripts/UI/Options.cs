@@ -11,6 +11,7 @@ public class Options : MonoBehaviour
 
     private void Start()
     {
+        if (GameObject.FindWithTag("Player") != null)
         cameraRotationScript = GameObject.FindWithTag("Player").GetComponent<RotateCamera>();
     }
     public void MuteAudio()
@@ -29,7 +30,7 @@ public class Options : MonoBehaviour
     }
     public void setSensitivity(string sensitivity)
     {
-        if(sensitivity == "low")
+        if (sensitivity == "low")
         {
             cameraRotationScript.rotationSpeedMultiplier = sensitivitySlider.minValue;
             sensitivitySlider.value = sensitivitySlider.minValue;
@@ -52,6 +53,7 @@ public class Options : MonoBehaviour
             cameraRotationScript.rotationSpeedMultiplier = 2.25f;
             sensitivitySlider.value = 2.25f;
         }
+
     }
 
     private void OnEnable()

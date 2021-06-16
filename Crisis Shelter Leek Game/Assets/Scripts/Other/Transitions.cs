@@ -124,7 +124,7 @@ public class Transitions : MonoBehaviour
 
         yield return new WaitUntil(() => finishedUpdatingUI); //waits until the stats have finished showing
 
-        yield return new WaitForSeconds(1.5f); //waits for a bit more sec before switching scenes
+        yield return new WaitForSeconds(3f); //waits for a bit more sec before switching scenes
                                                //yield return new WaitUntil(() => Input.GetMouseButtonDown(0));//waits until the player clicked the mouse 
 
         while (statsCanvasGroup.alpha > 0)

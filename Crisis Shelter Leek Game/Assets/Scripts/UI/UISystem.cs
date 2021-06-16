@@ -44,7 +44,7 @@ public class UISystem : MonoBehaviour
     public void UpdateDaysAndCostUI()
     {
         daysDataText.text = "Days: " + taskJourney.newDays;
-        costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.newDays);
+        // costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.newDays);
     }
 
     //updates the text of the ui and shows the "new task" popup(by instantiating it and deleting after couple sec)
