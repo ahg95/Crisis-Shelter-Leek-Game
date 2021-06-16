@@ -16,7 +16,6 @@ public class Interactable : MonoBehaviour
     [Header("Zoom in & Walk Towards?")]
     public Transform objectTransformToLookAt = null;
     public bool zoomIn = false;
-     public bool zoomedInOn = false;
     [HideInInspector] public float zoomAmount;
     [Space(5)]
     public bool moveTowards = false;
@@ -29,8 +28,6 @@ public class Interactable : MonoBehaviour
     }
     public FrontOfObject frontOfObject = FrontOfObject.Forward;
     [SerializeField] protected Navigation navComponent = null;
-
-    public bool isSelected = false;
 
     [Header("Debug")]
     [Space(10)]

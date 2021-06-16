@@ -5,24 +5,21 @@ using UnityEngine;
 
 public class DialogManager : MonoBehaviour
 {
-    public TextMeshProUGUI NameText;
     public TextMeshProUGUI DialogueText;
 
     public Animator anim;
 
-    public Queue<string> sentences;
+    public Queue<string> sentences = new Queue<string>();
 
     void Start()
     {
-        sentences = new Queue<string>();
+        //sentences;
     }
 
     
     public void StartDialogue (Dialogue dialogue)
     {
         anim.SetBool("isOpen", true);
-       //Debug.Log("Starting Conversation with " + dialogue.name);
-        NameText.text = dialogue.name;
         sentences.Clear();
 
         foreach (string sentence in dialogue.sentences)

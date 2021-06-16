@@ -10,6 +10,7 @@ public class InteractWith : MonoBehaviour
     [Tooltip("The higher this value, the less zoom is possible")]
     [SerializeField] private float maxFOV = 40f;
     [HideInInspector] public float zoomAmount;
+    [HideInInspector] public bool isZoomedIn = false;
 
     [Header("Rotation Speed")]
     [SerializeField] private float rotationSpeed = 1f;
@@ -98,8 +99,7 @@ public class InteractWith : MonoBehaviour
         StartCoroutine(ZoomOut());
         if (interactedObject)
         {
-            interactedObject.isSelected = false;
-            interactedObject.zoomedInOn = false;
+            isZoomedIn = false;
             interactedObject = null;
         }
     }
@@ -146,8 +146,7 @@ public class InteractWith : MonoBehaviour
             yield return null;
         }
 
-        interactable.isSelected = true;
-        interactable.zoomedInOn = true;
+        isZoomedIn = true;
         cam.fieldOfView = zoomAmount; // When close enough to zoomamount, snap to zoomamount.
     }
     public IEnumerator ZoomOut()
@@ -258,7 +257,7 @@ public class InteractWith : MonoBehaviour
         }
 
         //print("Looking at!");
-        interactable.isSelected = true;
+        isZoomedIn = true;
         interactable.InteractWith();
     }
 }
