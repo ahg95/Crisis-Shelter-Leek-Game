@@ -7,6 +7,7 @@ using UnityEngine.Animations;
 public class TutorialManager : MonoBehaviour
 {
     #region Variables
+    [Header ("Tutorial Parts")]
     [SerializeField] private GameObject[] popUps; //the key tutorial objects
     [SerializeField] private Animator[] rotationAnim; //popUp Animations
     [SerializeField] private float[] waitTime; //how much you have to wait until you disable the object again(disable after the end animation has finished)
@@ -19,25 +20,24 @@ public class TutorialManager : MonoBehaviour
     private bool tutorialActive = false;
 
     //tutorial dialogue
-    private DialogManager dialogManager;
-    private GameObject skipTutorialButton;
-    private GameObject finishDialogueButton;
+    [Header("Assignables")]
+    [SerializeField] private DialogManager dialogManager;
+    [SerializeField] private GameObject skipTutorialButton;
+    [SerializeField] private GameObject finishDialogueButton;
 
     //tutorial components
     private OnButtonHover[] cameraRot;
     private Navigation nav;
     private InteractWith camZoom;
 
-    [SerializeField]private QuestionTutorial askTutorial;
+    private QuestionTutorial askTutorial;
 
     #endregion
 
     #region Functions
     void Start()
     {
-        skipTutorialButton = GameObject.Find("SkipTutorialButton");
         skipTutorialButton.SetActive(false);
-        finishDialogueButton = GameObject.Find("FinishTutorialButton");
         finishDialogueButton.SetActive(false);
 
         foreach (GameObject popUp in popUps)
@@ -49,7 +49,6 @@ public class TutorialManager : MonoBehaviour
         cameraRot = GameObject.FindWithTag("Player").GetComponentsInChildren<OnButtonHover>();
         nav = GameObject.FindWithTag("Player").GetComponent<Navigation>();
         camZoom = GameObject.FindGameObjectWithTag("Player").GetComponent<InteractWith>();
-
         askTutorial = GameObject.FindObjectOfType<QuestionTutorial>();
 
         //Start the tutorial when the scene has loaded
@@ -107,6 +106,26 @@ public class TutorialManager : MonoBehaviour
         }
         return hovering;
     }
+
+    //Check if clicking on the bell
+    private bool CheckBellClick()
+    {
+        bool clicked = false;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if(hit.collider.gameObject.name == "Bell")
+                {
+                    clicked = true;
+                }
+            }
+        }
+        return clicked;
+    }
     #endregion
 
     #region Coroutines
@@ -155,6 +174,9 @@ public class TutorialManager : MonoBehaviour
         //Check if player is pressing on the ground
         yield return new WaitUntil(() => nav.arrow.activeSelf && Input.GetMouseButton(0));
         CompleteTutorialPart(1);
+
+        yield return new WaitUntil(() => CheckBellClick());
+        CompleteTutorialPart(2);
 
         yield return new WaitUntil(() => camZoom.isZoomedIn);
         CompleteTutorialPart(3);
