@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class QuestionTutorial : MonoBehaviour
 {
-    public static bool startTutorial;
+    public static bool startTutorial = false;
     [SerializeField] private GameObject tutorial;
 
     // Start is called before the first frame update
@@ -15,8 +15,8 @@ public class QuestionTutorial : MonoBehaviour
 
         if (currentScene.name == "Wender Front Desk" && startTutorial)
         {
-            tutorial.SetActive(true);
-            tutorial.GetComponentInChildren<TutorialManager>().StartTutorial();
+            GameObject tutorialClone =  Instantiate(tutorial);
+            tutorialClone.SetActive(true);
         }
     }
 
