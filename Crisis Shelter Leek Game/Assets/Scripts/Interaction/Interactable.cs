@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
-using System.Collections;
 
 [RequireComponent(typeof(Outline))]
 [DisallowMultipleComponent]
@@ -23,8 +22,11 @@ public class Interactable : MonoBehaviour
     public enum FrontOfObject
     {
         Forward,
+        Backward,
         Up,
+        Down,
         Right,
+        Left
     }
     public FrontOfObject frontOfObject = FrontOfObject.Forward;
     [SerializeField] protected Navigation navComponent = null;

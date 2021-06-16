@@ -197,6 +197,12 @@ public class InteractWith : MonoBehaviour
                     return interactableTransform.right;
                 case Interactable.FrontOfObject.Up:
                     return interactableTransform.up;
+                case Interactable.FrontOfObject.Backward:
+                    return -interactableTransform.forward;
+                case Interactable.FrontOfObject.Left:
+                    return -interactableTransform.right;
+                case Interactable.FrontOfObject.Down:
+                    return -interactableTransform.up;
                 default:
                     return interactableTransform.forward;
             }
