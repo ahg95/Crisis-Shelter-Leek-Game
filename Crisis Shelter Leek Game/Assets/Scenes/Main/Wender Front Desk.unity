@@ -2016,11 +2016,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial
       objectReference: {fileID: 0}
-    - target: {fileID: 2191905177943821120, guid: 63bd0601fa848a1498b27aee7e3faca3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2191905177943821121, guid: 63bd0601fa848a1498b27aee7e3faca3,
         type: 3}
       propertyPath: m_RootOrder
@@ -2076,6 +2071,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2191905178100479015, guid: 63bd0601fa848a1498b27aee7e3faca3,
+        type: 3}
+      propertyPath: askTutorial
+      value: 
+      objectReference: {fileID: 1742031921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63bd0601fa848a1498b27aee7e3faca3, type: 3}
 --- !u!1 &1949263303 stripped
@@ -2551,6 +2551,45 @@ PrefabInstance:
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1953548001}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[10].task
+      value: 
+      objectReference: {fileID: 11400000, guid: 38fb526e8b0c7f146a72ae0667c5d1d7,
+        type: 2}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[11].task
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c0ef940fab6a4b41825cf909e1ab4fe,
+        type: 2}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[10].combinationName
+      value: Go to Municipality - Pick up ID (morning)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[11].combinationName
+      value: Go to Municipality - Pick up ID - Apply Financial Aid
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[10].conversationSection
+      value: 
+      objectReference: {fileID: 3984775687137983782, guid: 5f869d96b3fee244ca707a866c9f41c6,
+        type: 3}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: conversationTaskCombination.Array.data[11].conversationSection
+      value: 
+      objectReference: {fileID: 3984775687137983782, guid: 3cd8292fb00d63a4a867cdce6fbac8b2,
+        type: 3}
     - target: {fileID: 1243874367767550305, guid: f31bcc565f6fdd944be4fba3954ef07a,
         type: 3}
       propertyPath: m_StaticEditorFlags
