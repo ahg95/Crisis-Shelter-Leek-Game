@@ -2,9 +2,12 @@
 
 public class MaximizeScreen : EditorWindow
 {
-    [MenuItem("Tools/Maximize/Maximize Screen _escape")]
+    [MenuItem("Tools/Maximize/Maximize Screen %q")]
     private static void MaxScreen()
     {
-        EditorWindow.focusedWindow.maximized = !EditorWindow.focusedWindow.maximized;
+        if (!EditorApplication.isPlaying)
+        {
+            EditorWindow.focusedWindow.maximized = !EditorWindow.focusedWindow.maximized;
+        }
     }
 }
