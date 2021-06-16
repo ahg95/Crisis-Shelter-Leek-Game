@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 939558017166350431}
   - component: {fileID: 939558017166350368}
   m_Layer: 0
-  m_Name: Day 2 Coach 1 III
+  m_Name: Day 2 Coach 1 III Ready To Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,20 +48,20 @@ MonoBehaviour:
     content: I wanted to meet you to discuss your current situation and help you
       plan your next steps. Could you tell me a bit more about your situation?
   - speaker: 0
-    content: "I hate to say it but I have lost my home, I have no income, and no
-      savings.\r This is the first time that I'm doing something about my situation."
+    content: I hate to say it but I have lost my home, my income, and all my savings.
+      This is the first time that I'm doing something about my situation.
   - speaker: 4
     content: Don't worry, it's a common situation and many people here have already
       overcome it. Are you ready to start this journey?
   choicesAtEnd:
   - choiceText: Yes, I'm tired of my situation.
-    Consequence:
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 350937697526257888, guid: 969265cdf29216741b6272749be39078,
       type: 3}
   - choiceText: I don't know if I can do it.
-    Consequence:
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 4350594424807335565, guid: 6631d8401da3f2a479e90bd5e7dc1d78,
