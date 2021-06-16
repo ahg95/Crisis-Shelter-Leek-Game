@@ -50,6 +50,13 @@ public class TextScene : MonoBehaviour
 
             ShowNextText();
         }
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StartCoroutine(FadeOutAndLoadScene());
+        }
+#endif
     }
     void ShowNextText()
     {
@@ -90,33 +97,31 @@ public class TextScene : MonoBehaviour
         {
             StartCoroutine(FadeOutAndLoadScene());
         }
-
-        IEnumerator FadeOutAndLoadScene()
-        {
-            isTransitioning = true;
-
-            while (textAlpha.alpha > 0) // Fade out text
-            {
-                textAlpha.alpha -= 0.05f;
-                yield return new WaitForSeconds(fadeSpeed);
-            }
-
-            isTransitioning = false;
-
-            yield return new WaitForSeconds(2f);
-
-            if (currentTransitionText.progressAfterText) taskJourney.Progress();
-            SetPosOnSceneChange.currentSpawnPoint = currentTransitionText.spawnPoint;
-            if (!currentTransitionText.TransitionWithStats)
-            {
-                SceneManager.LoadScene(currentTransitionText.SceneToTransferTo);
-            }
-            else
-            {
-                transitions.LoadSceneTransitionStats(currentTransitionText.SceneToTransferTo);
-            }
-        }
     }
 
-    // text > fade to 0 alpha > new Text > fade to 1 alpha >< repeat.
+    private IEnumerator FadeOutAndLoadScene()
+    {
+        isTransitioning = true;
+
+        while (textAlpha.alpha > 0) // Fade out text
+        {
+            textAlpha.alpha -= 0.05f;
+            yield return new WaitForSeconds(fadeSpeed);
+        }
+
+        isTransitioning = false;
+
+        yield return new WaitForSeconds(2f);
+
+        if (currentTransitionText.progressAfterText) taskJourney.Progress();
+        SetPosOnSceneChange.currentSpawnPoint = currentTransitionText.spawnPoint;
+        if (!currentTransitionText.TransitionWithStats)
+        {
+            SceneManager.LoadScene(currentTransitionText.SceneToTransferTo);
+        }
+        else
+        {
+            transitions.LoadSceneTransitionStats(currentTransitionText.SceneToTransferTo);
+        }
+    }
 }
