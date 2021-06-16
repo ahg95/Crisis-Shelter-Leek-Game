@@ -29,8 +29,9 @@ public class Options : MonoBehaviour
 
     public void ChangeVolume(Slider slider)
     {
-        AudioListener.volume = slider.value;
+        muteAudio.isOn = false;
         volumeHeight = slider.value;
+        AudioListener.volume = volumeHeight;
     }
 
     public void ChangeSensitivity(Slider slider)
