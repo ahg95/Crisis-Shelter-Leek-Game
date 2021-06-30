@@ -6,8 +6,6 @@ public class DisableOnTask : MonoBehaviour
 {
     [SerializeField] private TaskJourney taskJourney;
     [SerializeField] private Task[] tasks;
-    [Header("Settings")]
-    [SerializeField] private bool disableInteraction = false;
 
     private void Start()
     {
@@ -16,33 +14,28 @@ public class DisableOnTask : MonoBehaviour
 
     public void DisableInteraction()
     {
-        if (disableInteraction)
+        bool currentTaskInList = false;
+
+        for (int i = 0; i < tasks.Length; i++)
         {
-            bool currentTaskInList = false;
+            Task task = tasks[i];
+            if (taskJourney.assignedTask == task)
+            {
+                currentTaskInList = true;
+            }
+        }
 
-            for (int i = 0; i < tasks.Length; i++)
-            {
-                Task task = tasks[i];
-                if (taskJourney.assignedTask == task)
-                {
-                    currentTaskInList = true;
-                }
-            }
-
-            if (currentTaskInList)
-            {
-                GetComponent<Interactable>().enabled = false;
-                GetComponent<Outline>().enabled = false;
-                GetComponent<Collider>().enabled = false;
-                gameObject.layer = 0;
-            }
-            else
-            {
-                GetComponent<Interactable>().enabled = true;
-                GetComponent<Outline>().enabled = true;
-                GetComponent<Collider>().enabled = true;
-                gameObject.layer = LayerMask.NameToLayer("Clickable");
-            }
+        if (currentTaskInList)
+        {
+            GetComponent<Interactable>().enabled = false;
+            GetComponent<Outline>().enabled = false;
+            gameObject.layer = 0;
+        }
+        else
+        {
+            GetComponent<Interactable>().enabled = true;
+            GetComponent<Outline>().enabled = true;
+            gameObject.layer = LayerMask.NameToLayer("Clickable");
         }
     }
 }

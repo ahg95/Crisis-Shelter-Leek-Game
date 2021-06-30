@@ -44,7 +44,7 @@ public class Interactable : MonoBehaviour
     protected NavMeshAgent agent;
     protected GameObject rotateCameraCanvas;
     #endregion
-    public void Start()
+    public void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
@@ -67,14 +67,15 @@ public class Interactable : MonoBehaviour
     #region OnMouseStuff
     private void OnMouseEnter()
     {
+        if (enabled)
+        {
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
-
             outline.enabled = true;
+        }
     }
     private void OnMouseExit()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
         outline.enabled = false;
     }
     #endregion
