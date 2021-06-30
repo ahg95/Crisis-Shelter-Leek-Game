@@ -32,18 +32,25 @@ public class Navigation : MonoBehaviour
     }
     private void Update()
     {
-        RaycastHit hit;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out hit, 15f);
+        NavigationRaycast();
+    }
 
-        if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Floor") && !EventSystem.current.IsPointerOverGameObject())
+    private void NavigationRaycast()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out RaycastHit hit, 15f);
+
+        bool raycastingFloor = RaycastingFloor(hit);
+
+        if (raycastingFloor)
         {
             arrow.SetActive(true);
+            Cursor.visible = false;
 
             if (Input.GetMouseButton(0))
             {
                 agent.SetDestination(hit.point);
-                StartCoroutine(routine: WaitForDestinationReached());
+                StartCoroutine(WaitForDestinationReached());
             }
 
             Vector3 position = transform.position;
@@ -56,7 +63,18 @@ public class Navigation : MonoBehaviour
             arrow.SetActive(false);
             Cursor.visible = true;
         }
+
+        bool RaycastingFloor(RaycastHit raycastHit)
+        {
+            bool rayOnFloor = false;
+
+            if (raycastHit.collider != null && !EventSystem.current.IsPointerOverGameObject())
+                rayOnFloor = raycastHit.collider.gameObject.layer == LayerMask.NameToLayer("Floor");
+
+            return rayOnFloor;
+        }
     }
+
     private IEnumerator WaitForDestinationReached()
     {
         walkSoundPlayer.volume = walkSoundVolume;
@@ -75,7 +93,6 @@ public class Navigation : MonoBehaviour
 
         if (agent.remainingDistance < 0.1f)
         {
-            Cursor.visible = false;
             StartCoroutine(LowerVolume());
             
             //print("Reached destination!");

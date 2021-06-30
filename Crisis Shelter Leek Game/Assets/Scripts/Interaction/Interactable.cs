@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [DisallowMultipleComponent]
 public class Interactable : MonoBehaviour
 {
-    #region variables
+    #region Variables
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
@@ -47,8 +47,12 @@ public class Interactable : MonoBehaviour
     public void Start()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
         if (navComponent == null)
-        navComponent = player.GetComponent<Navigation>();
+        {
+            navComponent = player.GetComponent<Navigation>();
+        }
+
         agent = player.GetComponent<NavMeshAgent>();
         cam = Camera.main;
         rotateCameraCanvas = GameObject.FindGameObjectWithTag("RotationCanvas");
@@ -63,13 +67,9 @@ public class Interactable : MonoBehaviour
     #region OnMouseStuff
     private void OnMouseEnter()
     {
- /*       float distance = Vector3.Distance(cam.transform.position, transform.position);
-        if (distance < minimumInteractionDistance)
-        {*/
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
 
             outline.enabled = true;
-        //}
     }
     private void OnMouseExit()
     {
