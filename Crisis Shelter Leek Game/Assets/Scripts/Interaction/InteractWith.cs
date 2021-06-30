@@ -9,6 +9,7 @@ public class InteractWith : MonoBehaviour
     [SerializeField] private float minimumFOV = 25f;
     [Tooltip("The higher this value, the less zoom is possible")]
     [SerializeField] private float maxFOV = 40f;
+
     [HideInInspector] public float zoomAmount;
     [HideInInspector] public bool isZoomedIn = false;
 
@@ -20,7 +21,6 @@ public class InteractWith : MonoBehaviour
     [Space(10)]
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask clickableLayer;
-    [SerializeField] private Navigation navComponent = null;
     [SerializeField] private NavMeshAgent agent;
 
     private Interactable interactedObject;
@@ -29,7 +29,6 @@ public class InteractWith : MonoBehaviour
     {
         cam = Camera.main;
         clickableLayer = 1 << LayerMask.NameToLayer("Clickable");
-        navComponent = GetComponent<Navigation>();
         agent = GetComponent<NavMeshAgent>();
     }
     /// <summary>
@@ -64,7 +63,7 @@ public class InteractWith : MonoBehaviour
                 }
                 else
                 {
-                    Deselect(); // Deselect if clicking on object that is already focused on
+                    interactedObject.InteractWith();
                 }
             }
             else

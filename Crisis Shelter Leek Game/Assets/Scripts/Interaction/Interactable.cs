@@ -10,7 +10,6 @@ public class Interactable : MonoBehaviour
     [Header("Action when interacting")]
     public UnityEvent onInteraction;
     [Tooltip("Minimum distance the player needs to be in before interaction is possible")]
-    [SerializeField] private float minimumInteractionDistance = 5f;
 
     [Header("Zoom in & Walk Towards?")]
     public Transform objectTransformToLookAt = null;
@@ -44,7 +43,7 @@ public class Interactable : MonoBehaviour
     protected NavMeshAgent agent;
     protected GameObject rotateCameraCanvas;
     #endregion
-    public void Start()
+    public void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
@@ -67,14 +66,15 @@ public class Interactable : MonoBehaviour
     #region OnMouseStuff
     private void OnMouseEnter()
     {
+        if (enabled)
+        {
             Cursor.SetCursor(hoverCursor, Vector2.zero, CursorMode.ForceSoftware);
-
             outline.enabled = true;
+        }
     }
     private void OnMouseExit()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
         outline.enabled = false;
     }
     #endregion
@@ -83,32 +83,4 @@ public class Interactable : MonoBehaviour
     {
         onInteraction.Invoke();
     }
-
-
-    #region Gizmos
-    private void OnDrawGizmos()
-    {
-        if (debugAlwaysVisible)
-        {
-            Draw();
-        }
-    }
-    public void OnDrawGizmosSelected()
-    {
-        Draw();
-    }
-    void Draw()
-    {
-        Gizmos.color = Color.green;
-
-        if (!fullCube)
-        {
-            Gizmos.DrawWireCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
-        }
-        else
-        {
-            Gizmos.DrawCube(transform.position, Vector3.one * minimumInteractionDistance * 2);
-        }
-    }
-    #endregion
 }
