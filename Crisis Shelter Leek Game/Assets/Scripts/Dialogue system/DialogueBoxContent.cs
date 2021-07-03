@@ -5,14 +5,14 @@ public class DialogueBoxContent
 {
     public enum Speaker
     {
-        You,
-        YouThinking,
-        Karen,
+        Jij,
+        Denkende,
+        Truus,
         Gerard,
-        Daisy,
-        DescriptiveText,
-        Stranger,
-        frontDeskWorker
+        Roos,
+        BeschrijvendeTekst,
+        Vreemde,
+        receptieMedewerker
     };
 
     public Speaker speaker;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4450825001050343128}
   - component: {fileID: 4450825001050343129}
   m_Layer: 0
-  m_Name: Day 2 Coach 1 I
+  m_Name: Day 2 Coach 1 I First Morning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,18 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 0
-    content: Hello.
+    content: Goedemorgen.
   - speaker: 4
-    content: "Good morning! How do you feel?\r"
+    content: Goedemorgen! Hoe voel je je?
   choicesAtEnd:
-  - choiceText: I feel good.
-    Consequence:
+  - choiceText: Wel goed
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 3656624263402280808, guid: 92c0d5ae5faa49841834968c36b1db15,
       type: 3}
-  - choiceText: I feel bad.
-    Consequence:
+  - choiceText: Ik voel me rot.
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 1281798686546799533, guid: b3f523417718c0846ac81673305c63f5,

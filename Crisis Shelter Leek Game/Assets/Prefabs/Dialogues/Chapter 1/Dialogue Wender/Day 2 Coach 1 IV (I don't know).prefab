@@ -45,19 +45,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 4
-    content: I'm sure you can. We will offer you all the necessary support from mental
-      health to finances. Please believe in yourself!
+    content: "Natuurlijk wel! Wender zal je overal steunen waar dit nodig is. Van
+      mentale gezondheid tot financi\xEBn. Geloof ik jezelf!"
   - speaker: 4
-    content: So do you think you are ready to start your journey?
+    content: Dus kom, zet je deze eerste stap met mij?
   choicesAtEnd:
-  - choiceText: Yes, I will believe in myself!
-    Consequence:
+  - choiceText: Goed dan, ik zal in mezefl geloven!
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 350937697526257888, guid: 969265cdf29216741b6272749be39078,
       type: 3}
-  - choiceText: No, I still don't know if I can do it.
-    Consequence:
+  - choiceText: Ik betwijfel echt of ik dit wel kan.
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 4350594424807335565}

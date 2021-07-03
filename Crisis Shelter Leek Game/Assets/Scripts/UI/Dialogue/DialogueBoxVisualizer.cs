@@ -47,8 +47,8 @@ public class DialogueBoxVisualizer : MonoBehaviour
         dialogueUI.SetSpeaker(GetNameToDisplayForSpeaker(dialogueBoxContent.speaker));
         dialogueUI.SetSpeakerNameColor(GetSpeakerNameColorForSpeaker(dialogueBoxContent.speaker));
 
-        if (dialogueBoxContent.speaker == DialogueBoxContent.Speaker.DescriptiveText ||
-            dialogueBoxContent.speaker == DialogueBoxContent.Speaker.YouThinking)
+        if (dialogueBoxContent.speaker == DialogueBoxContent.Speaker.BeschrijvendeTekst ||
+            dialogueBoxContent.speaker == DialogueBoxContent.Speaker.Denkende)
             dialogueUI.SetDialogueTextToItalicFont();
         else
             dialogueUI.SetDialogueTextToRegularFont();
@@ -85,14 +85,14 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
         switch(speaker)
         {
-            case DialogueBoxContent.Speaker.DescriptiveText:
+            case DialogueBoxContent.Speaker.BeschrijvendeTekst:
                 textDoDisplay = "";
                 break;
-            case DialogueBoxContent.Speaker.YouThinking:
-                textDoDisplay = "You, thinking";
+            case DialogueBoxContent.Speaker.Denkende:
+                textDoDisplay = "Denkende";
                 break;
-            case DialogueBoxContent.Speaker.frontDeskWorker:
-                textDoDisplay = "Front Desk Worker";
+            case DialogueBoxContent.Speaker.receptieMedewerker:
+                textDoDisplay = "Receptie Medewerker";
                 break;
             default:
                 textDoDisplay = speaker.ToString();
@@ -108,25 +108,25 @@ public class DialogueBoxVisualizer : MonoBehaviour
 
         switch (speaker)
         {
-            case DialogueBoxContent.Speaker.You:
+            case DialogueBoxContent.Speaker.Jij:
                 colorOfSpeakerName = SpeakerNameColourYou;
                 break;
-            case DialogueBoxContent.Speaker.YouThinking:
+            case DialogueBoxContent.Speaker.Denkende:
                 colorOfSpeakerName = SpeakerNameColourYouThinking;
                 break;
-            case DialogueBoxContent.Speaker.Karen:
+            case DialogueBoxContent.Speaker.Truus:
                 colorOfSpeakerName = SpeakerNameColourKaren;
                 break;
             case DialogueBoxContent.Speaker.Gerard:
                 colorOfSpeakerName = SpeakerNameColourGerard;
                 break;
-            case DialogueBoxContent.Speaker.Daisy:
+            case DialogueBoxContent.Speaker.Roos:
                 colorOfSpeakerName = SpeakerNameColourDaisy;
                 break;
-            case DialogueBoxContent.Speaker.Stranger:
+            case DialogueBoxContent.Speaker.Vreemde:
                 colorOfSpeakerName = SpeakerNameColourStranger;
                 break;
-            case DialogueBoxContent.Speaker.frontDeskWorker:
+            case DialogueBoxContent.Speaker.receptieMedewerker:
                 colorOfSpeakerName = SpeakerNameColourFrontDesk;
                 break;
             default:

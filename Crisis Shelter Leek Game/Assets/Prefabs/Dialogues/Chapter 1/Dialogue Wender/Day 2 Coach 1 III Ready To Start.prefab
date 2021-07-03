@@ -45,22 +45,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 4
-    content: I wanted to meet you to discuss your current situation and help you
-      plan your next steps. Could you tell me a bit more about your situation?
+    content: Zoals ik gisteren zei wil ik nu graag het over je volgende stap hebben.
+      Kun je me zelf nog eens vertellen hoe je dakloos geraakt bent?
   - speaker: 0
-    content: I hate to say it but I have lost my home, my income, and all my savings.
-      This is the first time that I'm doing something about my situation.
+    content: 'Zoals ik ook in dat formulier aan gaf: Het leek allemaal bij mijn huwelijk
+      te beginnen. Het ging van slecht naar slechter. Op een gegeven moment werd
+      ik het huis uitgegooid.'
+  - speaker: 0
+    content: Die hele situatie heeft me mentaal kapot gemaakt. Ik raakte mijn baan
+      kwijt. Mijn geld raakte snel op bij hotels en andere plekken. En ik kon maar
+      geen vaste plek vinden om te verblijven. Mentaal ging ik steeds harder achteruit.
+  - speaker: 0
+    content: Toen raakte het geld ineens echt op. Het gebeurde allemaal zo snel.
+      Ik durfde op een gegeven moment niet meer om hulp te vragen.
+  - speaker: 0
+    content: Maar nu heb ik geen keuze meer, en hier ben ik.
   - speaker: 4
-    content: Don't worry, it's a common situation and many people here have already
-      overcome it. Are you ready to start this journey?
+    content: Oke. Dat is wel genoeg. Het spijt me dat je dit allemaal hebt moeten
+      meemaken. Je hebt bij Wender altijd een luisterend oor voor wanneer je het
+      nodig hebt.
+  - speaker: 4
+    content: En nu is het tijd om de eerste stap terug op je eigen voeten te zetten.
+      Ben je er klaar voor?
   choicesAtEnd:
-  - choiceText: Yes, I'm tired of my situation.
+  - choiceText: Ja. Ik ben hier helemaal zat van.
     choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 350937697526257888, guid: 969265cdf29216741b6272749be39078,
       type: 3}
-  - choiceText: I don't know if I can do it.
+  - choiceText: Ik weet niet of ik dit wel kan.
     choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
