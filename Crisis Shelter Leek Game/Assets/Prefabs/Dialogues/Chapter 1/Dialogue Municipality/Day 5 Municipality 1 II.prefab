@@ -45,17 +45,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 2
-    content: Okay, very good. It will take about 7 days to determine if you are eligibile
-      or not, but after that you can receive your first payment.
+    content: Goed. U zult over ongeveer 5 werkdagen horen of u in aanmerking komt
+      voor een bijstandsuitkering.
+  - speaker: 2
+    content: Als u in aanmerking komt, dan kunt u uw eerste bijstand ontvangen.
   choicesAtEnd:
-  - choiceText: I didn't expect another week of waiting.
-    Consequence:
+  - choiceText: Nog een week wachten?
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 204402204935273485, guid: 39d3458c67853ec4ab159cc9f9ac8a4f,
       type: 3}
-  - choiceText: Thank you.
-    Consequence:
+  - choiceText: Dank u wel.
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 6657777211188482986, guid: abc2946da95462a42a7e89c1d5ee046b,

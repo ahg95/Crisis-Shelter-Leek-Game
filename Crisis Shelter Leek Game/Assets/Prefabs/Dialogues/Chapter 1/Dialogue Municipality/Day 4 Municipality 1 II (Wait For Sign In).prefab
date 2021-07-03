@@ -45,17 +45,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 2
-    content: Thank you. The process of signing in will take about a day, so we will
-      have to make a new appointment if you want to apply for financial aid.
+    content: Dank u wel. Het verwerken van uw inschrijving zal morgen klaar zijn.
+      We zullen dus nog een afspraak moeten inplannen voor uw aanvraag voor een bijstandsuitkering.
   choicesAtEnd:
-  - choiceText: I have to wait again?
-    Consequence:
+  - choiceText: Ik moet alweer wachten?
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 6394345513729976775, guid: 333ff9f7e8f684147b618554564990ac,
       type: 3}
-  - choiceText: Okay then.
-    Consequence:
+  - choiceText: Goed dan.
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 1475597863657797238, guid: 4c0d0b3a60f6d29479aea9947ad7d066,
