@@ -4,17 +4,20 @@ using UnityEngine;
 public class Talkable : Interactable
 {
     [Space(20)]
+    public ConversationTaskCombination[] conversationTaskCombination;
     [SerializeField] private bool rotateToPlayer = false;
     [SerializeField] private TaskJourney taskJourney;
     [SerializeField] private DialogueManager dialogueManager;
-    public ConversationTaskCombination[] conversationTaskCombination;
 
     public void StartConversationAccordingToCurrentPlayerTask()
     {
-        StartCoroutine(RotateTowards());
+        if (rotateToPlayer)
+        {
+            StartCoroutine(RotateTowards());
+        }
 
         Task currentPlayerTask = taskJourney.assignedTask;
-        
+
         ConversationSection conversationToStart = null;
 
         foreach (ConversationTaskCombination ctc in conversationTaskCombination)
@@ -35,7 +38,10 @@ public class Talkable : Interactable
     private IEnumerator RotateTowards()
     {
         Quaternion startingRotation = transform.rotation;
-        Quaternion targetRotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
+
+        Vector3 targetPos = Camera.main.transform.position;
+        targetPos.y = transform.position.y;
+        Quaternion targetRotation = Quaternion.LookRotation(targetPos - transform.position);
 
         float rotationLength = Quaternion.Angle(transform.rotation, Camera.main.transform.rotation) / 360;
 

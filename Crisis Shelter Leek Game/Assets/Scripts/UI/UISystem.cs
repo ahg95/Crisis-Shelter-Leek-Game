@@ -20,11 +20,11 @@ public class UISystem : MonoBehaviour
 
     private void Start()
     {
-        updateTaskUI();
+        UpdateTaskUI();
         UpdateDaysAndCostUI();
     }
 
-    public void onTaskClicked()
+    public void OnTaskClicked()
     {
         if (newTaskPopUpIcon.activeSelf)
         {
@@ -43,12 +43,12 @@ public class UISystem : MonoBehaviour
 
     public void UpdateDaysAndCostUI()
     {
-        daysDataText.text = "Days: " + taskJourney.newDays;
+        daysDataText.text = "Dagen: " + taskJourney.newDays;
         // costDataText.text = "Cost: " + taskJourney.GetCosts(taskJourney.newDays);
     }
 
     //updates the text of the ui and shows the "new task" popup(by instantiating it and deleting after couple sec)
-    public void updateTaskUI()
+    public void UpdateTaskUI()
     {
         taskText.text = taskJourney.assignedTask.title;
 
@@ -57,7 +57,6 @@ public class UISystem : MonoBehaviour
         if (!taskUIAnim.GetBool("Show"))
         {
             ShowUI();
-            taskUIAnim.SetTrigger("Pressed");
         }
 
         //the small icon

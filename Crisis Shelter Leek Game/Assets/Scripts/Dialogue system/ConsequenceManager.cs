@@ -20,7 +20,7 @@ public class ConsequenceManager : MonoBehaviour
                 }
                 if (conversationConsequence.shouldUIUpdate)
                 {
-                    uiSystem.updateTaskUI();
+                    uiSystem.UpdateTaskUI();
                 }
 
                 conversationConsequence.consequenceEvent.Invoke();
