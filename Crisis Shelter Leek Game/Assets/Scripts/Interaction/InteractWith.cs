@@ -210,14 +210,13 @@ public class InteractWith : MonoBehaviour
     private IEnumerator RotateTo(Interactable interactable)
     {
         rotating = true;
-        // print("Rotate");
         // Horizontal position of interactable
         Vector3 horizontalTargetPos = new Vector3(interactable.transform.position.x, transform.position.y, interactable.objectTransformToLookAt.position.z);
 
         Quaternion startRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.LookRotation(horizontalTargetPos - transform.position);
 
-        Quaternion camStartRotation = cam.transform.localRotation; // stamp of startRotation camera
+        Quaternion camStartRotation = cam.transform.localRotation;
 
         // Calculate the angle: Opposite distance / adjacent distance
         float directionMultiplier = -Mathf.Sign(interactable.transform.position.y - cam.transform.position.y); // Makes the angle positive when the player should look down, negative when up
@@ -227,7 +226,7 @@ public class InteractWith : MonoBehaviour
 
         float timeStamp = Time.time;
 
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 1 || Quaternion.Angle(cam.transform.localRotation, camTargetRotation) > 1) // "close enough angles"
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 1 || Quaternion.Angle(cam.transform.localRotation, camTargetRotation) > 1) // "close enough"-angles
         {
             // print("Rotating");
             float timeSinceStarted = Time.time - timeStamp;

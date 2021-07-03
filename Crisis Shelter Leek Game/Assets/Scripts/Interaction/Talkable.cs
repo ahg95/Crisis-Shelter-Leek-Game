@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Talkable : Interactable
 {
@@ -9,6 +10,8 @@ public class Talkable : Interactable
 
     public void StartConversationAccordingToCurrentPlayerTask()
     {
+        StartCoroutine(RotateTowards());
+
         Task currentPlayerTask = taskJourney.assignedTask;
         
         ConversationSection conversationToStart = null;
@@ -26,5 +29,27 @@ public class Talkable : Interactable
         {
             dialogueManager.StartConversationSection(conversationToStart);
         }
+    }
+
+    private IEnumerator RotateTowards()
+    {
+        Quaternion startingRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.LookRotation(Camera.main.transform.position - transform.position);
+
+        float rotationLength = Quaternion.Angle(transform.rotation, Camera.main.transform.rotation) / 360;
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < rotationLength)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = elapsedTime / rotationLength;
+
+            transform.rotation = Quaternion.Slerp(startingRotation, targetRotation, progress);
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        print("End");
     }
 }
