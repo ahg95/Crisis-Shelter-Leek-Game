@@ -45,53 +45,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 2
-    content: Hello! Did you have an appointment today?
+    content: Hallo! Heeft u een afspraak voor vandaag?
   - speaker: 0
-    content: "Good day. Yes, I\u2019m here to apply for financial aid.\r"
+    content: Goedendag. Ja. Ik ben hier om een bijstandsuitkering aan te vragen.
   - speaker: 2
-    content: Of course. Could you please identify yourself?
+    content: Oke. Heeft u een identificatiebewijs voor me?
   - speaker: 5
-    content: You hand over your ID card.
+    content: Je geeft de ambtenaar je ID-kaart.
   - speaker: 5
-    content: She checks your ID carefully and starts frowning.
+    content: De ambtenaar bestudeert de kaart en typt op de computer Je ziet ze begint
+      te fronsen.
   - speaker: 0
-    content: Is something wrong?
+    content: Is er iets mis?
   - speaker: 2
-    content: Well, your ID expired about two weeks ago. You are also not signed in
-      at this municipality.
+    content: Helaas wel. Helaas is uw ID-kaart 2 weken over datum en ik zie ook dat
+      je hier nog niet bent ingeschreven.
   - speaker: 0
-    content: What does this mean?
+    content: Wat betekent dit voor mij dan?
   - speaker: 2
-    content: I can't register you for financial aid if you are not signed in here.
-      You will also need a new ID for this. Do you want to apply for a new one right
-      now?
+    content: Ik kan u niet opgeven voor een bijstandsuitkering als u niet bent ingeschreven.
+      En om u in te schrijven, heeft u een ID-kaart nodig. U zult dus een ID-kaart
+      moeten aanvragen voordat we verder kunnen.
+  - speaker: 2
+    content: Zullen we nu beginnen met de aanvraag voor een ID-kaart?
   - speaker: 0
-    content: I need the financial aid, so yes.
+    content: Nouja, ik heb de bijstand nodig, dus ja.
   - speaker: 2
-    content: Do you have a passport picture with you?
+    content: Heeft u paspoortfoto's bij u?
   - speaker: 0
-    content: No, I didn't expect that I would need one.
+    content: Nee. Ik had uiteraard niet gedacht dat ik die nodig had.
   - speaker: 2
-    content: "I understand. Could you then please make a new appointment?\r"
+    content: Begrijpelijk. Dan zult u een nieuwe afspraak moeten maken en die meenemen.
   - speaker: 2
-    content: 'Oh, before I forget: for a new ID a fee of 64 Euros applies, so bring
-      enough money.'
+    content: O- en vergeet niet om ook 64 euro mee te nemen voor de aanvraag.
   - speaker: 1
-    content: Oh god, where should I get this money from?
+    content: O nee, dat geld heb ik helemaal niet.
   choicesAtEnd:
-  - choiceText: Is it possible to pay the fee later?
+  - choiceText: Later betalen
     choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 6674855812697320744, guid: ec27fd9e5b501594e9acb576ac037c72,
       type: 3}
-  - choiceText: What if I don't have the money to pay the fee?
+  - choiceText: Wat als ik dit niet heb?
     choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 7556759186691063153, guid: 144170c080343874195b8449f8547037,
       type: 3}
-  - choiceText: I will make a new appointment. Goodbye.
+  - choiceText: Ik zal later een nieuwe afspraak maken.
     choiceConsequence:
       m_PersistentCalls:
         m_Calls:

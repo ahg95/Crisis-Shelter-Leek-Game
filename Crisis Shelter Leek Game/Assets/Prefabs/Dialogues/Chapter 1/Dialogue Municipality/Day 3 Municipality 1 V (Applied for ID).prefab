@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4332921894689323977}
   - component: {fileID: 4332921894689323990}
   m_Layer: 0
-  m_Name: Day 3 Municipality 1 V
+  m_Name: Day 3 Municipality 1 V (Applied for ID)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,15 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 2
-    content: Looks good. Now I only need your passport photo and the fee and we are
-      done.
+    content: Goed. Als u dan ook nog de paspoortfoto's voor me heeft is dat dan 64
+      alstublieft.
   - speaker: 5
-    content: You give her a passport photo and 64 Euros.
+    content: Je overhandigt de 64 euro en de paspoortfoto's.
   - speaker: 2
-    content: That's it. I can schedule an appointment for you next monday at 11:00
-      am to sign you in. Does that work for you?
+    content: Dat is het dan. Ik kan een afspraak voor u inplannen voor komende maandag
+      om 11:00 Uw ID zou dan al binnen moeten zijn. Werkt dit voor u?
   - speaker: 0
     content: Yes, the earlier the better.
   - speaker: 2
     content: Okay. See you then!
   choicesAtEnd: []
+  followUpConversationIfNoChoicesPresent: {fileID: 0}

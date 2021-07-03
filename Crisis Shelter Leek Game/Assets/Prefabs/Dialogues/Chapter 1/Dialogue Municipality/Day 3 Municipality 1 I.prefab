@@ -45,28 +45,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 0
-    content: Hello. I'm here again to sign in at this municipality and to apply for
-      my ID.
+    content: Hallo. Ik ben hier om me in te schrijven en een nieuwe ID-kaart aan
+      te vragen.
   - speaker: 2
-    content: Yes, I remember you from yesterday. I can register you for a new ID
-      today, but to sign you in we have to wait until your new ID has arrived.
+    content: Ja, ik herinner u van gisteren. Ik ben blij om te horen dat u het geld
+      hebt kunnen krijgen.
+  - speaker: 2
+    content: We kunnen nu de aanvraag voor de ID-kaart doen. Maar u kunt u hier pas
+      inschrijven wanneer uw ID-kaart binnen is.
   choicesAtEnd:
-  - choiceText: How long will this take?
-    Consequence:
+  - choiceText: Hoe lang duurt dit?
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
-    followUpConversation: {fileID: 6211518323360287981, guid: 34fd132157649da49942693c98cdc14c,
+    followUpConversation: {fileID: 4146245279536455802, guid: 108756bb3801d614bbd13d06db1a033f,
       type: 3}
-  - choiceText: "Can't we just do both right now?\r"
-    Consequence:
+  - choiceText: Waarom nu niet?
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 5031167612298251821, guid: 43256aa41f8f7c844ae664b7fdf4904d,
       type: 3}
-  - choiceText: Okay.
-    Consequence:
+  - choiceText: Goed dan.
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
-    followUpConversation: {fileID: 4772162762237318406, guid: 0188967ace7f31d4b8d613258e6695c7,
+    followUpConversation: {fileID: 4146245279536455802, guid: 108756bb3801d614bbd13d06db1a033f,
       type: 3}
   followUpConversationIfNoChoicesPresent: {fileID: 0}
