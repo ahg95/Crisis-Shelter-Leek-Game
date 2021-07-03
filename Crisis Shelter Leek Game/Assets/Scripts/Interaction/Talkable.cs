@@ -4,6 +4,7 @@ using UnityEngine;
 public class Talkable : Interactable
 {
     [Space(20)]
+    [SerializeField] private bool rotateToPlayer = false;
     [SerializeField] private TaskJourney taskJourney;
     [SerializeField] private DialogueManager dialogueManager;
     public ConversationTaskCombination[] conversationTaskCombination;
@@ -49,7 +50,5 @@ public class Talkable : Interactable
 
             yield return new WaitForEndOfFrame();
         }
-
-        print("End");
     }
 }

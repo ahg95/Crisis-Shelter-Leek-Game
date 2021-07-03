@@ -235,6 +235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6385154430470569174, guid: 8c92efa11afed4644a36cd57acb6bcab,
         type: 3}
+      propertyPath: rotateToPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6385154430470569174, guid: 8c92efa11afed4644a36cd57acb6bcab,
+        type: 3}
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1953548001}
@@ -287,6 +292,33 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c0ef940fab6a4b41825cf909e1ab4fe, type: 2}
   - {fileID: 11400000, guid: 4518bd6b6fbdf6c4abbb499020ba40a6, type: 2}
   - {fileID: 11400000, guid: 03539c23b231a714eb97e303b6d0e05c, type: 2}
+--- !u!114 &351108990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351108983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d11bae3f8f6f6d4896163d5125122cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 2be6c193904a33d4ca8cb68df5d55f8e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 351108989}
+        m_MethodName: DisableInteraction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &395389023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -963,6 +995,33 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c0ef940fab6a4b41825cf909e1ab4fe, type: 2}
   - {fileID: 11400000, guid: 4518bd6b6fbdf6c4abbb499020ba40a6, type: 2}
   - {fileID: 11400000, guid: 03539c23b231a714eb97e303b6d0e05c, type: 2}
+--- !u!114 &1465045247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465045240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d11bae3f8f6f6d4896163d5125122cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 2be6c193904a33d4ca8cb68df5d55f8e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1465045246}
+        m_MethodName: DisableInteraction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1532807305 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3650105122252014095, guid: 8c92efa11afed4644a36cd57acb6bcab,
@@ -1000,6 +1059,33 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c0ef940fab6a4b41825cf909e1ab4fe, type: 2}
   - {fileID: 11400000, guid: 4518bd6b6fbdf6c4abbb499020ba40a6, type: 2}
   - {fileID: 11400000, guid: 03539c23b231a714eb97e303b6d0e05c, type: 2}
+--- !u!114 &1532807312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532807305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d11bae3f8f6f6d4896163d5125122cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 2be6c193904a33d4ca8cb68df5d55f8e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1532807311}
+        m_MethodName: DisableInteraction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1640321058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1666,6 +1752,11 @@ PrefabInstance:
       propertyPath: navComponent
       value: 
       objectReference: {fileID: 153833975}
+    - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
+        type: 3}
+      propertyPath: rotateToPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1158119057831233689, guid: f31bcc565f6fdd944be4fba3954ef07a,
         type: 3}
       propertyPath: dialogueManager

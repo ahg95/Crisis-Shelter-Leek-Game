@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5868987169418183173}
   - component: {fileID: 5868987169418183170}
   m_Layer: 0
-  m_Name: Day 2 Coach 2 III
+  m_Name: Day 2 Coach 3 III (gives money
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,12 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 5
-    content: Daisy hands you 64 Euros.
+    content: Roos overhandigt je 64 euro.
   - speaker: 0
-    content: Thank you very much again for your help, I didn't know what to do.
+    content: Niet te geloven! Dankjewel! Ik dacht echt dat ik moest bedelen om geld.
   - speaker: 4
-    content: No problem. If you need any more help please come back. It's my job
-      after all!
+    content: Geen probleem. Hier zijn we voor. We geven niet zomaar geld weg; alleen
+      in dit soort uitzonderlijke situaties.
+  - speaker: 4
+    content: Als je ooit weer in zo'n situatie vast komt te zitten, kom vooral bij
+      me langs en dan kijken we wat we kunnen doen!
   - speaker: 1
-    content: I should make a new appointment now.
+    content: Ik kan maar beter gelijk weer een afspraak maken
   choicesAtEnd: []
+  followUpConversationIfNoChoicesPresent: {fileID: 0}

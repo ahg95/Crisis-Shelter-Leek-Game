@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1963250019105068577}
   - component: {fileID: 1963250019105068576}
   m_Layer: 0
-  m_Name: Day 2 Coach 2 I
+  m_Name: Day 2 Coach 3 I How did it go
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,16 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxContent:
   - speaker: 4
-    content: Hey, you're back already! How did it go?
+    content: Hey, je bent al terug! Hoe ging het?
   choicesAtEnd:
-  - choiceText: I'm on a good track, but they want money.
-    Consequence:
+  - choiceText: Het gaat de goede kant op, maar ze hebben geld nodig
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 5410426393171811501, guid: b521b4da5a3172d4fa0e4313d72355f5,
       type: 3}
-  - choiceText: I feel discouraged because they require money.
-    Consequence:
+  - choiceText: Slecht. Ze willen geld hebben
+    choiceConsequence:
       m_PersistentCalls:
         m_Calls: []
     followUpConversation: {fileID: 5410426393171811501, guid: b521b4da5a3172d4fa0e4313d72355f5,
