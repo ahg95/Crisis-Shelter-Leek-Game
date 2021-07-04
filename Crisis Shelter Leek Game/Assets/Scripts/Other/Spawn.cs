@@ -2,7 +2,7 @@
 
 public class Spawn : MonoBehaviour
 {
-    private void OnLevelWasLoaded(int level)
+    private void Awake()
     {
         SetPosOnSceneChange.SpawnOnCurrentSpawnPoint();
     }

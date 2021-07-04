@@ -30,11 +30,6 @@ public class Interactable : MonoBehaviour
     public FrontOfObject frontOfObject = FrontOfObject.Forward;
     [SerializeField] protected Navigation navComponent = null;
 
-    [Header("Debug")]
-    [Space(10)]
-    [SerializeField] private bool debugAlwaysVisible = false;
-    [SerializeField] private bool fullCube = false;
-
     [Space(10)]
     [SerializeField] private Texture2D hoverCursor;
 
