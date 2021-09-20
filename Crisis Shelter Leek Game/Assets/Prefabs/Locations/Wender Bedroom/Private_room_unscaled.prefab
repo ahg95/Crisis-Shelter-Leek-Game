@@ -65,6 +65,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 807848567}
+        m_TargetAssemblyTypeName: 
         m_MethodName: InteractWithPersonalStuff
         m_Mode: 1
         m_Arguments:
@@ -92,6 +93,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
         m_MethodName: StartConversationSection
         m_Mode: 2
         m_Arguments:
@@ -151,7 +153,6 @@ MonoBehaviour:
   tasks:
   - {fileID: 11400000, guid: ee4b26541361d8345b7512cd82828c73, type: 2}
   - {fileID: 11400000, guid: ff45b383d0715aa4396811beccfa1108, type: 2}
-  disableInteraction: 1
 --- !u!114 &1860609502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +263,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -286,6 +288,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6631933266654826154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -356,6 +359,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -380,6 +384,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6631933267926854952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -483,6 +488,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &6631933268162073758
@@ -575,6 +581,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 9.68e-43, y: 2.4604e-41, z: 0, w: -1}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &7042652232189186621

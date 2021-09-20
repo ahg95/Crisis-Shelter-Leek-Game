@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 
 public class Transitions : MonoBehaviour
 {
@@ -26,8 +24,8 @@ public class Transitions : MonoBehaviour
 
     [Header("Stats Components")]
     [Space(20)]
-    [SerializeField] private Text daysUI;
-    [SerializeField] private Text costsUI;
+    [SerializeField] private TMPro.TextMeshProUGUI daysUI;
+    [SerializeField] private TMPro.TextMeshProUGUI costsUI;
     [SerializeField] private AudioSource tickPlayer;
     [Header("Stats Sounds")]
     [SerializeField] private AudioClip tickSound;

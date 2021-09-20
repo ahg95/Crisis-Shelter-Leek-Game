@@ -39,12 +39,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1264272221}
-  m_IndirectSpecularColor: {r: 0.3438529, g: 0.5007666, b: 0.33350503, a: 1}
+  m_IndirectSpecularColor: {r: 0.34415796, g: 0.50150007, b: 0.33401987, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 11
+  serializedVersion: 12
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -100,7 +100,8 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 2
   m_LightingDataAsset: {fileID: 112000000, guid: 3af078adf7c653540866e36e2052c498,
     type: 2}
-  m_UseShadowmask: 1
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 8e97730c3678397459a12b4710b8bfb6,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -120,6 +121,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 1a7b311acc377a84fbde46aa9483555e, type: 2}
@@ -1981,6 +1984,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 412056974}
+        m_TargetAssemblyTypeName: 
         m_MethodName: OnConversationSectionEnd
         m_Mode: 0
         m_Arguments:
@@ -2351,7 +2355,7 @@ PrefabInstance:
     - target: {fileID: 3964111534669435994, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4322400193750796544, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
         type: 3}
@@ -2382,6 +2386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 6585405399835759498, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6631933266245519636, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
         type: 3}
@@ -2442,6 +2451,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631933268162073756, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3.8794676e-26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631933268162073756, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.58e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631933268162073756, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.1e-44
       objectReference: {fileID: 0}
     - target: {fileID: 6842952925071650017, guid: 93b0c11d36f8e834ea1a4fdd15169dc4,
         type: 3}
@@ -2545,6 +2569,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1109844106}
+        m_TargetAssemblyTypeName: 
         m_MethodName: LookAtAndInvoke
         m_Mode: 2
         m_Arguments:
@@ -2572,6 +2597,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 412056969}
+        m_TargetAssemblyTypeName: 
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -2583,6 +2609,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1253464331}
+        m_TargetAssemblyTypeName: 
         m_MethodName: WaitAndExecute
         m_Mode: 1
         m_Arguments:
@@ -2671,6 +2698,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1264272222
