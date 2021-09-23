@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour
 
     //tutorial dialogue
     [Header("Assignables")]
-    [SerializeField] private DialogManager dialogManager;
+    [SerializeField] private TutorialDialogueManager dialogueManager;
     [SerializeField] private GameObject skipTutorialButton;
     [SerializeField] private GameObject finishDialogueButton;
 
@@ -42,7 +42,7 @@ public class TutorialManager : MonoBehaviour
             popUp.SetActive(false);
         }
 
-        dialogManager = gameObject.GetComponentInChildren<DialogManager>();
+        dialogueManager = gameObject.GetComponentInChildren<TutorialDialogueManager>();
         cameraRot = GameObject.FindWithTag("Player").GetComponentsInChildren<OnButtonHover>();
         nav = GameObject.FindWithTag("Player").GetComponent<Navigation>();
         camZoom = GameObject.FindGameObjectWithTag("Player").GetComponent<InteractWith>();
@@ -65,7 +65,7 @@ public class TutorialManager : MonoBehaviour
     public void SkipTutorial()
     {
         popUpId = popUps.Length;
-        dialogManager.EndDialogue();
+        dialogueManager.EndDialogue();
         skipTutorialButton.SetActive(false);
         StopCoroutine("CheckIfCompletedTutorialParts");
         askTutorial.SetTutorial(false);
@@ -147,7 +147,7 @@ public class TutorialManager : MonoBehaviour
 
                 yield return new WaitForSeconds(waitTime[popUpId]);
                 popUpId++;
-                dialogManager.DisplayNextSentence();
+                dialogueManager.DisplayNextSentence();
             }
         }
         else if (popUpId == popUps.Length)
@@ -162,7 +162,7 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine("TutorialStart");
     }
 
-    IEnumerator CheckIfCompletedTutorialParts()
+    private IEnumerator CheckIfCompletedTutorialParts()
     {
         yield return new WaitForSeconds(1.5f);
         yield return new WaitUntil(() => CheckButtonHover());

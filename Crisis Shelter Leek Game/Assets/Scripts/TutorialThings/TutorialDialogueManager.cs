@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DialogManager : MonoBehaviour
+public class TutorialDialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI DialogueText;
 
@@ -11,12 +11,6 @@ public class DialogManager : MonoBehaviour
 
     public Queue<string> sentences = new Queue<string>();
 
-    void Start()
-    {
-        //sentences;
-    }
-
-    
     public void StartDialogue (Dialogue dialogue)
     {
         anim.SetBool("isOpen", true);

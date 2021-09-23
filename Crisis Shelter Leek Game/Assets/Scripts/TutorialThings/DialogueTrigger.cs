@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -8,6 +6,6 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        GameObject.FindObjectOfType<DialogManager>().StartDialogue(dialogue);
+        GameObject.FindObjectOfType<TutorialDialogueManager>().StartDialogue(dialogue);
     }
 }
